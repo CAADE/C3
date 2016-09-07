@@ -5,9 +5,9 @@ and specs for implementing the CAADE Architecture. The architecture is broken up
 components and sections.
 
 ## Users
- * Application Developer
- * Stack Developer 
- * Operations Engineer
+ * [Application Developer](Actors/ApplicationDeveloper/overview.md)
+ * [Stack Developer](Actors/OperationsManager/overview.md)
+ * [Operations Engineer](Actors/StackDeveloper/overview.md)
 
 ## High level Use Cases
 * Create Application - from application stack.
@@ -20,7 +20,7 @@ components and sections.
 * Create Policies - for Infrastructure and Applications running in the system
 * Create Environments - applications run in different environments including: Production, Test, Dev, etc...
 
-![Image](HighLevelUseCases.png)
+![Image](UseCases/HighLevelUseCases.png)
 
 ## High Level Architecture
 The CAADE Architecture contains several subsystems and components. The following is a diagram on
