@@ -13,4 +13,4 @@ components and sections.
 
 ## High Level Architecture
 
-![alternative text](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/CAADE/Caade/master/design/%20Top%20Level%20Architecture.puml)
+![alternative text](http://www.plantuml.com/plantuml/proxy?src==https://raw.githubusercontent.com/CAADE/Caade/master/design/%20Top%20Level%20Architecture.puml?token=ATg_yUiHs3M4-Tu75ewHVmqhOnb2Le1kks5X2OVuwA%3D%3D)
