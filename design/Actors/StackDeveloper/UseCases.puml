@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+
+:Stack Developer: as Admin
+
+
+rectangle "Operations Manager" {
+
+}
+
+rectangle "Application Developer" {
+
+}
+
+@enduml

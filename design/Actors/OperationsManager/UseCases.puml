@@ -1,0 +1,7 @@
+@startuml
+:Operations Engineer: as Ops
+
+rectangle "Operations Manager" {
+
+}
+@enduml
