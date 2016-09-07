@@ -27,6 +27,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
+    "design": "java -jar design/plantuml.8047.jar design/**.puml",
     "start": "node app.js",
     "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
   },
