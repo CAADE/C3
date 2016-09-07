@@ -1,0 +1,12 @@
+service:
+  name: mongodb
+  ports:
+    - 27017
+
+  environment: development
+    image: mongodb-single-node
+    volumes:
+      - mongodb-data:/var/lib/mongodb
+    network:
+      - back-tier
+

@@ -1,0 +1,9 @@
+environment: development
+services:
+  web:
+    servicetemplate: nodejs
+  redis:
+    servicetemplate: redis
+    ports:
+  mongo:
+    servicetemplate: mongo

@@ -1,0 +1,27 @@
+@startuml
+
+
+package "Application Orchestrator" {
+  interface "Application Orchestrator" {
+      Application launchApplication(ApplicationStack, Environment, Map config)
+      rebalanceApplication(Application)
+  }
+}
+
+package "Cloud Broker"  #ffffaa {}
+package "Provision Engine" #ffffaa {}
+package "Data Coordinator" #ffffaa {}
+package "Telemetry Bus SNAP" #aaffaa {}
+package "Application Analyzer" #aaffff {}
+package "Application Manager" #aaffff {}
+package "Identity Manager"  #ffffaa {}
+
+"Application Orchestrator" --> "Identity Manager"
+"Application Orchestrator" --> "Cloud Broker"
+"Application Orchestrator" --> "Provision Engine"
+"Application Orchestrator" --> "Data Coordinator"
+"Telemetry Bus SNAP" --> "Application Orchestrator"
+"Application Manager" --> "Application Orchestrator"
+"Application Analyzer" --> "Application Orchestrator"
+
+@enduml

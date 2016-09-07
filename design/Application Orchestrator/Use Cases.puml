@@ -1,0 +1,40 @@
+@startuml
+
+left to right direction
+
+skinparam usecase {
+  BackgroudnColor #ffffaa
+  BackgroundColor<<Main>> #aaffff
+}
+actor :Cloud Broker: <<Component>>
+actor :Provision Engine: <<Component>>
+actor :Data Coordinator: <<Component>>
+actor :Identity Manager: <<Component>>
+actor :Telemetry Bus SNAP: <<External>>
+actor :Application Manager: <<Component>>
+actor :Application Analyzer: <<Component>>
+
+rectangle "Application Orchestrator" {
+UseCase LA <<Main>> as "Launch Application"
+UseCase RA <<Main>> as "Rebalance Application"
+UseCase GAA <<Main>> as "Get Application Analyzer"
+UseCase CHA <<Main>> as "Check Health of Application"
+UseCase CAS <<Main>> as "Coordinate Application StartUp"
+
+:Application Manager: --> LA
+LA --> :Identity Manager:
+LA --> :Cloud Broker:
+LA --> :Provision Engine:
+LA --> :Data Coordinator:
+GAA --> :Application Analyzer:
+RA --> :Application Analyzer:
+:Telemetry Bus SNAP: --> GAA
+:Telemetry Bus SNAP: --> RA
+RA --> :Cloud Broker:
+RA --> :Provision Engine:
+RA --> :Data Coordinator:
+CHA --> :Application Analyzer:
+CAS --> :Telemetry Bus SNAP:
+}
+
+@enduml

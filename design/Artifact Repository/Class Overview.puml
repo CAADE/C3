@@ -1,0 +1,36 @@
+@startuml
+package "Artifact Repository" {
+  interface "Artifact Repository" {
+      ApplicationStack createApplicationStack()
+      ApplicationStack modifyApplicationStack()
+      ServiceTemplate createServiceTemplate()
+      ServiceTemplate modifyServiceTemplate()
+  }
+  class ApplicationStack {
+
+  }
+  class ServiceTemplate {
+
+  }
+  class Image {
+  }
+}
+"CLI" ()-- "Artifact Repository"
+"REST API" ()-- "Artifact Repository"
+"Portal" ()-- "Artifact Repository"
+
+package "Cloud Broker"  #ffffaa {}
+package "Application Orchestrator" #ffffaa {}
+package "Provision Engine" #ffffaa {}
+package "Data Coordinator" #ffffaa {}
+package "Operations Manager" #aaffff {}
+package "Application Manager" #aaffff {}
+
+"Operations Manager" --> "Artifact Repository"
+"Application Manager" --> "Artifact Repository"
+"Artifact Repository" --> "Cloud Broker"
+"Artifact Repository" --> "Provision Engine"
+"Artifact Repository" --> "Data Coordinator"
+"Artifact Repository" --> "Application Orchestrator"
+
+@enduml
