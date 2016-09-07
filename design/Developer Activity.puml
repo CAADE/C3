@@ -1,5 +1,0 @@
-@startuml
-Dev -> ApplicationManager: Application CreateApplication(code, ApplicationStack, appConfig, dataconfig, dataload)
-Dev -> ApplicationManager: loadCode(Application, code, appConfig, environment) // appConfig has the version
-Dev -> ApplicationManager: loadData(Application, data, dataConfig, environment)
-@enduml

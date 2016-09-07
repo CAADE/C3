@@ -13,4 +13,6 @@ components and sections.
 
 ## High Level Architecture
 
-![alternative text](http://www.plantuml.com/plantuml/proxy?src=https://raw.github.com/plantuml/plantuml-server/master/src/main/webapp/resource/test2diagrams.txt)
+![Image](TopLevelArchitecture.png)
+
+![Image](DeveloperActivity.png)
