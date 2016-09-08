@@ -4,6 +4,7 @@ The Application Developer develops cloud aware applications.
 ## Use Cases
 * Create an Application
 * Launch application in an environment
+* Update application in an environment
 * Run command 
 * View Service and Application processes
 * Kill Application and Services
@@ -23,27 +24,49 @@ caade create-app <application name> --stack=<ApplicationStack>
 ```
 
 ### Launch an Application in an environment
-* Launch application on local machine
+* Launch application in Specified environment
 ```
-# caade launch --env=local
+# caade up --env=local  # Local machine
+# caade up              # local Machine
+# caade up --env=dev    # development environment
+# caade up --env=prod   # production environment
+# caade up --env=test   # test environment
+# caade up --env=<Environment Name> 
 ```
-* Launch application on cloud in the development environment 
+* Launch service in application in default <local> environment
 ```
-# caade launch --env=dev
+# caade up redis    # Launch the redis service in the application
+# caade up mongo    # Launch the mongo service in the application
+# caade up web      # Launch the nodejs web service in the application
+# caade up worker   # Launch the nodejs worker service in the application
+# caade up worker --env=test   # Launch the nodejs worker service in the test environment
 ```
-* Launch application on cloud in the test environment 
+
+### Update an application
+When developers are working they need to update the application with new source code.
+This could include any or all of the services in the application. The developer should be able
+to update all of the services, one service and any number of services. The source code at the 
+top level project directory will be pushed out to the all of the services specified. If the service
+does not have source code cooresponding then it is checked for the latest updates.
+
+* Update application on cloud in the test environment 
 ```
-# caade launch --env=test
+# caade update
 ```
-* Launch application on cloud in the production environment 
+* Update web service with new code in the development environment
+The source code in the current project directory is propigated to the context (Machine, VM, or container) of the
+service and the service is told to update. This could mean restart or just update source.
 ```
-# caade launch --env=prod
+# caade update web # update the default environment <local>
+# caade update worker
+# caade update worker --env=test # update the test environment
 ```
-* Launch application on cloud in the "generic" environment 
+* Update service with released changes. Example upgrade mongo DB to latest release
 ```
-# caade launch --env=<Environment Name>
+# caade update mongo    # in the default environment
+# caade update mongo --env=test   # in the test environment
 ```
-The [Operations Engineer](../OperationsManager/overview.md) is responsible for naming and creating environments.
+The [Operations Engineer](../OperationsManager/README.md) is responsible for naming and creating environments.
 
 ### Run a Command
 Running a command might not seem like it makes sense in the case of an application, but there are several times when
