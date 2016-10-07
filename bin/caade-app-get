@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var YAML = require('yamljs');
+
+var program = require('commander');
+var Client = require('node-rest-client').Client;
+var config = require('./caade-config');
+
+var client = new Client();
+
+
+program
+  .parse(process.argv);
+
+var name = program.args;
+
+var url = config.caadeUrl + "/application/get?";
+
+if (name) {
+  url += "name=" + name[0];
+}
+
+client.get(url, function (data, response) {
+  // parsed response body as js object
+  if (data.error) {
+    console.error("Error:" + data.error);
+  }
+  else {
+    var yamlString = YAML.stringify(data.application, 4);
+
+    fs.writeFile("./caade-app.yaml", yamlString, function (err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log("Application " + name + " was gotten!");
+    });
+  }
+});

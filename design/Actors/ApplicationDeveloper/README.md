@@ -16,14 +16,24 @@ The Application Developer develops cloud aware applications.
 TBD
 
 ## Command Line
-Examples on how to use Caade
+Examples on how to use CAADE
 
 ### Create an Application
 ```
-caade create-app <application name> --stack=<ApplicationStack>
+caade app create <application name> --stack=<Application Stack>
+```
+
+### Get an Application
+Allow the developer to attach an existing application to a project.
+Great if they want to share an application or re-attach an application to a project.
+```
+caade app get <applicationName>
 ```
 
 ### Launch an Application in an environment
+This command should make sure that the application is up. If the application is already up
+then it should just return that it is up. If it is not up yet then it should launch the application.
+This behavior should be consistent across all of the environments.
 * Launch application in Specified environment
 ```
 # caade up --env=local  # Local machine
@@ -148,3 +158,4 @@ ID      Name        Command      State
 ```
 # caade deploy 
 ```
+

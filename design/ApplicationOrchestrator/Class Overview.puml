@@ -6,6 +6,13 @@ package "Application Orchestrator" {
       Application launchApplication(ApplicationStack, Environment, Map config)
       rebalanceApplication(Application)
   }
+  class ApplicationInstance {
+    String state
+  }
+  class ServiceInstance {
+    String state
+  }
+  ApplicationInstance *--> ServiceInstance
 }
 
 package "Cloud Broker"  #ffffaa {}
@@ -15,6 +22,20 @@ package "Telemetry Bus SNAP" #aaffaa {}
 package "Application Analyzer" #aaffff {}
 package "Application Manager" #aaffff {}
 package "Identity Manager"  #ffffaa {}
+package "Environment Manager" #ffffaa {
+  class Environment {
+  }
+}
+package "Artifact Repository"  #aaffaa {
+    class Application {
+    }
+    class Servicelet {
+    }
+}
+Application *--> ApplicationInstance
+Servicelet o--> ServiceInstance
+ServiceInstance o--> Environment
+ApplicationInstance o--> Environment
 
 "Application Orchestrator" --> "Identity Manager"
 "Application Orchestrator" --> "Cloud Broker"
@@ -23,5 +44,6 @@ package "Identity Manager"  #ffffaa {}
 "Telemetry Bus SNAP" --> "Application Orchestrator"
 "Application Manager" --> "Application Orchestrator"
 "Application Analyzer" --> "Application Orchestrator"
+
 
 @enduml

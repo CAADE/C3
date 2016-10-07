@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+var program =  require('commander');
+
+program
+  .version("0.2.0")
+  .command('init', 'initalize Caade on your machine')
+  .command('app <command> <applicationName>', 'Work with applications')
+  .command('stack <command> <stackName>', 'Work with applications')
+  .command('environment <command> <EnvironmentName>', 'Work with applications')
+  .command('service <command> <EnvironmentName>', 'Work with servioes')
+  .command('up [service-name]', 'Launch an application in a specific environment')
+  .command('update [service-name]', 'Update web service with new code')
+  .command('run <command>', 'Run a command in specified environment')
+  .command('ps <command>', 'List processes for the application')
+  .command('kill <serviceName>', 'Kill specific service for the application')
+  .command('logs [serviceName]', 'Get logs of the application')
+  .command('deploy', 'Deploy an application')
+  .parse(process.argv);
+

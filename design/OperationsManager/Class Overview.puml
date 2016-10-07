@@ -5,11 +5,6 @@ package "Operations Manager" {
       ApplicationStack createApplicationStack()
       Service createServiceTemplate()
   }
-  class ServiceTemplate {
-
-  }
-  class ApplicationStack {
-  }
 }
 "CLI" ()-- "Operations Manager"
 "REST API" ()-- "Operations Manager"

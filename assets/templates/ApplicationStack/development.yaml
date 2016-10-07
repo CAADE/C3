@@ -1,9 +1,16 @@
-environment: development
+name: NodeJS
+version: 0.0.1
+environment: Dev
 services:
   web:
-    servicetemplate: nodejs
+    environment: Dev
+    servicetemplate: NodeJS
+    ports: 1337
   redis:
-    servicetemplate: redis
-    ports:
+    environment: Dev
+    servicetemplate: Redis
+    ports: 6379
   mongo:
-    servicetemplate: mongo
+    environment: Dev
+    servicetemplate: Mongo
+    ports: 27017

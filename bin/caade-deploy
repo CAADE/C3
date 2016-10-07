@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var Client = require('node-rest-client').Client;
+var config = require('./caade-config');
+
+var client = new Client();
+
+
+program
+  .option('-e, --env [environment name]', 'Launch application in a specific environment')
+  .parse(process.argv);
+
+var services = program.args;
+
+var url = config.caadeUrl + "/dev/deploy?";
+
+if (program.env) {
+  url += "env=" + program.env;
+}
+
+client.get(url, function (data, response) {
+  // parsed response body as js object
+  console.log(data);
+});
