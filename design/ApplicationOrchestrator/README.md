@@ -8,16 +8,29 @@ stacks on the resources in a coordinated manner.
 
 ## Actors
 Users 
-* 
+* Cloud Broker
+* Provision Engine
+* Data Coordinator
+* Identity Manager
+* Telemetry Bus SNAP
+* Application Manager
+* Application Analyzer
 
 Uses
-* 
+* Launch Application
+* Rebalance Application
+* Get Application Analyzer
+* Check Health of Application
+* Coordinate Application StartUp
+![Image](Use Cases.png)
 
 ## Interface
-* P
+* Rest API
 
 ## Artifacts
-* 
+* ApplicationInstance
+* ServiceInstance
+![Image](Class Overview.png)
 
 ## Services
 *

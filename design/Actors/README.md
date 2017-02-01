@@ -3,4 +3,6 @@
  * [Stack Developer](Actors/OperationsManager/README.md)
  * [Operations Engineer](Actors/StackDeveloper/README.md)
  
+![Image](../UseCases/HighLevelUseCases.png) 
+ 
 

@@ -1,0 +1,27 @@
+@startuml
+cloud Developer {
+    node iNodeJS {
+      component NodeJS1
+      component NodeJS2
+      80 -- NodeJS1
+      80 -- NodeJS2
+    }
+    node iRedis {
+      component Redis1
+      component Redis2
+      6379 -- Redis1
+      6379 -- Redis2
+    }
+    node iMongo {
+      database Mongo
+      27017 -- Mongo
+    }
+
+    NodeJS1 --> 27017
+    NodeJS2 --> 27017
+    NodeJS1 --> 6379
+    NodeJS2 --> 6379
+}
+Developer --> 80
+@enduml
+

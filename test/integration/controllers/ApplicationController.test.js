@@ -17,7 +17,7 @@ describe('ApplicationController', function () {
             done();
           }
           else {
-            done("Created Application withour Application Stack!")
+            done("Created Application without Application Stack!")
           }
         })
     });

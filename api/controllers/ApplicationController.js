@@ -50,7 +50,7 @@ module.exports = {
                     return application.toJSON()
                   })
                   .then(function (json) {
-                    return res.json({application: json});
+                    return res.json(json);
                   })
               }
             })

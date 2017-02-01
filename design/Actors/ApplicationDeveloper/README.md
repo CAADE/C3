@@ -12,6 +12,7 @@ The Application Developer develops cloud aware applications.
 * Deploy an application
 
 ![Image](UseCases.png)
+
 ## User Interface
 TBD
 

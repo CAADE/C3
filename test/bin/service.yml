@@ -1,0 +1,34 @@
+name: redis
+version: 0.0.1
+environments:
+  local:
+    image: redis-0.0.1
+    config:
+      name: Local Redis
+      locale: GMT+8
+    events:
+      Install:
+      Shutdown:
+    resources:
+      instance0:
+        type: instance
+        flavor: m1.tiny
+      instance1:
+        type: instance
+        flavor: m1.medium
+  dev:
+    image: redis-0.0.1
+    config:
+      name: Local Redis
+      locale: GMT+8
+    events:
+      Install:
+      Shutdown:
+  prod:
+    image: redis-0.0.1
+    config:
+      name: Local Redis
+      locale: GMT+8
+    events:
+      Install:
+      Shutdown:

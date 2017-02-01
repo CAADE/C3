@@ -9,10 +9,13 @@ It enables the developer to Use Application Stacks to rapidly develop, debug and
 * Select Environment
 * Debug Application
 # Modify Application Stack
+![Image](Use Cases.png)
+
 
 ## Actors
 Users 
 * Application Developer
+![Image](User Interaction.png)
 
 Uses
 * Policy Manager
@@ -28,6 +31,7 @@ Uses
 ## Artifacts
 * Application
 * Service
+![Image](Class Overview.png)
 
 ## Services
 *

@@ -1,0 +1,8 @@
+../../bin/caade cloud create myCloud --type aws
+../../bin/caade cloud create myCloud2 --type openStack
+../../bin/caade cloud create myCloud3 --type vmware
+../../bin/caade cloud create myCloud4 --type docker
+../../bin/caade cloud ls
+../../bin/caade cloud show myCloud
+../../bin/caade cloud remove myCloud
+../../bin/caade cloud ls

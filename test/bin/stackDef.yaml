@@ -6,6 +6,9 @@ services:
     environment: Dev
     template: NodeJS
     ports: 1337
+    links:
+      - redis
+      - mongo
   redis:
     environment: Dev
     template: Redis

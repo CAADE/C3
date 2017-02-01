@@ -28,11 +28,15 @@ client.get(url, function (data, response) {
     console.error(data.error);
   }
   else {
+    console.log(data.stack);
     console.log("Name:" + data.stack.name + "\tVersion: " + data.stack.version);
     console.log("Environment\tID\tVersion");
     console.log("===========\t=====\t=====");
+    console.log(data.stack.stacklets);
     _.each(data.stack.stacklets, function(value,key) {
       console.log(key + "\t\t" + value.id + "\t" + value.version);
+      console.log(key);
+      console.log(value);
     })
   }
 });

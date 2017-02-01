@@ -3,24 +3,32 @@
 skinparam packageStyle rect
 
 package CAADE {
+package "Portal" #aaffff {
   package "Application Manager" {}
   package "Operations Manager" {}
-  package "Application Orchestrator" {}
-  package "Application Analyzer" {}
-  package "Cloud Broker" {}
+  }
+  package "Orchestration" #ffaaff {
+      package "Application Orchestrator" {}
+      package "Application Analyzer" {}
   package "Policy Manager" {}
-  package "Artifact Repository" {}
+  package "Environment Manager" {}
+  }
+  package "Control" #ffffaa {
   package "Cloud Broker" {}
   package "Data Coordinator" {}
-  package "Environment Manager" {}
-  package "Identity Manager" {}
-  package "Policy Manager" {}
   package "Provision Engine" {}
+  }
+  package "Repository" #aaaaff {
+  package "Artifact Repository" {}
+  package "Identity Manager" {}
+  }
 }
 
+package "Clouds" #aaffaa {
 package "SDI Cloud" {
 }
 package "Public Cloud" {
+}
 }
 
 package "Telemetry SNAP" {}

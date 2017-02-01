@@ -1,0 +1,42 @@
+@startuml
+
+skinparam packageStyle rect
+
+package CAADE {
+package "Portal" #aaffff {
+  package "Application Manager" {}
+  package "Stack Manager" {}
+  package "Operations Manager" {}
+  }
+  package "Orchestration" #ffaaff {
+      package "Application Orchestrator" {}
+      package "Application Analyzer" {}
+  package "Environment Manager" {}
+  package "Policy Manager" {}
+  }
+  package "Control" #ffffaa {
+  package "Cloud Broker" {}
+  package "Data Coordinator" {}
+  package "Provision Engine" {}
+  }
+  package "Repository" #aaaaff {
+  package "Artifact Repository" {}
+  package "Identity Manager" {}
+  }
+}
+
+package "Clouds" #aaffaa {
+package "SDI Cloud" {
+}
+package "Public Cloud" {
+}
+}
+
+"Portal" --> "Orchestration"
+"Portal" --> "Repository"
+"Repository" --> "Control"
+"Orchestration" --> "Control"
+"Control" --> "Clouds"
+
+
+@enduml

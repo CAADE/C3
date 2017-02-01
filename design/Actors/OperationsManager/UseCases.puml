@@ -1,7 +1,15 @@
 @startuml
+left to right direction
+
 :Operations Engineer: as Ops
 
 rectangle "Operations Manager" {
-
+Ops --> (Create Policy)
+Ops --> (Manage Policy)
+Ops --> (Manage Running Applications)
+Ops --> (Plan Capacity)
+Ops --> (Manage Users)
+Ops --> (Manage Clouds)
+Ops --> (Map Cloud Resources)
 }
 @enduml

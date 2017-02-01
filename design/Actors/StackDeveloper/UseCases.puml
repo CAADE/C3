@@ -4,7 +4,7 @@ left to right direction
 :Stack Developer: as Admin
 
 
-rectangle "Operations Manager" {
+rectangle "Stack App Manager" {
   Admin --> (Create Application Stack)
   Admin --> (Modify Application Stack)
   Admin --> (Version Application Stack)

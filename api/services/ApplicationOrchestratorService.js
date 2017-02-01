@@ -7,41 +7,61 @@ module.exports = {
    * @param env
    * Launch the application in the specifed Environment.
    */
-  up: function (app, env) {
-    Application.findOne(app.id).populateAll()
-      .then(function (app) {
-        var running = _.find(app.instances, function (instance) {
-            return (instance.state == "Running" || instance.state == "Initializing") && instance.env == env.id;
-          })
-          if (running) {
-            return [app, running];
-          }
-          else {
-            return [app, ApplicationInstance.create({app: app, env: env, state: "Initializing"})]
-          }
-      })
-      .spread(function (app, appInstance) {
-        // Get all of the services from the app.stack
-        app.instances.add(appInstance.id);
-        return app.save().then(function () {
-          // Traverse the stack and get the stacklet and its servicelets.
-          return [appInstance, ApplicationStacklet.find({stack: app.stack, env: env.id}).populateAll()];
-        })
-      })
-      .spread(function (appInstance, stacklets) {
+  _upNewInstance: function (app, appInstance, env) {
+    return ApplicationStacklet.find({stack: app.stack, env: env.id}).populateAll()
+      .then(function (stacklets) {
         // ServiceInstance is created and attached to the ApplicationInstance.
-        return [appInstance, Promise.map(stacklets[0].servicelets, function (servicelet) {
-          return ServiceInstance.create({servicelet: servicelet, application: appInstance, state: "Initializing"})
-            .then(function(instance) { return instance; });
-        })];
+        if(stacklets.length > 0) {
+          return Promise.map(stacklets[0].servicelets, function (servicelet) {
+            return ServiceInstance.create({servicelet: servicelet, application: appInstance, state: "Initializing"})
+              .then(function (instance) {
+                return instance;
+              });
+          });
+        }
+        else {
+          return null;
+        }
       })
-      .spread(function (appInstance, serviceInstances) {
+      .then(function (serviceInstances) {
         _.each(serviceInstances, function (serviceInstance) {
           appInstance.services.add(serviceInstance.id);
         });
         return appInstance.save().then(function () {
           return ApplicationInstance.findOne(appInstance.id).populateAll();
         });
+      })
+  },
+  _upExistingInstance: function (app, appInstance) {
+    return ApplicationInstance.findOne(appInstance.id).populateAll();
+  },
+  up: function (app, env) {
+    Application.findOne(app.id).populateAll()
+      .then(function (app) {
+
+        // Find an app.instance that is running.
+        var running = _.find(app.instances, function (instance) {
+          return (instance.state == "Running" || instance.state == "Initializing") && instance.env == env.id;
+        })
+
+        if (running) {
+          // If it is running then check its services.
+          // Make sure all of its services are are up and running.
+          //If it is in the Initializing phase then make sure its
+          // Services are up and running.
+          return ApplicationOrchestratorService._upExistingInstance(app, running);
+        }
+        else {
+          // If you cannot find either then create a new instance and
+          // add it to the application.
+          return ApplicationInstance.create({app: app, env: env, state: "Initializing"})
+            .then(function (appInstance) {
+              app.instances.add(appInstance.id);
+              return app.save().then(function () {
+                return ApplicationOrchestratorService._upNewInstance(app, appInstance,env);
+              })
+            });
+        }
       })
       .then(function (appInstance) {
         return [appInstance, CloudBrokerService.getResources(appInstance)];

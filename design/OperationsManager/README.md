@@ -16,6 +16,8 @@ This is the main interface for the CAADE Operator.
 * Manage Policies for Application Stack
 * Modify Environment
 
+![Image](Use Cases.png) 
+
 ## Actors
 Users 
 * Operations Engineer
@@ -32,8 +34,10 @@ Uses
 * Portal
 
 ## Artifacts
-* Service Template
-* Application Stack
+* 
+* 
+
+![Image](Class Overview.png)
 
 ## Services
 *

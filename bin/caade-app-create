@@ -6,6 +6,7 @@ var YAML = require('yamljs');
 var program = require('commander');
 var Client = require('node-rest-client').Client;
 var config = require('./caade-config');
+var _ = require('lodash');
 
 var client = new Client();
 
@@ -32,11 +33,21 @@ client.get(url, function (data, response) {
   else {
     var yamlString = YAML.stringify(data.application, 4);
 
-    fs.writeFile("./caade-app.yaml", yamlString, function (err) {
+    fs.writeFile("./caade.yml", yamlString, function (err) {
       if (err) {
         return console.log(err);
       }
       console.log("Application " + name + " was created");
     });
+    _.each(data.stacklets.environments, function(stacklet,name) {
+      console.log(stacklet);
+      yamlString = YAML.stringify(stacklet, 4);
+      fs.writeFile("./" + name + ".yml", yamlString, function(err) {
+        if(err) {
+          return console.log(err);
+        }
+      });
+
+    })
   }
 });

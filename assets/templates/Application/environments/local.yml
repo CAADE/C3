@@ -1,0 +1,17 @@
+name: local
+args:
+  buildno: 1
+  name: Wayne
+services:
+  web:
+    template: NodeJS
+    ports: 1337
+    links:
+      - redis
+      - mongo
+  redis:
+    template: Redis
+    ports: 6379
+  mongo:
+    template: Mongo
+    ports: 27017

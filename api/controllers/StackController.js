@@ -50,16 +50,27 @@ module.exports = {
    * `StackController.ls()`
    */
   list: function (req, res) {
-    return ApplicationStack.find().then(function (stacks) {
+    return ApplicationStack.find().populateAll().then(function (stacks) {
       var retval = []
-      _.each(stacks, function (stack) {
-        stack.envs = Object.keys(stack.stacklets);
-        retval.push(stack)
+      return Promise.each(stacks, function (stack) {
+        var ostack =  {name:stack.name, version:stack.version,envs:[]};
+        return Promise.each(stack.stacklets, function (stacklet) {
+          return ApplicationStacklet.findOne(stacklet.id).populateAll()
+            .then(function (astacklet) {
+              ostack.envs.push(astacklet.env.name);
+              return ostack;
+            });
+        })
+          .then(function (all) {
+            retval.push(ostack);
+            return ostack;
+          })
       })
-      return res.json({stacks: retval});
-    })
-  }
-  ,
+        .then(function (all) {
+          return res.json({stacks: retval});
+        })
+    });
+  },
 
   /**
    * `StackController.update()`
@@ -124,10 +135,13 @@ module.exports = {
      query['version'] = req.query.version;
      }
      */
-    return ApplicationStack.find(query).then(function (stacks) {
+    return ApplicationStack.find(query).populateAll()
+      .then(function (stacks) {
       if (stacks.length > 0) {
         // TODO: fileter the environments from the results
-        return res.json({stack: stacks[0]});
+        return stacks[0].toJSON().then(function(stack) {
+          return res.json({stack: stack});
+        })
       }
       return res.json({error: "Could not find the stack " + req.query.name});
     });

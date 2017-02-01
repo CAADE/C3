@@ -1,0 +1,16 @@
+name: NodeJS
+version: 0.0.1
+environment: Test
+services:
+  web:
+    template: NodeJS
+    ports: 1337
+  worker:
+    template: NodeJS
+    ports: 1338
+  redis:
+    template: Redis
+    ports: 6379
+  mongo:
+    template: Mongo
+    ports: 27017

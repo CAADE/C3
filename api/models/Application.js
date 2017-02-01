@@ -18,11 +18,30 @@ module.exports = {
     toJSON: function () {
       return Application.findOne(this.id).populateAll()
         .then(function (app) {
-          if(app.stack) {
-            return {name: app.name, stack: app.stack.toJSON(), version: app.version}
+          if (app.stack) {
+            return app.stack.toJSON()
+              .then(function (stack) {
+                return {
+                  application: {
+                    name: app.name,
+                    version: app.version,
+                    author: "email@here.com",
+                    description: "TBD"
+                  },
+                  stacklets: stack
+                }
+              });
           }
           else {
-            return {name: app.name, stack: "", version: app.version}
+            return {
+              application: {
+                name: app.name,
+                version: app.version,
+                author: "email@here.com",
+                description: "TBD"
+              },
+              stacklets: {}
+            }
           }
         });
     },
@@ -32,12 +51,11 @@ module.exports = {
     up: function (envs, services) {
       return Application.findOne(this.id).populateAll().then(function (me) {
         return Promise.each(envs, function (env) {
-          // TODO: Add Services to the architecture, for launch
           return ApplicationOrchestratorService.up(me, env);
         });
       });
     },
-    kill: function (envs, services,signal) {
+    kill: function (envs, services, signal) {
       return Application.findOne(this.id).populateAll().then(function (me) {
         return Promise.each(envs, function (env) {
           var running = _.find(me.instances, function (instance) {

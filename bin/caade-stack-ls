@@ -18,6 +18,6 @@ client.get(url, function (data, response) {
   console.log("Name\tVersion\t\tEnvironments");
   console.log("======\t========\t============");
   _.each(data.stacks, function(stack) {
-    console.log("%s\t%s\t%s", stack.name, stack.version, stack.envs.join(','));
+    console.log("%s\t%s\t%s", stack.name, stack.version, stack.envs);
   })
 });
