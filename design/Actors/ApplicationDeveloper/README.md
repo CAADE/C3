@@ -5,7 +5,7 @@ The Application Developer develops cloud aware applications.
 * Create an Application
 * Launch application in an environment
 * Update application in an environment
-* Run command 
+* Run command
 * View Service and Application processes
 * Kill Application and Services
 * Get logs
@@ -21,14 +21,14 @@ Examples on how to use CAADE
 
 ### Create an Application
 ```
-caade app create <application name> --stack=<Application Stack>
+# caade app create <Application Name> --stack=<Application Stack>  # creates a new application from selected stack
 ```
 
 ### Get an Application
 Allow the developer to attach an existing application to a project.
 Great if they want to share an application or re-attach an application to a project.
 ```
-caade app get <applicationName>
+# caade app clone <Application Name> [--version=<Application Version>]
 ```
 
 ### Launch an Application in an environment
@@ -42,7 +42,7 @@ This behavior should be consistent across all of the environments.
 # caade up --env=dev    # development environment
 # caade up --env=prod   # production environment
 # caade up --env=test   # test environment
-# caade up --env=<Environment Name> 
+# caade up --env=<Environment Name>
 ```
 * Launch service in application in default <local> environment
 ```
@@ -56,26 +56,27 @@ This behavior should be consistent across all of the environments.
 ### Update an application
 When developers are working they need to update the application with new source code.
 This could include any or all of the services in the application. The developer should be able
-to update all of the services, one service and any number of services. The source code at the 
+to update all of the services, one service and any number of services. The source code at the
 top level project directory will be pushed out to the all of the services specified. If the service
-does not have source code cooresponding then it is checked for the latest updates.
+does not have source code corresponding then it is checked for the latest updates.
 
-* Update application on cloud in the test environment 
+* Update application on cloud in the test environment
 ```
 # caade update
 ```
 * Update web service with new code in the development environment
-The source code in the current project directory is propigated to the context (Machine, VM, or container) of the
+The source code in the current project directory is propagated to the context (Machine, VM, or container) of the
 service and the service is told to update. This could mean restart or just update source.
 ```
 # caade update web # update the default environment <local>
 # caade update worker
 # caade update worker --env=test # update the test environment
 ```
-* Update service with released changes. Example upgrade mongo DB to latest release
+* Upgrade service with released changes. Example upgrade mongo DB to latest release
 ```
-# caade update mongo    # in the default environment
-# caade update mongo --env=test   # in the test environment
+# caade upgrade mongo    # in the default environment
+# caade upgrade mongo --env=test   # in the test environment
+# caade upgrade mongo --version=3.2.0   # upgrade to specific version
 ```
 The [Operations Engineer](../OperationsManager/README.md) is responsible for naming and creating environments.
 
@@ -93,7 +94,7 @@ that you want the command executed in the same container or machine as a specifi
 # caade run --env=test "echo 'hello world'"
 # caade run --env=<Environment Name> "echo 'hello world'"
 ```
-* Run Command in all containers, VMs, or machines of specific service 
+* Run Command in all containers, VMs, or machines of specific service
 This will run echo 'hello world' on every machine that has a redis service running for the application.
 ```
 # caade run --service=redis "echo 'hello world'"
@@ -108,7 +109,7 @@ This will run echo 'hello world' on every machine that has a redis service runni
 * Show processes for application
 ```
 # caade ps
-ID      Name        Command      State     
+ID      Name        Command      State
 ======  =========== ============ ==========
 23143   redis       ./redis ...  Running
 23144   redis       ./redis ...  Running
@@ -157,6 +158,7 @@ ID      Name        Command      State
 ### Deploy an application
 * Deploy an application
 ```
-# caade deploy 
+# caade deploy    # deploy application on server
+# caade publish   # publish application for a general access
 ```
 
