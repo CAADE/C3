@@ -2,6 +2,7 @@
 The Application Developer develops cloud aware applications.
 
 ## Use Cases
+![Image](UseCases.png)
 * Create an Application
 * Launch application in an environment
 * Update application in an environment
