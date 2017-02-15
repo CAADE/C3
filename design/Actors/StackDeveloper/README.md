@@ -2,7 +2,9 @@
 The Stack Developer is responsible for developing Application Stack and Service Templates
 
 ## Use Cases 
-TBD
+![Image](UseCases.png)
+* Create Application Stack
+* Modify Application Stack
 
 ## User Interface
 TBD
