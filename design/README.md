@@ -1,15 +1,18 @@
 # CAADE Architectural Overview
+
 Cloud Aware Application Development Ecosystem is a reference architecture that 
 targets application developers that develop in the cloud. This reference architecture shows the use cases,
 and specs for implementing the CAADE Architecture. The architecture is broken up into several different
 components and sections.
 
 ## Users
+
  * [Application Developer](Actors/ApplicationDeveloper/README.md)
  * [Stack Developer](Actors/OperationsManager/README.md)
  * [Operations Engineer](Actors/StackDeveloper/README.md)
 
 ## High level Use Cases
+
 * Create Application - from application stack.
 * Run Application - on multiple environments, includes debug and execute
 * Deploy Application - on multiple environments (Production, Test, etc...)
