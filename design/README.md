@@ -39,7 +39,8 @@ policies that govern the services and applications in the environment.
 Application Stacks and Services can have a definition for individual environments. This allows
 Application Developers to deploy applications to multiple environments.  In this example a simple 
 NodeJS Application Stack can be deployed into four different environments with different service
-topologies
+topologies. Please look at Example for more [detailed examples](Examples/README.md) of a NodeJS application running in
+multiple Environments.
 
 #### Local Environment 
 
