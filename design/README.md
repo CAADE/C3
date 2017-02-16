@@ -36,6 +36,7 @@ configurations of composite services basd on environments.
 policies that govern the services and applications in the environment.
 
 ### Environments and Applications
+
 Application Stacks and Services can have a definition for individual environments. This allows
 Application Developers to deploy applications to multiple environments.  In this example a simple 
 NodeJS Application Stack can be deployed into four different environments with different service
