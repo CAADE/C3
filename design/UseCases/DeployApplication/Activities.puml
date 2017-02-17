@@ -1,0 +1,8 @@
+@startuml
+|Application Developer|
+start
+|#aaffff|ApplicationManager|
+:Deploy and Application;
+|Application Developer|
+stop
+@enduml

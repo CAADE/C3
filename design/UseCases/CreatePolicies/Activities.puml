@@ -1,0 +1,8 @@
+@startuml
+|Operations Manager|
+start
+|#ffffaa|OperationsManager|
+:Create a Policy;
+|Operations Manager|
+stop
+@enduml

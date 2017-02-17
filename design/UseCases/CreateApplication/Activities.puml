@@ -1,0 +1,11 @@
+@startuml
+|Application Developer|
+start
+|#ffffaa|ArtifactRepository|
+:Browse for an Application Stack;
+|Application Developer|
+:Create Directory for the Application Project;
+|#aaffff|ApplicationManager|
+:Create Application from Application Stack;
+stop
+@enduml

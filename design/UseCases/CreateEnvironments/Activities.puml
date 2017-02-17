@@ -1,0 +1,8 @@
+@startuml
+|Operations Manager|
+start
+|#ffffaa|OperationsManager|
+:Create an Environment;
+|Operations Manager|
+stop
+@enduml

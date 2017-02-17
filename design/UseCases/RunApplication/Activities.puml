@@ -1,0 +1,8 @@
+@startuml
+|Application Developer|
+start
+|#aaffff|ApplicationManager|
+:Create Application from Application Stack;
+|Application Developer|
+stop
+@enduml

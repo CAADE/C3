@@ -1,0 +1,8 @@
+@startuml
+|Stack Developer|
+start
+|#ffffaa|ApplicationManager|
+:Manage Application Stack;
+|Stack Developer|
+stop
+@enduml

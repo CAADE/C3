@@ -13,11 +13,13 @@ It enables the developer to Use Application Stacks to rapidly develop, debug and
 
 
 ## Actors
-Users 
+### Users 
+
 * Application Developer
+
 ![Image](User Interaction.png)
 
-Uses
+### Uses
 * Policy Manager
 * Environment Manager
 * Application Orchestrator

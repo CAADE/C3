@@ -1,0 +1,8 @@
+@startuml
+|Operations Manager|
+start
+|#ffffaa|OperationsManager|
+:Manage Infrastructure;
+|Operations Manager|
+stop
+@enduml
