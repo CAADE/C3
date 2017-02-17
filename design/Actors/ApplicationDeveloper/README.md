@@ -3,14 +3,14 @@ The Application Developer develops cloud aware applications.
 
 ## Use Cases
 ![Image](UseCases.png)
-* Create an Application
-* Launch application in an environment
-* Update application in an environment
-* Run command
-* View Service and Application processes
-* Kill Application and Services
-* Get logs
-* Deploy an application
+* [Create an Application](#create-an-application-command)
+* [Launch application in an environment](#launch-application)
+* [Update application in an environment](#update-application)
+* [Run command](#run-command)
+* [View Service and Application processes](#view-service)
+* [Kill Application and Services](#kill-application)
+* [Get logs](#get-logs)
+* [Deploy an application](#deploy-application)
 
 ## User Interface
 TBD
@@ -18,19 +18,19 @@ TBD
 ## Command Line
 Examples on how to use CAADE
 
-### Create an Application
+### <a name="creeate-an-application-command"></a>Create an Application
 ```
 # caade app create <Application Name> --stack=<Application Stack>  # creates a new application from selected stack
 ```
 
-### Get an Application
+### <a name="get-application"></a>Get an Application
 Allow the developer to attach an existing application to a project.
 Great if they want to share an application or re-attach an application to a project.
 ```
 # caade app clone <Application Name> [--version=<Application Version>]
 ```
 
-### Launch an Application in an environment
+### <a name="launch-application"></a>Launch an Application in an environment
 This command should make sure that the application is up. If the application is already up
 then it should just return that it is up. If it is not up yet then it should launch the application.
 This behavior should be consistent across all of the environments.
@@ -52,7 +52,7 @@ This behavior should be consistent across all of the environments.
 # caade up worker --env=test   # Launch the nodejs worker service in the test environment
 ```
 
-### Update an application
+### <a name="update-application"></a>Update an application
 When developers are working they need to update the application with new source code.
 This could include any or all of the services in the application. The developer should be able
 to update all of the services, one service and any number of services. The source code at the
@@ -79,7 +79,7 @@ service and the service is told to update. This could mean restart or just updat
 ```
 The [Operations Engineer](../OperationsManager/README.md) is responsible for naming and creating environments.
 
-### Run a Command
+### <a name="run-command"></a>Run a Command
 Running a command might not seem like it makes sense in the case of an application, but there are several times when
 a developer will want to test, or control their application while they are developing it. All commands are run in the
 same security context and environment as the application is currently running or you can specify. You can also specify
@@ -104,7 +104,7 @@ This will run echo 'hello world' on every machine that has a redis service runni
 # caade run --service=redis.23143 "echo 'hello world'"
 ```
 
-### View Service and Application Processes
+### <a name="view-service"></a>View Service and Application Processes
 * Show processes for application
 ```
 # caade ps
@@ -119,7 +119,7 @@ ID      Name        Command      State
 23149   worker      npm ...      Starting
 ```
 
-### Kill Application
+### <a name="kill-application"></a>Kill Application
 * Kill all services on for the application
 ```
 # caade kill
@@ -131,7 +131,7 @@ ID      Name        Command      State
 # caade kill redis.23412 # kill redis - only the process with the process id.
 # caade kill 23412 # kill only the process with the process id.
 ```
-### Get Logs
+### <a name="get-logs"></a>Get Logs
 * Get logs of the application
 ```
 # caade logs
@@ -154,7 +154,7 @@ ID      Name        Command      State
 # caade logs redis.223412 --log=/var/syslog
 ```
 
-### Deploy an application
+### <a name="deploy-application"></a>Deploy an application
 * Deploy an application
 ```
 # caade deploy    # deploy application on server
