@@ -3,8 +3,8 @@ The Application Developer develops cloud aware applications.
 
 ## Use Cases
 ![Image](UseCases.png)
-* [Create an Application](#create-an-application-command)
-* [Launch application in an environment](#launch-an-application)
+* [Create an Application](#create-application)
+* [Launch application in an environment](#launch-application)
 * [Update application in an environment](#update-application)
 * [Run command](#run-command)
 * [View Service and Application processes](#view-service)
@@ -18,7 +18,7 @@ TBD
 ## Command Line
 Examples on how to use CAADE
 
-### Create an Application
+### <a id="create-application></a>Create an Application
 ```
 # caade app create <Application Name> --stack=<Application Stack>  # creates a new application from selected stack
 ```

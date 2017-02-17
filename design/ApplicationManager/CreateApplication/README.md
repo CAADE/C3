@@ -5,7 +5,9 @@
 ![Image](Interaction.png)
 
 ### Users
-* Application Developer - See [examples](../README.md#create-an-application)
+
+* Application Developer - See [examples](../../Actors/ApplicationDeveloper/README.md#create-application)
 
 ### Systems
+
 * [Application Manager](../../ApplicationManager/README.md)
