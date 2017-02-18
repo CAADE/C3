@@ -12,13 +12,23 @@ The Application Developer develops cloud aware applications.
 * [Get logs](#get-logs)
 * [Deploy an application](#deploy-application)
 
+### Typical Workflow
+
+Application Developers all work in different ways. This workflow show some possible workflows
+for the typical application developer.
+
+![Image](PrimaryWorkflow.png)
+
 ## User Interface
+
 TBD
 
 ## Command Line
+
 Examples on how to use CAADE
 
-### <a id="create-application></a>Create an Application
+### Create Application
+
 ```
 # caade app create <Application Name> --stack=<Application Stack>  # creates a new application from selected stack
 ```
