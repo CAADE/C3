@@ -7,21 +7,23 @@ stacks on the resources in a coordinated manner.
 ## Use Cases
 
 ## Actors
-Users 
-* Cloud Broker
-* Provision Engine
-* Data Coordinator
-* Identity Manager
+### Users 
+* [Cloud Broker](../CloudBroker/README.md)
+* [Provision Engine](../ProvisionEngine/README.md)
+* [Data Coordinator](../DataCoordinator/README.md)
+* [Identity Manager](../IdentityManager/README.md)
 * Telemetry Bus SNAP
-* Application Manager
-* Application Analyzer
+* [Application Manager](../ApplicationManager/README.md)
+* [Application Analyzer](../ApplicationAnalyzer/README.md)
 
-Uses
-* Launch Application
-* Rebalance Application
-* Get Application Analyzer
-* Check Health of Application
-* Coordinate Application StartUp
+### Uses
+
+* [Launch Application](../ApplicationManager/LaunchApplication/README.md)
+* [Rebalance Application]
+* [Get Application Analyzer]
+* [Check Health of Application]
+* [Coordinate Application StartUp]
+
 ![Image](Use Cases.png)
 
 ## Interface

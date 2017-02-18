@@ -3,18 +3,19 @@ The Stack Developer is responsible for developing Application Stack and Service 
 
 ## Use Cases
 ![Image](UseCases.png)
-* Create Application Stack
+* [Create Application Stack](#create-application-stack)
 * Modify Application Stack
 * Version Application Stack
-* Create a Service Template
-* Launch and Test Service Template
-* Update Service Template
-* Publish Service Template to a Catalog
-* Create a Stack Template
-* Stack Template is a composition of existed Service Templates with customizations
-* Launch and Test Stack Template
-* Update Stack Template
-* Publish Stack Template to Catalog
+* [Create a Service Template](#create-service-template)
+* [Launch and Test Service Template](#launch-and-test-service-template)
+* [Update Service Template](#modify-service-template)
+* [Publish Service Template to a Catalog](#publish-service-template)
+* [Create a Stack Template](#create-stack-teemplate)
+* [Launch and Test Stack Template](#launch-and-test-stack-from-template)
+* [Update Stack Template](#modify-stack-template)
+* [Publish Stack Template to Catalog](#publish-stack-template)
+* [List Stack Templates](#list-stack-templates-or-service-templates)
+* [Show Stack Template Details](#show-stack-template-or-service-template)
 
 ## User Interface
 TBD

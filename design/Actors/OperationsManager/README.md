@@ -1,21 +1,26 @@
 # Operations Manager
+
 The Operation Manager is responsible for managing the operations of the system.
 This includes the creation and management of environments, users, and connectivity to the Clouds.
 
 ## Use Cases
-* Manage Environment
-* Manage Policy
-* Manage Applications
-* Plan Capacity
-* Manage Users
-* Manage Clouds
-* Map Cloud Resources
+
+* [Manage Environment](#manage-environment)
+* [Manage Policy](#manage-policies)
+* [Manage Applications](#manage-applications)
+* [Plan Capacity](#capacity-planning)
+* [Manage Users](#manage-users)
+* [Manage Clouds](#mange-clouds)
+* [Map Cloud Resources](#map-resources-to-cloud)
+
 ![Image](UseCases.png)
 
 ## User Interface
+
 TBD
 
 ## Command Line
+
 Examples on how to use CAADE for the Operations Manager
 
 ### Manage Environment
@@ -88,38 +93,105 @@ Show details about the environment given by the name environmentName
 
 ### Manage Policies
 
+TBD
+
 #### Create Policy
+
+TBD
+
 
 #### List Policies
 
+TBD
+
 #### Update Policy
+
+TBD
 
 #### Remove Policy
 
+TBD
+
 #### Activate Policy
+
+TBD
 
 #### Deactivate Policy
 
+TBD
+
 
 ### Manage Applications
+
+TBD
+
 #### List Application
+
+TBD
+
 #### Kill Application 
+
+TBD
+
 
 ### Capacity Planning
 
+TBD
+
+
 ### Manage Users
+
+TBD
+
 #### Add User
+
+TBD
+
 #### Modify User
+
+TBD
+
 #### Remove User
+
+TBD
+
 #### List User
 
+TBD
+
 ### Manage Clouds
+
+TBD
+
 #### Add Cloud
+
+TBD
+
 #### Remove Cloud
+
+TBD
+
 #### List Clouds
+
+TBD
+
 #### Show Cloud
 
+TBD
+
 ### Map Resources to Cloud
+
+TBD
+
 #### Map Images
+
+TBD
+
 #### Map Machine Types
+
+TBD
+
 #### Map Resources
+
+TBD
+
