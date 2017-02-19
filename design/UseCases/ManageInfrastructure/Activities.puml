@@ -2,7 +2,19 @@
 |Operations Manager|
 start
 |#ffffaa|OperationsManager|
-:Manage Infrastructure;
+fork
+:Create Compute;
+:Modify Compute;
+:Remove Compute;
+fork again
+:Create Storage;
+:Modify Storage;
+:Remove Storage;
+fork again
+:Create Network;
+:Modify Network;
+:Remove Network;
+end fork
 |Operations Manager|
 stop
 @enduml

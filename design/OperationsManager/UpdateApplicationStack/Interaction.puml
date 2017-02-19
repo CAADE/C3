@@ -1,0 +1,13 @@
+@startuml
+Actor "Application Developer"
+
+"Application Developer" -> "Application Manager" : updateApplicationStack(name, yaml)
+activate "Application Manager"
+"Application Manager" -> "Application Manager" :findApplicationStack(name) : appStack
+alt not found
+create "Application Stack"
+"Application Manager" -> "Application Stack" : new(name, yaml)
+else
+"Application Manager" -> "Application Stack" : update(yaml)
+end
+@enduml

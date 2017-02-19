@@ -8,32 +8,41 @@ It enables the developer to Use Application Stacks to rapidly develop, debug and
 * Select Application Stack
 * Select Environment
 * Debug Application
-# Modify Application Stack
+* [Create Application Stack](../OperationsManager/CreateApplicationStack/README.md)
+* [Modify Application Stack](../OperationsManager/UpdateApplicationStack/README.md)
+* Remove Application Stack
+
 ![Image](Use Cases.png)
 
 
 ## Actors
 ### Users 
 
-* Application Developer
+* [Application Developer](../Actors/ApplicationDeveloper/README.md)
 
 ![Image](User Interaction.png)
 
 ### Uses
+
 * Policy Manager
 * Environment Manager
 * Application Orchestrator
 * Artifact Repository
 
 ## Interface
+
 * CLI - Command Line Interface
 * REST-API - 
 * Portal - Web Portal
 
 ## Artifacts
+
 * Application
+* Application Stack
 * Service
+
 ![Image](Class Overview.png)
 
 ## Services
+
 *

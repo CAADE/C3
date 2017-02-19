@@ -4,17 +4,26 @@ and configured for the services and applications that are running. It must be ab
 based on the Service Templates and the Application Stacks.
 
 ## Use Cases
-*
+
+![Image](UseCases.png)
+
+* Start Service
+* Kill Service
+* Run Command with Service
 
 ## Actors
-Users 
-* 
 
-Uses
-* 
+### Users 
+
+* [Application Orchestrator](../ApplicationOrchestrator/README.md)
+
+### Uses
+
+* [SDI Cloud](../SDICloud/README.md)
+* [Identity Manager](../IdentityManager/README.md)
 
 ## Interface
-* P
+*
 
 ## Artifacts
 * 

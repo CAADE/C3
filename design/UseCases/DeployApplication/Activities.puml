@@ -2,7 +2,9 @@
 |Application Developer|
 start
 |#aaffff|ApplicationManager|
-:Deploy and Application;
+:Deploy an Application;
+|#ffffaa|ArtifactRepository|
+:Publish an Application;
 |Application Developer|
 stop
 @enduml

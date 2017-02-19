@@ -1,0 +1,25 @@
+@startuml
+
+package "Application Orchestrator" #ffffaa {}
+package "SDI Cloud" #ffffaa {}
+package "Cloud Broker" #ffffaa {}
+package "Identity Manager" #ffffaa {}
+package "Artifact Repository" #ffffaa {}
+
+package "Provision Engine" {
+  interface "ProvisionEngine" {
+  }
+}
+
+"CLI" ()-- "ProvisionEngine"
+"REST API" ()-- "ProvisionEngine"
+"Portal" ()-- "ProvisionEngine"
+
+
+"Application Orchestrator" --> "ProvisionEngine"
+"ProvisionEngine" --> "Artifact Repository"
+"ProvisionEngine" --> "SDI Cloud"
+"ProvisionEngine" --> "Identity Manager"
+"ProvisionEngine" --> "Cloud Broker"
+
+@enduml

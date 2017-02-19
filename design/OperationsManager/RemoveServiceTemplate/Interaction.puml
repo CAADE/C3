@@ -1,0 +1,15 @@
+@startuml
+Actor "Stack Developer"
+
+"Stack Developer" -> "Operations Manager" : removeServiceTemplate(name)
+
+participant "Service Template"
+
+activate "Operations Manager"
+"Operations Manager" -> "Operations Manager" :findServiceTemplate(name) : ServiceTemplate
+alt found
+
+"Operations Manager" -> "Service Template" : new(name, yaml)
+destroy "Service Template"
+end
+@enduml

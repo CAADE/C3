@@ -4,11 +4,11 @@ Service Templates, Application Stacks, Evnrionments and policies reguarding thos
 This is the main interface for the CAADE Operator.
 
 ## Use Cases
-* Create Environment
-* Create Application Stack
+* [Create Environment](../OperationsManager/CreateEnvrinonment/README.md)
+* [Create Application Stack](../OperationsManager/CreateApplicationStack/README.md)
 * Create Service Template
 * Modify Service Template
-* Modify Application Stack
+* [Modify Application Stack](../OperationsManager/UpdateApplicationStack/README.md)
 * Test Service Template
 * Test Application Stack
 * Manage Artifact Repository

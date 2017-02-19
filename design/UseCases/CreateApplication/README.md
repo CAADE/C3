@@ -19,5 +19,6 @@ of files and directories.
 ![Image](Activities.png)
 
 # Detail Scenarios
+
 * [Create Application](../../ApplicationManager/CreateApplication/README.md) - See detail information [here](../../Actors/ApplicationDeveloper/README.md#create-application)
 

@@ -2,7 +2,11 @@
 |Stack Developer|
 start
 |#aaffff|ApplicationManager|
-:Test Application Stack;
+:Create Application\nfrom Application Stack;
+:Launch Application\non Local Box;
+:Launch Application\nin Development Environment;
+:Launch Application\nin Test Environment;
+:Launch Application\nin Production Environment;
 |Stack Developer|
 stop
 @enduml

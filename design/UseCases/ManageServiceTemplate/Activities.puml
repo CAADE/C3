@@ -1,8 +1,10 @@
 @startuml
 |Stack Developer|
 start
-|#aaffff|ApplicationManager|
-:Manage Application Stack;
+|#aaffff|OperationsManager|
+:Create Service Template;
+:Modify Service Template;
+:Remove Service Template;
 |Stack Developer|
 stop
 @enduml

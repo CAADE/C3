@@ -3,22 +3,26 @@ Artifact repository has all of the artifacts for CAADE.
 These artifacts include ApplicationStacks, ServiceStacks, and Environments.
 
 ## Use Cases
-* Manage Image
+* [Deploy Application](#deploy-application)
+* Remove Application
 * Manage Application Stack
+* Manage Image
 * Manage Service Template
 * Find Image
+* Find Application
 * Find Application Stack
 * Find Service Template
+
 ![Image](Use Cases.png)
  
 
 ## Actors
-Users 
+### Users 
  * Application Orchestrator
  * Operation Manager
  * Application Manager
 
-Uses
+### Uses
 * Cloud Broker
 * Provision Engine
 * Data Coordinator

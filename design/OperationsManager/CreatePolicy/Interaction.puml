@@ -1,0 +1,13 @@
+@startuml
+Actor "Operations Engineer"
+
+"Operations Engineer" -> "Operations Manager" : createPolicy(name, yaml)
+activate "Operations Manager"
+"Operations Manager" -> "Operations Manager" :findPolicy(name) : Policy
+alt not found
+create "Policy"
+"Operations Manager" -> "Policy" : new(name, yaml)
+else
+"Operations Manager" -> "Policy" : update(yaml)
+end
+@enduml

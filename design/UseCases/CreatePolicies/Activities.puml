@@ -3,6 +3,9 @@
 start
 |#ffffaa|OperationsManager|
 :Create a Policy;
+:Check a Policy;
+:Modify a Policy;
+:Remove a Policy;
 |Operations Manager|
 stop
 @enduml

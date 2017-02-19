@@ -1,0 +1,11 @@
+@startuml
+Actor "Application Developer"
+
+"Application Developer" -> "Application Manager" : getApplication(name)
+activate "Application Manager"
+"Application Manager" -> "Application Manager" :findApplicationStack(name) : appStack
+"Application Manager" -> "Application" : getJSON()
+"Application Developer" <- "Application Manager" : json(Application)
+deactivate "Application Manager"
+
+@enduml

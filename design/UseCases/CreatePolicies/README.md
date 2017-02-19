@@ -7,10 +7,16 @@ The [Operations Manager](../../Actors/OperationsManager/README.md) interacts wit
 
 # Activities
 
-*
+* Create a Polity
+* Modify a Policy
+* Remove a Policy
+* Check Policy
 
 ![Image](Activities.png)
 
 # Detail Scenarios
-* 
+* [Create Policy]
+* [Modify Policy]
+* [Remove Policy]
+* [Check Policy]
 

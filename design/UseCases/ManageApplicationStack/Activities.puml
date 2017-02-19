@@ -1,8 +1,11 @@
 @startuml
 |Stack Developer|
 start
-|#ffffaa|ApplicationManager|
-:Manage Application Stack;
+|#aaffff|ApplicationManager|
+:Create Application Stack;
+:Modify Application Stack;
+:Test the Application Stack;
+:Remove Application Stack;
 |Stack Developer|
 stop
 @enduml

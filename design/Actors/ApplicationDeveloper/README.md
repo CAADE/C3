@@ -64,7 +64,7 @@ This behavior should be consistent across all of the environments.
 # caade up worker --env=test   # Launch the nodejs worker service in the test environment
 ```
 
-### <a id="update-application"></a>Update an application
+### <a id="update-application"></a>[Update an application](../../ApplicationManager/UpdateApplication/README.md)
 When developers are working they need to update the application with new source code.
 This could include any or all of the services in the application. The developer should be able
 to update all of the services, one service and any number of services. The source code at the
@@ -91,7 +91,7 @@ service and the service is told to update. This could mean restart or just updat
 ```
 The [Operations Engineer](../OperationsManager/README.md) is responsible for naming and creating environments.
 
-### <a id="run-command"></a>Run a Command
+### <a id="run-command"></a>[Run a Command](../../ApplicationManager/RunCommand/README.md)
 Running a command might not seem like it makes sense in the case of an application, but there are several times when
 a developer will want to test, or control their application while they are developing it. All commands are run in the
 same security context and environment as the application is currently running or you can specify. You can also specify

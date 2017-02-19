@@ -2,7 +2,11 @@
 |Application Developer|
 start
 |#aaffff|ApplicationManager|
-:Create Application from Application Stack;
+:Create Application;
+:Launch Application on Local;
+:Launch Application on Development;
+:Launch Application on Test;
+:Launch Application on Production;
 |Application Developer|
 stop
 @enduml
