@@ -27,23 +27,25 @@ TBD
 
 Examples on how to use CAADE
 
-### Create Application
+### [Create Application](../../ApplicationManager/CreateApplication/README.md)
 
 ```
 # caade app create <Application Name> --stack=<Application Stack>  # creates a new application from selected stack
 ```
 
-### Get an Application
+### [Get an Application](../../ApplicationManager/GetApplication/README.md)
 Allow the developer to attach an existing application to a project.
 Great if they want to share an application or re-attach an application to a project.
 ```
 # caade app clone <Application Name> [--version=<Application Version>]
 ```
 
-### <a id="launch-application"></a>Launch an Application in an environment
+### <a id="launch-application"></a>[Launch an Application in an environment](../../ApplicationManager/LaunchApplication/README.md)
+
 This command should make sure that the application is up. If the application is already up
 then it should just return that it is up. If it is not up yet then it should launch the application.
 This behavior should be consistent across all of the environments.
+
 * Launch application in Specified environment
 ```
 # caade up --env=local  # Local machine

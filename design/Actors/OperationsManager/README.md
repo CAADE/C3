@@ -15,6 +15,10 @@ This includes the creation and management of environments, users, and connectivi
 
 ![Image](UseCases.png)
 
+### Typical Workflow
+
+![Image](PrimaryWorkflow.png)
+
 ## User Interface
 
 TBD

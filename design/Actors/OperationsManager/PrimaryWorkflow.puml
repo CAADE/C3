@@ -1,0 +1,22 @@
+@startuml
+|Operations Engineer|
+start
+|#aaaaff|Operations Manager|
+fork
+:Add Cloud;
+:Map Cloud Resources;
+fork again
+:Add User;
+:Modify Creds for Cloud;
+fork again
+:Create Policy;
+:Create Environment;
+:Apply Policy to Environment;
+fork again
+|#ffffaa|Application Manager|
+:Launch Application;
+:Kill Application;
+end fork
+|Operations Engineer|
+stop
+@enduml

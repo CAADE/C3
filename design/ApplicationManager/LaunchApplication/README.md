@@ -7,7 +7,7 @@
 
 ### Users
 
-* Application Developer - See [examples](../../Actors/ApplicationDeveloper/README.md#create-application)
+* Application Developer - See [examples](../../Actors/ApplicationDeveloper/README.md#launch-application)
 
 ### Systems
 

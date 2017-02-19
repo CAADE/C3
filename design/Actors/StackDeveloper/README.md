@@ -17,6 +17,13 @@ The Stack Developer is responsible for developing Application Stack and Service 
 * [List Stack Templates](#list-stack-templates-or-service-templates)
 * [Show Stack Template Details](#show-stack-template-or-service-template)
 
+### Primary Workflow
+
+![Image](PrimaryWorkflow.png)
+
+This represents a typical workflow of the stack developer. Not all steps in the workflow need 
+to be taken in order. This just represents a typical workflow.
+
 ## User Interface
 TBD
 

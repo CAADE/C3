@@ -1,0 +1,45 @@
+servicelets:
+    -
+        name: web
+        stacklet: 291
+        args: null
+        template: 916
+        expose: null
+        linkNames:
+            - redis
+            - mongo
+        createdAt: '2016-10-28T18:04:20.090Z'
+        updatedAt: '2016-10-28T18:04:22.413Z'
+        id: 302
+    -
+        name: redis
+        stacklet: 291
+        args: null
+        template: 914
+        expose: null
+        linkNames: null
+        createdAt: '2016-10-28T18:04:20.100Z'
+        updatedAt: '2016-10-28T18:04:22.419Z'
+        id: 303
+    -
+        name: mongo
+        stacklet: 291
+        args: null
+        template: 915
+        expose: null
+        linkNames: null
+        createdAt: '2016-10-28T18:04:20.107Z'
+        updatedAt: '2016-10-28T18:04:22.424Z'
+        id: 304
+env:
+    name: Dev
+    createdAt: '2016-10-28T18:03:57.473Z'
+    updatedAt: '2016-10-28T18:03:57.473Z'
+    id: 334
+stack:
+    isFulfilled: false
+    isRejected: false
+name: NodeJS
+createdAt: '2016-10-28T18:04:22.307Z'
+updatedAt: '2016-10-28T18:04:22.445Z'
+id: 291
