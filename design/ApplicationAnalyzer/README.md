@@ -3,21 +3,28 @@ The Application Analyzer is responsible for building deep learning models of app
 their services and resources they run and consume to optimize the execution landscape for the application.
 
 ## Use Cases
+
 *
 
 ## Actors
-Users 
+
+### Users 
+
 *
 
-Uses
+### Uses
+
 *
 
 ## Interface
+
 *
 
 ## Artifacts
+
 * 
 
 ## Services
+
 *
 

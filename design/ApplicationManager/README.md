@@ -1,10 +1,12 @@
 # Application Manager
+
 Application Manager is the primary interface for the Application Developer for CAADE. 
 It enables the developer to Use Application Stacks to rapidly develop, debug and deploy 
 "Cloud Aware" applications.
 
 ## Use Cases
-* Deploy and Run Application
+
+* [Deploy and Run Application](LaunchApplication/README.md)
 * Select Application Stack
 * Select Environment
 * Debug Application
@@ -14,8 +16,8 @@ It enables the developer to Use Application Stacks to rapidly develop, debug and
 
 ![Image](Use Cases.png)
 
-
 ## Actors
+
 ### Users 
 
 * [Application Developer](../Actors/ApplicationDeveloper/README.md)
@@ -44,5 +46,3 @@ It enables the developer to Use Application Stacks to rapidly develop, debug and
 ![Image](Class Overview.png)
 
 ## Services
-
-*
