@@ -8,8 +8,8 @@ components and sections.
 ## Users
 
  * [Application Developer](Actors/ApplicationDeveloper/README.md)
- * [Stack Developer](Actors/OperationsManager/README.md)
- * [Operations Engineer](Actors/StackDeveloper/README.md)
+ * [Stack Developer](Actors/StackDeveloper/README.md)
+ * [Operations Engineer](Actors/OperationsManageer/README.md)
 
 ## High level Use Cases
 
@@ -26,7 +26,6 @@ components and sections.
 ![Image](UseCases/HighLevelUseCases.png)
 
 ## High Level Concepts
-![Image](HighLevelConcepts.png)
 * Application Stack - contains a reference to services that are required to make an Application. There can be different 
 configurations based on Environments
 * Service -  represents a service running in different environments. Example: A MongoDB service could be a simple 
@@ -37,6 +36,8 @@ configurations of composite services basd on environments.
 * Image - a standard image that can be deployed to any number of clouds or environments.
 * Envronment - A group of resources with policy that applications and services execute. Each Environment has unique 
 policies that govern the services and applications in the environment.
+
+![Image](HighLevelConcepts.png)
 
 ### Environments and Applications
 
@@ -83,8 +84,8 @@ how these components work together to fulfill the high level use cases.
 ![Image](SummaryArchitecture.png)
 
 * [Application Analyzer](ApplicationAnalyzer/README.md) - Deep learning analytics for application optimization
-* [Application Manager](ApplicationManager/overivew.md) - Manage Applications (Creation, Launch, Destroy, etc...)
-* [Application Orchestrator](ApplicationOrchestrator/overivew.md) - Orchestrate services to serve up an application
+* [Application Manager](ApplicationManager/README.md) - Manage Applications (Creation, Launch, Destroy, etc...)
+* [Application Orchestrator](ApplicationOrchestrator/README.md) - Orchestrate services to serve up an application
 * [Artifact Repository](ArtifactRepository/README.md) - Store images, Service Templates, Application Stacks, etc...
 * [Cloud Broker](CloudBroker/README.md) - Distribute and manage requests to multiple clouds
 * [Data Coordinator](DataCoordinator/README.md) - Coordinate images, and data between clouds
