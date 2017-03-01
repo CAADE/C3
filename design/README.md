@@ -9,7 +9,7 @@ components and sections.
 
  * [Application Developer](Actors/ApplicationDeveloper/README.md)
  * [Stack Developer](Actors/StackDeveloper/README.md)
- * [Operations Engineer](Actors/OperationsManageer/README.md)
+ * [Operations Engineer](Actors/OperationsManager/README.md)
 
 ## High level Use Cases
 
@@ -91,7 +91,7 @@ how these components work together to fulfill the high level use cases.
 * [Data Coordinator](DataCoordinator/README.md) - Coordinate images, and data between clouds
 * [Environment Manager](EnvironmentManager/README.md) - Manage Envinronments for the system (Dev, Test, Production, etc...)
 * [Identity Manager](IdentityManager/README.md) - Manage identity of the user across multiple clouds
-* [Operations Manager](OperationsManager/overivew.md) - Operations Portal for managing Operations and Stack development. 
+* [Operations Manager](OperationsManager/README.md) - Operations Portal for managing Operations and Stack development. 
 * [Policy Manager](PolicyManager/README.md) - Manage Policies for execution of services and applications in the system
 * [Provision Engine](ProvisionEngine/README.md) - Provision services and application on resources from the cloud
 * SDI Cloud - Any Private SDI Cloud including VMWare, OpenStack, Nutantix, Containers, etc...
