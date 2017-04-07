@@ -16,5 +16,5 @@
 * [Policy Manager](../../PolicyManager/README.md)
 * [Cloud Broker](../../CloudBroker/README.md)
 * [Provision Engine](../../ProvisionEngine/README.md)
-* [Data Coordinator](../../DataCoorinator/README.md)
+* [Data Coordinator](../../DataCoordinator/README.md)
 
