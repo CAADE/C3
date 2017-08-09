@@ -5,7 +5,7 @@ based on the Service Templates and the Application Stacks.
 
 ## Use Cases
 
-![Image](UseCases.png)
+![Image](Use Cases.png)
 
 * Start Service
 * Kill Service
@@ -23,11 +23,11 @@ based on the Service Templates and the Application Stacks.
 * [Identity Manager](../IdentityManager/README.md)
 
 ## Interface
-*
+* 
 
 ## Artifacts
 * 
 
 ## Services
-*
+* 
 

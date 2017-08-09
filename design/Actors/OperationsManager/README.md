@@ -10,7 +10,7 @@ This includes the creation and management of environments, users, and connectivi
 * [Manage Applications](#manage-applications)
 * [Plan Capacity](#capacity-planning)
 * [Manage Users](#manage-users)
-* [Manage Clouds](#mange-clouds)
+* [Manage Clouds](#manage-clouds)
 * [Map Cloud Resources](#map-resources-to-cloud)
 
 ![Image](UseCases.png)
@@ -31,7 +31,7 @@ Examples on how to use CAADE for the Operations Manager
 
 This is a set of commands that can used to create, update and remove an environment from the system.
 Environments can represent Local machines, Development, Test, and Production. 
-Operations Managers can creeate any number of environmentst that they need for the application and stack developers.
+Operations Managers can create any number of environments that they need for the application and stack developers.
 
 #### Create Environment
 
@@ -48,7 +48,7 @@ Update an Environment with the specification in the filename.
 # caade environment update <environmentName> --file <filenamee>
 ```
 
-#### Delete Enironment
+#### Delete Environment
 
 Delete an Environment
 
@@ -56,7 +56,7 @@ Delete an Environment
 # caade environment delete <environmentName>
 ```
 
-#### List Enironments
+#### List Environments
 
 List all of the environments and basic information about the environments.
 
