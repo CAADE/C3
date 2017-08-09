@@ -5,7 +5,7 @@ var YAML = require('yamljs');
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./caade-config');
+var config = require('./UHC-config');
 
 var client = new Client();
 
@@ -17,7 +17,7 @@ program
 
 var name = program.args;
 
-var url = config.caadeUrl + "/user/initFile?";
+var url = config.UHCUrl + "/user/initFile?";
 
 if (program.username) {
   url += "&username=" + program.username;
@@ -34,11 +34,11 @@ client.get(url, function (data, response) {
   else {
     var yamlString = YAML.stringify(data, 4);
 
-    fs.writeFile(".caade.yaml", yamlString, function (err) {
+    fs.writeFile(".UHC.yaml", yamlString, function (err) {
       if (err) {
         return console.log(err);
       }
-      console.log("CAADE Initialized");
+      console.log("UHC Initialized");
     });
   }
 });

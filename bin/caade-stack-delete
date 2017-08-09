@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./caade-config');
+var config = require('./UHC-config');
 
 var client = new Client();
 
@@ -12,7 +12,7 @@ program
 
 var name = program.args;
 
-var url = config.caadeUrl + "/stack/delete?";
+var url = config.UHCUrl + "/stack/delete?";
 
 if(name) {
   url += "name=" + name[0];

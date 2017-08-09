@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./caade-config');
+var config = require('./UHC-config');
 var YAML = require('yamljs');
 
 var client = new Client();
@@ -11,7 +11,7 @@ program
   .option('-e, --env <environmentName>', 'Remvoe a Service from the environment')
   .parse(process.argv);
 
-var url = config.caadeUrl + "/service/remove";
+var url = config.UHCUrl + "/service/remove";
 
 if(program.args.length > 0) {
   url += "?name=" + program.args[0];

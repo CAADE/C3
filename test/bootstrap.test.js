@@ -7,10 +7,8 @@ before(function(done) {
     this.timeout(50000);
 
     sails.lift({
-        // configuration for testing purposes
     }, function(err, server) {
         if (err) return done(err);
-        // here you can load fixtures, etc.
         done(err, sails);
     });
 });

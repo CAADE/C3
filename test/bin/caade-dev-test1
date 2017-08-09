@@ -1,15 +1,15 @@
-../../bin/caade environment create Local
-../../bin/caade environment create Dev
-../../bin/caade service create Redis --env Local
-../../bin/caade service create Mongo --env Local
-../../bin/caade service create NodeJS --env Local
-../../bin/caade service add-script Redis --env Local --event=Install --filename=redisInstall.sh
-../../bin/caade service add-script Redis --env Local --event=Shutdown --filename=redisShutdown.sh
-../../bin/caade service create Redis --env Dev
-../../bin/caade service create Mongo --env Dev
-../../bin/caade service create NodeJS --env Dev
-../../bin/caade service add-script Redis --env Dev --event=Install --filename=redisInstall.sh
-../../bin/caade service add-script Redis --env Dev --event=Shutdown --filename=redisShutdown.sh
-../../bin/caade stack create NodeJS --env=Local --filename=stackDef.yaml
-../../bin/caade stack create NodeJS --env=Dev --filename=stackDef.yaml
-../../bin/caade app create Mine --stack=NodeJS --filename=caade-app.yaml
+../../bin/UHC environment create Local
+../../bin/UHC environment create Dev
+../../bin/UHC service create Redis --env Local
+../../bin/UHC service create Mongo --env Local
+../../bin/UHC service create NodeJS --env Local
+../../bin/UHC service add-script Redis --env Local --event=Install --filename=redisInstall.sh
+../../bin/UHC service add-script Redis --env Local --event=Shutdown --filename=redisShutdown.sh
+../../bin/UHC service create Redis --env Dev
+../../bin/UHC service create Mongo --env Dev
+../../bin/UHC service create NodeJS --env Dev
+../../bin/UHC service add-script Redis --env Dev --event=Install --filename=redisInstall.sh
+../../bin/UHC service add-script Redis --env Dev --event=Shutdown --filename=redisShutdown.sh
+../../bin/UHC stack create NodeJS --env=Local --filename=stackDef.yaml
+../../bin/UHC stack create NodeJS --env=Dev --filename=stackDef.yaml
+../../bin/UHC app create Mine --stack=NodeJS --filename=UHC-app.yaml

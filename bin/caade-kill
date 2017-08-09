@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./caade-config');
+var config = require('./UHC-config');
 var YAML = require('yamljs');
 var _ = require('lodash');
 var client = new Client();
@@ -14,9 +14,9 @@ program
   .parse(process.argv);
 var services = program.args;
 
-var url = config.caadeUrl + "/application/kill";
+var url = config.UHCUrl + "/application/kill";
 
-var application = YAML.load('./caade-app.yaml');
+var application = YAML.load('./UHC-app.yaml');
 
 if (application.name) {
   url += "?app=" + application.name

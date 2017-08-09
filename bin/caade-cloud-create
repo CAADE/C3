@@ -5,7 +5,7 @@ var YAML = require('yamljs');
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./caade-config');
+var config = require('./UHC-config');
 
 var client = new Client();
 
@@ -19,7 +19,7 @@ program
 
 var name = program.args;
 
-var url = config.caadeUrl + "/cloud/create?";
+var url = config.UHCUrl + "/cloud/create?";
 
 if (name) {
   url += "name=" + name[0];

@@ -22,7 +22,7 @@ module.exports = {
     fromYAML: function () {
       return "YAMLED"
     },
-    /* this is used to create the caade.yml file
+    /* this is used to create the UHC.yml file
      name: "MyApplicationStack",
      id: 12325,
      environments:

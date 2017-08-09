@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./caade-config');
+var config = require('./UHC-config');
 
 var client = new Client();
 
@@ -14,7 +14,7 @@ program
 
 var services = program.args;
 
-var url = config.caadeUrl + "/dev/run?";
+var url = config.UHCUrl + "/dev/run?";
 
 if (program.env) {
   url += "env=" + program.env;

@@ -1,4 +1,4 @@
 
 module.exports = {
-  caadeUrl: "http://localhost:1337"
+  UHCUrl: "http://localhost:1337"
 };

@@ -1,13 +1,13 @@
-# CAADE
-Cloud Aware Application Development Environment is a reference architecture that targets application
-developers. CAADE pulls together a set of tools to simplify the development of cloud aware applications.
+# UHC
+Unified Hybrid Cloud is a reference architecture that targets application
+developers. UHC pulls together a set of tools to simplify the development of cloud aware applications.
 
 This repository contains the design and a simple interactive reference architecture of the design.
 The reference architeture is written using [sailsjs](http://sailsjs.org/) a nodejs MVC framework.
 
 
 ## Design
-The design/spec of CAADE is presented in the ./design directory and can be accessed [here](design/README.md)
+The design/spec of UHC is presented in the ./design directory and can be accessed [here](design/README.md)
 
 The design uses [plantuml](http://plantuml.com/) and [markdown language](https://guides.github.com/features/mastering-markdown/)
 to document the architecture.
