@@ -30,6 +30,11 @@
     "sails": "~0.12.1",
     "sails-auth": "^2.1.3",
     "sails-disk": "~0.10.9",
+    "sails-generate-bouquet": "^0.11.0",
+    "sails-generate-bouquet-actor": "^0.11.0",
+    "sails-generate-bouquet-scenario": "^0.11.0",
+    "sails-generate-bouquet-subsystem": "^0.11.0",
+    "sails-generate-bouquet-usecase": "^0.11.0",
     "sails-permissions": "^2.2.0",
     "supertest": "^2.0.0",
     "supertest-as-promised": "^4.0.0",
@@ -37,7 +42,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "design": "java -jar design/plantuml.8047.jar design/*.puml design/**/*.puml",
+    "design": "java -jar design/plantuml.jar design/*.puml design/**/*.puml",
     "start": "node app.js",
     "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
   },
