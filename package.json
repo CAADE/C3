@@ -1,5 +1,5 @@
 {
-  "name": "cade",
+  "name": "caade",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -44,6 +44,7 @@
     "debug": "node debug app.js",
     "design": "java -jar design/plantuml.jar design/*.puml design/**/*.puml",
     "start": "node app.js",
+    "build": "echo done",
     "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
   },
   "main": "app.js",
