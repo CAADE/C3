@@ -5,7 +5,7 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
-var Promise = require('bluebird');
+// var Promise = require('bluebird');
 
 module.exports = {
 

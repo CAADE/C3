@@ -19,6 +19,9 @@ module.exports = {
       minLength: 6,
       required: true
     },
+    role: {
+      type: 'string'
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;

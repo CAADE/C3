@@ -4,15 +4,17 @@ var exec = require('child_process').exec;
 describe('UHC-init Tests', function () {
   describe('inital UHC setup', function () {
     it('should return a UHC setup', function (done) {
-      var command = exec('dir', function (err, stdout, stderr) {
+      var command = exec('ls', {shell: 'bash'}, function (err, stdout, stderr) {
         console.log(stderr);
         if (err) {
           done(err);
         }
         else {
           console.log(stdout);
-          done();
         }
+      });
+      command.on('exit', function (code) {
+        done(code);
       });
     });
   });
