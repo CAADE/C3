@@ -5,7 +5,7 @@ var YAML = require('yamljs');
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./UHC-config');
+var config = require('./c3-config');
 
 var client = new Client();
 
@@ -15,7 +15,7 @@ program
 
 var name = program.args;
 
-var url = config.UHCUrl + "/cloud/show?";
+var url = config.Url + "/cloud/show?";
 
 if (name) {
   url += "name=" + name[0];

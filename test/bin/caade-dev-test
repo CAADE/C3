@@ -1,21 +1,21 @@
-../../bin/UHC environment create Local
-../../bin/UHC environment create Dev
-../../bin/UHC service create Redis --env Local
-../../bin/UHC service create Mongo --env Local
-../../bin/UHC service create NodeJS --env Local
-../../bin/UHC service add-script Redis --env Local --event=Install --filename=redisInstall.sh
-../../bin/UHC service add-script Redis --env Local --event=Shutdown --filename=redisShutdown.sh
-../../bin/UHC service create Redis --env Dev
-../../bin/UHC service create Mongo --env Dev
-../../bin/UHC service create NodeJS --env Dev
-../../bin/UHC service add-script Redis --env Dev --event=Install --filename=redisInstall.sh
-../../bin/UHC service add-script Redis --env Dev --event=Shutdown --filename=redisShutdown.sh
-../../bin/UHC stack create NodeJS --env=Local --filename=stackDef.yaml
-../../bin/UHC stack create NodeJS --env=Dev --filename=stackDef.yaml
-../../bin/UHC app create Mine --stack=NodeJS --filename=UHC-app.yaml
-../../bin/UHC up
-../../bin/UHC up --env=Dev
-../../bin/UHC ps
-../../bin/UHC kill
-../../bin/UHC kill --env=Dev
-../../bin/UHC ps
+../../bin/c3 environment create Local
+../../bin/c3 environment create Dev
+../../bin/c3 service create Redis --env Local
+../../bin/c3 service create Mongo --env Local
+../../bin/c3 service create NodeJS --env Local
+../../bin/c3 service add-script Redis --env Local --event=Install --filename=redisInstall.sh
+../../bin/c3 service add-script Redis --env Local --event=Shutdown --filename=redisShutdown.sh
+../../bin/c3 service create Redis --env Dev
+../../bin/c3 service create Mongo --env Dev
+../../bin/c3 service create NodeJS --env Dev
+../../bin/c3 service add-script Redis --env Dev --event=Install --filename=redisInstall.sh
+../../bin/c3 service add-script Redis --env Dev --event=Shutdown --filename=redisShutdown.sh
+../../bin/c3 stack create NodeJS --env=Local --filename=stackDef.yaml
+../../bin/c3 stack create NodeJS --env=Dev --filename=stackDef.yaml
+../../bin/c3 app create Mine --stack=NodeJS --filename=c3-app.yaml
+../../bin/c3 up
+../../bin/c3 up --env=Dev
+../../bin/c3 ps
+../../bin/c3 kill
+../../bin/c3 kill --env=Dev
+../../bin/c3 ps

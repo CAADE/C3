@@ -1,8 +1,8 @@
-../../bin/UHC cloud create myCloud --type aws
-../../bin/UHC cloud create myCloud2 --type openStack
-../../bin/UHC cloud create myCloud3 --type vmware
-../../bin/UHC cloud create myCloud4 --type docker
-../../bin/UHC cloud ls
-../../bin/UHC cloud show myCloud
-../../bin/UHC cloud remove myCloud
-../../bin/UHC cloud ls
+../../bin/c3 cloud create myCloud --type aws
+../../bin/c3 cloud create myCloud2 --type openStack
+../../bin/c3 cloud create myCloud3 --type vmware
+../../bin/c3 cloud create myCloud4 --type docker
+../../bin/c3 cloud ls
+../../bin/c3 cloud show myCloud
+../../bin/c3 cloud remove myCloud
+../../bin/c3 cloud ls

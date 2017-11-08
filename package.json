@@ -44,6 +44,7 @@
     "design": "java -jar design/plantuml.jar design/*.puml design/**/*.puml",
     "start": "node app.js",
     "build": "echo done",
+    "prod": "echo done",
     "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
   },
   "main": "app.js",

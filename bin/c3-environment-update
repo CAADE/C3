@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./UHC-config');
+var config = require('./c3-config');
 
 var client = new Client();
 
@@ -13,7 +13,7 @@ program
 
 var name = program.args;
 
-var url = config.UHCUrl + "/environment/update?";
+var url = config.Url + "/environment/update?";
 
 if(name) {
   url += "name=" + name[0];

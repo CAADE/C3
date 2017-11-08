@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./UHC-config');
+var config = require('./c3-config');
 var _ = require('lodash');
 
 var client = new Client();
@@ -11,7 +11,7 @@ program
   .parse(process.argv);
 
 
-var url = config.UHCUrl + "/stack/list";
+var url = config.Url + "/stack/list";
 
 client.get(url, function (data, response) {
   // parsed response body as js object

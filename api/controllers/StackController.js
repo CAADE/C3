@@ -16,6 +16,9 @@ module.exports = {
    * env - create the stack in this environment.
    */
   create: function (req, res) {
+    if(!req.body) {
+      return res.json({error: "Could not find name!"});
+    }
     if (!req.body.name) {
       return res.json({error: 'Stack Name is required!'});
     }

@@ -6,8 +6,6 @@
  */
 
 module.exports = {
-
-
   /**
    * `CloudController.create()`
    */

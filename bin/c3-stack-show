@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var Client = require('node-rest-client').Client;
-var config = require('./UHC-config');
+var config = require('./c3-config');
 var _ = require('lodash');
 
 var client = new Client();
@@ -13,7 +13,7 @@ program
 
 var name = program.args;
 
-var url = config.UHCUrl + "/stack/show?";
+var url = config.Url + "/stack/show?";
 
 if(name) {
   url += "name=" + name[0];

@@ -6,12 +6,21 @@ pipeline {
      stage('Build Docs') {
        steps {
          sh 'git submodule update --init --recursive'
-         sh 'npm run-script design'
        }
      }
      stage('Build') {
        steps {
-         sh 'npm run-script build'
+         sh 'npm build'
+       }
+     }
+     stage('Test') {
+       steps {
+         sh 'npm test'
+       }
+     }
+     stage('Deploy') {
+       steps {
+         sh 'npm run-script deploy'
        }
      }
    }
