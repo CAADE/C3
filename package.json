@@ -43,9 +43,9 @@
     "debug": "node debug app.js",
     "design": "java -jar design/plantuml.jar design/*.puml design/**/*.puml",
     "start": "node app.js",
-    "build": "echo done",
+    "build": "npm update",
     "prod": "echo done",
-    "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
+    "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/**/*.test.js"
   },
   "main": "app.js",
   "repository": {
