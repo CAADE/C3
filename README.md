@@ -1,13 +1,16 @@
-# UHC
-Unified Hybrid Cloud is a reference architecture that targets application
-developers. UHC pulls together a set of tools to simplify the development of cloud aware applications.
+# Common Cloud Core
+Common Cloud Core (C3) is a reference architecture that targets application
+developers, system operators and a new role named Stack Developer. 
+C3 pulls together a set of tools to simplify the managment and use of Hybrid Clouds. 
 
 This repository contains the design and a simple interactive reference architecture of the design.
-The reference architeture is written using [sailsjs](http://sailsjs.org/) a nodejs MVC framework.
+Which can be found on the [wiki](https://github.com/CAADE/C3/wiki).
+
+An implementation of the reference architecture is written using [sailsjs](http://sailsjs.org/) a nodejs MVC framework.
 
 
 ## Design
-The design/spec of UHC is presented in the ./design directory and can be accessed [here](design/README.md)
+The design/spec of C3 is presented in the wiki for the repository and can be accessed [here](https://github.com/CAADE/C3/wiki)
 
 The design uses [plantuml](http://plantuml.com/) and [markdown language](https://guides.github.com/features/mastering-markdown/)
 to document the architecture.
@@ -20,6 +23,11 @@ To generate the graphic files (*.png) for the plantuml files (*.puml) do the fol
 # npm run-script design
 ```
 
+A PDF and html version of the wiki can be generated using wiki2pdf. There is a npm target defined
+in the package.json that sets up the default generation of the pdf and html versions of the wiki.
+```
+# npm run-script build-doc
+```
 
 ## Application
 TBD
