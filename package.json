@@ -30,16 +30,19 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
-    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
-    "build": "npm update",
-    "build-doc": "npm install -g wiki2pdf &&  wiki2pdf ./design --title Common_Cloud_Core --format all --footer ./design/_footer.html",
+    "test": "npm update && npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 && echo '✔  Your code looks good.'",
     "design": "java -jar design/plantuml.jar design/*.puml design/**/*.puml",
-    "custom-tests": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/**/*.test.js",
-    "deploy": "echo done",
-    "deploy-test": "echo done",
-    "deploy-prod": "echo done",
-    "debug": "node debug app.js"
+    "custom-tests": "JUNIT_REPORT_PATH=./report.xml node ./node_modules/mocha/bin/mocha --reporter mocha-jenkins-reporter test/bootstrap.test.js test/**/*.test.js",
+    "build": "npm update && node ./deploy/build build",
+    "publish": "node ./deploy/build publish",
+    "build-doc": "npm install phantomjs && npm install -g wiki2pdf && wiki2pdf ./design --title Common_Cloud_Core --format all --footer ./design/_footer.html",
+    "debug": "node debug app.js",
+    "deploy-apps": "node ./deploy/build deploy",
+    "deploy": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-dev.yaml c3Dev",
+    "deploy-test": "cd deploy && docker stack deploy --compose-file=./deploy/test/docker-compose.yaml c3Test",
+    "teardown-test": "docker stack rm c3Test",
+    "deploy-prod": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-prod.yaml c3"
   },
   "main": "app.js",
   "repository": {
