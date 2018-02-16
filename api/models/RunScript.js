@@ -11,7 +11,7 @@ module.exports = {
     event: {type: 'string'},
     parameters: {type: 'json'},
     script: {type: 'string'},
-    owner: { model:'ServiceTemplate'}
+    owner: {model: 'ServiceTemplate'}
   }
 };
 

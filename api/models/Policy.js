@@ -9,9 +9,9 @@ module.exports = {
 
   attributes: {
 
-    name : { type: 'string' },
+    name: {type: 'string'},
 
-    state : { type: 'string' }
+    state: {type: 'string'}
   }
 };
 

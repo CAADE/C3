@@ -20,7 +20,7 @@ module.exports = {
       return "YAML me";
     },
     fromYAML: function () {
-      return "YAMLED"
+      return "YAMLED";
     },
     /* this is used to create the UHC.yml file
      name: "MyApplicationStack",
@@ -46,29 +46,29 @@ module.exports = {
               .then(function (fstacklet) {
                 environments[fstacklet.env.name] = fstacklet;
                 return fstacklet;
-              })
+              });
           })
-            .then(function (all) {
+            .then(function () {
               return Promise.each(stack.services, function (service) {
                 return Service.findOne(service.id).populateAll()
                   .then(function (fservice) {
                     services[fservice.name] = fservice;
                     return fservice;
-                  })
-              })
+                  });
+              });
             })
-            .then(function (all) {
+            .then(function () {
               return {
                 name: me.name,
                 id: me.id,
                 environments: environments,
                 services: services
-              }
-            })
-        })
+              };
+            });
+        });
     },
     fromJSON: function (json) {
-
+      console.log(json);
     },
   }
 };

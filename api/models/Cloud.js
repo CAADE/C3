@@ -8,11 +8,11 @@
 module.exports = {
 
   attributes: {
-    name : { type: 'string' },
-    type : { type: 'string' },
-    user : { type: 'string' },
-    key : { type: 'string' },
-    password : { type: 'string' }
+    name: {type: 'string'},
+    type: {type: 'string'},
+    user: {type: 'string'},
+    key: {type: 'string'},
+    password: {type: 'string'}
   }
 };
 

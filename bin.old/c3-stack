@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+  .version("0.2.0")
+  .command('create <stackName>', 'Create an application stack')
+  .command('ls', 'List application stacks')
+  .command('update <stackName>', 'Update application stack for specified Environment')
+  .command('delete <stackName>', 'Remove the application Stack from specified Environment')
+  .command('show <stackName>', 'show details about my application')
+  .parse(process.argv);
+

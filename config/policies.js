@@ -18,6 +18,7 @@
 
 
 module.exports.policies = {
+
   /* '*': true,
    'StackController': {
     '*': 'isAuthenticated'

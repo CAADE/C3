@@ -1,0 +1,13 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "start": "micro",
+    "build": "docker build . -t ${CAADE_REGISTRY}/c3/provision-engine",
+    "deploy": "docker push ${CAADE_REGISTRY}/c3/provision-engine",
+    "publish": "docker push ${CAADE_REGISTRY}/c3/provision-engine"
+  },
+  "dependencies": {
+    "micro": "latest",
+    "node-fetch": "latest"
+  }
+}

@@ -29,7 +29,7 @@ module.exports = {
                     description: "TBD"
                   },
                   stacklets: stack
-                }
+                };
               });
           }
           else {
@@ -41,14 +41,16 @@ module.exports = {
                 description: "TBD"
               },
               stacklets: {}
-            }
+            };
           }
         });
     },
     fromJSON: function (json) {
+      console.log(json);
       return "YAMLED";
     },
     up: function (envs, services) {
+      console.log("Services:", services);
       return Application.findOne(this.id).populateAll().then(function (me) {
         return Promise.each(envs, function (env) {
           return ApplicationOrchestratorService.up(me, env);
@@ -59,7 +61,7 @@ module.exports = {
       return Application.findOne(this.id).populateAll().then(function (me) {
         return Promise.each(envs, function (env) {
           var running = _.find(me.instances, function (instance) {
-            return (instance.state == "Running" || instance.state == "Initializing") && instance.env == env.id;
+            return (instance.state === "Running" || instance.state === "Initializing") && instance.env === env.id;
           });
           if (running) {
             return ApplicationOrchestratorService.kill(me, running, services, signal);
@@ -71,5 +73,5 @@ module.exports = {
       });
     }
   }
-}
+};
 

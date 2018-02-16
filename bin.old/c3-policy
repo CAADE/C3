@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+  .version("0.2.0")
+  .command('create <policyName>', 'Create an policy')
+  .command('update <policyName>', 'Update an policy')
+  .command('ls', 'List my policies')
+  .command('remove <policyName>', 'Remove a policy')
+  .command('show <policyName>', 'Show details about a Policy')
+  .command('activate <policyName>', 'Activate a Policy')
+  .command('deactivate <policyName>', 'Deactivate a Policy')
+  .parse(process.argv);

@@ -8,13 +8,13 @@
 module.exports = {
 
   attributes: {
-    name : { type: 'string' },
-    version : { type: 'string' },
-    ports: { type: 'Array'},
-    expose: { type: 'Array'},
-    parameters: { type: 'Array'},
+    name: {type: 'string'},
+    version: {type: 'string'},
+    ports: {type: 'Array'},
+    expose: {type: 'Array'},
+    parameters: {type: 'Array'},
     config: {type: 'string'},
-    templates: {collection: 'ServiceTemplate', via:'service'}
+    templates: {collection: 'ServiceTemplate', via: 'service'}
   }
 };
 

@@ -6,6 +6,7 @@
  * https://github.com/socketio/socket.io-client
  * then follow the instructions at:
  * https://github.com/balderdashy/sails.io.js#requirejsamd-usage
+ *
  */
 
 // socket.io-client version 1.4.4

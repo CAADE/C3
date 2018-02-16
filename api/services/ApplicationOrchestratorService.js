@@ -4,6 +4,7 @@ module.exports = {
   /**
    * launch
    * @param app
+   * @param appInstance
    * @param env
    * Launch the application in the specifed Environment.
    */
@@ -11,7 +12,7 @@ module.exports = {
     return ApplicationStacklet.find({stack: app.stack, env: env.id}).populateAll()
       .then(function (stacklets) {
         // ServiceInstance is created and attached to the ApplicationInstance.
-        if(stacklets.length > 0) {
+        if (stacklets.length > 0) {
           return Promise.map(stacklets[0].servicelets, function (servicelet) {
             return ServiceInstance.create({servicelet: servicelet, application: appInstance, state: "Initializing"})
               .then(function (instance) {
@@ -30,7 +31,7 @@ module.exports = {
         return appInstance.save().then(function () {
           return ApplicationInstance.findOne(appInstance.id).populateAll();
         });
-      })
+      });
   },
   _upExistingInstance: function (app, appInstance) {
     return ApplicationInstance.findOne(appInstance.id).populateAll();
@@ -41,8 +42,8 @@ module.exports = {
 
         // Find an app.instance that is running.
         var running = _.find(app.instances, function (instance) {
-          return (instance.state == "Running" || instance.state == "Initializing") && instance.env == env.id;
-        })
+          return (instance.state === "Running" || instance.state === "Initializing") && instance.env === env.id;
+        });
 
         if (running) {
           // If it is running then check its services.
@@ -58,8 +59,8 @@ module.exports = {
             .then(function (appInstance) {
               app.instances.add(appInstance.id);
               return app.save().then(function () {
-                return ApplicationOrchestratorService._upNewInstance(app, appInstance,env);
-              })
+                return ApplicationOrchestratorService._upNewInstance(app, appInstance, env);
+              });
             });
         }
       })
@@ -69,7 +70,7 @@ module.exports = {
       .spread(function (appInstance, resources) {
         return [appInstance, ProvisionEngineService.provisionApplication(resources, appInstance)];
       })
-      .spread(function (appInstance, services) {
+      .spread(function (appInstance) {
         appInstance.state = "Running";
         return appInstance.save().then(function () {
           return appInstance;
@@ -83,23 +84,20 @@ module.exports = {
           return ServiceInstance.findOne(service.id).populateAll()
             .then(function (sInstance) {
               var serviceName = app.name + "-" + sInstance.servicelet.name;
-              if (services.length == 0) {
+              if (services.length === 0) {
                 service.state = "Exit " + signal;
                 return service.save().then(function () {
-                  return service
+                  return service;
                 });
               }
-              else if (_.find(services, function (mservice) {
-                    return mservice == serviceName;
-                  }
-                )) {
+              else if (_.find(services, function (mservice) { return mservice === serviceName; } )) {
                 service.state = "Exit " + signal;
                 return service.save().then(function () {
-                  return service
+                  return service;
                 });
               }
-            })
-        })
-      })
+            });
+        });
+      });
   }
-}
+};

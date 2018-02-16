@@ -12,8 +12,8 @@
 module.exports.http = {
   middleware: {
 
-    passportInit    : require('passport').initialize(),
-    passportSession : require('passport').session(),
+    passportInit: require('passport').initialize(),
+    passportSession: require('passport').session(),
 
     order: [
       'startRequestTimer',
@@ -32,6 +32,6 @@ module.exports.http = {
       'favicon',
       '404',
       '500'
-    ],
+    ]
   }
 };

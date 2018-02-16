@@ -8,6 +8,6 @@ module.exports = {
       service.save().then(function () {
         return service;
       });
-    })
+    });
   }
 };

@@ -11,7 +11,7 @@ module.exports = {
     app: {model: 'Application'},
     env: {model: 'Environment'},
     services: {collection: 'ServiceInstance', via: 'application'},
-    state: {type: 'string'},
+    state: {type: 'string'}
     // enum: ['Running', 'Stopped', 'Initializing', "Exit 0", "Exit 1", "Error"]
   }
 };

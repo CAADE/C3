@@ -24,7 +24,7 @@ module.exports = {
         var service = definition.services[name];
         return ServiceTemplate.find({name: service.template, env: me.env})
           .then(function (templates) {
-            if (templates.length == 0) {
+            if (templates.length === 0) {
               throw new Error("ServiceTemplate " + service.template + " not found!");
             }
             else {
@@ -42,21 +42,21 @@ module.exports = {
                   return me.save().then(function () {
                     return servicelet;
                   });
-                })
+                });
             }
           });
       })
         .then(function (servicelets) {
           return Promise.map(servicelets, function (servicelet) {
             return servicelet.resolveLinks();
-          })
+          });
         })
         .then(function (servicelets) {
           me.servicelets.add(servicelets);
           return me.save().then(function () {
             return ApplicationStacklet.findOne(me.id).populateAll();
-          })
-        })
+          });
+        });
     }
   }
 };

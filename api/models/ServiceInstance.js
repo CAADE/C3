@@ -8,9 +8,9 @@
 module.exports = {
 
   attributes: {
-    servicelet : { model: 'Servicelet' },
-    application: { model: 'ApplicationInstance'},
-    state: { type: 'string' }
+    servicelet: {model: 'Servicelet'},
+    application: {model: 'ApplicationInstance'},
+    state: {type: 'string'}
   }
 };
 

@@ -9,9 +9,9 @@ module.exports = {
 
   attributes: {
 
-    name : { type: 'String' },
+    name: {type: 'String'},
 
-    stacks : { type: 'Array' }
+    stacks: {type: 'Array'}
   }
 };
 

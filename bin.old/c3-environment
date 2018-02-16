@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+  .version("0.2.0")
+  .command('create <environmentName>', 'Create an environment')
+  .command('ls', 'List environments')
+  .command('delete <environmentName>', 'Remove then environment')
+  .command('update <environmentName>', 'Update the environment')
+  .command('show <environmentName>', 'show details about my application')
+  .command('ps', 'show the services running in the environment')
+  .parse(process.argv);
+

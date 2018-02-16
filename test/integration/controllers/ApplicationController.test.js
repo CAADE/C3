@@ -1,5 +1,5 @@
-// var request = require('supertest');
-var request = require("supertest-as-promised");
+const request = require('supertest');
+// const request = require("supertest-as-promised");
 
 describe('ApplicationController', function () {
 
@@ -10,11 +10,12 @@ describe('ApplicationController', function () {
         .get('/application/create?name=Test1&stack=TestStack')
         .expect('Content-Type', /json/)
         .end(function (err, res) {
+          console.log(res);
           if (err) {
-            done(err);
+            return done(err);
           }
           else {
-            done();
+            return done();
           }
           /*
           if (res.body.error) {
@@ -24,7 +25,7 @@ describe('ApplicationController', function () {
             done("Created Application without Application Stack!")
           }
           */
-        })
+        });
     });
   });
 });

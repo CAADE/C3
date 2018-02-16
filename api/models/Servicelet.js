@@ -35,10 +35,10 @@ module.exports = {
               }
             });
         })
-          .then(function (all) {
+          .then(function () {
             return me.save().then(function () {
               return Servicelet.findOne(me.id).populateAll();
-            })
+            });
           });
       }
       else {

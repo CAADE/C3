@@ -3,9 +3,9 @@
 module.exports = {
 
 
-  getResources: function(appInstance) {
-    return Promise.map(appInstance.services, function(service) {
-      return Resource.create({name:service.name})
+  getResources: function (appInstance) {
+    return Promise.map(appInstance.services, function (service) {
+      return Resource.create({name: service.name});
     });
   }
 

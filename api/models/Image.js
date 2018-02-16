@@ -9,11 +9,11 @@ module.exports = {
 
   attributes: {
 
-    name : { type: 'string' },
+    name: {type: 'string'},
 
-    file : { type: 'string' },
+    file: {type: 'string'},
 
-    version : { type: 'string' }
+    version: {type: 'string'}
   }
 };
 

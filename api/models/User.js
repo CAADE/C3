@@ -5,7 +5,7 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
-var bcrypt = require('bcryptjs');
+// var bcrypt = require('bcryptjs');
 
 module.exports = {
   attributes: {
@@ -22,15 +22,15 @@ module.exports = {
     role: {
       type: 'string'
     },
-    toJSON: function() {
+    toJSON: function () {
       var obj = this.toObject();
       delete obj.password;
       return obj;
     }
   },
-  beforeCreate: function(user, cb) {
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(user.password, salt, function(err, hash) {
+  beforeCreate: function (user, cb) {
+    /* bcrypt.genSalt(10, function (err, salt) {
+      bcrypt.hash(user.password, salt, function (err, hash) {
         if (err) {
           console.log(err);
           cb(err);
@@ -40,5 +40,8 @@ module.exports = {
         }
       });
     });
+    */
+    console.log(user);
+    console.log(cb);
   }
 };
