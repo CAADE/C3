@@ -10,8 +10,8 @@ module.exports = {
   attributes: {
 
     name: {type: 'string'},
-
-    state: {type: 'string'}
+    state: {type: 'string'},
+    env: { model: 'Environment'}
   }
 };
 

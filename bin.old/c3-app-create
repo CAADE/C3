@@ -12,6 +12,7 @@ var client = new Client();
 
 
 program
+  .description('Create an Application from application stack')
   .option('-s, --stack <stackName>', 'Create an application from an Application Stack')
   .parse(process.argv);
 

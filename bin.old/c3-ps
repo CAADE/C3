@@ -35,4 +35,4 @@ client.get(url, function (instances, response) {
   _.each(instances, function (instance) {
     console.log("%d\t%s\t%s\t%s", instance.id, application.name + "-" + instance.name, instance.application.env.name, instance.state);
   });
-})
+});

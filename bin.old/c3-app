@@ -4,8 +4,8 @@ var program = require('commander');
 
 program
   .version("0.2.0")
-  .command('create <application name>', 'Create an application')
-  .command('get <application name>', 'Create an application')
+  .command('create [options]', 'Create an application')
+  .command('get [options]', 'Get an application')
   .command('ls', 'List my applications')
   .command('remove <application name>', 'Remove my application')
   .command('show <application name>', 'show details about my application')

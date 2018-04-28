@@ -16,7 +16,7 @@ program
 var name = program.args;
 
 var url = config.Url + "/service/create";
-var args = {headers: {"Content-Type": "application/json"}, data: {}}
+var args = {headers: {"Content-Type": "application/json"}, data: {}};
 
 if (name) {
   args.data.name = name[0];

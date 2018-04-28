@@ -1,9 +1,7 @@
 module.exports = {
 
   friendlyName: 'application create',
-
-  description: ' Add description ',
-
+  description: ' Add description',
   inputs: {
     /* <parameter name>: {
       description: 'The ID of the user to look up.',
@@ -48,20 +46,20 @@ module.exports = {
 
   fn: async function (inputs, exits, env) {
     try {
-      let apps = await Application.find({name:inputs.name});
-      if(apps.length > 0) {
-       return exits.alreadyExists('app/show');
+      let apps = await Application.find({name: inputs.name});
+      if (apps.length > 0) {
+        return exits.alreadyExists('app/show');
       }
-      let stacks = await ApplicationStack.find({name:inputs.stack});
-      if(stacks.length < 1)  {
+      let stacks = await ApplicationStack.find({name: inputs.stack});
+      if (stacks.length < 1) {
         return exits.notFound('app/create');
       }
-      let app = await Application.create({name: inputs.name, stack:stacks[0], version: "0.0.1"});
-      if(inputs.mode === "json") {
+      let app = await Application.create({name: inputs.name, stack: stacks[0], version: "0.0.1"});
+      if (inputs.mode === "json") {
         return exits.json({name: inputs.name});
       }
       else {
-        exits.success({application:app});
+        exits.success({application: app});
 
       }
     }
