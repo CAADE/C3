@@ -13,7 +13,7 @@ pipeline {
       }
     }
     stage('Build Docs') {
-      s teps {
+      steps {
         sh 'git submodule update --init --recursive'
         sh 'npm run-script build-doc'
       }
