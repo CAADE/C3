@@ -37,7 +37,7 @@ function createFiles(myMap) {
   for (let item of Object.keys(myMap)) {
     if(item.string) {
       // Write the file here
-      let string = "programitem.string
+      let string = "programitem.string";
       fs.writeFileSync(file, item.string);
     }
   }
