@@ -2,9 +2,9 @@
   "main": "index.js",
   "scripts": {
     "start": "micro",
-    "build": "docker build . -t ${CAADE_REGISTRY}/c3/artifact-repository",
-    "deploy": "docker push ${CAADE_REGISTRY}/c3/artifact-repository",
-    "publish": "docker push ${CAADE_REGISTRY}/c3/artifact-repository"
+    "build": "docker build . -t ${CAADE_REGISTRY}/c3-artifact-repository",
+    "deploy": "docker push ${CAADE_REGISTRY}/c3-artifact-repository",
+    "publish": "docker push ${CAADE_REGISTRY}/c3-artifact-repository"
   },
   "dependencies": {
     "micro": "latest",

@@ -2,9 +2,9 @@
   "main": "index.js",
   "scripts": {
     "start": "micro",
-    "build": "docker build . -t ${CAADE_REGISTRY}/c3/cloud-broker",
-    "deploy": "docker push ${CAADE_REGISTRY}/c3/cloud-broker",
-    "publish": "docker push ${CAADE_REGISTRY}/c3/cloud-broker"
+    "build": "docker build . -t ${CAADE_REGISTRY}/c3-cloud-broker",
+    "deploy": "docker push ${CAADE_REGISTRY}/c3-cloud-broker",
+    "publish": "docker push ${CAADE_REGISTRY}/c3-cloud-broker"
   },
   "dependencies": {
     "micro": "latest",

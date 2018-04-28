@@ -2,9 +2,9 @@
   "main": "index.js",
   "scripts": {
     "start": "micro",
-    "build": "docker build . -t ${CAADE_REGISTRY}/c3/stack-manager",
-    "deploy": "docker push ${CAADE_REGISTRY}/c3/stack-manager",
-    "publish": "docker push ${CAADE_REGISTRY}/c3/stack-manager"
+    "build": "docker build . -t ${CAADE_REGISTRY}/c3-stack-manager",
+    "deploy": "docker push ${CAADE_REGISTRY}/c3-stack-manager",
+    "publish": "docker push ${CAADE_REGISTRY}/c3-stack-manager"
   },
   "dependencies": {
     "micro": "latest",
