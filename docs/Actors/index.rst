@@ -3,7 +3,7 @@ Actors of Common Cloud Core (C3)
 
 .. toctree::
     :maxdepth: 1
-    :glob: true
+    :glob:
     :caption: Actors
 
     **/Actor*

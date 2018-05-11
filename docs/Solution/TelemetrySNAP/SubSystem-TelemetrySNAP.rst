@@ -1,7 +1,7 @@
 .. _SubSystem-Telemetry-SNAP:
 
 Telemetry SNAP
-=============
+==============
 
 TelemetrySNAP is a subsystem of common-cloud-core ...
 

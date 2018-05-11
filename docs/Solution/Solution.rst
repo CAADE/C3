@@ -6,24 +6,27 @@ The Common Cloud Core has 4 categories of services: Portal, Registry, Control an
 
 Users
 -----
+
 .. toctree::
    :maxdepth: 2
    :caption: Actors
 
-   Actors/index
+   /Actors/index
 
 High level Use Cases
 --------------------
+
 .. toctree::
    :maxdepth: 2
    :caption: Use Cases
 
-   UseCases/index
+   /UseCases/index
 
-.. image:: UseCases/UseCases.png
+.. image:: /UseCases/UseCases.png
 
 Logical Architecture
 --------------------
+
 The C3 Architecture contains several subsystems and components. The following is a diagram on
 how these components work together to fulfill the high level use cases.
 

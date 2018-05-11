@@ -1,4 +1,4 @@
-.. _Actor-OperationsManager:
+.. _Actor-Operations-Manager:
 
 Actor Operations Manager
 ========================

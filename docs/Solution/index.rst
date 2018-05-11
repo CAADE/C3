@@ -1,9 +1,9 @@
- Common Cloud Core Solution
-===========================
+Common Cloud Core Solution
+==========================
 
 .. toctree::
     :maxdepth: 1
-    :glob: true
+    :glob:
     :caption: Sub Systems
 
     **/SubSystem*
