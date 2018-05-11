@@ -1,0 +1,13 @@
+@startuml
+
+package "TelemetrySNAP" {
+  interface "TelemetrySNAP" {
+  }
+}
+
+CLI ()-- "TelemetrySNAP"
+"REST API" ()-- "TelemetrySNAP"
+"Web Portal" ()-- "TelemetrySNAP"
+
+
+@enduml

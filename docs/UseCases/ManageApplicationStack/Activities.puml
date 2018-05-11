@@ -1,0 +1,25 @@
+@startuml
+|Stack Developer|
+start
+|#aaffaa|Common Cloud Core|
+:Create Application Stack;
+while(has bugs?)
+:Debug Application Stack;
+:Test Application Stack;
+endwhile
+:Publish Application Stack;
+|Application Developer|
+:Find Application Stack;
+|Common Cloud Core|
+:Select Application Stack;
+stop
+|Stack Developer|
+start
+|Common Cloud Core|
+:Update Application Stack;
+:Publish Application Stack;
+if(don't need anymore) then (yes)
+:Delete Application Stack;
+endif
+stop
+@enduml

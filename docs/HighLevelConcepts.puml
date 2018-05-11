@@ -1,0 +1,36 @@
+@startuml
+
+package C3 {
+    class MaintainPlan {
+
+    }
+
+    class Service {
+    }
+
+    Service *--> Script
+
+    class Script {
+    }
+
+
+    class ApplicationStack {
+    }
+
+    class Image {
+    }
+
+    class CompositeService {
+
+    }
+
+    Service <|-- CompositeService
+    CompositeService *--> Service : composes
+    ApplicationStack *-> MaintainPlan
+    Service o--> Image
+    ApplicationStack o--> Service : composes
+    Service --> Service : connections
+
+}
+
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+Actor "actorName" as A
+
+box "ManageEnvironment" #lightblue
+participant "common-cloud-core" as S
+A -> S : UpdateEnvironment
+end box
+
+@enduml

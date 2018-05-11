@@ -1,0 +1,21 @@
+@startuml
+OpsManager -> ApplicationManager : createService(Config, Scripts[], dev: Environment)
+OpsManager -> ApplicationManager : createService(Config, Scripts[], test: Environment)
+OpsManager -> ApplicationManager : createService(Config, Scripts[], production: Environment)
+OpsManager -> ApplicationManager : createCompositeService(Config, Service[], dev: Environment)
+OpsManager -> ApplicationManager : createCompositeService(Config, Service[], test: Environment)
+OpsManager -> ApplicationManager : createCompositeService(Config, Service[], production: Environment)
+OpsManager -> ApplicationManager : createApplicationStack(Config, Service[], dev: Environment)
+OpsManager -> ApplicationManager : createApplicationStack(Config, Service[], test: Environment)
+OpsManager -> ApplicationManager : createApplicationStack(Config, Service[], production: Environment)
+@enduml
+
+CompositeService is a type of Service
+
+Production ApplicationStack
+NGinx - 1 = Service
+Nodejs Web Apps - n = CompositeService (Nodejs WebApp, Dynamic Launcher)
+Nodejs Worker Apps - n = CompositeService (Nodejs Work,  Dynmaic Launcher)
+Redis Cluster = CompositeService(Redis Service, Redis CLuster Manager)
+MongoDB Cluster = CompositeService(MongoDB, MongpDB Cluster Manager)
+Montioring = Service

@@ -1,0 +1,9 @@
+@startuml
+Actor "Application Developer" as A
+
+box "ManageServiceTemplate" #lightblue
+participant "common-cloud-core" as S
+A -> S : GetServiceTemplate
+end box
+
+@enduml

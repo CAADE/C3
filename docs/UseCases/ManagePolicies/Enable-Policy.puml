@@ -1,0 +1,9 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "ManagePolicies" #lightblue
+participant "common-cloud-core" as S
+A -> S : Enable-Policy
+end box
+
+@enduml

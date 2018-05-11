@@ -1,0 +1,5 @@
+@startuml
+Dev -> ApplicationManager: Application create(name, ApplicationStack)
+Dev -> ApplicationManager: update(Application, code, appConfig, environment) // appConfig has the version
+Dev -> ApplicationManager: update(Service, code, appConfig, environment) // appConfig has the version
+@enduml

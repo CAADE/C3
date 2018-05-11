@@ -1,0 +1,13 @@
+@startuml
+
+package "SDICloud" {
+  interface "SDICloud" {
+  }
+}
+
+CLI ()-- "SDICloud"
+"REST API" ()-- "SDICloud"
+"Web Portal" ()-- "SDICloud"
+
+
+@enduml

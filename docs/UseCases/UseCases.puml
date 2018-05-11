@@ -1,0 +1,29 @@
+@startuml
+
+left to right direction
+
+:Application Developer: as Dev
+:Stack Developer: as SDev
+:Operations Engineer: as Ops
+:Clouds: as Cloud
+
+rectangle "C3" {
+    Dev --> (Create Application)
+    Dev --> (Run Application)
+    Dev --> (Deploy Application)
+    SDev --> (Manage Application Stack)
+    SDev --> (Manage Service Template)
+    SDev --> (Test Application Stack)
+    Ops --> (Manage Infrastructure)
+    Ops --> (Create Policies)
+    Ops --> (Create Environments)
+
+    (Run Application) --> Cloud
+    (Deploy Application) --> Cloud
+    (Manage Infrastructure) --> Cloud
+    (Test Application Stack) --> Cloud
+}
+
+
+@endum
+

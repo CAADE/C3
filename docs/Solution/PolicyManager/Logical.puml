@@ -1,0 +1,13 @@
+@startuml
+
+package "PolicyManager" {
+  interface "PolicyManager" {
+  }
+}
+
+CLI ()-- "PolicyManager"
+"REST API" ()-- "PolicyManager"
+"Web Portal" ()-- "PolicyManager"
+
+
+@enduml

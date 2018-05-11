@@ -1,0 +1,28 @@
+@startuml
+|Operations Manager|
+start
+|#ffffaa|Common Cloud Core|
+:Create Environment;
+:Update Environment;
+fork
+|Application Developer|
+:Find Environment;
+:Select Environment;
+:Launch Application;
+fork again
+|Stack Developer|
+:Find Environment;
+:Select Environment;
+:Update Application Stack;
+end fork
+|Common Cloud Core|
+stop
+|Operations Manager|
+start
+|Common Cloud Core|
+if(envoronment not needed) then (yes)
+:Delete Environment;
+endif
+:Update Environment;
+stop
+@enduml

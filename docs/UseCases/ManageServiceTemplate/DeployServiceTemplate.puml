@@ -1,0 +1,9 @@
+@startuml
+Actor "Stack Developer" as A
+
+box "Stack Developer Portal" #lightblue
+participant "common-cloud-core" as S
+A -> S : DeployServiceTemplate
+end box
+
+@enduml

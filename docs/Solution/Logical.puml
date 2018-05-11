@@ -1,0 +1,44 @@
+@startuml
+
+skinparam packageStyle rect
+
+package C3 {
+package "Portal" #aaffff {
+    package "Application Manager" { }
+    package "Operations Manager" { }
+    package "Stack Manager" { }
+}
+package "Orchestrator" #aaffaa {
+    package "Application Orchestrator" { }
+    package "Environment Manager" { }
+    package "Policy Manager" { }
+    package "Application Analytics" { }
+}
+package "Registry" #ffffaa {
+    package "Identity Manager" { }
+    package "Artifact Repository" { }
+}
+
+package "Control" #ffaaaa {
+    package "Cloud Broker" { }
+    package "Data Coordinator" { }
+    package "Provision Engine" { }
+}
+}
+
+package "Private Cloud" #cccccc {
+}
+
+package "Public Cloud"  #cccccc {
+}
+
+
+Portal --> Orchestrator
+Orchestrator --> Registry
+Registry --> Control
+Orchestrator -> Control
+
+Control --> "Private Cloud"
+Control --> "Public Cloud"
+
+@enduml

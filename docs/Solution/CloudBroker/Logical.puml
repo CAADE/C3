@@ -1,0 +1,13 @@
+@startuml
+
+package "CloudBroker" {
+  interface "CloudBroker" {
+  }
+}
+
+CLI ()-- "CloudBroker"
+"REST API" ()-- "CloudBroker"
+"Web Portal" ()-- "CloudBroker"
+
+
+@enduml

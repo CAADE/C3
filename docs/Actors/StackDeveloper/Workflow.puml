@@ -1,0 +1,21 @@
+@startuml
+|Stack Developer|
+start
+|#ffffaa|Stack App Manager|
+fork
+:Create Application Stack;
+:Modify Application Stack;
+:Version Application Stack;
+fork again
+:Create Service Stack;
+:Modify Service Stack;
+:Version Service Stack;
+fork end
+|#aaffff|Application Manager|
+:Test Application Stack;
+:Create an Application;
+:Launch an Application in an environment;
+:Kill Application and Services;
+|Stack Developer|
+stop
+@enduml

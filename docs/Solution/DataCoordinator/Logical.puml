@@ -1,0 +1,13 @@
+@startuml
+
+package "DataCoordinator" {
+  interface "DataCoordinator" {
+  }
+}
+
+CLI ()-- "DataCoordinator"
+"REST API" ()-- "DataCoordinator"
+"Web Portal" ()-- "DataCoordinator"
+
+
+@enduml

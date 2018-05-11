@@ -1,0 +1,13 @@
+@startuml
+
+package "ApplicationAnalyzer" {
+  interface "ApplicationAnalyzer" {
+  }
+}
+
+CLI ()-- "ApplicationAnalyzer"
+"REST API" ()-- "ApplicationAnalyzer"
+"Web Portal" ()-- "ApplicationAnalyzer"
+
+
+@enduml

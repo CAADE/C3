@@ -1,0 +1,13 @@
+@startuml
+
+package "PublicCloud" {
+  interface "PublicCloud" {
+  }
+}
+
+CLI ()-- "PublicCloud"
+"REST API" ()-- "PublicCloud"
+"Web Portal" ()-- "PublicCloud"
+
+
+@enduml

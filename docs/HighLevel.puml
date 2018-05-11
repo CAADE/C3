@@ -1,0 +1,121 @@
+@startuml
+
+package SNAP {
+
+}
+
+package C3 {
+    interface ArtifactRepository {
+      Service createService()
+    }
+
+    class MaintainPlan {
+
+    }
+
+    interface ApplicationManager {
+      Application createApplication()
+      void launchApplication(string name, Map config)
+      Service createService()
+    }
+
+    class Service {
+      List ports
+      List expose
+      String Parameters
+      String config
+    }
+
+    Service "1" *-> "*" Script
+
+    class Script {
+      String data
+    }
+
+
+    class ApplicationStack {
+      String Parameters
+      String Config
+      void attachService(Service pService)
+      void detachService(Service pService)
+    }
+
+    class Image {
+    }
+
+    class ServiceGraph {
+
+    }
+
+    class ExecutionGraph {
+
+    }
+    class CompositeService {
+
+    }
+
+    Service <|-- CompositeService
+    Service <|-- ApplicationStack
+    Service o--> Image
+    ApplicationStack "1" o--> "n" Service : composes
+    ArtifactRepository "1" *--> "n" Service
+    ArtifactRepository "1" *--> "n" MaintainPlan
+    ArtifactRepository "1" *--> "n" Image
+    Service "1" --> "n" Service : links
+
+    class ApplicationOrchestration {
+
+    }
+
+    class ApplicationAnalytics {
+    }
+    class PolicyManager {
+    }
+    class ProvisionEngine {
+    }
+    class Monitor {
+    }
+
+    class SpaceManagement {
+    }
+
+    class CloudManagement {
+    }
+
+    class ImageCoordinator {
+    }
+    class CloudBroker {
+    }
+    class DataCoordinator {
+    }
+}
+
+package SDI {
+    interface SDIOrchestrator {
+    }
+    class SDIAnalytics {
+    }
+    class Controllers {
+    }
+    interface ServiceInstance {
+
+    }
+}
+
+ApplicationManager "1" o--> "n" ApplicationStack
+ApplicationManager .>  ApplicationOrchestration
+ApplicationOrchestration .> PolicyManager
+ApplicationOrchestration .> ImageCoordinator : mapImages
+ApplicationOrchestration .> SDIOrchestrator : getResources
+ApplicationOrchestration .> ProvisionEngine : build / status
+ProvisionEngine .> ServiceInstance : build / status
+Monitor .> ApplicationOrchestration : notify
+Monitor .> ServiceInstance : watch
+Monitor .> ApplicationAnalytics : pushData
+ApplicationAnalytics .> ApplicationOrchestration : landscape
+Monitor .> SNAP : watch
+ServiceInstance .> SNAP : publish
+ApplicationOrchestration .> DataCoordinator : manageData
+DataCoordinator .> SDIOrchestrator : sync
+
+@enduml

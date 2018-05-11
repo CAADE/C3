@@ -1,0 +1,9 @@
+@startuml
+Actor "actorName" as A
+
+box "ManageApplicationStack" #lightblue
+participant "common-cloud-core" as S
+A -> S : SelectApplicationStack
+end box
+
+@enduml
