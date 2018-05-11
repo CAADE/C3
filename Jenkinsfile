@@ -13,7 +13,7 @@ pipeline {
       }
     }
     stage('Build Docs') {
-    agent {
+    agent
         docker { image 'madajaju/caade-doc-node-agent' }
       }
       steps {
