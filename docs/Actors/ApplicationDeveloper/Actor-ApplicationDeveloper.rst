@@ -180,10 +180,12 @@ This will run echo 'hello world' on every machine that has a redis service runni
 * Kill specific service for the application
 
 .. code-block:: none
+
     # C3 kill <Service_Name>
     # C3 kill redis # kill redis - all processes running service
     # C3 kill redis.23412 # kill redis - only the process with the process id.
     # C3 kill 23412 # kill only the process with the process id.
+
 
 :ref:`Scenario-GetLogs`
 ~~~~~~~~~~~~~~~~~~~~~~~

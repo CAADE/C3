@@ -2,10 +2,16 @@ Cloud Aware Application Development Environment
 ===============================================
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Overview
+    :maxdepth: 1
+    :caption: Overview
 
-   Home
+    Home
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Solution
+
+    Solution/index
 
 .. toctree::
    :maxdepth: 2
@@ -19,8 +25,3 @@ Cloud Aware Application Development Environment
 
    UseCases/index
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Solution
-
-   Solution/index

@@ -51,32 +51,33 @@ On a file system it can be represented as a project folder.
     # C3 service-template clone --name=MongoDb [--version=3.2.0]    # downloads existed service template from a server
 
 
-Example of service template structure:
+**Example of service template structure**
+
 .. code-block:: none
 
-    |--my-service-template       # root project folder
-       |--media                  # folder with media files
-            |--my-script.sh
-            |--my-configuration.json
-            |--my-media-folder
-                |--my-distributive.rpm
-       |--orchestration                 # folder with an orchestration scripts for possible events
-            |--install-execute-setup-my-service.sh
+    my-service-template       # root project folder
+       media                  # folder with media files
+            my-script.sh
+            my-configuration.json
+            my-media-folder
+                my-distributive.rpm
+       orchestration                 # folder with an orchestration scripts for possible events
+            install-execute-setup-my-service.sh
             # or
-            |--install                                # name of an event
-                |--execute                            # phase name
-                    |--setup-my-service.sh             # script name
-                |--post-execute
-                    |--validate-service.sh
-                |--pre-process-dependencies
-                    |--validate-dependencies.sh
-                |--process-dependencies
-                    |--configure-dependencies.sh
-       |--environments             # folder with environment profiles
-            |--dev.yaml
-            |--testing.yaml
-            |--prod.yaml
-    |--service.yaml                # service template manifest file
+            install                                # name of an event
+                execute                            # phase name
+                    setup-my-service.sh             # script name
+                post-execute
+                    validate-service.sh
+                pre-process-dependencies
+                    validate-dependencies.sh
+                process-dependencies
+                    configure-dependencies.sh
+       environments             # folder with environment profiles
+            dev.yaml
+            testing.yaml
+            prod.yaml
+    service.yaml                # service template manifest file
 
 
 :ref:`Scenario-Modify-Service-Template`
@@ -89,6 +90,7 @@ Example of service template structure:
 
 :ref:`Scenario-Launch-And-Test-Service-Template`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block:: none
 
     # C3 service up [--env=<Environment Profile>]      # provision new environment from service template
@@ -100,6 +102,7 @@ Example of service template structure:
 
 :ref:`Scenario-Publish-Service-Template`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block:: none
 
     # C3 service-template publish   # publish service template for a general access
@@ -117,23 +120,23 @@ Create a stack template.
 Example of stack template structure:
 .. code-block:: none
 
-    |--my-stack-template
-        |--service-A
-            |--service.yaml                    # contains manifest of child service A with reference on service template
-        |--service-B
-            |--media
-                |--custom-media-script.sh      # custom script for service B
-            |--orchestrations
-                |--install
-                    |--execute
-                        |--customize-my-service.sh  # custom orchestration script for service B
-            |--service.yaml                     # contains manifest of child service B
-        |--environments                        # folder with environment profiles
-            |--local.yaml
-            |--dev.yaml
-            |--testing.yaml
-            |--prod.yaml
-    |--stack.yaml                              # stack template manifest file
+    my-stack-template
+        service-A
+            service.yaml                    # contains manifest of child service A with reference on service template
+        service-B
+            media
+                custom-media-script.sh      # custom script for service B
+            orchestrations
+                install
+                    execute
+                        customize-my-service.sh  # custom orchestration script for service B
+            service.yaml                     # contains manifest of child service B
+        environments                        # folder with environment profiles
+            local.yaml
+            dev.yaml
+            testing.yaml
+            prod.yaml
+    stack.yaml                              # stack template manifest file
 
 
 :ref:`Scenario-Modify-Stack-Template`
