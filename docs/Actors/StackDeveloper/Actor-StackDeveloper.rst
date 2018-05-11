@@ -54,25 +54,25 @@ On a file system it can be represented as a project folder.
 Example of service template structure:
 .. code-block:: none
 
-    |--my-service-template/       # root project folder
-       |--media/                  # folder with media files
+    |--my-service-template       # root project folder
+       |--media                  # folder with media files
             |--my-script.sh
             |--my-configuration.json
-            |--my-media-folder/
+            |--my-media-folder
                 |--my-distributive.rpm
-       |--orchestration/                 # folder with an orchestration scripts for possible events
+       |--orchestration                 # folder with an orchestration scripts for possible events
             |--install-execute-setup-my-service.sh
             # or
-            |--install/                                # name of an event
-                |--execute/                            # phase name
+            |--install                                # name of an event
+                |--execute                            # phase name
                     |--setup-my-service.sh             # script name
-                |--post-execute/
+                |--post-execute
                     |--validate-service.sh
-                |--pre-process-dependencies/
+                |--pre-process-dependencies
                     |--validate-dependencies.sh
-                |--process-dependencies/
+                |--process-dependencies
                     |--configure-dependencies.sh
-       |--environments/             # folder with environment profiles
+       |--environments             # folder with environment profiles
             |--dev.yaml
             |--testing.yaml
             |--prod.yaml
@@ -117,18 +117,18 @@ Create a stack template.
 Example of stack template structure:
 .. code-block:: none
 
-    |--my-stack-template/
-        |--service-A/
+    |--my-stack-template
+        |--service-A
             |--service.yaml                    # contains manifest of child service A with reference on service template
-        |--service-B/
-            |--media/
+        |--service-B
+            |--media
                 |--custom-media-script.sh      # custom script for service B
-            |--orchestrations/
+            |--orchestrations
                 |--install
-                    |--execute/
+                    |--execute
                         |--customize-my-service.sh  # custom orchestration script for service B
             |--service.yaml                     # contains manifest of child service B
-        |--environments/                        # folder with environment profiles
+        |--environments                        # folder with environment profiles
             |--local.yaml
             |--dev.yaml
             |--testing.yaml

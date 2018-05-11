@@ -5,7 +5,7 @@ Actors of Common Cloud Core (C3)
     :maxdepth: 1
     :caption: Actors
 
-    **/Actor*
+    **Actor*
 
 .. image:: ../UseCases/UseCases.png
 

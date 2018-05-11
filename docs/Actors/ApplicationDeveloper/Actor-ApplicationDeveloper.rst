@@ -61,6 +61,7 @@ then it should just return that it is up. If it is not up yet then it should lau
 This behavior should be consistent across all of the environments.
 
 * Launch application in Specified environment
+
 .. code-block:: none
 
     # C3 up --env=local  # Local machine
@@ -71,6 +72,7 @@ This behavior should be consistent across all of the environments.
     # C3 up --env=<Environment Name>
 
 * Launch service in application in default <local> environment
+
 .. code-block:: none
 
     # C3 up redis    # Launch the redis service in the application
@@ -81,6 +83,7 @@ This behavior should be consistent across all of the environments.
 
 :ref:`Scenario-UpdateApplication`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 When developers are working they need to update the application with new source code.
 This could include any or all of the services in the application. The developer should be able
 to update all of the services, one service and any number of services. The source code at the
@@ -88,11 +91,13 @@ top level project directory will be pushed out to the all of the services specif
 does not have source code corresponding then it is checked for the latest updates.
 
 * Update application on cloud in the test environment
+
 .. code-block:: none
 
     # C3 update
 
 * Update web service with new code in the development environment
+
 The source code in the current project directory is propagated to the context (Machine, VM, or container) of the
 service and the service is told to update. This could mean restart or just update source.
 .. code-block:: none
@@ -102,6 +107,7 @@ service and the service is told to update. This could mean restart or just updat
     # C3 update worker --env=test # update the test environment
 
 * Upgrade service with released changes. Example upgrade mongo DB to latest release
+
 .. code-block:: none
 
     # C3 upgrade mongo    # in the default environment
@@ -118,23 +124,27 @@ same security context and environment as the application is currently running or
 that you want the command executed in the same container or machine as a specific service or process of a service.
 
 * Run command in same environment as application
+
 .. code-block:: none
 
     # C3 run "echo 'hello world'"
 
 * Run command in specified environment for the application
+
 .. code-block:: none
 
     # C3 run --env=test "echo 'hello world'"
     # C3 run --env=<Environment Name> "echo 'hello world'"
 
 * Run Command in all containers, VMs, or machines of specific service
+
 This will run echo 'hello world' on every machine that has a redis service running for the application.
 .. code-block:: none
 
     # C3 run --service=redis "echo 'hello world'"
 
 * Run Command in a container, VM, or machine of specific service process
+
 This will run echo 'hello world' on every machine that has a redis service running for the application.
 .. code-block:: none
 
@@ -142,7 +152,9 @@ This will run echo 'hello world' on every machine that has a redis service runni
 
 :ref:`Scenario-ViewService`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * Show processes for application
+
 .. code-block:: none
 
     # C3 ps
@@ -158,12 +170,15 @@ This will run echo 'hello world' on every machine that has a redis service runni
 
 
 :ref:`Scenario-KillApplication`
+
 * Kill all services on for the application
+
 .. code-block:: none
 
     # C3 kill
 
 * Kill specific service for the application
+
 .. code-block:: none
     # C3 kill <Service_Name>
     # C3 kill redis # kill redis - all processes running service
@@ -172,37 +187,43 @@ This will run echo 'hello world' on every machine that has a redis service runni
 
 :ref:`Scenario-GetLogs`
 ~~~~~~~~~~~~~~~~~~~~~~~
+
 * Get logs of the application
+
 .. code-block:: none
 
     # C3 logs
 
 * Get logs of specific service
+
 .. code-block:: none
 
     # C3 logs redis
 
 * Get logs of specific process for the service
+
 .. code-block:: none
 
     # C3 logs redis.23412
 
 * Get specific log from machines that service processes are running
+
 .. code-block:: none
 
     # C3 logs redis --log=/var/syslog
 
 * Get specific log from machine that service is running
+
 .. code-block:: none
 
     # C3 logs redis.223412 --log=/var/syslog
 
 :ref:`Scenario-DeployApplication`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * Deploy an application
+
 .. code-block:: none
 
     # C3 deploy    # deploy application on server
     # C3 publish   # publish application for a general access
-
-
