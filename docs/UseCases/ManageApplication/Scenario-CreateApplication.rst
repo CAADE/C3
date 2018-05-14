@@ -13,6 +13,6 @@ of the project for the application.
 
 * :ref:`Actor-Application-Developer`
 
-::Systems**
+**Systems**
 
 * :ref:`Subsystem-Application-Manager`

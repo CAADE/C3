@@ -4,7 +4,7 @@ developers, system operators and a new role named Stack Developer.
 C3 pulls together a set of tools to simplify the managment and use of Hybrid Clouds. 
 
 This repository contains the design and a simple interactive reference architecture of the design.
-Which can be found on the [wiki](https://github.com/CAADE/C3/wiki).
+Which can be found on the [readthedocs](http://c3.readthedocs.io/en/latest/index.html)
 
 An implementation of the reference architecture is written using [sailsjs](http://sailsjs.org/) a nodejs MVC framework.
 
