@@ -3,7 +3,7 @@
 Scenario Debug Service Template
 ===============================
 
-:ref:`Actor-StackDeveloper` interacts with the Operations Manager to debug a Service Template.
+:ref:`Actor-Stack-Developer` interacts with the Operations Manager to debug a Service Template.
 This should include deploying services into a test cloud and being able to access logs, debug
 running applications and connectivity to other services.
 
@@ -15,4 +15,4 @@ running applications and connectivity to other services.
 
 **Systems**
 
-* :ref:`SubSystem-OperationsManager`
+* :ref:`SubSystem-Operations-Manager`

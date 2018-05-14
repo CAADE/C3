@@ -3,13 +3,13 @@
 Use Case Manage Application Stack
 =================================
 
-:ref:`Actor-StackDeveloper` create, publish, debug different stacks so they share them with developers.
+:ref:`Actor-Stack-Developer` create, publish, debug different stacks so they share them with developers.
 
 Actors
 ------
 
-* :ref:`Actor-StackDeveloper`
-* :ref:`Actor-ApplicationDeveloper`
+* :ref:`Actor-Stack-Developer`
+* :ref:`Actor-Application-Developer`
 
 Activities
 ----------
@@ -30,5 +30,5 @@ Systems Involved
 ----------------
 
 * :ref:`SubSystem-Application-Manager`
-* :ref:`SubSystem-ArtifactRepository`
-* :ref:`SubSystem-EnvironmentManager`
+* :ref:`SubSystem-Artifact-Repository`
+* :ref:`SubSystem-Environment-Manager`

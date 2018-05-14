@@ -8,5 +8,5 @@ Actors of Common Cloud Core (C3)
 
     **/Actor*
 
-.. image:: ../UseCases/UseCases.png
+.. image:: /UseCases/UseCases.png
 

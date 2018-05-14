@@ -3,14 +3,14 @@
 UseCase-Manage-Policies
 =======================
 
-The :ref:`Actor-OperationsManager` manages the policies of the Hybrid Cloud.
+The :ref:`Actor-Operations-Manager` manages the policies of the Hybrid Cloud.
 Policies can be applied to different clouds based on the user, project, and/or group.
 These policies are applied to work requests, resources and clouds.
 
 Actors
 ------
 
-* :ref:`Actor-OperationsManager`
+* :ref:`Actor-Operations-Manager`
 
 Activities
 ----------

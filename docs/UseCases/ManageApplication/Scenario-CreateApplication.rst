@@ -11,8 +11,8 @@ of the project for the application.
 
 **User**
 
-* :ref:`Actor-ApplicationDeveloper`
+* :ref:`Actor-Application-Developer`
 
 ::Systems**
 
-* :ref:`Subsystem-ApplicationManager`
+* :ref:`Subsystem-Application-Manager`

@@ -4,6 +4,13 @@ Common Cloud Core Solution
 .. toctree::
     :maxdepth: 1
     :glob:
+    :caption: Solutions
+
+    Solution*
+
+.. toctree::
+    :maxdepth: 1
+    :glob:
     :caption: Sub Systems
 
     **/SubSystem*

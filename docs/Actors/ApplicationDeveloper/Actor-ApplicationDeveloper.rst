@@ -11,14 +11,14 @@ Use Cases
 
 .. image:: UseCases.png
 
-* :ref:`Scenario-CreateApplication`
-* :ref:`Scenario-LaunchApplication`
-* :ref:`Scenario-UpdateApplication`
-* :ref:`Scenario-RunCommand`
-* :ref:`Scenario-ViewService`
-* :ref:`Scenario-KillApplication`
+* :ref:`Scenario-Create-Application`
+* :ref:`Scenario-Launch-Application`
+* :ref:`Scenario-Update-Application`
+* :ref:`Scenario-Run-Command`
+* :ref:`Scenario-View-Service`
+* :ref:`Scenario-Kill-Application`
 * :ref:`UseCase-Get-Logs`
-* :ref:`Scenario-DeployApplication`
+* :ref:`Scenario-Deploy-Application`
 
 Typical Workflow
 ~~~~~~~~~~~~~~~~
@@ -38,14 +38,14 @@ Command Line
 
 Examples on how to use C3
 
-:ref:`Scenario-CreateApplication`
+:ref:`Scenario-Create-Application`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
   # C3 app create <Application Name> --stack=<Application Stack>  # creates a new application from selected stack
 
-:ref:`Scenario-GetApplication`
+:ref:`Scenario-Get-Application`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Allow the developer to attach an existing application to a project.
@@ -55,7 +55,7 @@ Great if they want to share an application or re-attach an application to a proj
 
   # C3 app clone <Application Name> [--version=<Application Version>]
 
-:ref:`Scenario-LaunchApplication`
+:ref:`Scenario-Launch-Application`
 
 This command should make sure that the application is up. If the application is already up
 then it should just return that it is up. If it is not up yet then it should launch the application.
@@ -82,7 +82,7 @@ This behavior should be consistent across all of the environments.
     # C3 up worker   # Launch the nodejs worker service in the application
     # C3 up worker --env=test   # Launch the nodejs worker service in the test environment
 
-:ref:`Scenario-UpdateApplication`
+:ref:`Scenario-Update-Application`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When developers are working they need to update the application with new source code.
@@ -115,9 +115,9 @@ service and the service is told to update. This could mean restart or just updat
     # C3 upgrade mongo --env=test   # in the test environment
     # C3 upgrade mongo --version=3.2.0   # upgrade to specific version
 
-The :ref:`Actor-OperationsManager` is responsible for naming and creating environments.
+The :ref:`Actor-Operations-Manager` is responsible for naming and creating environments.
 
-:ref:Scenario-RunCommand
+:ref:Scenario-Run-Command
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Running a command might not seem like it makes sense in the case of an application, but there are several times when
 a developer will want to test, or control their application while they are developing it. All commands are run in the
@@ -151,7 +151,7 @@ This will run echo 'hello world' on every machine that has a redis service runni
 
     # C3 run --service=redis.23143 "echo 'hello world'"
 
-:ref:`Scenario-ViewService`
+:ref:`Scenario-View-Service`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Show processes for application
@@ -170,7 +170,7 @@ This will run echo 'hello world' on every machine that has a redis service runni
     23149   worker      npm ...      Starting
 
 
-:ref:`Scenario-KillApplication`
+:ref:`Scenario-Kill-Application`
 
 * Kill all services on for the application
 
@@ -188,7 +188,7 @@ This will run echo 'hello world' on every machine that has a redis service runni
     # C3 kill 23412 # kill only the process with the process id.
 
 
-:ref:`Scenario-GetLogs`
+:ref:`Scenario-Get-Logs`
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 * Get logs of the application
@@ -221,7 +221,7 @@ This will run echo 'hello world' on every machine that has a redis service runni
 
     # C3 logs redis.223412 --log=/var/syslog
 
-:ref:`Scenario-DeployApplication`
+:ref:`Scenario-Deploy-Application`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Deploy an application

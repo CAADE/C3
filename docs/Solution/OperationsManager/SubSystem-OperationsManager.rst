@@ -8,8 +8,8 @@ This is the main interface for the C3 Operator.
 
 Use Cases
 ---------
-* :ref:`Scenario-CreateEnvironment`
-* :ref:`Scenario-CreateApplicationStack`
+* :ref:`Scenario-Create-Environment`
+* :ref:`Scenario-Create-Application-Stack`
 * :ref:`Scenario-Create-Service-Template`
 * :ref:`Scenario-Modify-Service-Template`
 * :ref:`Scenario-Update-Application-Stack`

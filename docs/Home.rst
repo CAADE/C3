@@ -7,8 +7,6 @@ and specs for implementing the CCC Architecture. The architecture is broken up i
 components and sections.
 An introductory video that gives a brief overview of `Common Cloud Core <https://youtu.be/0s_tC5ZEWM4>`_.
 
-Users
------
 .. toctree::
    :maxdepth: 1
    :glob:
@@ -16,12 +14,11 @@ Users
 
    **/Actor*
 
-## High level Use Cases
 
 .. toctree::
    :maxdepth: 1
    :glob:
-   :caption: Users
+   :caption: High Level Use Cases
 
    **/UseCase*
 
@@ -90,7 +87,6 @@ how these components work together to fulfill the high level use cases.
 .. toctree::
    :maxdepth: 1
    :glob:
-   :caption: Users
 
    **/UseCase*
 

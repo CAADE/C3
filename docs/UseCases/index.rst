@@ -8,5 +8,5 @@ Common Cloud Core Use Cases
 
     **/UseCase*
 
-.. image:: UseCase.png
+.. image:: UseCases.png
 

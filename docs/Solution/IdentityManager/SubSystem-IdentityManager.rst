@@ -21,7 +21,7 @@ Users
 
 Uses
 ----
-* :ref:`SubSystem-IdentityManager`
+* :ref:`SubSystem-Identity-Manager`
 *
 
 Interface

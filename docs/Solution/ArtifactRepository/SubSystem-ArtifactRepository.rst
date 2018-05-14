@@ -24,14 +24,14 @@ Use Cases
 Users
 -----
 * :ref:`SubSystem-Application-Orchestrator`
-* :ref:`SubSystem-OperationsManager`
-* :ref:`SubSystem-ApplicationManager`
+* :ref:`SubSystem-Operations-Manager`
+* :ref:`SubSystem-Application-Manager`
 
 Uses
 ----
-* :ref:`SubSystem-CloudBroker`
-* :ref:`SubSystem-ProvisionEngine`
-* :ref:`SubSystem-DataCoordinator`
+* :ref:`SubSystem-Cloud-Broker`
+* :ref:`SubSystem-Provision-Engine`
+* :ref:`SubSystem-Data-Coordinator`
 
 Interface
 ---------

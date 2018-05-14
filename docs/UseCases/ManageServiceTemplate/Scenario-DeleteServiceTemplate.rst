@@ -1,8 +1,9 @@
 .. _Scenario-Delete-Service-Template:
+
 Scenario Delete Service Template
 ================================
 
-:ref:`Actor-StackDeveloper` interacts with the Operations Manager to remove a Service Template.
+:ref:`Actor-Stack-Developer` interacts with the Operations Manager to remove a Service Template.
 
 .. image:: DeleteServiceTemplate.png
 
@@ -13,3 +14,4 @@ Scenario Delete Service Template
 **Systems**
 
 * :ref:`SubSystem-Operations-Manager`
+

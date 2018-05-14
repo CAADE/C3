@@ -4,13 +4,13 @@ Use Case Manage Infrastructure
 ==============================
 
 
-:ref:`Actor-OperationsManager` manages infrastructure in the Private and Public Clouds.
+:ref:`Actor-Operations-Manager` manages infrastructure in the Private and Public Clouds.
 The C3 architecture should be a passthru to the SDI layers in the Private and Public Clouds.
 
 Actors
 ------
 
-* :ref:`Actor-OperationsManager`
+* :ref:`Actor-Operations-Manager`
 
 Activities
 ----------

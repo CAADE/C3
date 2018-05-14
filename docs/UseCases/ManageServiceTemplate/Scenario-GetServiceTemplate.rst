@@ -3,15 +3,15 @@
 Scenario Get Service Template
 =============================
 
-:ref:`Actor-ApplicationDeveloper` interacts with the Application Manager
+:ref:`Actor-Application-Developer` interacts with the Application Manager
 to find the service template to use.
 
 .. image:: GetServiceTemplate.png
 
 **Users**
 
-* :ref:`Actor-ApplicationDeveloper`
+* :ref:`Actor-Application-Developer`
 
 **Systems**
 
-* :ref:`SubSystem-ApplicationManager`
+* :ref:`SubSystem-Application-Manager`

@@ -15,14 +15,14 @@ Users
 * :ref:`SubSystem-Cloud-Broker`
 * :ref:`SubSystem-Provision-Engine`
 * :ref:`SubSystem-Data-Coordinator`
-* :ref:`SubSystem-IdentityManager`
+* :ref:`SubSystem-Identity-Manager`
 * Telemetry Bus SNAP
-* :ref:`SubSystem-ApplicationManager`
-* :ref:`SubSystem-ApplicationAnalyzer`
+* :ref:`SubSystem-Application-Manager`
+* :ref:`SubSystem-Application-Analyzer`
 
 Uses
 ----
-* :ref:`Scenario-LaunchApplication`
+* :ref:`Scenario-Launch-Application`
 * Rebalance Application
 * Get Application Analyzer
 * Check Health of Application

@@ -6,6 +6,7 @@ Cloud Aware Application Development Environment
     :caption: Overview
 
     Home
+    Solution/Solution
 
 .. toctree::
     :maxdepth: 2

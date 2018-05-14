@@ -10,19 +10,19 @@ It enables the developer to Use Application Stacks to rapidly develop, debug and
 Use Cases
 ---------
 
-* :ref:`Scenario-LaunchApplication`
+* :ref:`Scenario-Launch-Application`
 * Select Application Stack
 * Select Environment
 * Debug Application
-* :ref:`Scenario-CreateApplicationStack`
-* :ref:`Scenario-UpdateApplicationStack`
+* :ref:`Scenario-Create-Application-Stack`
+* :ref:`Scenario-Update-Application-Stack`
 * Remove Application Stack
 
 .. image:: UseCases.png
 
 Users
 -----
-* :ref:`Actor-ApplicationDeveloper`
+* :ref:`Actor-Application-Developer`
 
 .. image:: UserInteraction.png
 
