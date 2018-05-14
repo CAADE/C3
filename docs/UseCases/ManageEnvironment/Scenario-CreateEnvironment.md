@@ -4,7 +4,7 @@
 
 ### Users
 
-* [Operations Manager](Actor-OperationsManager) - See [examples](Actor-OperationsManager.md#create-environment)
+* [Operations Manager](Actor-Operations-Manager) - See [examples](Actor-OperationsManager.md#create-environment)
 
 ### Systems
 

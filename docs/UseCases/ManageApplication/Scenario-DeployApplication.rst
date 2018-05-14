@@ -11,8 +11,8 @@ file if needed.
 
 **Users**
 
-* :ref:`Actor-ApplicationDeveloper`
+* :ref:`Actor-Application-Developer`
 
 **Systems**
 
-* :ref:`SubSystem-ArtifactRepository`
+* :ref:`SubSystem-Artifact-Repository`

@@ -11,6 +11,7 @@ Users
 -----
 .. toctree::
    :maxdepth: 1
+   :glob:
    :caption: Users
 
    **/Actor*
@@ -19,6 +20,7 @@ Users
 
 .. toctree::
    :maxdepth: 1
+   :glob:
    :caption: Users
 
    **/UseCase*
@@ -28,16 +30,12 @@ Users
 High Level Concepts
 -------------------
 
-* Application Stack - contains a reference to services that are required to make an Application. There can be different
-configurations based on Environments
-* Service -  represents a service running in different environments. Example: A MongoDB service could be a simple
-instance or a HA solution based on the environment it is running in.
-* Composite Service - represents an aggregation of services that are managed together. There can be multiple
-configurations of composite services basd on environments.
+* Application Stack - contains a reference to services that are required to make an Application. There can be different configurations based on Environments
+* Service -  represents a service running in different environments. Example: A MongoDB service could be a simple instance or a HA solution based on the environment it is running in.
+* Composite Service - represents an aggregation of services that are managed together. There can be multiple configurations of composite services basd on environments.
 * Script - a script that is run based on events that are happening in the System. Examples. Start, Stop, Deploy, upgrade.
 * Image - a standard image that can be deployed to any number of clouds or environments.
-* Envronment - A group of resources with policy that applications and services execute. Each Environment has unique
-policies that govern the services and applications in the environment.
+* Envronment - A group of resources with policy that applications and services execute. Each Environment has unique policies that govern the services and applications in the environment.
 
 .. image:: HighLevelConcepts.png
 
@@ -91,6 +89,7 @@ how these components work together to fulfill the high level use cases.
 
 .. toctree::
    :maxdepth: 1
+   :glob:
    :caption: Users
 
    **/UseCase*
@@ -103,6 +102,7 @@ This shows the details of the subsystem's interactions
 
 .. toctree::
   :maxdepth: 1
+  :glob:
   :caption: Sub Systems
 
   **/SubSystem*
