@@ -69,7 +69,8 @@ Delete an Environment
     # C3 environment delete <environmentName>
 
 
-**:ref:`Scenario-List-Environments`**
+:ref:`Scenario-List-Environments`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 List all of the environments and basic information about the environments.
 
@@ -83,7 +84,8 @@ List all of the environments and basic information about the environments.
     Production     8               6
 
 
-**:ref:`Scenario-Show-Environment-Processes`**
+:ref:`Scenario-Show-Environment-Processes`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
@@ -99,7 +101,8 @@ List all of the environments and basic information about the environments.
     23149   worker      npm ...      Starting
 
 
-**:ref:`Scenario-Show-Environment`**
+:ref:`Scenario-Show-Environment`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Show details about the environment given by the name environmentName
 
@@ -108,102 +111,119 @@ Show details about the environment given by the name environmentName
     # C3 envoronment show <environmentName>
 
 :ref:`UseCase-Manage-Policies`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
-**:ref:`Scenario-Create-Policy`**
-
-TBD
-
-
-**:ref:`Scenario-List-Policies`**
+:ref:`Scenario-Create-Policy`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
-**:ref:`Scenario-Update-Policy`**
+:ref:`Scenario-List-Policies`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
-**:ref:`Scenario-Remove-Policy`**
+:ref:`Scenario-Update-Policy`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
-**:ref:`Scenario-Activate-Policy`**
+:ref:`Scenario-Remove-Policy`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
-**:ref:`Scenario-Deactivate-Policy`**
+:ref:`Scenario-Activate-Policy`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TBD
+
+:ref:`Scenario-Deactivate-Policy`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
 :ref:`UseCase-Manage-Applications`
+----------------------------------
+
+:ref:`Scenario-List-Application`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TBD
+
+:ref:`Scenario-Kill-Application`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TBD
+
+:ref:`Scenario-Capacity-Planning`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**:ref:`Scenario-List-Application`**
-
-TBD
-
-**:ref:`Scenario-Kill-Application`**
-
-TBD
-
-**:ref:`Scenario-Capacity-Planning`**
 
 TBD
 
 :ref:`UseCase-Manage-Users`
+---------------------------
+
+:ref:`Scenario-Add-User`
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+TBD
+
+:ref:`Scenario-Modify-User`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**:ref:`Scenario-Add-User`**
+TBD
+
+:ref:`Scenario-Remove-User`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
-**:ref:`Scenario-Modify-User`**
-
-TBD
-
-**:ref:`Scenario-Remove-User`**
-
-TBD
-
-**:ref:`Scenario-List-User`**
+:ref:`Scenario-List-User`
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
 :ref:`UseCase-Manage-Clouds`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
-**:ref:`Scenario-Add-Cloud`**
+:ref:`Scenario-Add-Cloud`
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
-**:ref:`Scenario-Remove-Cloud`**
+:ref:`Scenario-Remove-Cloud`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
 :ref:`Scenario-List-Clouds`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
 :ref:`Scenario-Show-Cloud`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
 :ref:`Scenario-Map-Cloud-Resources`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
 :ref:`Scenario-Map-Images`
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
 :ref:`Scenario-Map-Machine-Types`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
 :ref:`Scenario-Map-Resources`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
