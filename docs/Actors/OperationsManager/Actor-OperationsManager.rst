@@ -177,15 +177,15 @@ TBD
 
 TBD
 
-**:ref:`Scenario-List-Clouds`**
+:ref:`Scenario-List-Clouds`
 
 TBD
 
-**:ref:`Scenario-Show-Cloud`**
+:ref:`Scenario-Show-Cloud`
 
 TBD
 
-**:ref:`Scenario-Map-Cloud-Resources`**
+:ref:`Scenario-Map-Cloud-Resources`
 
 TBD
 
