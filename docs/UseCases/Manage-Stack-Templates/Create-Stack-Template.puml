@@ -1,0 +1,9 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Stack-Templates" #lightblue
+participant "c3" as S
+A -> S : Create-Stack-Template
+end box
+
+@enduml

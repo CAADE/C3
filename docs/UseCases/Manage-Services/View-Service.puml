@@ -1,0 +1,9 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Services" #lightblue
+participant "c3" as S
+A -> S : View-Service
+end box
+
+@enduml

@@ -17,11 +17,11 @@ Use Cases
 * :ref:`Scenario-Modify-Service-Template`
 * :ref:`Scenario-Publish-Service-Template`
 * :ref:`Scenario-Create-Service-Template`
-* :ref:`Scenario-Launch-And-Test-Stack-Template`
-* :ref:`Scenario-Update-Stack-Template`
-* :ref:`Scenario-Publish-Stack-Template`
-* :ref:`Scenario-List-Stack-Template`
-* :ref:`Scenario-Show-Stack-Template`
+* :ref:`Scenario-Launch-And-Test-Service`
+* :ref:`Scenario-Update-Service`
+* :ref:`Scenario-Publish-Service`
+* :ref:`Scenario-List-Services`
+* :ref:`Scenario-View-Service`
 
 Primary Workflow
 ----------------
@@ -81,6 +81,8 @@ On a file system it can be represented as a project folder.
 
 
 :ref:`Scenario-Modify-Service-Template`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block:: none
 
     # C3 service-template push   # push changes made locally to server
@@ -111,6 +113,7 @@ On a file system it can be represented as a project folder.
 :ref:`Scenario-Create-Stack-Template`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a stack template.
+
 .. code-block:: none
 
     # C3 stack-template create --name=3-Tier-App                   # creates new stack template with specified name from the base skeleton
@@ -118,6 +121,7 @@ Create a stack template.
 
 
 Example of stack template structure:
+
 .. code-block:: none
 
     my-stack-template
@@ -142,6 +146,7 @@ Example of stack template structure:
 :ref:`Scenario-Modify-Stack-Template`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Modify a stack.
+
 .. code-block:: none
 
     # C3 stack-template push   # push changes made locally to server
@@ -151,6 +156,7 @@ Modify a stack.
 
 :ref:`Scenario-Launch-And-Test-Stack-Template`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block:: none
 
     # C3 stack up [--env=<Environment Profile>]      # provision new environment from stack
@@ -160,6 +166,7 @@ Modify a stack.
 
 :ref:`Scenario-Publish-Stack-Template`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block:: none
 
     # C3 stack-template publish   # publish stack template for general access
@@ -168,6 +175,7 @@ Modify a stack.
 :ref:`Scenario-List-Stack-Templates`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 List available stack templates or service templates.
+
 .. code-block:: none
 
     # C3 stack-template ls
@@ -179,6 +187,7 @@ List available stack templates or service templates.
 :ref:`Scenario-Show-Stack-Template`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Show details about stack template or service template for the specified environment.
+
 .. code-block:: none
 
     # C3 stack-template show --name=<Stack Template Name>

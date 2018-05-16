@@ -8,19 +8,19 @@ Users
 -----
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Actors
 
-   /Actors/index
+   /**/Actor*
 
 High level Use Cases
 --------------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Use Cases
 
-   /UseCases/index
+   /**/UseCase*
 
 .. image:: /UseCases/UseCases.png
 

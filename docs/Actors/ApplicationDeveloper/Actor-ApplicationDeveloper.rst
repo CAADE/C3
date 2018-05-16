@@ -17,7 +17,7 @@ Use Cases
 * :ref:`Scenario-Run-Command`
 * :ref:`Scenario-View-Service`
 * :ref:`Scenario-Kill-Application`
-* :ref:`UseCase-Get-Logs`
+* :ref:`Scenario-Get-Logs`
 * :ref:`Scenario-Deploy-Application`
 
 Typical Workflow
@@ -56,6 +56,7 @@ Great if they want to share an application or re-attach an application to a proj
   # C3 app clone <Application Name> [--version=<Application Version>]
 
 :ref:`Scenario-Launch-Application`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This command should make sure that the application is up. If the application is already up
 then it should just return that it is up. If it is not up yet then it should launch the application.
@@ -117,8 +118,9 @@ service and the service is told to update. This could mean restart or just updat
 
 The :ref:`Actor-Operations-Manager` is responsible for naming and creating environments.
 
-:ref:Scenario-Run-Command
-~~~~~~~~~~~~~~~~~~~~~~~~
+:ref:`Scenario-Run-Command`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Running a command might not seem like it makes sense in the case of an application, but there are several times when
 a developer will want to test, or control their application while they are developing it. All commands are run in the
 same security context and environment as the application is currently running or you can specify. You can also specify
@@ -140,6 +142,7 @@ that you want the command executed in the same container or machine as a specifi
 * Run Command in all containers, VMs, or machines of specific service
 
 This will run echo 'hello world' on every machine that has a redis service running for the application.
+
 .. code-block:: none
 
     # C3 run --service=redis "echo 'hello world'"
@@ -147,6 +150,7 @@ This will run echo 'hello world' on every machine that has a redis service runni
 * Run Command in a container, VM, or machine of specific service process
 
 This will run echo 'hello world' on every machine that has a redis service running for the application.
+
 .. code-block:: none
 
     # C3 run --service=redis.23143 "echo 'hello world'"
@@ -171,6 +175,7 @@ This will run echo 'hello world' on every machine that has a redis service runni
 
 
 :ref:`Scenario-Kill-Application`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Kill all services on for the application
 

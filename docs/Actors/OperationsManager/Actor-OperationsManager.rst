@@ -9,12 +9,11 @@ Use Cases
 ---------
 
 * :ref:`UseCase-Manage-Environment`
-* :ref:`UseCase-Manage-Policy`
-* :ref:`UseCase-Manage-Application`
-* :ref:`UseCase-Plan-Capacity`
+* :ref:`UseCase-Manage-Policies`
+* :ref:`UseCase-Manage-Applications`
+* :ref:`UseCase-Manage-Infrastructure`
 * :ref:`UseCase-Manage-Users`
-* :ref:`UseCase-Manage-Cloud`
-* :ref:`UseCase-Map-Cloud-Resources`
+* :ref:`UseCase-Manage-Clouds`
 
 .. image:: UseCases.png
 
@@ -33,14 +32,15 @@ Command Line
 
 Examples on how to use C3 for the Operations Manager
 
-:ref:`UseCase-Manage-Environment`
+:ref:`UseCase-Manage-Environments`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a set of commands that can used to create, update and remove an environment from the system.
 Environments can represent Local machines, Development, Test, and Production.
 Operations Managers can creeate any number of environmentst that they need for the application and stack developers.
 
-**Create Environment**
+**:ref:`Scenario-Create-Environment`**
+
 Create an environment with the name environmentName
 
 .. code-block:: none
@@ -48,7 +48,8 @@ Create an environment with the name environmentName
     # C3 environment create <environmentName> --file <filenamee>
 
 
-**Update Environment**
+**:ref:`Scenario-Update-Environment`**
+
 Update an Environment with the specification in the filename.
 
 .. code-block:: none
@@ -56,7 +57,7 @@ Update an Environment with the specification in the filename.
     # C3 environment update <environmentName> --file <filenamee>
 
 
-**Delete Environment**
+**:ref:`Scenario-Delete-Environment`**
 
 Delete an Environment
 
@@ -65,7 +66,7 @@ Delete an Environment
     # C3 environment delete <environmentName>
 
 
-**List Environments**
+**:ref:`Scenario-List-Environments`**
 
 List all of the environments and basic information about the environments.
 
@@ -79,7 +80,7 @@ List all of the environments and basic information about the environments.
     Production     8               6
 
 
-**Environment Show Processes**
+**:ref:`Scenario-Show-Environment-Processes`**
 
 .. code-block:: none
 
@@ -95,7 +96,7 @@ List all of the environments and basic information about the environments.
     23149   worker      npm ...      Starting
 
 
-**Environment Show**
+**:ref:`Scenario-Show-Environment`**
 
 Show details about the environment given by the name environmentName
 
@@ -103,107 +104,108 @@ Show details about the environment given by the name environmentName
 
     # C3 envoronment show <environmentName>
 
-**Manage Policies**
+:ref:`UseCase-Manage-Policies`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TBD
-
-**Create Policy**
-
-TBD
-
-
-**List Policies**
-
-TBD
-
-**Update Policy**
-
-TBD
-
-**Remove Policy**
-
-TBD
-
-**Activate Policy**
-
-TBD
-
-**Deactivate Policy**
+**:ref:`Scenario-Create-Policy`**
 
 TBD
 
 
-**Manage Applications**
+**:ref:`Scenario-List-Policies`**
 
 TBD
 
-**List Application**
+**:ref:`Scenario-Update-Policy`**
 
 TBD
 
-**Kill Application**
+**:ref:`Scenario-Remove-Policy`**
+
+TBD
+
+**:ref:`Scenario-Activate-Policy`**
+
+TBD
+
+**:ref:`Scenario-Deactivate-Policy`**
+
+TBD
+
+:ref:`UseCase-Manage-Application`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**:ref:`Scenario-List-Application`**
+
+TBD
+
+**:ref:`Scenario-Kill-Application`**
+
+TBD
+
+**:ref:`Scenario-Capacity-Planning`**
+
+TBD
+
+:ref:`UseCase-Manage-Users`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**:ref:`Scenario-Add-User`**
+
+TBD
+
+**:ref:`Scenario-Modify-User`**
+
+TBD
+
+**:ref:`Scenario-Remove-User`**
+
+TBD
+
+**:ref:`Scenario-List-User`**
+
+TBD
+
+:ref:`UseCase-Manage-Clouds`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**:ref:`Scenario-Add-Cloud`**
+
+TBD
+
+**:ref:`Scenario-Remove-Cloud`**
+
+TBD
+
+**:ref:`Scenario-List-Clouds`**
+
+TBD
+
+**:ref:`Scenario-Show-Cloud`**
+
+TBD
+
+**:ref:`Scenario-Map-Cloud-Resources`**
+
+TBD
+
+**:ref:`Scenario-Map-Images`**
+
+TBD
+
+**:ref:`Scenario-Map-Machine-Types`**
+
+TBD
+
+**:ref:`Scenario-Map-Resources`**
 
 TBD
 
 
-**Capacity Planning**
+Try me here
+===========
+:doc:`Scenario-Map-Resources`
 
-TBD
-
-
-**Manage Users**
-
-TBD
-
-**Add User**
-
-TBD
-
-**Modify User**
-
-TBD
-
-**Remove User**
-
-TBD
-
-**List User**
-
-TBD
-
-**Manage Clouds**
-
-TBD
-
-**Add Cloud**
-
-TBD
-
-**Remove Cloud**
-
-TBD
-
-**List Clouds**
-
-TBD
-
-**Show Cloud**
-
-TBD
-
-**Map Resources to Cloud**
-
-TBD
-
-**Map Images**
-
-TBD
-
-**Map Machine Types**
-
-TBD
-
-**Map Resources**
-
-TBD
-
+Try me there
+============
+.. include:: /UseCases/Manage-Clouds/Scenario-Map-Resources.rst

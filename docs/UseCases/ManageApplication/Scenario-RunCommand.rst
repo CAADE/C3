@@ -1,4 +1,4 @@
-.. Scenario-Run-Command:
+.. _Scenario-Run-Command:
 
 Scenario Run Command
 ====================

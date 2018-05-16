@@ -1,12 +1,12 @@
-Cloud Aware Application Development Environment
-===============================================
+Common Cloud Core (C3) Hybrid Cloud
+===================================
 
 .. toctree::
     :maxdepth: 1
-    :caption: Overview
+    :caption: Solutions
 
     Home
-    Solution/Solution
+    Solution/Solution*
 
 .. toctree::
     :maxdepth: 2
