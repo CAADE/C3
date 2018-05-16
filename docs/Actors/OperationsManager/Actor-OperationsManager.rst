@@ -132,7 +132,7 @@ TBD
 
 TBD
 
-:ref:`UseCase-Manage-Application`
+:ref:`UseCase-Manage-Applications`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **:ref:`Scenario-List-Application`**
@@ -189,23 +189,18 @@ TBD
 
 TBD
 
-**:ref:`Scenario-Map-Images`**
+:ref:`Scenario-Map-Images`
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TBD
 
-**:ref:`Scenario-Map-Machine-Types`**
+:ref:`Scenario-Map-Machine-Types`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TBD
 
-**:ref:`Scenario-Map-Resources`**
+:ref:`Scenario-Map-Resources`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TBD
 
-
-Try me here
-===========
-:doc:`Scenario-Map-Resources`
-
-Try me there
-============
-.. include:: /UseCases/Manage-Clouds/Scenario-Map-Resources.rst
