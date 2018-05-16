@@ -33,13 +33,14 @@ Command Line
 Examples on how to use C3 for the Operations Manager
 
 :ref:`UseCase-Manage-Environments`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------
 
 This is a set of commands that can used to create, update and remove an environment from the system.
 Environments can represent Local machines, Development, Test, and Production.
-Operations Managers can creeate any number of environmentst that they need for the application and stack developers.
+Operations Managers can creeate any number of environments that they need for the application and stack developers.
 
-**:ref:`Scenario-Create-Environment`**
+:ref:`Scenario-Create-Environment`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create an environment with the name environmentName
 
@@ -48,7 +49,8 @@ Create an environment with the name environmentName
     # C3 environment create <environmentName> --file <filenamee>
 
 
-**:ref:`Scenario-Update-Environment`**
+:ref:`Scenario-Update-Environment`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Update an Environment with the specification in the filename.
 
@@ -57,7 +59,8 @@ Update an Environment with the specification in the filename.
     # C3 environment update <environmentName> --file <filenamee>
 
 
-**:ref:`Scenario-Delete-Environment`**
+:ref:`Scenario-Delete-Environment`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Delete an Environment
 
