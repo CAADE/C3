@@ -1,0 +1,9 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Applications" #lightblue
+participant "c3" as S
+A -> S : Kill-Application
+end box
+
+@enduml

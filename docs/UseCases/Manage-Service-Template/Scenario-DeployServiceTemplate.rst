@@ -1,7 +1,7 @@
 .. _Scenario-Deploy-Service-Template:
 
-Scenario Deploy Service Template
-================================
+Deploy Service Template
+=======================
 
 :ref:`Actor-Stack-Developer` interacts with the Operations Manager to deploy a Service Template.
 

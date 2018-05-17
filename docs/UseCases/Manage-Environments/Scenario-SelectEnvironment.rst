@@ -1,7 +1,7 @@
 .. _Scenario-Select-Environment:
 
-Scenario Select Environment
-===========================
+Select Environment
+==================
 
 .. image:: SelectEnvironment.png
 

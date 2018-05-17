@@ -1,7 +1,7 @@
 .. _Scenario-Delete-Environment:
 
-Scenario Delete Environment
-===========================
+Delete Environment
+==================
 
 .. image:: DeleteEnvrionment.png
 

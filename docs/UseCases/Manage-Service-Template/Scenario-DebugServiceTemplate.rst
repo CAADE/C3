@@ -1,7 +1,7 @@
 .. _Scenario-Debug-Service-Template:
 
-Scenario Debug Service Template
-===============================
+Debug Service Template
+======================
 
 :ref:`Actor-Stack-Developer` interacts with the Operations Manager to debug a Service Template.
 This should include deploying services into a test cloud and being able to access logs, debug

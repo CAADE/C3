@@ -1,7 +1,7 @@
 .. _Scenario-Show-Cloud:
 
-Scenario Show-Cloud
-====================
+Show Cloud
+==========
 
 .. image:: Show-Cloud.png
 

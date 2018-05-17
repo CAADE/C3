@@ -1,34 +1,41 @@
 .. _UseCase-Manage-Infrastructure:
 
-Use Case Manage-Infrastructure
-====================
+Manage Infrastructure
+=====================
 
-_Description_
+
+:ref:`Actor-Operations-Manager` manages infrastructure in the Private and Public Clouds.
+The C3 architecture should be a passthru to the SDI layers in the Private and Public Clouds.
 
 Actors
 ------
 
-* _Actors_
+* :ref:`Actor-Operations-Manager`
 
 Activities
 ----------
 
 .. image:: Activities.png
 
-* _Activities_
+* Manage Compute Resources
+* Manage Storage Resources
+* Manage Network Resources
+* Manage Security Domains
 
 Detail Scenarios
 ----------------
 
 .. toctree::
-   :glob:
-   :maxdepth: 1
+    :maxdepth: 2
+    :glob:
+    :caption: Detail Scenarios
 
-   Scenario*
+    Scenario*
+
 
 Systems Involved
 ----------------
 
-* _Systems_
+* :ref:`SubSystem-SDI-Cloud`
 
 

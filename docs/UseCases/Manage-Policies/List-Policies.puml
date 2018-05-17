@@ -1,0 +1,9 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Policies" #lightblue
+participant "c3" as S
+A -> S : List-Policies
+end box
+
+@enduml

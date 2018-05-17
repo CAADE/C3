@@ -128,17 +128,17 @@ TBD
 
 TBD
 
-:ref:`Scenario-Remove-Policy`
+:ref:`Scenario-Delete-Policy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
-:ref:`Scenario-Activate-Policy`
+:ref:`Scenario-Enable-Policy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
 
-:ref:`Scenario-Deactivate-Policy`
+:ref:`Scenario-Disable-Policy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
@@ -146,7 +146,7 @@ TBD
 :ref:`UseCase-Manage-Applications`
 ----------------------------------
 
-:ref:`Scenario-List-Application`
+:ref:`Scenario-List-Applications`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
@@ -156,10 +156,6 @@ TBD
 
 TBD
 
-:ref:`Scenario-Capacity-Planning`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-TBD
 
 :ref:`UseCase-Manage-Users`
 ---------------------------
@@ -179,7 +175,7 @@ TBD
 
 TBD
 
-:ref:`Scenario-List-User`
+:ref:`Scenario-List-Users`
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
@@ -207,7 +203,7 @@ TBD
 
 TBD
 
-:ref:`Scenario-Map-Cloud-Resources`
+:ref:`Scenario-Map-Resources`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
@@ -226,4 +222,13 @@ TBD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TBD
+
+:ref:`UseCase-Manage-Infrastructure`
+------------------------------------
+
+:ref:`Scenario-Plan-Capacity`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TBD
+
 

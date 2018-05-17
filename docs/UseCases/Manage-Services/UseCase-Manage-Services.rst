@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Services:
 
-Use Case Manage-Services
-========================
+Manage Services
+===============
 
 _Description_
 

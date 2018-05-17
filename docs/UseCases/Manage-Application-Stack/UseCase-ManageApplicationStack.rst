@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Application-Stack:
 
-Use Case Manage Application Stack
-=================================
+Manage Application Stack
+========================
 
 :ref:`Actor-Stack-Developer` create, publish, debug different stacks so they share them with developers.
 

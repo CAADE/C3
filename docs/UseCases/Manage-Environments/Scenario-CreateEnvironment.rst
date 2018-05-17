@@ -1,7 +1,7 @@
 .. _Scenario-Create-Environment:
 
-Scenario Create Environment
-===========================
+Create Environment
+==================
 
 .. image:: CreateEnvironment.png
 

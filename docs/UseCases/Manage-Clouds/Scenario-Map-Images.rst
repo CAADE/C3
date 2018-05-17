@@ -1,7 +1,7 @@
 .. _Scenario-Map-Images:
 
-Scenario Map-Images
-====================
+Map Images
+==========
 
 .. image:: Map-Images.png
 

@@ -1,7 +1,7 @@
 .. _Scenario-Publish-Service-Template:
 
-Scenario Publish Service Template
-=================================
+Publish Service Template
+========================
 
 :ref:`Actor-Stack-Developer` interacts with the Operations Manager to publish a Service Template in the Repository.
 

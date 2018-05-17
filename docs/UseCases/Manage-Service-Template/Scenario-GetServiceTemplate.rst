@@ -1,7 +1,7 @@
 .. _Scenario-Get-Service-Template:
 
-Scenario Get Service Template
-=============================
+Get Service Template
+====================
 
 :ref:`Actor-Application-Developer` interacts with the Application Manager
 to find the service template to use.

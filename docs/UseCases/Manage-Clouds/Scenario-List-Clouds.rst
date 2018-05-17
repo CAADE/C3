@@ -1,7 +1,7 @@
 .. _Scenario-List-Clouds:
 
-Scenario List-Clouds
-====================
+List Clouds
+===========
 
 .. image:: List-Clouds.png
 

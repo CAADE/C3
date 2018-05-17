@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Environments:
 
-Use Case Manage Environments
-============================
+Manage Environments
+===================
 
 Application and Application Stack can be used and deployed across multiple environments in the cloud.
 Each Environment has it own set of policies as well as shared policies across all of the environments.

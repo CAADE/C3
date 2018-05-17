@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Clouds:
 
-Use Case Manage-Clouds
-====================
+Manage Clouds
+=============
 
 _Description_
 

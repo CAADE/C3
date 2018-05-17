@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Stack-Templates:
 
-Use Case Manage-Stack-Templates
-====================
+Manage Stack Templates
+======================
 
 _Description_
 

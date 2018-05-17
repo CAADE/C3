@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Service-Template:
 
-Use Case Manage Service Template
-================================
+Manage Service Template
+=======================
 
 The :ref:`Actor-Stack-Developer` is the primary Actor that manages Service Templates.
 The Service Templates are used by :ref:`Actor-Application-Developer` to develop
