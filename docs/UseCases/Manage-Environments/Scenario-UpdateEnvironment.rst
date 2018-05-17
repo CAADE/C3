@@ -1,6 +1,7 @@
 .. _Scenario-Update-Environment:
-Scenario Update Environment
-===========================
+
+Update Environment
+==================
 
 .. image:: UpdateEnvironment.png
 
