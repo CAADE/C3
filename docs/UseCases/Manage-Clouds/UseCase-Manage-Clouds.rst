@@ -8,14 +8,12 @@ _Description_
 Actors
 ------
 
-* _Actors_
+* :ref:`Actor-Operstions-Manager`
 
 Activities
 ----------
 
 .. image:: Activities.png
-
-* _Activities_
 
 Detail Scenarios
 ----------------
@@ -29,6 +27,7 @@ Detail Scenarios
 Systems Involved
 ----------------
 
-* _Systems_
+* :ref:`SubSystem-Cloud-Broker`
+* :ref:`SubSystem-Artifact-Repository`
 
 

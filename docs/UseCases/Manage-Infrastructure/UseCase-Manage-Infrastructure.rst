@@ -26,9 +26,8 @@ Detail Scenarios
 ----------------
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :glob:
-    :caption: Detail Scenarios
 
     Scenario*
 
@@ -37,5 +36,6 @@ Systems Involved
 ----------------
 
 * :ref:`SubSystem-SDI-Cloud`
+* :ref:`SubSystem-Telemetry-SNAP`
 
 

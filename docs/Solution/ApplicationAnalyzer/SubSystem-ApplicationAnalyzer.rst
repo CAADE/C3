@@ -12,7 +12,7 @@ Use Cases
 
 .. image:: UseCases.png
 
-* :ref:`UseCase-Manage-Application`
+* :ref:`UseCase-Manage-Applications`
 
 Users
 -----

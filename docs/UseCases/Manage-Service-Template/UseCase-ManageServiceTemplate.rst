@@ -22,9 +22,8 @@ Detail Scenarios
 ----------------
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :glob:
-    :caption: Detail Scenarios
 
     Scenario*
 
@@ -33,5 +32,6 @@ Systems Involved
 
 * :ref:`SubSystem-Application-Manager`
 * :ref:`SubSystem-Operations-Manager`
+* :ref:`SubSystem-Artifact-Repository`
 
 

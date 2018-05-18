@@ -22,9 +22,8 @@ Detail Scenarios
 ----------------
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :glob:
-    :caption: Scenario
 
     Scenario*
 

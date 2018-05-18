@@ -16,12 +16,12 @@ Users
 * :ref:`SubSystem-Provision-Engine`
 * :ref:`SubSystem-Data-Coordinator`
 * :ref:`SubSystem-Identity-Manager`
-* Telemetry Bus SNAP
+* :ref:`SubSystem-Telemetry-SNAP`
 * :ref:`SubSystem-Application-Manager`
 * :ref:`SubSystem-Application-Analyzer`
 
-Uses
-----
+Use Cases
+---------
 * :ref:`Scenario-Launch-Application`
 * Rebalance Application
 * Get Application Analyzer

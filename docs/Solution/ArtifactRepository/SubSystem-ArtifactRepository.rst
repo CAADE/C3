@@ -9,14 +9,14 @@ These artifacts include ApplicationStacks, ServiceStacks, and Environments.
 Use Cases
 ---------
 * :ref:`Scenario-Deploy-Application`
-* :ref:`Scenario-Remove-Application`
-* :ref:`UseCase-Manage-Application-Stack`
-* :ref:`UseCase-Manage-Image`
-* :ref:`UseCase-Manage-Service-Template`
-* :ref:`Scenario-Find-Image`
-* :ref:`Scenario-Find-Application`
-* :ref:`Scenario-Find-Application-Stack`
-* :ref:`Scenario-Find-Service-Template`
+* :ref:`Scenario-Delete-Application`
+* :ref:`UseCase-Manage-Application-Stacks`
+* :ref:`UseCase-Manage-Images`
+* :ref:`UseCase-Manage-Service-Templates`
+* :ref:`Scenario-Get-Image`
+* :ref:`Scenario-Get-Application`
+* :ref:`Scenario-Get-Application-Stack`
+* :ref:`Scenario-Get-Service-Template`
 
 .. image:: UseCases.png
 

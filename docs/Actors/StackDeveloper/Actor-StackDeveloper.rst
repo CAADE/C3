@@ -41,6 +41,7 @@ Command Line
 Examples on how to use C3 for the Stack Developer
 
 :ref:`Scenario-Create-Service-Template`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Usually Service Template is a combination of manifests, scripts and media files.
 On a file system it can be represented as a project folder.

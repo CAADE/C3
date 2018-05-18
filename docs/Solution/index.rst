@@ -2,6 +2,8 @@
 Common Cloud Core Sub Systems
 =============================
 
+.. image:: Logical.png
+
 .. toctree::
     :maxdepth: 1
     :glob:
@@ -9,5 +11,4 @@ Common Cloud Core Sub Systems
 
     **/SubSystem*
 
-.. image:: Logical.png
 
