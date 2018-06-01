@@ -2,44 +2,44 @@
 
 skinparam packageStyle rect
 
-package C3 {
-package "Portal" #aaffff {
-    package "Application Manager" { }
-    package "Operations Manager" { }
-    package "Stack Manager" { }
-}
-package "Orchestrator" #aaffaa {
-    package "Application Orchestrator" { }
-    package "Environment Manager" { }
-    package "Policy Manager" { }
-    package "Application Analytics" { }
-}
-package "Registry" #ffffaa {
-    package "Identity Manager" { }
-    package "Artifact Repository" { }
+package <size:32>C3</size> #dddddd {
+    package "<size:24>Portal</size>" as P #aaffff {
+        package "Application Manager" { }
+        package "Operations Manager" { }
+        package "Stack Manager" { }
+    }
+    package "<size:24>Orchestrator</size>" as O #aaffaa {
+        package "Application Orchestrator" { }
+        package "Environment Manager" { }
+        package "Policy Manager" { }
+        package "Application Analytics" { }
+    }
+    package "<size:24>Registry</size>" as R #ffffaa {
+        package "Identity Manager" { }
+        package "Artifact Repository" { }
+    }
+
+    package "<size:24>Control</size>" as C #ffaaaa {
+        package "Cloud Broker" { }
+        package "Data Coordinator" { }
+        package "Provision Engine" { }
+    }
 }
 
-package "Control" #ffaaaa {
-    package "Cloud Broker" { }
-    package "Data Coordinator" { }
-    package "Provision Engine" { }
-}
+cloud "<size:24>Private Clouds</size>" as Private #ffffff {
 }
 
-package "Private Cloud" #cccccc {
+cloud "<size:24>Public Clouds</size>" as Public #ffffff {
 }
 
-package "Public Cloud"  #cccccc {
-}
+P --> O
+P -> R
+O -> R
+R --> C
+O --> C
 
-
-Portal --> Orchestrator
-Orchestrator --> Registry
-Registry --> Control
-Orchestrator -> Control
-
-Control --> "Private Cloud"
-Control --> "Public Cloud"
+C --> Private
+C --> Public
 
 @enduml
 
