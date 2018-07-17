@@ -3,26 +3,31 @@
 
 Launch Application
 ==================
+
 Launch App using CLI and Web Interface with name and environment with an optional config file.
 
 .. image:: Launch-App.png
 
 
-** CLI **
+**CLI**
+The :ref:`Actor-Developer` can launch the application from the command line into different environments.
+
 .. code-block:: none
 
   # c3 app launch --name <string> --env <string> --config <filename>
   # c3 app launch --name alert --env local --config config.yaml
 
 
-** Web **
+**Web**
+
+Simplified Web Interface
 
 .. image:: Launch-AppWeb.png
 
 
-** REST **
+**REST**
 
-app/launch
+*app/launch*
 
 ============  ========  ===================
 Name          Value     Description

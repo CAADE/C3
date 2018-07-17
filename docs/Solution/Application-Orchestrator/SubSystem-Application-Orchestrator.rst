@@ -96,6 +96,7 @@ traversed and created, or after the complete graph is created and then sent as o
 
 ** Design Discussion **
 July 15, 2018
+
     Should I get resources right now. Or map the resources at the highest level of the Service graph.
 
     **Pros**:

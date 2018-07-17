@@ -1,7 +1,7 @@
 .. _SubSystem-Artifact-Repository:
 
-Artifact-Repository
-============
+Artifact Repository
+===================
 
 Artifact-Repository is a subsystem of c3 ...
 
