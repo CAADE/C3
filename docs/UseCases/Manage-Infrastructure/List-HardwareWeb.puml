@@ -1,0 +1,12 @@
+@startuml
+
+salt
+{
+  List Hardware
+  {
+      cloud | "myCloud"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

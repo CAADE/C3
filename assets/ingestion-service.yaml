@@ -1,0 +1,28 @@
+service:
+  name: ingestion
+  version: 0.0.1
+  environments:
+    local:
+      resources:
+        network:
+          myNetwork: 1
+      image: kafka
+      replicas: 1
+      ports:
+        - 2345:5678
+    test:
+      resources:
+        network:
+          myNetwork: 4
+      image: kafka
+      replicas: 4
+      ports:
+        - 2345:5678
+    prod:
+      resources:
+        network:
+          myNetwork: 8
+      image: kafka
+      replicas: 8
+      ports:
+        - 2345:5678

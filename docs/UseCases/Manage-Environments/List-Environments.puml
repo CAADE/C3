@@ -1,9 +1,14 @@
 @startuml
-Actor "actorName" as A
+Actor "Operations Manager" as A
 
-box "Manage-Environments" #lightblue
+box "Manage Environments" #lightblue
+participant CLI as CLI
+participant Web as Web
 participant "c3" as S
-A -> S : List-Environments
+A -> CLI : c3-env-list()
+CLI -> S : env/list()
+A -> Web : env/list()
+Web -> S : env/list()
 end box
 
 @enduml

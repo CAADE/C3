@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+
+actor :Cloud Broker:
+actor :Provision Engine:
+actor :Data Coordinator:
+actor :Identity Manager:
+actor :Telemetry:
+actor :Application Manager:
+actor :Application Analyzer:
+
+rectangle "Application Orchestrator" #ccffff {
+UseCase LA as "Launch Application"
+UseCase RA as "Rebalance Application"
+UseCase GAA as "Get Application Analyzer"
+UseCase CHA as "Check Health of Application"
+UseCase CAS as "Coordinate Application StartUp"
+
+:Application Manager: --> LA
+LA --> :Identity Manager:
+LA --> :Cloud Broker:
+LA --> :Provision Engine:
+LA --> :Data Coordinator:
+GAA --> :Application Analyzer:
+RA --> :Application Analyzer:
+:Telemetry: --> GAA
+:Telemetry: --> RA
+RA --> :Cloud Broker:
+RA --> :Provision Engine:
+RA --> :Data Coordinator:
+CHA --> :Application Analyzer:
+CAS --> :Telemetry:
+}
+
+@enduml

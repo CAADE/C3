@@ -1,12 +1,10 @@
-Actors of Common Cloud Core (C3)
-================================
+Actors
+======
+
+These are the Actors of the System.
 
 .. toctree::
-    :maxdepth: 1
-    :glob:
-    :caption: Actors
+   :glob:
+   :maxdepth: 1
 
-    **/Actor*
-
-.. image:: /UseCases/UseCases.png
-
+   **/Actor*

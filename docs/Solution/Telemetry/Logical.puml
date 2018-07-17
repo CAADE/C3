@@ -1,0 +1,14 @@
+@startuml
+
+package "Telemetry" {
+    interface "Telemetry" {
+
+    }
+    CLI ()-- "Telemetry"
+    REST ()-- "Telemetry"
+    Web ()-- "Telemetry"
+
+}
+
+
+@enduml

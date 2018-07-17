@@ -1,19 +1,9 @@
 @startuml
-|Developer|
+|actorName|
 start
-|#aaffaa|Common Cloud Core|
-if(Application exists) then (no)
-:Create Application;
-endif
-:Get Application;
-:Launch Application;
-while(has bug?)
-:Debug Application;
-:Run Command;
-endwhile
-:Publish Application;
-:Deploy Application;
-|cloud|
+|#ffffaa|c3|
+:activity1;
+|actor2|
 :activity2;
 stop
 @enduml

@@ -1,12 +1,11 @@
-Common Cloud Core Use Cases
-===========================
+C3 Use Cases
+============
 
 .. toctree::
-    :maxdepth: 1
     :glob:
-    :caption: Use Cases
+    :maxdepth: 1
 
-    **/UseCase*
+    */UseCase*
+
 
 .. image:: UseCases.png
-

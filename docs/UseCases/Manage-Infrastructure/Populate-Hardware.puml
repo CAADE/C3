@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Hardware" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-hardware-populate(cloud,filename)
+CLI -> S : hardware/populate(cloud,filename)
+A -> Web : hardware/populate(cloud,filename)
+Web -> S : hardware/populate(cloud,filename)
+end box
+
+@enduml

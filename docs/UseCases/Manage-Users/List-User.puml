@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Users" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-user-list()
+CLI -> S : user/list()
+A -> Web : user/list()
+Web -> S : user/list()
+end box
+
+@enduml

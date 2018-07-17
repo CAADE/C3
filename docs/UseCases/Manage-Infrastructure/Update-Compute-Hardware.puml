@@ -1,0 +1,14 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "Manage Infrastructure" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-hardware-update(name,cloud,"compute",capacity)
+CLI -> S : hardware/update(name,cloud, "compute",capacity)
+A -> Web : hardware/update(name,cloud, "compute",capacity)
+Web -> S : hardware/update(name,cloud, "compute",capacity)
+end box
+
+@enduml

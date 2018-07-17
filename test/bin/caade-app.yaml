@@ -1,7 +1,0 @@
-name: Mine
-stack:
-    name: NodeJS
-    createdAt: '2016-10-11T13:33:47.912Z'
-    updatedAt: '2016-10-11T13:33:49.231Z'
-    id: 152
-version: 0.0.1

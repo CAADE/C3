@@ -10,8 +10,10 @@ services:
   #        - "27017:27017"
   c3:
     image: c3/web
+    expose:
+      - 1337
     ports:
-      - "8011:1337"
+      - "1337:1337"
   # uservice-name :
   #  image: c3/uservice-name
   #  deploy:

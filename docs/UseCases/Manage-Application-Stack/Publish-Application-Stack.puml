@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Application-Stack" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-stack-publish()
+CLI -> S : stack/publish()
+A -> Web : stack/publish()
+Web -> S : stack/publish()
+end box
+
+@enduml

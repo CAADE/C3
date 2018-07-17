@@ -1,11 +1,27 @@
-Common Cloud Core (C3) Hybrid Cloud
-===================================
+c3
+===============================================
 
 .. toctree::
-    :maxdepth: 2
+   :maxdepth: 1
+   :caption: Overview
 
-    Home
-    Solution/index
-    Actors/index
-    UseCases/index
+   Solution/Solution
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Actors
+
+   Actors/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Use Cases
+
+   UseCases/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Solution
+
+   Solution/index
 

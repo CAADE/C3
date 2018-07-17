@@ -1,0 +1,70 @@
+.. _SubSystem-Application-Manager:
+
+Application Manager
+===================
+
+Application Manager is the primary interface for the Application Developer for C3.
+It enables the developer to Use Application Stacks to rapidly develop, debug and deploy
+"Cloud Aware" applications.
+
+Use Cases
+---------
+
+* :ref:`Scenario-Launch-Application`
+* Select Application Stack
+* Select Environment
+* :ref:`Scenario-Debug-Application`
+* :ref:`Scenario-Create-Application-Stack`
+* :ref:`Scenario-Update-Application-Stack`
+* :ref:`Scenario-Delete-Application-Stack`
+
+
+.. image:: UseCases.png
+
+Users
+-----
+
+* :ref:`Actor-Application-Developer`
+
+.. image:: UserInteraction.png
+
+Uses
+----
+
+* :ref:`SubSystem-Policy-Manager`
+* :ref:`SubSystem-Environment-Manager`
+* :ref:`SubSystem-Application-Orchestrator`
+* :ref:`SubSystem-Artifact-Repository`
+
+Interface
+---------
+
+* CLI - Command Line Interface
+* REST-API -
+* Portal - Web Portal
+
+Logical Artifacts
+-----------------
+
+* Application
+* Application Stack
+* Environment
+* Config
+
+.. image:: Logical.png
+
+Activities and Flows
+--------------------
+
+.. image::  Process.png
+
+Deployment Architecture
+-----------------------
+
+.. image:: Deployment.png
+
+Physical Architecture
+---------------------
+
+.. image:: Physical.png
+

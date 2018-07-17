@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+
+actor :Telemetry: as T
+actor :Application Orchestrator: as AO
+actor :Application Manager: as AM
+
+
+rectangle "Application Analyzer" #ccffff {
+    UseCase UC1 as "Analyze Telemetry"
+    UseCase UC2 as "Map Application\nto Telemetry"
+    UseCase UC3 as "Recommend new Landscape"
+}
+
+T --> UC1
+AM --> UC2
+UC1 --> UC3
+UC2 --> UC3
+UC3 --> AO
+@enduml

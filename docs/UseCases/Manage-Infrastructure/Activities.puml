@@ -1,31 +1,9 @@
 @startuml
-|Operations Manager|
+|actorName|
 start
-|#ffffaa|common-cloud-core|
-:Manage Compute Resources;
-|#aaffff|Clouds|
-:Manage Compute Resources;
-|Operations Manager|
-stop
-start
-|#ffffaa|common-cloud-core|
-:Manage Storage Resources;
-|Clouds|
-:Manage Storage Resources;
-|Operations Manager|
-stop
-start
-|#ffffaa|common-cloud-core|
-:Manage Network Resources;
-|Clouds|
-:Manage Network Resources;
-|Operations Manager|
-stop
-start
-|#ffffaa|common-cloud-core|
-:Manage Security Domains;
-|Clouds|
-:Manage Security Domains;
-|Operations Manager|
+|#ffffaa|c3|
+:activity1;
+|actor2|
+:activity2;
 stop
 @enduml

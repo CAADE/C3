@@ -1,0 +1,23 @@
+@startuml
+
+package "Application Analyzer" #ccffff {
+    interface "Application Analyzer" {
+      ingestTelemetry()
+      mapApplication()
+      buildLandscape()
+      getApplicationLandscape()
+    }
+    CLI ()-- "Application Analyzer"
+    REST ()-- "Application Analyzer"
+    Web ()-- "Application Analyzer"
+
+    class Landscape {
+    }
+    class TelemetryMap {
+    }
+    class ApplicationMap {
+    }
+}
+
+
+@enduml

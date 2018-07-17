@@ -1,0 +1,37 @@
+service:
+  name: notification
+  version: 0.0.1
+  environments:
+    local:
+      resources:
+        network:
+          myNetwork: 1
+        storage:
+          myStorage: 100
+          externalStorage: 500
+      image: kafka
+      replicas: 1
+      ports:
+        - 1344:80
+    test:
+      resources:
+        network:
+          myNetwork: 2
+        storage:
+          myStorage: 100
+          externalStorage: 500
+      image: kafka
+      replicas: 2
+      ports:
+        - 1344:80
+    prod:
+      resources:
+        network:
+          myNetwork: 4
+        storage:
+          myStorage: 1000
+          externalStorage: 5000
+      image: kafka
+      replicas: 4
+      ports:
+        - 1344:80

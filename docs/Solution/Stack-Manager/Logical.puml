@@ -1,0 +1,14 @@
+@startuml
+
+package "Stack-Manager" {
+    interface "Stack-Manager" {
+
+    }
+    CLI ()-- "Stack-Manager"
+    REST ()-- "Stack-Manager"
+    Web ()-- "Stack-Manager"
+
+}
+
+
+@enduml

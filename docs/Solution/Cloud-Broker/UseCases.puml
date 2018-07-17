@@ -1,0 +1,18 @@
+@startuml
+
+left to right direction
+
+actor :Operations Manager: as Ops
+actor :Private Cloud: as PC1
+actor :Public Cloud: as PC2
+
+rectangle "Cloud Broker" #ccffff {
+    UseCase UC1 as "Manage Infrastructure"
+    UseCase UC2 as "Manage Cloud"
+    Ops --> UC1
+    Ops --> UC2
+    UC1 --> PC1
+    UC1 --> PC2
+}
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+partition "Application Manager" {
+  (*) --> "Manage Application"
+}
+
+partition "Telemetry" {
+  (*) --> "Gather Telemetry"
+}
+partition "Application Analyzer"  #ccffff {
+  "Manage Application" --> "Ingest Application"
+  "Gather Telemetry" --> "Ingest Telemetry"
+  "Ingest Telemetry" --> "Map Telemetry"
+  "Ingest Application" --> "Map Application"
+  "Map Telemetry" --> "Build Landscape"
+  "Map Application" --> "Build Landscape"
+}
+
+partition "Application Orchestrator" {
+  "Build Landscape" --> "Recommend Landscape"
+}
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+
+package "Artifact-Repository" {
+    interface "Artifact-Repository" {
+
+    }
+    CLI ()-- "Artifact-Repository"
+    REST ()-- "Artifact-Repository"
+    Web ()-- "Artifact-Repository"
+
+}
+
+
+@enduml

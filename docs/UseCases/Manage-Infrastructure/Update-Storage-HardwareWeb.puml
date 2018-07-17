@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  Update Storage Hardware
+  {
+      name | "myStorage"
+      cloud | "myCloud"
+      type | "storage"
+      capacity | "10000"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+actor User
+
+User -> "Artifact-Repository": UseCase
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+
+salt
+{
+  Destroy Compute Hardware
+  {
+      name | "myCompute"
+      cloud | "myCloud"
+      [ Cancel <&circle-x>] | [ DELETE <&account-login> ]
+  }
+}
+
+@enduml

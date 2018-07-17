@@ -2,28 +2,13 @@
 
 left to right direction
 
-:Application Developer: as Dev
-:Stack Developer: as SDev
-:Operations Engineer: as Ops
-:Clouds: as Cloud
+:Actor Name: as A1
 
-rectangle "C3" {
-    Dev --> (Create Application)
-    Dev --> (Run Application)
-    Dev --> (Deploy Application)
-    SDev --> (Manage Application Stack)
-    SDev --> (Manage Service Template)
-    SDev --> (Test Application Stack)
-    Ops --> (Manage Infrastructure)
-    Ops --> (Create Policies)
-    Ops --> (Create Environments)
+rectangle "c3"  #aaffff {
+:Actor Name: as A1
 
-    (Run Application) --> Cloud
-    (Deploy Application) --> Cloud
-    (Manage Infrastructure) --> Cloud
-    (Test Application Stack) --> Cloud
+(Use Case Name) as UCN
 }
 
 
-@endum
-
+@enduml

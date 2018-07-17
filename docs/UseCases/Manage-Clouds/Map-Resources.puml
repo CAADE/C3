@@ -2,8 +2,37 @@
 Actor "actorName" as A
 
 box "Manage-Clouds" #lightblue
+participant CLI as CLI
+participant Web as Web
 participant "c3" as S
-A -> S : Map-Resources
+group Map Resource
+    A -> CLI : c3-resource-create(cloud, name, resource)
+    CLI -> S : resource/create(cloud, name, resource)
+    A -> Web : resource/create(cloud, name, resource)
+    Web -> S : resource/create(cloud, name, resource)
+end
+
+group Update Resource
+    A -> CLI : c3-resource-update(cloud, name, resource)
+    CLI -> S : resource/update(cloud, name, resource)
+    A -> Web : resource/update(cloud, name, resource)
+    Web -> S : resource/update(cloud, name, resource)
+end
+
+group List Resources
+    A -> CLI : c3-resource-list()
+    CLI -> S : resource/list()
+    A -> Web : resource/list()
+    Web -> S : resource/list()
+end
+
+group Destroy Resource
+    A -> CLI : c3-resource-update(cloud, name)
+    CLI -> S : resource/update(cloud, name)
+    A -> Web : resource/update(cloud, name)
+    Web -> S : resource/update(cloud, name)
+end
+
 end box
 
 @enduml

@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "Manage-Application-Stack" #lightblue
-participant "c3" as S
-A -> S : Modify-Application-Stack
-end box
-
-@enduml

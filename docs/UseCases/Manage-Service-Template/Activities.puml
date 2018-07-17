@@ -1,25 +1,9 @@
 @startuml
-|Stack Developer|
+|actorName|
 start
-|#aaffaa|Common Cloud Core|
-:Create Service Template;
-while(has bugs?)
-:Debug Service Template;
-:Test Service Template;
-endwhile
-:Publish Service Template;
-|Application Developer|
-:Find Service Template;
-|Common Cloud Core|
-:Select Service Template;
-stop
-|Stack Developer|
-start
-|Common Cloud Core|
-:Update Service Template;
-:Publish Service Template;
-if(don't need anymore) then (yes)
-:Delete Service Template;
-endif
+|#ffffaa|c3|
+:activity1;
+|actor2|
+:activity2;
 stop
 @enduml

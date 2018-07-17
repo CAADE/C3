@@ -1,6 +1,0 @@
-@startuml
-actor User
-
-User -> "ApplicationOrchestrator": UseCase
-
-@enduml

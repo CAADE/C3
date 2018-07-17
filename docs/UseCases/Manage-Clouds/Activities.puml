@@ -1,9 +1,17 @@
 @startuml
-|actorName|
+|Operations Manager|
 start
-|#ffffaa|c3|
-:activity1;
-|actor2|
-:activity2;
+|#aaffff|c3|
+:Create Cloud;
+:List Clouds;
+:Update Cloud;
+fork
+:Map Images to Cloud;
+fork again
+:Map Resources to Cloud;
+fork again
+:Map Machine Types to Cloud;
+end fork
+:Remove Cloud;
 stop
 @enduml

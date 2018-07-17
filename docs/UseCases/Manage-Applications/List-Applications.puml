@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "Manage-Application" #lightblue
-participant "c3" as S
-A -> S : List-Applications
-end box
-
-@enduml

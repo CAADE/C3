@@ -1,0 +1,16 @@
+@startuml
+
+package  "Application Analyzer" #aaffff {
+  folder bin #ffffff {
+    file app
+    file landscape
+    file telemetry
+  }
+  node sailsjs
+  database DB1
+
+  sailsjs .. DB1
+  bin .. sailsjs
+}
+
+@enduml

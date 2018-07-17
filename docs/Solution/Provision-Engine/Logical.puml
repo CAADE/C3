@@ -1,0 +1,14 @@
+@startuml
+
+package "Provision-Engine" {
+    interface "Provision-Engine" {
+
+    }
+    CLI ()-- "Provision-Engine"
+    REST ()-- "Provision-Engine"
+    Web ()-- "Provision-Engine"
+
+}
+
+
+@enduml

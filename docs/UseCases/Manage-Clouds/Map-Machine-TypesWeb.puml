@@ -1,0 +1,14 @@
+@startuml
+
+salt
+{
+  **Map Machine Types**
+  {
+      Cloud | "myCloud"
+      Name | "msmall"
+      Type | "m1.small"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

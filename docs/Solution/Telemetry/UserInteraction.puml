@@ -1,0 +1,6 @@
+@startuml
+actor User
+
+User -> "Telemetry": UseCase
+
+@enduml

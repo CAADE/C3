@@ -1,0 +1,13 @@
+@startuml
+
+salt
+{
+  Destroy Storage Hardware
+  {
+      name | "myStorage"
+      cloud | "myCloud"
+      [ Cancel <&circle-x>] | [ DELETE <&account-login> ]
+  }
+}
+
+@enduml

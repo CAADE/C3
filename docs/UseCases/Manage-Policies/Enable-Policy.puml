@@ -1,9 +1,14 @@
 @startuml
-Actor "Operations Manager" as A
+Actor "actorName" as A
 
-box "ManagePolicies" #lightblue
-participant "common-cloud-core" as S
-A -> S : Enable-Policy
+box "Manage-Policies" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-policy-enable(name)
+CLI -> S : policy/enable(name)
+A -> Web : policy/enable(name)
+Web -> S : policy/enable(name)
 end box
 
 @enduml

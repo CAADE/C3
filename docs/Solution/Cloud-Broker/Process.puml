@@ -1,0 +1,17 @@
+@startuml
+
+partition "Application Orchestrator"  #dddddd {
+  (*) -> "Launch Application"
+}
+
+partition "Cloud Broker" #ccffff {
+  "Launch Application" --> "Get Resources"
+  "Get Resources" --> "Evaluate Policies"
+  "Evaluate Policies" --> "Select Cloud"
+}
+
+partition "Cloud"  #dddddd {
+  "Select Cloud" --> "Create Resource"
+}
+
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+
+salt
+{
+  **Create Environment**
+  {
+      name | "Development"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

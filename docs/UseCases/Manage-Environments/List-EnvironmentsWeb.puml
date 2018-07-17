@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  **List Environments**
+  {
+      **Name**
+      Development
+      Test
+      Production
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

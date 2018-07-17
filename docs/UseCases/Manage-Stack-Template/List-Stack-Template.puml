@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Stack-Template" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-template-list()
+CLI -> S : template/list()
+A -> Web : template/list()
+Web -> S : template/list()
+end box
+
+@enduml

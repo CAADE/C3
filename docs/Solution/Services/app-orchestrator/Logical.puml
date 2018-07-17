@@ -1,0 +1,13 @@
+@startuml
+
+package "app-orchestrator" {
+    interface "app-orchestrator" {
+
+    }
+    CLI ()-- "app-orchestrator" : 5000
+    REST ()-- "app-orchestrator" : 3000
+    Web ()-- "app-orchestrator" : 80
+}
+
+
+@enduml

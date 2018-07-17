@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "ManageEnvironment" #lightblue
-participant "common-cloud-core" as S
-A -> S : DeleteEnvrionment
-end box
-
-@enduml

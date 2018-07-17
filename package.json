@@ -2,53 +2,50 @@
   "name": "c3",
   "private": true,
   "version": "0.0.0",
-  "description": "Cloud Common Core Sails application",
+  "description": "Common Cloud Core a Sails application",
   "keywords": [],
   "dependencies": {
-    "async": "^2.6.0",
-    "bcrypt": "^1.0.3",
-    "commander": "^2.14.1",
-    "eslint": "^4.17.0",
-    "grunt": "^1.0.2",
-    "lodash": "^3.10.1",
-    "mocha": "^4.1.0",
+    "async": "2.0.1",
+    "child_process": "^1.0.2",
+    "connect-redis": "3.2.0",
+    "eslint": "4.11.0",
+    "grunt": "1.0.1",
+    "lodash": "3.10.1",
     "node-rest-client": "^3.1.0",
     "sails": "^1.0.0-46",
-    "sails-hook-grunt": "^2.2.1",
-    "sails-hook-orm": "^2.0.0-23",
-    "sails-hook-sockets": "^1.5.1",
+    "sails-hook-grunt": "^3.0.2",
+    "sails-hook-orm": "^2.0.0-16",
+    "sails-hook-sockets": "^1.4.0",
+    "socket.io-redis": "5.2.0",
     "supertest": "^3.0.0",
+    "supertest-as-promised": "^4.0.2",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "eslint-config-google": "^0.9.1",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint": "4.11.0"
   },
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
-    "test": "npm update && npm run lint && npm run custom-tests && echo 'Done.'",
+    "start": "node app.js",
+    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 && echo '✔  Your code looks good.'",
-    "design": "java -jar docs/plantuml.jar docs/*.puml docs/**/*.puml",
-    "custom-tests": "JUNIT_REPORT_PATH=./report.xml node ./node_modules/mocha/bin/mocha --reporter mocha-jenkins-reporter test/bootstrap.test.js test/**/*.test.js",
+    "design": "java -jar design/plantuml.jar design/*.puml design/**/*.puml",
+    "custom-tests": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js",
     "build": "npm update && node ./deploy/build build",
-    "publish": "node ./deploy/build publish",
-    "build-doc": "npm install phantomjs && npm install -g wiki2pdf && wiki2pdf ./docs --title Common_Cloud_Core --format all --footer ./docs/_footer.html",
+    "build-doc": "cd design && gwtc . -t c3 --css doc.css",
     "debug": "node debug app.js",
     "deploy-apps": "node ./deploy/build deploy",
     "deploy": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-dev.yaml c3Dev",
-    "deploy-test": "cd deploy && docker stack deploy --compose-file=./test/docker-compose.yaml c3Test",
-    "teardown-test": "docker stack rm c3Test",
+    "deploy-test": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-test.yaml c3Test",
     "deploy-prod": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-prod.yaml c3"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/adc.git"
+    "url": "git://github.com/CAADE/C3.git"
   },
-  "author": "anonymous node/sails user",
-  "license": ""
+  "author": "Darren Pulsipher",
+  "license": "",
+  "engines": {
+    "node": "8"
+  }
 }

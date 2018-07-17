@@ -1,0 +1,14 @@
+@startuml
+
+package "Identity-Manager" {
+    interface "Identity-Manager" {
+
+    }
+    CLI ()-- "Identity-Manager"
+    REST ()-- "Identity-Manager"
+    Web ()-- "Identity-Manager"
+
+}
+
+
+@enduml

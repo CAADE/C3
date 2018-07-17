@@ -1,0 +1,14 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "Manage Infrastructure" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-hardware-destroy(name, cloud)
+CLI -> S : hardware/destroy(name, cloud)
+A -> Web : hardware/destroy(name, cloud)
+Web -> S : hardware/destroy(name, cloud)
+end box
+
+@enduml

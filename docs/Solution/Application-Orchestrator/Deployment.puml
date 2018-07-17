@@ -1,0 +1,14 @@
+@startuml
+
+package  "Application Orchestrator" #aaffff {
+  folder bin #ffffff {
+    file app
+  }
+  node sailsjs
+  database DB1
+
+  sailsjs .. DB1
+  bin .. sailsjs
+}
+
+@enduml

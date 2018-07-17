@@ -1,20 +1,21 @@
 .. _UseCase-Manage-Users:
 
-Manage Users
-============
+Use Case Manage-Users
+====================
 
 _Description_
 
 Actors
 ------
 
-* :ref:`Actor-Operations-Manager`
+* _Actors_
 
 Activities
 ----------
 
 .. image:: Activities.png
 
+* _Activities_
 
 Detail Scenarios
 ----------------
@@ -28,7 +29,6 @@ Detail Scenarios
 Systems Involved
 ----------------
 
-* :ref:`SubSystem-Identity-Manager`
-* :ref:`SubSystem-Artifact-Repository`
+* _Systems_
 
 

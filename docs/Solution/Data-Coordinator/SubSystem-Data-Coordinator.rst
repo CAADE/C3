@@ -1,0 +1,55 @@
+.. _SubSystem-Data-Coordinator:
+
+Data-Coordinator
+============
+
+Data-Coordinator is a subsystem of c3 ...
+
+Use Cases
+---------
+
+*
+
+.. image:: UseCases.png
+
+Users
+-----
+
+* :ref:`Actor-User`
+
+.. image:: UserInteraction.png
+
+Uses
+----
+
+* :ref:`Data-Coordinator`
+
+Interface
+---------
+
+* CLI - Command Line Interface
+* REST-API -
+* Portal - Web Portal
+
+Logical Artifacts
+-----------------
+
+*
+
+.. image:: Logical.png
+
+Activities and Flows
+--------------------
+
+.. image::  Process.png
+
+Deployment Architecture
+-----------------------
+
+.. image:: Deployment.png
+
+Physical Architecture
+---------------------
+
+.. image:: Physical.png
+

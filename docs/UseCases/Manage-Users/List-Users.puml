@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "Manage-Users" #lightblue
-participant "c3" as S
-A -> S : List-Users
-end box
-
-@enduml

@@ -1,0 +1,7 @@
+./c3-stack-create --name common --filename ../assets/common-service.yaml
+./c3-stack-create --name streaming --filename ../assets/streaming-service.yaml
+./c3-stack-create --name notification --filename ../assets/notification-service.yaml
+./c3-stack-create --name ingestion --filename ../assets/ingestion-service.yaml
+./c3-stack-create --name myApp --filename ../assets/app.yaml
+./c3-app-create --name myApp --stack alert
+./c3-app-launch --name myApp --env local

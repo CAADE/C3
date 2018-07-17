@@ -1,19 +1,21 @@
 .. _UseCase-Manage-Clouds:
 
-Manage Clouds
-=============
+Use Case Manage-Clouds
+====================
 
 _Description_
 
 Actors
 ------
 
-* :ref:`Actor-Operstions-Manager`
+* _Actors_
 
 Activities
 ----------
 
 .. image:: Activities.png
+
+* _Activities_
 
 Detail Scenarios
 ----------------
@@ -27,7 +29,6 @@ Detail Scenarios
 Systems Involved
 ----------------
 
-* :ref:`SubSystem-Cloud-Broker`
-* :ref:`SubSystem-Artifact-Repository`
+* _Systems_
 
 

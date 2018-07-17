@@ -1,0 +1,15 @@
+@startuml
+Actor "Operations Manager" as A
+Actor "Operations Manager" as OM
+
+box "Manage Applications" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-app-rebalance(app)
+CLI -> S : app/rebalance(app)
+A -> Web : app/rebalance(app)
+Web -> S : app/rebalance(app)
+end box
+
+@enduml

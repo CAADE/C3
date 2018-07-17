@@ -1,0 +1,17 @@
+@startuml
+
+package  "Cloud Broker" #aaffff {
+  folder bin #ffffff {
+    file broker
+    file cloud
+    file resource
+  }
+  node sailsjs
+  database DB1
+
+  sailsjs .. DB1
+  bin .. sailsjs
+}
+
+@enduml
+

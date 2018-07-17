@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "Manage-Service-Template" #lightblue
-participant "c3" as S
-A -> S : Launch-And-Test-Service-Template
-end box
-
-@enduml

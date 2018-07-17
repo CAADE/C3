@@ -1,17 +1,11 @@
 @startuml
 |Operations Manager|
 start
-|#ffffaa|common-cloud-core|
+|#aaffff|c3|
 :Create Policy;
-:Check Policy;
-if(check) then (failed)
 :Update Policy;
-endif
+:List Policy;
 :Enable Policy;
-|Operations Manager|
-stop
-start
 :Disable Policy;
-:Check Policy;
-:Delete Policy;
+stop
 @enduml

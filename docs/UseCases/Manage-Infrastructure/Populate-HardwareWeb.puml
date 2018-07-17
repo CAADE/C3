@@ -1,0 +1,13 @@
+@startuml
+
+salt
+{
+  Populate Hardware
+  {
+      cloud | "myCloud"
+      filename | "myHardware.yaml"
+      [ Cancel <&circle-x>] | [ LOAD <&account-login> ]
+  }
+}
+
+@enduml

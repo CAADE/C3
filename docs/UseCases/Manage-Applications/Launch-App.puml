@@ -1,0 +1,33 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Applications" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+participant "Application Manager" as AM
+participant "Application Orchestrator" as AO
+participant "Cloud Broker" as CB
+A -> CLI : c3-app-launch(name, env, config)
+CLI -> S : app/launch(name, env, config)
+A -> Web : app/launch(name, env, config)
+Web -> S : app/launch(name, env, config)
+S -> AM : app/launch(name, env, config)
+AM -> AM : Stacklet mapApplication(name, stack, env, config)
+loop Stacklet.serviceletss
+    AM -> AO : service/set(name, replica)
+    loop Until all nested services are completed
+        AO -> AO : service/set(name, replica)
+        AO -> AO : Request.create(instance, policy, requirements);
+        note right
+          Need to ask the broker for the resources
+          to satisfy the requirements
+          for the ServiceInstance to execute.
+          This could be compute, storage, or network.
+        end note
+    end
+    AO -> PM : policy/evaluate(requests)
+    AO -> CB : broker/getResources(requests)
+end
+
+@enduml

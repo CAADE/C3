@@ -1,9 +1,0 @@
-@startuml
-Actor "Stack Developer" as A
-
-box "ManageServiceTemplate" #lightblue
-participant "common-cloud-core" as S
-A -> S : DisableServiceTemplate
-end box
-
-@enduml

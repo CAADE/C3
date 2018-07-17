@@ -1,14 +1,35 @@
-=============================
-Common Cloud Core Sub Systems
-=============================
+Sub Systems
+-----------
+
+These are the high level Subsystems of the c3 Solution
 
 .. image:: Logical.png
 
 .. toctree::
-    :maxdepth: 1
     :glob:
-    :caption: Sub Systems
+    :maxdepth: 1
 
     **/SubSystem*
 
+Services
+--------
+
+These are the micro-services of the c3 Solution that are used to implement the solutions.
+
+.. toctree::
+  :glob:
+  :maxdepth: 1
+
+  **/Service*
+
+Implementations
+---------------
+
+These are implementations of the architecture
+
+.. toctree::
+    :glob:
+    :maxdepth: 1
+
+    Solution*
 

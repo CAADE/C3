@@ -1,0 +1,14 @@
+@startuml
+
+salt
+{
+  **Map Resources**
+  {
+      Cloud | "myCloud"
+      Name | "storageSmall"
+      Resource | "s1.small"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

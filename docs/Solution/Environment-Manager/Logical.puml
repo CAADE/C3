@@ -1,0 +1,14 @@
+@startuml
+
+package "Environment-Manager" {
+    interface "Environment-Manager" {
+
+    }
+    CLI ()-- "Environment-Manager"
+    REST ()-- "Environment-Manager"
+    Web ()-- "Environment-Manager"
+
+}
+
+
+@enduml

@@ -3,35 +3,58 @@
  * (sails.config.http)
  *
  * Configuration for the underlying HTTP server in Sails.
- * Only applies to HTTP requests (not WebSockets)
+ * (for additional recommended settings, see `config/env/production.js`)
  *
  * For more information on configuration, check out:
- * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
+ * https://sailsjs.com/config/http
  */
 
 module.exports.http = {
+
+  /****************************************************************************
+  *                                                                           *
+  * Sails/Express middleware to run for every HTTP request.                   *
+  * (Only applies to HTTP requests -- not virtual WebSocket requests.)        *
+  *                                                                           *
+  * https://sailsjs.com/documentation/concepts/middleware                     *
+  *                                                                           *
+  ****************************************************************************/
+
   middleware: {
 
-    passportInit: require('passport').initialize(),
-    passportSession: require('passport').session(),
+    /***************************************************************************
+    *                                                                          *
+    * The order in which middleware should be run for HTTP requests.           *
+    * (This Sails app's routes are handled by the "router" middleware below.)  *
+    *                                                                          *
+    ***************************************************************************/
 
-    order: [
-      'startRequestTimer',
-      'cookieParser',
-      'session',
-      'passportInit',
-      'passportSession',
-      'myRequestLogger',
-      'bodyParser',
-      'handleBodyParserError',
-      'compress',
-      'methodOverride',
-      'poweredBy',
-      'router',
-      'www',
-      'favicon',
-      '404',
-      '500'
-    ]
-  }
+    // order: [
+    //   'cookieParser',
+    //   'session',
+    //   'bodyParser',
+    //   'compress',
+    //   'poweredBy',
+    //   'router',
+    //   'www',
+    //   'favicon',
+    // ],
+
+
+    /***************************************************************************
+    *                                                                          *
+    * The body parser that will handle incoming multipart HTTP requests.       *
+    *                                                                          *
+    * https://sailsjs.com/config/http#?customizing-the-body-parser             *
+    *                                                                          *
+    ***************************************************************************/
+
+    // bodyParser: (function _configureBodyParser(){
+    //   var skipper = require('skipper');
+    //   var middlewareFn = skipper({ strict: true });
+    //   return middlewareFn;
+    // })(),
+
+  },
+
 };

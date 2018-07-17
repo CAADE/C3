@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "ManageApplication" #lightblue
-participant "common-cloud-core" as S
-A -> S : PublishApplication
-end box
-
-@enduml

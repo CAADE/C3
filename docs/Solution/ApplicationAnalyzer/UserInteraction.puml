@@ -1,7 +1,0 @@
-@startuml
-actor User
-
-User -> "ApplicationAnalyzer": UseCase
-
-@enduml
-

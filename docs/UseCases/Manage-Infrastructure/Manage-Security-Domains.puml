@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "Manage-Infrastructure" #lightblue
-participant "c3" as S
-A -> S : Manage-Security-Domains
-end box
-
-@enduml

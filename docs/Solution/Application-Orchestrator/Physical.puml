@@ -1,0 +1,21 @@
+@startuml
+package "Application Orchestrator" #ccffff {
+    interface CLI
+    interface Web
+    interface REST
+    folder analyzer #ffffff {
+        component sailsjs
+        component sails.io
+    }
+    folder bin #ffffff {
+      component app
+    }
+}
+CLI -- app
+app -- REST
+Web -- sailsjs
+Web -- REST
+REST -- sailsjs
+
+Web -- sails.io
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Service-Template" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-template-publish()
+CLI -> S : template/publish()
+A -> Web : template/publish()
+Web -> S : template/publish()
+end box
+
+@enduml

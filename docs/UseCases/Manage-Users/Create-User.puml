@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Users" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-user-create(name,cloud,uname)
+CLI -> S : user/create(name,cloud,uname)
+A -> Web : user/create(name,cloud,uname)
+Web -> S : user/create(name,cloud,uname)
+end box
+
+@enduml

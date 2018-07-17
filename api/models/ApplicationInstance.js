@@ -1,18 +1,33 @@
 /**
  * ApplicationInstance.js
  *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
- * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+ * @description :: A model definition.  Represents a database table/collection/etc.
+ * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
 module.exports = {
 
   attributes: {
-    app: {model: 'Application'},
-    env: {model: 'Environment'},
-    services: {collection: 'ServiceInstance', via: 'application'},
-    state: {type: 'string'}
-    // enum: ['Running', 'Stopped', 'Initializing', "Exit 0", "Exit 1", "Error"]
+
+    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
+    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
+    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    name: {type:'string'},
+    state: { type: 'string', isIn: ['Running', 'Stopped', 'Initializing', 'Exit 0', 'Exit 1', 'Error'] },
+
+    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
+    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
+    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
+
+
+    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
+    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
+    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+    stacklet: {model: 'Stacklet'},
+    services: { collection: 'Service', via: 'apps' },
+    app: { model: 'Application' },
+    env: { model: 'Environment' }
   }
+
 };
 
