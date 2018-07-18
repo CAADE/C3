@@ -11,13 +11,13 @@ An introductory video that gives a brief overview of `Common Cloud Core <https:/
    :maxdepth: 1
    :caption: Users
 
-   ../**/Actor*
+   ../Actors/index
 
 .. toctree::
    :maxdepth: 1
    :caption: High Level Use Cases
 
-   **/UseCase*
+   ../UseCases/**/UseCase*
 
 .. image:: /UseCases/UseCases.png
 
