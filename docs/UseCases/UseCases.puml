@@ -2,13 +2,28 @@
 
 left to right direction
 
-:Actor Name: as A1
+:Application Developer: as Dev
+:Stack Developer: as SDev
+:Operations Engineer: as Ops
+:Clouds: as Cloud
 
-rectangle "c3"  #aaffff {
-:Actor Name: as A1
+rectangle "C3" #lightblue {
+    Dev --> (Create Application)
+    Dev --> (Run Application)
+    Dev --> (Deploy Application)
+    SDev --> (Manage Application Stack)
+    SDev --> (Manage Service Template)
+    SDev --> (Test Application Stack)
+    Ops --> (Manage Infrastructure)
+    Ops --> (Create Policies)
+    Ops --> (Create Environments)
 
-(Use Case Name) as UCN
+    (Run Application) --> Cloud
+    (Deploy Application) --> Cloud
+    (Manage Infrastructure) --> Cloud
+    (Test Application Stack) --> Cloud
 }
 
 
 @enduml
+

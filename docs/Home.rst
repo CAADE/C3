@@ -1,3 +1,5 @@
+.. _Home:
+
 C3 Overview
 ===========
 
@@ -6,11 +8,6 @@ This reference architecture shows the use cases, and specs for implementing the 
 broken up into several different components and sections.
 An introductory video that gives a brief overview of `Common Cloud Core <https://youtu.be/0s_tC5ZEWM4>`_.
 
-
-Use Cases
----------
-.. image:: UseCases/UseCases.png
-
 .. toctree::
    :maxdepth: 1
    :glob:
@@ -18,16 +15,21 @@ Use Cases
 
    **/UseCase*
 
+.. image:: /UseCases/UseCases.png
+
+
 Users
 -----
-.. toctree::
-:maxdepth: 1
-     :glob:
 
-     **/Actor*
+.. toctree::
+    :maxdepth: 1
+    :glob:
+
+     /**/Actor*
 
 High Level Concepts
 -------------------
+
 * **Application Stack** - contains a reference to services that are required to make an Application. There can be different configurations based on Environments
 * **Service** -  represents a service running in different environments. Example: A MongoDB service could be a simple instance or a HA solution based on the environment it is running in.
 * **Composite** Service - represents an aggregation of services that are managed together. There can be multiple configurations of composite services basd on environments.

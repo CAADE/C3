@@ -7,21 +7,15 @@ This reference architecture shows the use cases, and specs for implementing the 
 broken up into several different components and sections.
 An introductory video that gives a brief overview of `Common Cloud Core <https://youtu.be/0s_tC5ZEWM4>`_.
 
-Users
------
-
 .. toctree::
    :maxdepth: 1
-   :caption: Actors
+   :caption: Users
 
    /**/Actor*
 
-High level Use Cases
---------------------
-
 .. toctree::
    :maxdepth: 1
-   :caption: Use Cases
+   :caption: High Level Use Cases
 
    /**/UseCase*
 
@@ -51,6 +45,7 @@ how these components work together to fulfill the high level use cases.
 
 Process Architecture
 --------------------
+
 The subsystems of C3 request information from each other to accomplish the use cases of the system.
 This diagram shows how these microservices are connected and what they share between each other.
 
@@ -58,6 +53,7 @@ This diagram shows how these microservices are connected and what they share bet
 
 Deployment model
 ----------------
+
 The architecture consists of several micro services that form the application this diagram shows how those
 microservices are connected together, deployed and storage requirements.
 
