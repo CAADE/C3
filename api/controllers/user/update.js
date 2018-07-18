@@ -1,32 +1,25 @@
-
 module.exports = {
 
   friendlyName: 'user update',
 
-  description: 'Add description',
+  description: 'Update User',
 
   inputs: {
-    /* <parameter name>: {
-      description: 'The ID of the user to look up.',
-      type: '<parameter type>',
-      required: true
-    },
-    */
     name: {
       description: 'Description of Attribute',
       type: 'string',
       required: true
-},
-cloud: {
+    },
+    cloud: {
       description: 'Description of Attribute',
       type: 'string',
       required: true
-},
-uname: {
+    },
+    uname: {
       description: 'Description of Attribute',
       type: 'string',
       required: true
-},
+    },
 
     mode: {
       description: 'results format: json or html',
@@ -53,10 +46,12 @@ uname: {
 
     try {
       let user = await User.findOne(inputs.userId);
-      if (!user) {return exits.notFound('/signup');}
+      if (!user) {
+        return exits.notFound('/signup');
+      }
 
       // Display the results
-      if(inputs.mode === 'json') {
+      if (inputs.mode === 'json') {
         // Return json
         return exits.json({name: user.name});
       }

@@ -2,9 +2,7 @@
 module.exports = {
 
   friendlyName: 'hardware capacity',
-
-  description: 'Add description',
-
+  description: 'Plan for Capacity of the Clouds',
   inputs: {
 
     mode: {

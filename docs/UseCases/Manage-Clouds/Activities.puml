@@ -12,6 +12,6 @@ fork again
 fork again
 :Map Machine Types to Cloud;
 end fork
-:Remove Cloud;
+:Destroy Cloud;
 stop
 @enduml

@@ -2,12 +2,24 @@
 
 left to right direction
 
-:Application-Daveloper: as Actor
+:Application Developer: as Dev
 
-rectangle "system.name" {
-    (Use Case) as U1
+rectangle "Application Manager" #lightblue {
+    (Create an Application) as CA
+    (Launch application\nin an environment) as LAE
+    (Run Command) as RC
+    (View Service and\nApplication Processes) as VSAP
+    (Kill Application\nand Services) as KAS
+    (Get Logs) as GL
+    (Deploy an Application) as DA
 }
 
-Actor --> U1
+Dev --> CA
+Dev --> LAE
+Dev --> RC
+Dev --> VSAP
+Dev --> KAS
+Dev --> GL
+Dev --> DA
 
 @enduml

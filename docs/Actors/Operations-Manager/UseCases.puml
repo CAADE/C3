@@ -1,13 +1,17 @@
 @startuml
-
 left to right direction
 
-:Operations-Manager: as Actor
+:Operations Engineer: as Ops
 
-rectangle "system.name" {
-    (Use Case) as U1
+rectangle "Operations Manager" #lightblue {
+Ops --> (Create Policy)
+Ops --> (Manage Policy)
+Ops --> (Manage Running\nApplications)
+Ops --> (Plan Capacity)
+Ops --> (Manage Users)
+Ops --> (Manage Clouds)
+Ops --> (Manage Environments)
+Ops --> (Map Cloud Resources)
 }
-
-Actor --> U1
-
 @enduml
+

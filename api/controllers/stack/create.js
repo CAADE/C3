@@ -1,9 +1,7 @@
 module.exports = {
 
   friendlyName: 'stack create',
-
-  description: 'Add description',
-
+  description: 'Create Stack',
   inputs: {
     name: {
       description: 'Name of the stack',
@@ -114,7 +112,6 @@ module.exports = {
             }
           }
           if (links.length > 0) {
-            console.log("Servicelet links", links);
             await Servicelet.addToCollection(servicelet.id, 'links',  links);
           }
         }

@@ -113,7 +113,6 @@ module.exports = {
 
     // Save some time by sending the replicas together as one request to the cloud broker.
     resources = await sails.helpers.broker.getResources.with({requests: requests});
-    console.log('\nDone binding', parent.name);
     return exits.success();
   }
 };

@@ -3,7 +3,7 @@ module.exports = {
 
   friendlyName: 'hardware list',
 
-  description: 'Add description',
+  description: 'List Hardware per cloud',
 
   inputs: {
     cloud: {

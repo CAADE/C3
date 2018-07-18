@@ -2,7 +2,7 @@ module.exports = {
 
   friendlyName: 'cloud update',
 
-  description: 'Add description',
+  description: 'Update a Cloud',
 
   inputs: {
     name: {

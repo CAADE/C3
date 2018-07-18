@@ -2,6 +2,7 @@
 
 Manage Environments
 ===================
+
 The :ref:`Actor-Operations-Manager` manages environments and the :ref:`Actor-Application-Developer` uses the environments
 to develop,test and deploy applications and services.
 

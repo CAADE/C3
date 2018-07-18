@@ -3,16 +3,9 @@ module.exports = {
 
   friendlyName: 'user list',
 
-  description: 'Add description',
+  description: 'List Users',
 
   inputs: {
-    /* <parameter name>: {
-      description: 'The ID of the user to look up.',
-      type: '<parameter type>',
-      required: true
-    },
-    */
-    
     mode: {
       description: 'results format: json or html',
       type: 'string',

@@ -40,6 +40,7 @@ module.exports = {
       for(let j in request.requirements) {
         let requirement = request.requirements[j];
         console.log("Requirement", requirement);
+
         // response.resources.push(resource.id);
       }
       resources.push(response);

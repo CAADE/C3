@@ -1,20 +1,35 @@
 @startuml
-|Operations-Manager|
+|Operations Manager|
 start
-|#ffffaa|system.name|
 fork
-:Create Application Stack;
-:Modify Application Stack;
-:Version Application Stack;
+|#lightblue|C3|
+:Manage Applications;
+:List Applications;
+:Kill Application;
+:Get Application Logs;
 fork again
-:Create Service Stack;
-:Modify Service Stack;
-:Version Service Stack;
+:Manage Environments;
+:List Environments;
+:Create Environment;
+:Destory Environment;
+fork again
+:Manage Policies;
+:List Policies;
+:Create Policy;
+:Check Policy;
+:Destroy Policy;
+fork again
+:Manage Users;
+:Create User;
+:List Users;
+:Destory User;
+fork again
+:Map Cloud Resources;
+:Map Images;
+:Map Machine Types;
+:Map Users;
 fork end
-|#aaffff|Application Manager|
-:Test Application Stack;
-:Create an Application;
-:Launch an Application in an environment;
-:Kill Application and Services;
+|Operations Manager|
 stop
 @enduml
+

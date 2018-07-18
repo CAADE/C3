@@ -1,14 +1,14 @@
 .. _UseCase-Manage-Applications:
 
-Use Case Manage-Applications
-====================
+Manage Applications
+===================
 
-_Description_
+Manage Applications is performed by the :ref:`Actor-Application-Developer`.
 
 Actors
 ------
 
-* _Actors_
+* :ref:`Actor-Application-Developer`
 
 Activities
 ----------

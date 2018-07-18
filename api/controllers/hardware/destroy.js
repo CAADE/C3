@@ -1,9 +1,7 @@
 module.exports = {
 
   friendlyName: 'hardware destroy',
-
-  description: 'Add description',
-
+  description: 'Destroy Hardware',
   inputs: {
     name: {
       description: 'Name of the hardware to destroy',

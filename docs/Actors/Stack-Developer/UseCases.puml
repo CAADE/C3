@@ -1,13 +1,22 @@
 @startuml
-
 left to right direction
 
-:Stack-Developer: as Actor
+:Stack Developer: as Admin
 
-rectangle "system.name" {
-    (Use Case) as U1
+rectangle "Stack App Manager" #lightblue {
+  Admin --> (Create Application Stack)
+  Admin --> (Modify Application Stack)
+  Admin --> (Version Application Stack)
+  Admin --> (Create Service Template)
+  Admin --> (Modify Service Template)
+  Admin --> (Version Service Template)
 }
 
-Actor --> U1
+rectangle "Application Manager" #lightblue  {
+  Admin --> (Test Application Stack)
+  (Test Application Stack) --> (Create an Application)
+  (Test Application Stack) --> (Launch an Application\nin an environment)
+  (Test Application Stack) --> (Kill Application and Services)
+}
 
 @enduml

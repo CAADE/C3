@@ -2,9 +2,7 @@
 module.exports = {
 
   friendlyName: 'hardware populate',
-
-  description: 'Add description',
-
+  description: 'Populate Hardware (multi create)',
   inputs: {
     cloud: {
       description: 'Cloud that the hardware will be added to',
@@ -38,8 +36,10 @@ module.exports = {
       let cloud = await Cloud.findOne({name:inputs.cloud});
       if (!cloud) {return exits.notFound('/notFound');}
       let hw = this.req.body.hardware;
+      console.log(hw);
       let hardware = [];
       for(let name in hw) {
+        console.log("Adding:", name);
         let item = hw[name];
         item.name = name;
         item.available = item.capacity;

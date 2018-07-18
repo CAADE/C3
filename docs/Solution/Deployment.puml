@@ -1,12 +1,49 @@
 @startuml
 
-package  c3 {
-  cloud cloud1
-  node node1
-  artifact artifact1
-  storage objectStore
-  database db1
-  folder folder1
+
+package  common-cloud-core #dddddd {
+  interface CLI
+  interface Web
+  interface REST
+  package Portal #aaffff {
+    component portal
+    component applicationManager
+    component stackManager
+    component operationsManager
+  }
+  package Orchestrator #aaffaa {
+    component applicationOrchestrator
+    component environmentManager
+    component policyManager
+    component applicationAnalytics
+  }
+  package "Registry" #ffffaa {
+    component identityManager
+    component artifactRepository
+    database "identityRepo"
+    database "artifactRepo"
+  }
+  package "Control" #ffaaaa {
+    component cloudBroker
+    component dataCoordinator
+    component provisionEngine
+  }
 }
 
+rectangle ports {
+    80 .. Web
+    5432 .. REST
+}
+
+identityManager -- identityRepo
+artifactRepository -- artifactRepo
+
+CLI -- portal
+Web -- portal
+REST -- portal
+
+portal -- applicationManager
+portal -- stackManager
+portal -- operationsManager
 @enduml
+

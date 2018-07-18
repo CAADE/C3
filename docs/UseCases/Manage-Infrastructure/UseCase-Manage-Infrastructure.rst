@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Infrastructure:
 
-Use Case Manage-Infrastructure
-====================
+Manage Infrastructure
+=====================
 
 _Description_
 

@@ -1,0 +1,12 @@
+@startuml
+salt
+{
+  Operations Manager
+
+  [Manage Environments]
+  [Manage Policies]
+  [Manage Applications]
+  [Manage Users]
+  [Map Cloud Resources]
+}
+@enduml

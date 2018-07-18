@@ -1,12 +1,64 @@
 @startuml
-start
-  partition subsystem1 {
-    :first;
-    :seond;
-  }
-  partition subsystem2 {
-    :third;
-    :forth;
-  }
-stop
+
+package "Portal" #aaffff {
+    package "Application Manager" as AM { }
+    package "Operations Manager" as OM { }
+    package "Stack Manager" as SM { }
+}
+package "Orchestrator" #aaffaa {
+    package "Application Orchestrator" as AO { }
+    package "Environment Manager" as EM { }
+    package "Policy Manager" as PM { }
+    package "Application Analytics" as AA { }
+}
+package "Registry" #ffffaa {
+    package "Identity Manager" as IM { }
+    package "Artifact Repository" as AR { }
+}
+
+package "Control" #ffaaaa {
+    package "Cloud Broker" as CB { }
+    package "Data Coordinator" as DC { }
+    package "Provision Engine" as PE { }
+}
+
+package "Private Cloud" #cccccc {
+}
+
+package "Public Cloud"  #cccccc {
+}
+
+package "Telemetry" #ffaa44 { }
+
+AM --> PM
+AM --> AO
+AM --> EM
+SM --> PM
+SM --> AO
+SM --> EM
+OM --> EM
+OM --> PM
+OM --> IM
+
+OM --> AR
+SM --> AR
+
+PM --> AO
+EM --> AO
+EM -> AR
+
+IM -> AO
+IM -> CB
+AO -> CB
+AO --> PE
+AO -> DC
+AA -> AO
+AR -> DC
+Control --> "Private Cloud"
+Control --> "Public Cloud"
+"Private Cloud" --> Telemetry
+"Public Cloud" --> Telemetry
+Telemetry -> AA
+
 @enduml
+

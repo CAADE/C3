@@ -1,14 +1,14 @@
 .. _UseCase-Manage-Application-Stack:
 
-Use Case Manage-Application-Stack
-====================
+Manage Application Stack
+========================
 
-_Description_
+Manage Application Stacks, and Service Stacks.
 
 Actors
 ------
 
-* _Actors_
+* :ref:`Actor-Stack-Developer`
 
 Activities
 ----------

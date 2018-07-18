@@ -1,9 +1,7 @@
 module.exports = {
 
   friendlyName: 'hardware create',
-
-  description: 'Add description',
-
+  description: 'Create Hardware of a specific type',
   inputs: {
     name: {
       description: 'Name of the hardware',

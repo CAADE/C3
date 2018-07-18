@@ -1,12 +1,6 @@
 module.exports = {
-
-
   friendlyName: 'Launch',
-
-
   description: 'Launch app.',
-
-
   inputs: {
     app: {
       description: 'Name or ref of the Application',
@@ -86,16 +80,11 @@ module.exports = {
         await ApplicationInstance.addToCollection(appInstance.id, 'services', service.id);
         await sails.helpers.service.set.with({service:service,replicas:servicelet.replicas});
       }
-
-
-
       return exits.success(appInstance);
     }
     catch (e) {
       console.error(e);
       return exits.notFound(e);
     }
-    // All done.
-
   }
 };

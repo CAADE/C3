@@ -2,9 +2,7 @@
 module.exports = {
 
   friendlyName: 'stack debug',
-
-  description: 'Add description',
-
+  description: 'Debug Stack',
   inputs: {
     /* <parameter name>: {
       description: 'The ID of the user to look up.',

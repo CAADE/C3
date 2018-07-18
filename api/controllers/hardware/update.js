@@ -1,9 +1,7 @@
 module.exports = {
 
   friendlyName: 'hardware update',
-
-  description: 'Add description',
-
+  description: 'Update Hardware',
   inputs: {
     name: {
       description: 'name of the Hardware to update',

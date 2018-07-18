@@ -1,11 +1,45 @@
-
 @startuml
-package projectName {
-component component1
-component component2
-interface i1
 
+node switch
+folder "glusterfs:gvol1" as gv1 #aaffff {
+        folder "example"
 }
-i1 - component1
-component1 --> component2
+folder "glusterfs:gvol2" #aaffff {
+        folder "example2"
+}
+node node0 {
+    component service
+    folder "tmp"
+}
+node node1 {
+    component service1
+    folder "tmp "
+}
+node node2 {
+    component service2
+    folder "tmp  "
+}
+node node3 {
+    component service3
+    folder "tmp   "
+}
+node node4 {
+
+    component service4
+    folder "tmp    "
+}
+
+switch === node0 : 172.16.0.100
+switch === node1 : 172.16.0.101
+switch === node2 : 172.16.0.102
+switch === node3 : 172.16.0.103
+switch === node4 : 172.16.0.104
+
+gv1 . tmp
+gv1 . (tmp )
+gv1 . (tmp  )
+gv1 . (tmp   )
+gv1 . (tmp    )
+
 @enduml
+

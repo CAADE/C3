@@ -75,7 +75,7 @@ To limit the amount of change to the application stack, a version of the stacks 
 specific version of the service definitions (stacks). The late binding also gives the ability to change multiple
 micro-services at the same time and test the changes in different environments, quickly without the lengthy process.
 
-** Mapping Service Insances to Cloud Resources **
+**Mapping Service Insances to Cloud Resources**
 
 Instead of sending individual requests to the cloud broker a decision was made to send multiple requests at the same
 time giving the cloud broker the ability to map responses to the requests in batches instead of individually.
@@ -94,8 +94,9 @@ or an array of requests. An example of a single request to the cloud broker is a
 The design decision has to be made on when to ask for the requests of the Cloud Broker. While the Service graph is being
 traversed and created, or after the complete graph is created and then sent as one big request to the brokers.
 
-** Design Discussion **
-July 15, 2018
+**Design Discussion**
+
+*July 15, 2018*
 
     Should I get resources right now. Or map the resources at the highest level of the Service graph.
 

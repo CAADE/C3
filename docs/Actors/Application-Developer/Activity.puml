@@ -5,7 +5,7 @@ partition "Application-Daveloper"  #cccccc {
   (*) --> "Start Here"
 }
 
-partition "system.name" #ffaaaa {
+partition "C3" #ffaaaa {
   "Start Here" --> "Here"
 }
 

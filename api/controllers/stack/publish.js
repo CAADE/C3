@@ -1,10 +1,7 @@
 
 module.exports = {
-
   friendlyName: 'stack publish',
-
-  description: 'Add description',
-
+  description: 'Publish Stack',
   inputs: {
     /* <parameter name>: {
       description: 'The ID of the user to look up.',

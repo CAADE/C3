@@ -1,0 +1,37 @@
+@startuml
+
+package C3 #lightblue {
+    class MaintainPlan {
+
+    }
+
+    class Service {
+    }
+
+    Service *--> Script
+
+    class Script {
+    }
+
+    class Environment {
+    }
+
+    class ServiceStack {
+    }
+
+    class Image {
+    }
+
+    class CompositeService {
+
+    }
+
+    Service <|-- CompositeService
+    CompositeService *--> Service : composes
+    ServiceStack *-> MaintainPlan
+    Service o--> Image
+    ServiceStack o--> Service : composes
+    Service -> Service : links
+}
+
+@enduml

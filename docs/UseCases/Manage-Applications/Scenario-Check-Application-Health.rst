@@ -9,6 +9,7 @@ Check Application Health using CLI and Web Interface with application name.
 
 
 ** CLI **
+
 .. code-block:: none
 
   # c3 application check --name <string>

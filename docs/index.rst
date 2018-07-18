@@ -1,11 +1,7 @@
-c3
-===============================================
+Common Cloud Core (C3) Multi-Hybrid Cloud
+=========================================
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Overview
-
-   Solution/Solution
+:ref:`Home`
 
 .. toctree::
    :maxdepth: 2

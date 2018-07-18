@@ -13,8 +13,12 @@ for(let i in files) {
     let items = file.split(/-/);
     items.shift();
     let cfile = items.join('/');
-    const action = require('../api/controllers/' + cfile);
-    program.command(items[1] + ' [options]', action.description);
+    try {
+      const action = require('../api/controllers/' + cfile);
+      program.command(items[1] + ' [options]', action.description);
+    }
+    catch(e) {
+    }
   }
 }
 program.parse(process.argv);

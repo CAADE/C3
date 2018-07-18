@@ -1,9 +1,7 @@
 module.exports = {
 
   friendlyName: 'cloud destroy',
-
-  description: 'Add description',
-
+  description: 'Destroy a Cloud by name',
   inputs: {
     name: {
       description: 'Name of the cloud',

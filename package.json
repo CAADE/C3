@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
+    "test": "npm run custom-tests && echo 'Done.'",
     "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 && echo '✔  Your code looks good.'",
     "design": "java -jar docs/plantuml.jar docs/*.puml docs/**/*.puml",
     "custom-tests": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js",

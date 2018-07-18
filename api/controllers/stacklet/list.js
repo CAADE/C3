@@ -30,9 +30,6 @@ module.exports = {
   fn: async function (inputs, exits, env) {
     try {
       let stacklets = await Stacklet.find().populateAll();
-      for(let i in stacklets) {
-        console.log("STACKLETS:", stacklets[i].servicelets);
-      }
 
       // Display the results
       if(inputs.mode === 'json') {

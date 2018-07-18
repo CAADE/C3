@@ -1,21 +1,24 @@
 .. _UseCase-Manage-Clouds:
 
-Use Case Manage-Clouds
-====================
+Manage Clouds
+=============
 
-_Description_
+Manage Clouds is performed by the :ref:`Actor-Operations-Manager`.
 
 Actors
 ------
 
-* _Actors_
+* :ref:`Actor-Operations-Manager`
 
 Activities
 ----------
 
 .. image:: Activities.png
 
-* _Activities_
+* Create Cloud
+* List Cloud
+* Map Resources
+* Destroy Cloud
 
 Detail Scenarios
 ----------------
@@ -29,6 +32,6 @@ Detail Scenarios
 Systems Involved
 ----------------
 
-* _Systems_
-
+* :ref:`SubSystem-Artifact-Repository`
+* :ref:`SubSystem-Operations-Manager`
 
