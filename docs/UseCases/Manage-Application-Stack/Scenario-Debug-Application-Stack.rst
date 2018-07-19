@@ -1,7 +1,8 @@
 .. _Scenario-Debug-Application-Stack:
 
 Debug Application Stack
-====================
+=======================
+
 Debug Application Stack using CLI and Web Interface with ... <parameters>
 
 .. image:: Debug-Application-Stack.png

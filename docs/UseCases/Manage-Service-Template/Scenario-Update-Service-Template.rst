@@ -1,7 +1,8 @@
 .. _Scenario-Update-Service-Template:
 
 Update Service Template
-====================
+=======================
+
 Update Service Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Update-Service-Template.png

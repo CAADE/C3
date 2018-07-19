@@ -1,7 +1,8 @@
 .. _Scenario-Destroy-Service:
 
 Destroy Service
-====================
+===============
+
 Destroy Service using CLI and Web Interface with ... <parameters>
 
 .. image:: Destroy-Service.png

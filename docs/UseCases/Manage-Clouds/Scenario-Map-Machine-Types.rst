@@ -1,7 +1,8 @@
 .. _Scenario-Map-Machine-Types:
 
 Map Machine Types
-====================
+=================
+
 Map Machine Types using CLI and Web Interface with ... <parameters>
 
 .. image:: Map-Machine-Types.png

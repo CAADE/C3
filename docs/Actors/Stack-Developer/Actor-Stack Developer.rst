@@ -10,18 +10,17 @@ Use Cases
 .. image:: UseCases.png
 
 * :ref:`Scenario-Create-Application-Stack`
-* :ref:`Scenario-Modify-Application-Stack`
-* :ref:`Scenario-Version-Application-Stack`
+* :ref:`Scenario-Update-Application-Stack`
 * :ref:`Scenario-Create-Service-Template`
 * :ref:`Scenario-Launch-And-Test-Service-Template`
-* :ref:`Scenario-Modify-Service-Template`
+* :ref:`Scenario-Update-Service-Template`
 * :ref:`Scenario-Publish-Service-Template`
 * :ref:`Scenario-Create-Service-Template`
-* :ref:`Scenario-Launch-And-Test-Service`
+* :ref:`Scenario-Test-Service`
 * :ref:`Scenario-Update-Service`
 * :ref:`Scenario-Publish-Service`
-* :ref:`Scenario-List-Services`
-* :ref:`Scenario-View-Service`
+* :ref:`Scenario-List-Service`
+* :ref:`Scenario-Get-Service`
 
 Primary Workflow
 ----------------

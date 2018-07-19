@@ -1,7 +1,8 @@
 .. _Scenario-Enable-Service-Template:
 
 Enable Service Template
-====================
+=======================
+
 Enable Service Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Enable-Service-Template.png

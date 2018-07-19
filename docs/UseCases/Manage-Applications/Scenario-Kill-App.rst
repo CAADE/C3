@@ -1,7 +1,8 @@
 .. _Scenario-Kill-App:
 
 Kill App
-====================
+========
+
 Kill App using CLI and Web Interface with ... <parameters>
 
 .. image:: Kill-App.png

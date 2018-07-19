@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Users:
 
-Use Case Manage-Users
-====================
+Manage Users
+============
 
 _Description_
 

@@ -2,6 +2,7 @@
 
 Get Service Template
 ====================
+
 Get Service Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Get-Service-Template.png

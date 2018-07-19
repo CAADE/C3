@@ -1,9 +1,9 @@
 .. _SubSystem-Policy-Manager:
 
-Policy-Manager
-============
+Policy Manager
+==============
 
-Policy-Manager is a subsystem of c3 ...
+Policy Manager is a subsystem of c3 ...
 
 Use Cases
 ---------

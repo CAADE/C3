@@ -1,7 +1,8 @@
 .. _Scenario-Update-Stack-Template:
 
 Update Stack Template
-====================
+=====================
+
 Update Stack Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Update-Stack-Template.png

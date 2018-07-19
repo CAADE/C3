@@ -1,7 +1,8 @@
 .. _Scenario-Update-User:
 
 Update User
-====================
+===========
+
 Update User using CLI and Web Interface with ... <parameters>
 
 .. image:: Update-User.png

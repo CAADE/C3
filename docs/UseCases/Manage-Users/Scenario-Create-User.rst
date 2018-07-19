@@ -1,7 +1,8 @@
 .. _Scenario-Create-User:
 
 Create User
-====================
+===========
+
 Create User using CLI and Web Interface with ... <parameters>
 
 .. image:: Create-User.png

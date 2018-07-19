@@ -13,10 +13,10 @@ Use Cases
 * :ref:`Scenario-Launch-Application`
 * Select Application Stack
 * Select Environment
-* :ref:`Scenario-Debug-Application`
+* :ref:`Scenario-Debug-App`
 * :ref:`Scenario-Create-Application-Stack`
 * :ref:`Scenario-Update-Application-Stack`
-* :ref:`Scenario-Delete-Application-Stack`
+* :ref:`Scenario-Destroy-Application-Stack`
 
 
 .. image:: UseCases.png

@@ -1,7 +1,8 @@
 .. _Scenario-List-Stack-Template:
 
 List Stack Template
-====================
+===================
+
 List Stack Template using CLI and Web Interface with ... <parameters>
 
 .. image:: List-Stack-Template.png

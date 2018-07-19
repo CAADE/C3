@@ -1,7 +1,8 @@
 .. _Scenario-Disable-Service-Template:
 
 Disable Service Template
-====================
+========================
+
 Disable Service Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Disable-Service-Template.png

@@ -1,7 +1,8 @@
 .. _Scenario-Destroy-Service-Template:
 
 Destroy Service Template
-====================
+========================
+
 Destroy Service Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Destroy-Service-Template.png

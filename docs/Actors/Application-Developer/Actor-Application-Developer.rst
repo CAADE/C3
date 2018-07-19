@@ -11,14 +11,13 @@ Use Cases
 
 .. image:: UseCases.png
 
-* :ref:`Scenario-Create-Application`
-* :ref:`Scenario-Launch-Application`
-* :ref:`Scenario-Update-Application`
-* :ref:`Scenario-Run-Command`
-* :ref:`Scenario-View-Service`
-* :ref:`Scenario-Kill-Application`
-* :ref:`Scenario-Get-Logs`
-* :ref:`Scenario-Deploy-Application`
+* :ref:`Scenario-Create-App`
+* :ref:`Scenario-Launch-App`
+* :ref:`Scenario-Run-App`
+* :ref:`Scenario-Get-Service`
+* :ref:`Scenario-Kill-App`
+* :ref:`Scenario-Get-Service-Logs`
+* :ref:`Scenario-Deploy-App`
 
 Typical Workflow
 ~~~~~~~~~~~~~~~~
@@ -28,26 +27,9 @@ for the typical application developer.
 
 .. image:: Workflow.png
 
-Application Developer
-=====================
-
-Use Cases
----------
-
-.. image:: UseCases.png
-
-Activities
-----------
-
-.. image:: Activity.png
-
-Workflow
---------
-
-.. image:: Workflow.png
-
 User Interface
 --------------
+User Interface for the Application Developer.
 
 .. image: ApplicationDeveloperWeb.png
 
@@ -57,7 +39,7 @@ Command Line Interface
 The command line for the :ref:`Actor-Developer` uses the 'c3 app' command. For details
 see the scenarios.
 
-.. code:: none
+.. code-block:: none
 
   # c3 app checkhealth [options]  Check the Health of the Application Instance
   # c3 app create [options]       Create Application with stack and name

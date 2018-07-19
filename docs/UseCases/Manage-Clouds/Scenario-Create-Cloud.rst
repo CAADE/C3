@@ -1,7 +1,8 @@
 .. _Scenario-Create-Cloud:
 
 Create Cloud
-====================
+============
+
 Create Cloud using CLI and Web Interface with ... <parameters>
 
 .. image:: Create-Cloud.png

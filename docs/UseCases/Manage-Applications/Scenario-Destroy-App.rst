@@ -1,7 +1,8 @@
 .. _Scenario-Destroy-App:
 
 Destroy App
-====================
+===========
+
 Destroy App using CLI and Web Interface with ... <parameters>
 
 .. image:: Destroy-App.png

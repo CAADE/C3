@@ -1,7 +1,8 @@
 .. _Scenario-Test-Service:
 
 Test Service
-====================
+============
+
 Test Service using CLI and Web Interface with ... <parameters>
 
 .. image:: Test-Service.png

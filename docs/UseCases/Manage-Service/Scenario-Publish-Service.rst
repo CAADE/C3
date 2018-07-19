@@ -1,7 +1,8 @@
 .. _Scenario-Publish-Service:
 
 Publish Service
-====================
+===============
+
 Publish Service using CLI and Web Interface with ... <parameters>
 
 .. image:: Publish-Service.png

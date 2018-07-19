@@ -1,7 +1,8 @@
 .. _Scenario-Publish-App:
 
 Publish App
-====================
+===========
+
 Publish App using CLI and Web Interface with ... <parameters>
 
 .. image:: Publish-App.png

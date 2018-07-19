@@ -8,16 +8,16 @@ broken up into several different components and sections.
 An introductory video that gives a brief overview of `Common Cloud Core <https://youtu.be/0s_tC5ZEWM4>`_.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Users
 
    ../Actors/index
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: High Level Use Cases
 
-   ../UseCases/**/UseCase*
+   ../UseCases/index
 
 .. image:: /UseCases/UseCases.png
 

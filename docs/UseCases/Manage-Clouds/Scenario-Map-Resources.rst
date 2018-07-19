@@ -1,7 +1,8 @@
 .. _Scenario-Map-Resources:
 
 Map Resources
-====================
+=============
+
 Map Resources using CLI and Web Interface with ... <parameters>
 
 .. image:: Map-Resources.png

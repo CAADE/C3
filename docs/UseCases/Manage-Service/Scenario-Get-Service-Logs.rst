@@ -1,7 +1,8 @@
 .. _Scenario-Get-Service-Logs:
 
 Get Service Logs
-====================
+================
+
 Get Service Logs using CLI and Web Interface with ... <parameters>
 
 .. image:: Get-Service-Logs.png

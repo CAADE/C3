@@ -1,7 +1,8 @@
 .. _Scenario-Destroy-Clouds:
 
 Destroy Clouds
-====================
+==============
+
 Destroy Clouds using CLI and Web Interface with ... <parameters>
 
 .. image:: Destroy-Clouds.png

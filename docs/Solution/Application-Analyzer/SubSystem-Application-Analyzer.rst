@@ -17,7 +17,7 @@ Use Cases
 Users
 -----
 
-* :ref:`SubSystem-Telemtry`
+* :ref:`SubSystem-Telemetry`
 * :ref:`SubSystem-Application-Manager`
 
 .. image:: UserInteraction.png

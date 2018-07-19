@@ -1,7 +1,8 @@
 .. _Scenario-Destroy-Application-Stack:
 
 Destroy Application Stack
-====================
+=========================
+
 Destroy Application Stack using CLI and Web Interface with ... <parameters>
 
 .. image:: Destroy-Application-Stack.png

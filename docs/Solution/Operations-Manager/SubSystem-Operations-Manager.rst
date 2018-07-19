@@ -1,9 +1,9 @@
 .. _SubSystem-Operations-Manager:
 
-Operations-Manager
-============
+Operations Manager
+==================
 
-Operations-Manager is a subsystem of c3 ...
+Operations Manager is a subsystem of C3 ...
 
 Use Cases
 ---------

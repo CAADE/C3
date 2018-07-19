@@ -1,0 +1,7 @@
+version: "2"
+services:
+  sphinx:
+    image: "nickjer/docker-sphinx"
+    volumes:
+      - "${PWD}:/doc"
+    user: "1000:1000"

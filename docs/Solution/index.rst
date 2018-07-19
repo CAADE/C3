@@ -18,9 +18,9 @@ These are the micro-services of the c3 Solution that are used to implement the s
 
 .. toctree::
   :glob:
-  :maxdepth: 1
+  :maxdepth: 2
 
-  **/Service*
+  Services/index
 
 Implementations
 ---------------

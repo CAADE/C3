@@ -1,7 +1,8 @@
 .. _Scenario-Destroy-User:
 
 Destroy User
-====================
+============
+
 Destroy User using CLI and Web Interface with ... <parameters>
 
 .. image:: Destroy-User.png

@@ -1,9 +1,9 @@
 .. _SubSystem-Identity-Manager:
 
-Identity-Manager
-============
+Identity Manager
+================
 
-Identity-Manager is a subsystem of c3 ...
+Identity Manager is a subsystem of C3 ...
 
 Use Cases
 ---------

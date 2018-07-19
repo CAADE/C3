@@ -1,7 +1,8 @@
 .. _Scenario-Run-App:
 
 Run App
-====================
+=======
+
 Run App using CLI and Web Interface with ... <parameters>
 
 .. image:: Run-App.png

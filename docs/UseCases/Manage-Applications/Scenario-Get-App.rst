@@ -1,7 +1,8 @@
 .. _Scenario-Get-App:
 
 Get App
-====================
+=======
+
 Get App using CLI and Web Interface with ... <parameters>
 
 .. image:: Get-App.png

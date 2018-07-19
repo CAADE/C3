@@ -1,7 +1,8 @@
 .. _Scenario-Map-Images:
 
 Map Images
-====================
+==========
+
 Map Images using CLI and Web Interface with ... <parameters>
 
 .. image:: Map-Images.png

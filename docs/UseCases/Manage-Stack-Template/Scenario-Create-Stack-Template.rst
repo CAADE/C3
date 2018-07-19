@@ -1,7 +1,8 @@
 .. _Scenario-Create-Stack-Template:
 
 Create Stack Template
-====================
+=====================
+
 Create Stack Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Create-Stack-Template.png

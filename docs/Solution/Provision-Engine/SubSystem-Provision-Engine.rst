@@ -1,9 +1,9 @@
 .. _SubSystem-Provision-Engine:
 
-Provision-Engine
-============
+Provision Engine
+================
 
-Provision-Engine is a subsystem of c3 ...
+Provision Engine is a subsystem of c3 ...
 
 Use Cases
 ---------

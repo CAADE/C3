@@ -1,7 +1,8 @@
 .. _Scenario-Create-Application-Stack:
 
 Create Application Stack
-====================
+========================
+
 Create Application Stack using CLI and Web Interface with ... <parameters>
 
 .. image:: Create-Application-Stack.png

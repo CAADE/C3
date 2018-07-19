@@ -1,7 +1,8 @@
 .. _Scenario-List-User:
 
 List User
-====================
+=========
+
 List User using CLI and Web Interface with ... <parameters>
 
 .. image:: List-User.png

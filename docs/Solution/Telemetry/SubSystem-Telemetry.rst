@@ -1,7 +1,7 @@
 .. _SubSystem-Telemetry:
 
 Telemetry
-============
+=========
 
 Telemetry is a subsystem of c3 ...
 

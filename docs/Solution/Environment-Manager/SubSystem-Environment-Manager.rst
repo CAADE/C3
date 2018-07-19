@@ -1,9 +1,9 @@
 .. _SubSystem-Environment-Manager:
 
-Environment-Manager
-============
+Environment Manager
+===================
 
-Environment-Manager is a subsystem of c3 ...
+Environment Manager is a subsystem of c3 ...
 
 Use Cases
 ---------

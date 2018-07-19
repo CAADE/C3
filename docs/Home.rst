@@ -9,11 +9,11 @@ broken up into several different components and sections.
 An introductory video that gives a brief overview of `Common Cloud Core <https://youtu.be/0s_tC5ZEWM4>`_.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
    :caption: High Level Use Cases
 
-   **/UseCase*
+   UseCases/index
 
 .. image:: /UseCases/UseCases.png
 
@@ -22,10 +22,10 @@ Users
 -----
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :glob:
 
-     /**/Actor*
+    Actors/index
 
 High Level Concepts
 -------------------
@@ -43,7 +43,7 @@ Environments and Applications
 -----------------------------
 
 Service Stacks and Services can have a definition for individual environments. This allows
-:ref:`Actor-Application-Developer`s to deploy applications to multiple environments.  In this example a simple
+:ref:`Actor-Application-Developer` to deploy applications to multiple environments.  In this example a simple
 NodeJS Application Stack can be deployed into four different environments with different service
 topologies. Please look at Example for more [detailed examples](Examples) of a NodeJS application running in
 multiple Environments.
@@ -79,6 +79,7 @@ Production Environment
 Production Environment with High Availability Services to make sure we have QoS required by
 SLAs that have been agreed to. Additional Services have been added and multiple instances of
 primary services are running.
+
 
 .. image:: ApplicationsEnvironmentsProduction.png
 

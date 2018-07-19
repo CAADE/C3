@@ -1,7 +1,8 @@
 .. _Scenario-Update-Service:
 
 Update Service
-====================
+==============
+
 Update Service using CLI and Web Interface with ... <parameters>
 
 .. image:: Update-Service.png

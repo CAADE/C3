@@ -1,7 +1,8 @@
 .. _Scenario-List-App:
 
-List App
-====================
+List Apps
+=========
+
 List App using CLI and Web Interface with ... <parameters>
 
 .. image:: List-App.png

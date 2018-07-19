@@ -1,7 +1,8 @@
 .. _Scenario-Create-Service-Template:
 
 Create Service Template
-====================
+=======================
+
 Create Service Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Create-Service-Template.png

@@ -36,10 +36,10 @@ module.exports = {
     for(let i in inputs.requests) {
       let request = inputs.requests[i];
       let response = {instance:request.instance, resources: [] };
-      console.log("response:", response);
+      console.log('response:', response);
       for(let j in request.requirements) {
         let requirement = request.requirements[j];
-        console.log("Requirement", requirement);
+        console.log('Requirement', requirement);
 
         // response.resources.push(resource.id);
       }

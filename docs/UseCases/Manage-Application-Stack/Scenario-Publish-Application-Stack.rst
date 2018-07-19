@@ -1,7 +1,8 @@
 .. _Scenario-Publish-Application-Stack:
 
 Publish Application Stack
-====================
+=========================
+
 Publish Application Stack using CLI and Web Interface with ... <parameters>
 
 .. image:: Publish-Application-Stack.png

@@ -1,7 +1,7 @@
 .. _UseCase-Manage-Service-Template:
 
-Use Case Manage-Service-Template
-====================
+Manage Service Template
+=======================
 
 _Description_
 

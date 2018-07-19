@@ -1,7 +1,8 @@
 .. _Scenario-List-Service:
 
 List Service
-====================
+============
+
 List Service using CLI and Web Interface with ... <parameters>
 
 .. image:: List-Service.png

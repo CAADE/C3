@@ -1,7 +1,8 @@
 .. _Scenario-Publish-Stack-Template:
 
 Publish Stack Template
-====================
+======================
+
 Publish Stack Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Publish-Stack-Template.png

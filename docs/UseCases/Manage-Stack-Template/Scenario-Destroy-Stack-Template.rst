@@ -1,7 +1,8 @@
 .. _Scenario-Destroy-Stack-Template:
 
 Destroy Stack Template
-====================
+======================
+
 Destroy Stack Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Destroy-Stack-Template.png

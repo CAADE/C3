@@ -1,7 +1,8 @@
 .. _Scenario-Debug-App:
 
 Debug App
-====================
+=========
+
 Debug App using CLI and Web Interface with ... <parameters>
 
 .. image:: Debug-App.png

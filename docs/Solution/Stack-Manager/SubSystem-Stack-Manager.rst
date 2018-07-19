@@ -1,9 +1,9 @@
 .. _SubSystem-Stack-Manager:
 
-Stack-Manager
-============
+Stack Manager
+=============
 
-Stack-Manager is a subsystem of c3 ...
+Stack Manager is a subsystem of c3 ...
 
 Use Cases
 ---------

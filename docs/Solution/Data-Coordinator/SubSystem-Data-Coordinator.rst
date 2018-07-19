@@ -1,7 +1,7 @@
 .. _SubSystem-Data-Coordinator:
 
-Data-Coordinator
-============
+Data Coordinator
+================
 
 Data-Coordinator is a subsystem of c3 ...
 
@@ -22,7 +22,7 @@ Users
 Uses
 ----
 
-* :ref:`Data-Coordinator`
+* :ref:`SubSystem-Data-Coordinator`
 
 Interface
 ---------

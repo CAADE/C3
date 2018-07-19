@@ -1,7 +1,8 @@
 .. _Scenario-Update-Application-Stack:
 
 Update Application Stack
-====================
+========================
+
 Update Application Stack using CLI and Web Interface with ... <parameters>
 
 .. image:: Update-Application-Stack.png

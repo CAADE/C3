@@ -1,7 +1,8 @@
 .. _Scenario-Deploy-App:
 
 Deploy App
-====================
+==========
+
 Deploy App using CLI and Web Interface with ... <parameters>
 
 .. image:: Deploy-App.png

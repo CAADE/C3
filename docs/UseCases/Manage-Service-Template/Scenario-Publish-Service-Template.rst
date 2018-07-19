@@ -1,7 +1,8 @@
 .. _Scenario-Publish-Service-Template:
 
 Publish Service Template
-====================
+========================
+
 Publish Service Template using CLI and Web Interface with ... <parameters>
 
 .. image:: Publish-Service-Template.png
