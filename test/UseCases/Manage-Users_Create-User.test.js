@@ -1,9 +1,9 @@
 var Promise = require('bluebird');
 
-describe('Use Case Manage-Users', function () {
-  describe('Create-User Scenario', function () {
-    it('Create-User Primary Test', function (done) {
-       done();
+describe('Use Case Manage-Users', () => {
+  describe('Create-User Scenario', () => {
+    it('Create-User Primary Test', (done) => {
+      done();
     });
   });
 });

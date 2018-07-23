@@ -31,6 +31,25 @@ module.exports = {
     // ]};
     // Format of the resource mapping will be
     // resources =[ {instance: serviceInstance.id, resources: [id1, id2, id3]}, ... ]
+
+    // Evaluate Policies in the Policy Engine
+    let requests = await sails.helpers.policy.evaluate.with({requests:inputs.requests});
+
+    // Iterate the cloud and ask for reservations.
+    let clouds = await Cloud.find();
+    let reservations = [];
+    for(let i in clouds) {
+      // Connect to the cloud and then ask it for a set of reservations from the requests.
+      let cloud = clouds[i];
+      let reservers = await sails.helpers.cloud.getReservations.with({cloud:cloud, requests:requests});
+      reservations.push(reservers);
+    }
+    // Evaluate Reservations
+    // Select Reservations
+    // Map Resources to "Service Instance"
+    // Call the Provision Engine to deploy software on the resource.
+
+    // Destroy Reservations
     let resources = [];
 
     for(let i in inputs.requests) {

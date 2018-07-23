@@ -37,7 +37,8 @@ module.exports = {
     },
     notFound: {
       description: 'No item with the specified ID was found in the database.',
-      responseType: 'redirect'
+      responseType: '',
+      statusCode: 404
     }
   },
 
@@ -46,7 +47,7 @@ module.exports = {
     try {
       let stack = await ServiceStack.findOne({name: inputs.stack});
       if (!stack) {
-        return exits.notFound('/notFound');
+        return exits.notFound(inputs.stack + " Not Found");
       }
       if (!inputs.hasOwnProperty('config')) {
         inputs.config = {};

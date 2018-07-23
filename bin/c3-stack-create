@@ -31,7 +31,6 @@ for (key in action.inputs) {
     url += '&' + key + '=' + program[key];
   }
 }
-
 let args = {headers: {'Content-Type': 'application/json'}, data: {}};
 if (program.filename) {
   args.data = YAML.load(program.filename);

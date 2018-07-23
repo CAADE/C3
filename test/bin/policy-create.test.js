@@ -1,18 +1,18 @@
 const exec = require('child_process').exec;
-const taction = require('../../controllers/policy/create');
+const taction = require('../../api/controllers/policy/create');
 
 describe('policy create Script Test Cases', function () {
   describe('Primary policy create Test Case', function () {
     it('Primary policy create Good Path', function (done) {
       // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
-      let command = "bin/c3-policy-create ";
+      let command = "bash -c bin/c3-policy-create ";
       let params = [];
-      _.each(Object.keys(taction.inputs), function (key) {
+      for(let key in taction.inputs) {
         if(key != "mode") {
           params.push("--" + key + " " + taction.inputs[key].type);
         }
-      });
-      command += params.join(" ");
+      }
+ command += params.join(" ");
       let results = exec(command, function (err, stdout, stderr) {
         console.log(stderr);
         if (err) {

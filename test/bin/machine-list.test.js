@@ -1,18 +1,18 @@
 const exec = require('child_process').exec;
-const taction = require('../../controllers/machine/list');
+const taction = require('../../api/controllers/machine/list');
 
 describe('machine list Script Test Cases', function () {
   describe('Primary machine list Test Case', function () {
     it('Primary machine list Good Path', function (done) {
       // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
-      let command = "bin/c3-machine-list ";
+      let command = "bash -c bin/c3-machine-list ";
       let params = [];
-      _.each(Object.keys(taction.inputs), function (key) {
+      for(let key in taction.inputs) {
         if(key != "mode") {
           params.push("--" + key + " " + taction.inputs[key].type);
         }
-      });
-      command += params.join(" ");
+      }
+ command += params.join(" ");
       let results = exec(command, function (err, stdout, stderr) {
         console.log(stderr);
         if (err) {

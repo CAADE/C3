@@ -1,9 +1,9 @@
 var Promise = require('bluebird');
 
-describe('Use Case Manage-Applications', function () {
-  describe('Check-Application-Health Scenario', function () {
-    it('Check-Application-Health Primary Test', function (done) {
-       done();
+describe('Use Case Manage-Applications', () => {
+  describe('Check-Application-Health Scenario', () => {
+    it('Check-Application-Health Primary Test', (done) => {
+      done();
     });
   });
 });

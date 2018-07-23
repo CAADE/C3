@@ -1,17 +1,36 @@
 @startuml
 
 partition "Application Orchestrator"  #dddddd {
-  (*) -> "Launch Application"
+  (*) --> "Launch Application"
+  (*) --> "Rebalance Application"
 }
 
 partition "Cloud Broker" #ccffff {
   "Launch Application" --> "Get Resources"
-  "Get Resources" --> "Evaluate Policies"
-  "Evaluate Policies" --> "Select Cloud"
+  "Rebalance Application" --> "Get Resources"
 }
 
-partition "Cloud"  #dddddd {
-  "Select Cloud" --> "Create Resource"
+partition "Policy Engine" #dddddd {
+
+  "Get Resources" -> "Evaluate Policies"
+}
+
+partition "Cloud Broker" {
+  "Evaluate Policies" --> "Create Requests"
+}
+
+partition "Cloud" #dddddd {
+  "Create Requests" --> "Create Reservations"
+}
+partition "Cloud Broker" {
+  "Create Reservations" --> "Evaluate Reservations"
+  "Evaluate Reservations" --> "Select Reservations"
+  "Evaluate Reservations" --> "Release Reservations"
+}
+partition "Cloud" #dddddd {
+  "Select Reservations" --> "Select Resource"
+  "Select Reservations" --> "Create Resource"
+  "Release Reservations" --> "Destroy Reservations"
 }
 
 @enduml

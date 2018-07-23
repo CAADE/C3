@@ -1,5 +1,24 @@
 @startuml
 
+package "Artifact Repository" #dddddd {
+  class "Service" {
+  }
+}
+
+package "Application Orchestrator" #dddddd {
+  class "Service Instance" {
+  }
+  class "Resource Request" {
+    string type
+    number quantity
+    string name
+  }
+  class Request {
+  }
+}
+
+Service *--> "Service Instance"
+
 package "Cloud Broker" #aaffff {
     interface "Cloud Broker" {
       broker()
@@ -26,6 +45,9 @@ package "Cloud Broker" #aaffff {
     Resource <|-- NetworkResource
 }
 package Cloud #dddddd {
+    class Reservation {
+      datetime goodTil
+    }
   abstract Hardware {
   }
   class Compute {
@@ -39,25 +61,21 @@ package Cloud #dddddd {
   Hardware <|-- Network
 }
 
-package "Artifact Repository" #dddddd {
-  class "Service" {
-  }
-}
-
-package "Application Orchestrator" #dddddd {
-  class "ServiceInstance" {
-  }
-}
-
 CLI ()-- "Cloud Broker"
 REST ()-- "Cloud Broker"
 Web ()-- "Cloud Broker"
 "Cloud Broker" .. Resource
 
-Resource o-> Hardware
+Resource o--> Hardware
 
-ServiceInstance o--> Resource
-Service *--> ServiceInstance
+"Service Instance" o--> Resource
+Request o-> "Service Instance"
+Request *--> "Resource Request"
+
+Reservation o--> "Request"
+Reservation o--> "Hardware"
+Reservation .. Resource
+
 
 @enduml
 

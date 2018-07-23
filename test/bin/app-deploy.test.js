@@ -1,18 +1,18 @@
 const exec = require('child_process').exec;
-const taction = require('../../controllers/app/deploy');
+const taction = require('../../api/controllers/app/deploy');
 
 describe('app deploy Script Test Cases', function () {
   describe('Primary app deploy Test Case', function () {
     it('Primary app deploy Good Path', function (done) {
       // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
-      let command = "bin/c3-app-deploy ";
+      let command = "bash -c bin/c3-app-deploy ";
       let params = [];
-      _.each(Object.keys(taction.inputs), function (key) {
+      for(let key in taction.inputs) {
         if(key != "mode") {
           params.push("--" + key + " " + taction.inputs[key].type);
         }
-      });
-      command += params.join(" ");
+      }
+ command+= params.join(" ");
       let results = exec(command, function (err, stdout, stderr) {
         console.log(stderr);
         if (err) {
