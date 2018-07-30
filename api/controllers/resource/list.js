@@ -30,17 +30,16 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let user = await User.findOne(inputs.userId);
-      if (!user) {return exits.notFound('/signup');}
+      let resources = await Resource.find().populateAll();
 
       // Display the results
       if(inputs.mode === 'json') {
         // Return json
-        return exits.json({name: user.name});
+        return exits.json(resources);
       }
       else {
         // Display the welcome view.
-        return exits.success({name: user.name});
+        return exits.success(resources);
       }
     }
     catch (e) {

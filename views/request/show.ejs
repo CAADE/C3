@@ -1,0 +1,369 @@
+<head>
+  <title>Artifact Repo</title>
+
+  <style>
+    body {
+      color: #d3d3d3;
+      font: 12pt arial;
+      background-color: #000000;
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #mynetwork {
+      width: 100%;
+      height: 1000px;
+      border: 1px solid #444444;
+      background-color: #222222;
+    }
+  </style>
+  <script type='text/javascript' src="/js/vis.js"></script>
+  <script type='text/javascript' src="/js/dcvis.js"></script>
+  <script type='text/javascript' src="/dependencies/sails.io.js"></script>
+</head>
+
+<body>
+<table width="100%" height="1000px">
+  <tr>
+    <td height="90%"></td>
+    <td width="220px"></td>
+  </tr>
+  <tr>
+    <td>
+      <div id="mynetwork">
+        <div class="vis-network" tabindex="900"
+             style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+          <canvas width="1000" height="1600"
+                  style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 1000px;"></canvas>
+        </div>
+      </div>
+    </td>
+    <td valign="top" width="220px">
+      <table id="events" width="210px">
+        <tr>
+          <td colspan="2"><h4>Events</h4></td>
+        </tr>
+      </table>
+
+      <table id="policies" width="210px">
+        <tr>
+          <td colspan="2"><h4>Policies</h4></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td>Hardware</td>
+          <td id="hardwareMetric">-</td>
+          <td>Resources</td>
+          <td id="resourceMetric">-</td>
+          <td>Instances</td>
+          <td id="instanceMetric">-</td>
+          <td>Services</td>
+          <td id="serviceMetric">-</td>
+          <td>Apps</td>
+          <td id="appMetric">-</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<a href="/dc/initialize">Reset Simulation</a>
+
+<button onclick="removeHardware('compute');">Remove Compute</button>
+<button onclick="addCompute();">Add Compute</button>
+<button onclick="removeHardware('storage');">Remove Storage</button>
+<button onclick="addStorage();">Add Storage</button>
+<button onclick="changeLayout();">Change Layout</button>
+<button onclick="addApp('Basic');">Basic Annotation</button>
+<button onclick="addApp('Alert');">Alert System</button>
+<button onclick="addApp('External');">External Application</button>
+<button onclick="addApp('Analytics');">Analytics</button>
+<button onclick="addApp('DeepLearning');">Deep Learning</button>
+<button onclick="network.fit();">Zoom All</button>
+
+<script type="text/javascript">
+  //////////////////////////////////////////////
+  // Initialize
+  let container = document.getElementById('mynetwork');
+  let options = {
+    layout: {
+      hierarchical: {
+        enabled: true,
+        sortMethod: 'directed'
+      }
+    },
+    nodes: {
+      shape: 'dot',
+      size: 20,
+      font: {
+        size: 15,
+        color: '#ffffff'
+      },
+      borderWidth: 2,
+      level: 15
+    },
+    groups: {
+      requestIntialized: {
+        shape: 'triangleDown',
+        color: {background: '#886600', border: '#886600'},
+        level: 1,
+      },
+      requestSatisfied: {
+        shape: 'triangleDown',
+        color: {background: '#aa8800', border: '#aa8800'},
+        level: 2,
+      },
+      requestSelected: {
+        shape: 'triangleDown',
+        color: {background: '#ccaa00', border: '#ccaa00'},
+        level: 3,
+      },
+      reservationCreated: {
+        shape: 'triangle',
+        color: {background: '#00ffff', border: '#00ffff'},
+        level: 4,
+      },
+      reservationRejected: {
+        shape: 'triangle',
+        color: {background: '#ff0000', border: '#ff0000'},
+        level: 5,
+      },
+       reservationConfirmed: {
+        shape: 'triangle',
+        color: {background: '#00ff00', border: '#00ff00'},
+        level: 6,
+      },
+      Application: {
+        shape: 'triangle',
+        color: {background: '#004466', border: '#004466'},
+        level: 2,
+      },
+      AppInstance: {
+        shape: 'triangle',
+        color: {background: '#006688', border: '#006688'},
+        level: 3,
+      },
+      Service: {
+        shape: 'triangle',
+        color: {background: '#0088aa', border: '#0088aa'},
+        level: 4,
+      },
+      ServiceInstance: {
+        shape: 'triangle',
+        color: {background: '#00aacc', border: '#00aacc'},
+        level: 5,
+      },
+      storage: {
+        shape: 'hexagon',
+        color: {background: '#cc00cc', border: '#cc00cc'},
+        level: 10,
+      },
+      rstorage: {
+        shape: 'hexagon',
+        color: {background: '#00cc66', border: '#00cc66'},
+        level: 6,
+      },
+      compute: {
+        shape: 'square',
+        color: {background: '#880088', border: '#880088'},
+        level: 11,
+      },
+      rcompute: {
+        shape: 'square',
+        color: {background: '#00ffaa', border: '#00ffaa'},
+        level: 7
+      },
+      network: {
+        shape: 'star',
+        color: {background: '#aa00aa', border: '#aa00aa'},
+        level: 12,
+      },
+      rnetwork: {
+        shape: 'star',
+        color: {background: '#00aa44', border: '#00aa44'},
+        level: 8
+      },
+      cloud: {
+        shape: 'cloud',
+        color: {background: '#cccc00', border: '#cccc00'},
+        level: 15
+      }
+    }
+  };
+  let dc = new DCVis(container, options);
+
+  function addApp(app) {
+    io.socket.get('/app/create?mode=json&name=' + app, function (body, response) {
+    });
+  }
+
+  ///////////////////////////////////////////
+  // CLOUD
+  function getCloud() {
+    io.socket.get('/cloud/list?mode=json', function (body, response) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let obj = body[i];
+        items.push({
+          id: 'd' + obj.id,
+          label: obj.name,
+          group: 'cloud',
+          title: obj.name
+        });
+      }
+      dc.addNode(items);
+    });
+    io.socket.on('cloud', function (obj) {
+      item = {
+        id: 'd' + obj.id,
+        label: obj.name,
+        group: 'cloud',
+        title: obj.name
+      };
+      dc.addNode([item]);
+      getMetrics();
+    });
+    io.socket.on('cloud-destroy', function (body) {
+      for (let i = 0; i < body.length; i++) {
+        removeNode('d' + body[i].id);
+      }
+      getMetrics();
+    });
+  }
+
+  ///////////////////////////////////////////////
+  // HARDWARE
+  function getHardware() {
+    io.socket.get('/hardware/list?mode=json', function (body, response) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let hw = body[i];
+        items.push({
+          id: 'h' + hw.id,
+          label: hw.name,
+          group: hw.type,
+          title: hw.name + ' (' + hw.available + "/" + hw.capacity + ')'
+        });
+        if (hw.cloud) {
+          dc.addEdge({to: 'd' + hw.cloud.id, from: 'h' + hw.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('hardware', function (body) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let hw = body[i];
+        items.push({
+          id: 'h' + hw.id,
+          label: hw.name,
+          group: hw.type,
+          title: hw.name + ' (' + hw.available + "/" + hw.capacity + ')'
+        });
+        if (hw.cloud.id) {
+          dc.addEdge({to: 'd' + hw.cloud.id, from: 'h' + hw.id});
+        }
+        else if (hw.cloud) {
+          dc.addEdge({to: 'd' + hw.cloud, from: 'h' + hw.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+
+    io.socket.on('hardware-destroy', function (body) {
+      for (let i = 0; i < body.length; i++) {
+        removeNode('h' + body[i].id);
+      }
+      getMetrics();
+    });
+  }
+
+  ///////////////////////////////////////////////
+  // Requests
+  function getRequests() {
+    io.socket.get('/request/list?mode=json', function (body, response) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let entry = body[i];
+        items.push({
+          id: 'rq' + entry.id,
+          label: entry.instance.name,
+          group: 'request' + entry.state,
+          title: entry.state + '(' + entry.requirements + ')'
+        });
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('request', function (body) {
+       let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let entry = body[i];
+        items.push({
+          id: 'rq' + entry.id,
+          label: entry.instance.name,
+          group: 'request' + entry.state,
+          title: entry.state + '(' + entry.requirements + ')'
+        });
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+  }
+  ///////////////////////////////////////////////
+  // Reservations
+  function getReservations() {
+    io.socket.get('/reservation/list?mode=json', function (body, response) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let entry = body[i];
+        items.push({
+          id: 'rv' + entry.id,
+          label: entry.instance.name,
+          group: 'reservation' + entry.state,
+          title: entry.state + '(' + entry.quantity + ')'
+        });
+        dc.addEdge({to: 'rv' + entry.id, from: 'rq' + entry.request});
+        dc.addEdge({from: 'rv' + entry.id, to: 'h' + entry.hardware});
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('reservation', function (body) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let entry = body[i];
+        items.push({
+          id: 'rv' + entry.id,
+          label: entry.instance.name,
+          group: 'reservation' + entry.state,
+          title: entry.state + '(' + entry.quantity + ')'
+        });
+        dc.addEdge({to: 'rv' + entry.id, from: 'rq' + entry.request});
+        dc.addEdge({from: 'rv' + entry.id, to: 'h' + entry.hardware});
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+  }
+
+  function init() {
+    getRequests();
+    getCloud();
+    getHardware();
+    getReservations();
+  }
+
+  init();
+</script>
+</body>
+</html>
+

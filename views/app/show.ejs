@@ -109,76 +109,65 @@
       level: 15
     },
     groups: {
-      Stack: {
-        color: {background: '#aa6622', border: '#aa6622'},
-        shape: 'triangle',
-        level: 5,
-      },
-      Stacklet: {
-        color: {background: '#ff8844', border: '#ff8844'},
-        shape: 'diamond',
-        level: 6,
-      },
-      Servicelet: {
-        shape: 'diamond',
-        color: {background: '#ffaa88', border: '#ffaa88'},
-        level: 8,
+      environment: {
+        shape: 'triangleDown',
+        color: {background: '#aa8800', border: '#aa8800'},
+        level: 1,
       },
       Application: {
-        shape: 'hexagon',
+        shape: 'triangle',
         color: {background: '#004466', border: '#004466'},
-        level: 9,
+        level: 2,
       },
       AppInstance: {
-        shape: 'hexagon',
+        shape: 'triangle',
         color: {background: '#006688', border: '#006688'},
-        level: 10,
+        level: 3,
       },
       Service: {
-        shape: 'hexagon',
+        shape: 'triangle',
         color: {background: '#0088aa', border: '#0088aa'},
-        level: 11,
+        level: 4,
       },
       ServiceInstance: {
-        shape: 'hexagon',
+        shape: 'triangle',
         color: {background: '#00aacc', border: '#00aacc'},
-        level: 12,
+        level: 5,
       },
-      Image: {
-        shape: 'square',
-        color: {background: '#ffcc88', border: '#ffcc88'},
-        level: 7,
-        size: 10
+      storage: {
+        shape: 'hexagon',
+        color: {background: '#cc00cc', border: '#cc00cc'},
+        level: 10,
       },
       rstorage: {
         shape: 'hexagon',
         color: {background: '#00cc66', border: '#00cc66'},
-        level: 14,
+        level: 6,
       },
       compute: {
         shape: 'square',
-        color: {background: '#006688', border: '#006688'},
-        level: 13,
+        color: {background: '#880088', border: '#880088'},
+        level: 11,
       },
       rcompute: {
         shape: 'square',
         color: {background: '#00ffaa', border: '#00ffaa'},
-        level: 15
+        level: 7
       },
       network: {
         shape: 'star',
-        color: {background: '#004466', border: '#004466'},
-        level: 15,
+        color: {background: '#aa00aa', border: '#aa00aa'},
+        level: 12,
       },
       rnetwork: {
         shape: 'star',
         color: {background: '#00aa44', border: '#00aa44'},
-        level: 16
+        level: 8
       },
       cloud: {
         shape: 'cloud',
         color: {background: '#cccc00', border: '#cccc00'},
-        level: 17
+        level: 15
       }
     }
   };
@@ -204,7 +193,6 @@
         });
       }
       dc.addNode(items);
-      dc.drawEdges();
     });
   }
 
@@ -267,88 +255,6 @@
   }
 
   ///////////////////////////////////////////////
-  // SERVICESSTACKS
-  function getStacks() {
-    io.socket.get('/stack/list?mode=json', function (body, response) {
-      let items = [];
-      let es = [];
-
-      for (let i = 0; i < body.length; i++) {
-        let app = body[i];
-        let item = {
-          id: 'a' + app.id,
-          label: app.name,
-          group: 'Stack',
-          title: app.name + ' (' + app.stacklets.length + ')'
-        };
-        items.push(item);
-        for (let j = 0; j < app.stacklets.length; j++) {
-          let stacklet = app.stacklets[j];
-          let item = {
-            id: 's' + stacklet.id,
-            label: stacklet.name,
-            group: 'Stacklet',
-            title: stacklet.name + '(' + stacklet.env + ')'
-          };
-          items.push(item);
-          dc.addEdge({to: item.id, from: 'a' + app.id});
-          if (stacklet.image) {
-            let img = {
-              id: 'i' + stacklet.id,
-              label: stacklet.image,
-              group: 'Image',
-              title: stacklet.image
-            };
-            items.push(img);
-            dc.addEdge({to: img.id, from: item.id});
-          }
-        }
-      }
-      dc.addNode(items);
-      dc.drawEdges();
-    });
-    io.socket.on('stack', function (obj) {
-    });
-  }
-
-  ///////////////////////////////////////////////
-  // STACKLET
-  function getStacklets() {
-    io.socket.get('/stacklet/list?mode=json', function (body, response) {
-      let items = [];
-      let es = [];
-
-      for (let i in body) {
-        let stacklet = body[i];
-        let item = {
-          id: 's' + stacklet.id,
-          label: stacklet.name,
-          group: 'Stacklet',
-          title: stacklet.name + ' (' + stacklet.env.name + ')'
-        };
-        items.push(item);
-        for (let j in stacklet.servicelets) {
-          let servicelet = stacklet.servicelets[j];
-          let item = {
-            id: 'l' + servicelet.id,
-            label: servicelet.name,
-            group: 'Servicelet',
-            title: servicelet.name + ' (' + stacklet.replicas + ')'
-          };
-          items.push(item);
-          dc.addEdge({to: item.id, from: 's' + stacklet.id});
-          dc.addEdge({from: item.id, to: 'a' + servicelet.stack});
-        }
-      }
-      dc.addNode(items);
-      dc.drawEdges();
-    });
-    io.socket.on('stacklet', function (obj) {
-
-    });
-  }
-
-  ///////////////////////////////////////////////
   // SERVICES
   function getServices() {
     io.socket.get('/service/list?mode=json', function (body, response) {
@@ -364,7 +270,6 @@
           title: service.name + ' (' + service.replicas + ')',
         };
         items.push(item);
-        dc.addEdge({from: 'c' + service.id, to: 'l' + service.servicelet.id});
         for (let j in service.children) {
           let item = {
             id: 'c' + service.id,
@@ -416,7 +321,6 @@
           title: app.name,
         };
         items.push(item);
-        dc.addEdge({from: item.id, to: 'a' + app.stack.id});
 
         for (let j in app.instances) {
           let instance = app.instances[j];
@@ -428,7 +332,7 @@
           };
           items.push(item);
           dc.addEdge({to: item.id, from: 'A' + app.id});
-          dc.addEdge({from: item.id, to: 's' + instance.stacklet});
+          dc.addEdge({to: item.id, from: 'e' + instance.env});
         }
       }
       dc.addNode(items);
@@ -439,10 +343,157 @@
     });
   }
 
+  ///////////////////////////////////////////
+  // CLOUD
+  function getCloud() {
+    io.socket.get('/cloud/list?mode=json', function (body, response) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let obj = body[i];
+        items.push({
+          id: 'd' + obj.id,
+          label: obj.name,
+          group: 'cloud',
+          title: obj.name
+        });
+      }
+      dc.addNode(items);
+    });
+    io.socket.on('cloud', function (obj) {
+      item = {
+        id: 'd' + obj.id,
+        label: obj.name,
+        group: 'cloud',
+        title: obj.name
+      };
+      dc.addNode([item]);
+      getMetrics();
+    });
+    io.socket.on('cloud-destroy', function (body) {
+      for (let i = 0; i < body.length; i++) {
+        removeNode('d' + body[i].id);
+      }
+      getMetrics();
+    });
+  }
+
+  ///////////////////////////////////////////////
+  // RESOURCES
+  function getResources() {
+    io.socket.get('/resource/list?mode=json', function (body, response) {
+      let items = [];
+      let es = [];
+      for (let i = 0; i < body.length; i++) {
+        let obj = body[i];
+        items.push({
+          id: 'r' + obj.id,
+          label: obj.name,
+          group: 'r' + obj.type,
+          title: obj.name + ' (' + obj.available + "/" + obj.capacity + ')'
+        });
+        for(let j in obj.instances) {
+          let instance = obj.instances[j];
+          dc.addEdge({from: 'si' + instance.id, to: 'r' + obj.id});
+        }
+        if (obj.hardware) {
+          dc.addEdge({to: 'h' + obj.hardware.id, from: 'r' + obj.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('resource', function (obj) {
+      let item = {
+        id: 'r' + obj.id,
+        label: obj.name,
+        group: 'r' + obj.type,
+        title: obj.name + ' (' + obj.available + "/" + obj.capacity + ')'
+      };
+      dc.addNode([item]);
+      dc.addEdge({to: 'h' + obj.hardware.id, from: 'r' + obj.id});
+      dc.drawEdges();
+      getMetrics();
+    });
+    io.socket.on('resource-move', function (obj) {
+      // Select the hw and the resource.
+      let rid = 'r' + obj.resource.id;
+      let hid = 'h' + obj.to;
+      let oid = 'h' + obj.from;
+      removeEdge(rid, oid);
+      let snodes = network.getSelectedNodes();
+      snodes.push(rid);
+      snodes.push(hid);
+      network.selectNodes(snodes);
+
+      // Add an edge between them.
+      dc.addEdge({to: hid, from: rid});
+      dc.drawEdges();
+      getMetrics();
+    });
+    io.socket.on('resource-destroy', function (body) {
+      for (let i = 0; i < body.length; i++) {
+        removeNode('r' + body[i].id);
+      }
+      getMetrics();
+    });
+  }
+  ///////////////////////////////////////////////
+  // HARDWARE
+  function getHardware() {
+    io.socket.get('/hardware/list?mode=json', function (body, response) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let hw = body[i];
+        items.push({
+          id: 'h' + hw.id,
+          label: hw.name,
+          group: hw.type,
+          title: hw.name + ' (' + hw.available + "/" + hw.capacity + ')'
+        });
+        if (hw.cloud) {
+          dc.addEdge({to: 'd' + hw.cloud.id, from: 'h' + hw.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('hardware', function (body) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let hw = body[i];
+        items.push({
+          id: 'h' + hw.id,
+          label: hw.name,
+          group: hw.type,
+          title: hw.name + ' (' + hw.available + "/" + hw.capacity + ')'
+        });
+        if (hw.cloud.id) {
+          dc.addEdge({to: 'd' + hw.cloud.id, from: 'h' + hw.id});
+        }
+        else if (hw.cloud) {
+          dc.addEdge({to: 'd' + hw.cloud, from: 'h' + hw.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+
+    io.socket.on('hardware-destroy', function (body) {
+      for (let i = 0; i < body.length; i++) {
+        removeNode('h' + body[i].id);
+      }
+      getMetrics();
+    });
+  }
+
+
   function init() {
+    getEnv();
     getApps();
-    getStacks();
-    getStacklets();
+    getCloud();
+    getHardware();
+    // getStacks();
+    // getStacklets();
     getServices();
     getResources();
   }

@@ -116,7 +116,6 @@ module.exports = {
           }
         }
       }
-      console.log(dstack);
       if (inputs.mode === 'json') {
         return exits.json(stack);
       }

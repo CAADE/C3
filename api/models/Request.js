@@ -1,5 +1,5 @@
 /**
- * Resource.js
+ * Request.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -8,30 +8,21 @@
 module.exports = {
 
   attributes: {
-
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
-    name: { type: 'string' },
-    type: { type: 'string' },
-    capacity: { type: 'number' },
-    available: { type: 'number' },
-    state: { type: 'string', isIn: ['enabled', 'disabled'] },
-
+    state: {type: 'string'},
+    requirement: {type: 'json'},
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
 
-
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    hardware: { model: 'Hardware' },
-    cloud: {model: 'Cloud'},
-    instances: { collection: 'ServiceInstance', via: 'resources' }
-  },
+    instance: {model: 'ServiceInstance'}
+  }
 
 };
 

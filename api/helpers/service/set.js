@@ -62,10 +62,12 @@ module.exports = {
     // Ask the cloud Broker for the resources.
     // The Resource request should have the ServiceInstance, and Resource Requirements in each request.
     // request = { instance: serviceInstance, requirements: [
-    //    {type: 'compute', quantity},
+    //    {type: 'compute', quantity: 1},
     //    {name: 'storage1', quantity: 100},
     //    {name: 'network1', quantity: 2},
     // ]};
+    // Request has changed to be a request for each type of resource requested.
+    // Requirements will still be a list but for one resource request.
     let requests = [];
 
     ///////////////////////////////////////////////////////////////////////////////////
@@ -81,15 +83,23 @@ module.exports = {
           state: 'Initialized',
           service: parent.id
         }).fetch();
-        let request = { instance: instance, requirements: [ {type: 'compute', qunatity: 1},]};
-        for(let mtype in stacklet.resources) {
+        requests.push(await Request.create({
+          state: 'Initialized',
+          instance: instance.id,
+          requirements: [{type: 'compute', quantity: 1}]
+        }).fetch());
+
+        for (let mtype in stacklet.resources) {
           let rtype = stacklet.resources[mtype];
-          for(let rname in rtype) {
+          for (let rname in rtype) {
             let resource = rtype[rname];
-            request.requirements.push({type:mtype, name: rname, quantity: resource});
+            requests.push(await Request.create({
+              state: 'Initialized',
+              instance: instance.id,
+              requirements: [{type: mtype, name: rname, quantity: resource}]
+            }).fetch());
           }
         }
-        requests.push(request);
       }
       // Not iterate over the servicelets of the stacklet. Basiclaly get all of the children.
       for (let i in stacklet.servicelets) {
@@ -112,8 +122,8 @@ module.exports = {
     // These policies should be attached to the request.
 
     // Save some time by sending the replicas together as one request to the cloud broker.
-    resources = await sails.helpers.broker.getResources.with({requests: requests});
-    return exits.success();
+    let resources = await sails.helpers.broker.getResources.with({requests: requests});
+    return exits.success(resources);
   }
 };
 

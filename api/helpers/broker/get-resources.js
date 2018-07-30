@@ -33,38 +33,52 @@ module.exports = {
     // resources =[ {instance: serviceInstance.id, resources: [id1, id2, id3]}, ... ]
 
     // Evaluate Policies in the Policy Engine
-    let requests = await sails.helpers.policy.evaluate.with({requests:inputs.requests});
+
+    let requests = await sails.helpers.policy.evaluate.with({requests: inputs.requests});
 
     // Iterate the cloud and ask for reservations.
     let clouds = await Cloud.find();
     let reservations = [];
-    for(let i in clouds) {
+    for (let i in clouds) {
       // Connect to the cloud and then ask it for a set of reservations from the requests.
       let cloud = clouds[i];
-      let reservers = await sails.helpers.cloud.getReservations.with({cloud:cloud, requests:requests});
-      reservations.push(reservers);
-    }
-    // Evaluate Reservations
-    // Select Reservations
-    // Map Resources to "Service Instance"
-    // Call the Provision Engine to deploy software on the resource.
-
-    // Destroy Reservations
-    let resources = [];
-
-    for(let i in inputs.requests) {
-      let request = inputs.requests[i];
-      let response = {instance:request.instance, resources: [] };
-      console.log('response:', response);
-      for(let j in request.requirements) {
-        let requirement = request.requirements[j];
-        console.log('Requirement', requirement);
-
-        // response.resources.push(resource.id);
+      let reservers = await sails.helpers.cloud.getReservations.with({cloud: cloud, requests: requests});
+      for (j in reservers) {
+        reservations.push(reservers[j]);
       }
-      resources.push(response);
     }
-    // Send back the result through the success exit.
+    ////////////////////////////////////////////////////////////////////////////////
+    // Evaluate Reservations
+    // Create a map of reservations based on instances.
+    let maps = {};
+    for (let i in reservations) {
+      let reserve = reservations[i];
+      if (!maps.hasOwnProperty(reserve.request)) {
+        maps[reserve.request] = [];
+      }
+      maps[reserve.request].push(reserve);
+    }
+    // TODO: Need to figure out how to evaluate the reservations.
+    // First evaluation should be to randomly prune the responses and only leave one per requirement.
+    let resources = [];
+    for (let iid in maps) {
+      let entry = maps[iid];
+      for (rid in entry) {
+        if (rid == 0) {
+          let resource = await sails.helpers.cloud.confirmReservation.with({reservation: entry[0]});
+          resources.push(resource);
+          let trequests = await Request.update({id:entry.request}, {state:'Selected'}).fetch();
+          sails.sockets.broadcast('c3', 'request', trequests);
+        }
+        else {
+          // For Reservations not selected. Destroy Reservations
+          await sails.helpers.cloud.freeReservation.with({reservation: entry[rid]});
+        }
+      }
+    }
+
+    // TODO: Call the Provision Engine to deploy software on the resource.
+
     return exits.success(resources);
   }
 

@@ -37,6 +37,7 @@ module.exports.routes = {
   '/hardware/list': {action: 'hardware/list'},
   '/hardware/populate': {action: 'hardware/populate'},
 
+  '/env/show': {action: 'env/show'},
   '/env/create': {action: 'env/create'},
   '/env/update': {action: 'env/update'},
   '/env/destroy': {action: 'env/destroy'},
@@ -65,7 +66,14 @@ module.exports.routes = {
 
   '/app/launch': {action: 'app/launch'},
   '/app/list': {action: 'app/list'},
+  '/app/show': {action: 'app/show'},
   '/app/create': {action: 'app/create'},
+
+  '/reservation/list': {action: 'reservation/list'},
+
+  '/resource/list': {action: 'resource/list'},
+  '/request/list': {action: 'request/list'},
+  '/request/show': {action: 'request/show'},
 
   /***************************************************************************
    *                                                                          *

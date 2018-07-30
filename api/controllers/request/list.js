@@ -1,8 +1,10 @@
 
 module.exports = {
 
-  friendlyName: 'stack list',
-  description: 'List Stacks',
+  friendlyName: 'request list',
+
+  description: 'Add description',
+
   inputs: {
     mode: {
       description: 'results format: json or html',
@@ -28,15 +30,16 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let stacks = await ServiceStack.find().populateAll();
+      let requests = await Request.find().populateAll();
+
       // Display the results
       if(inputs.mode === 'json') {
         // Return json
-        return exits.json(stacks);
+        return exits.json(requests);
       }
       else {
         // Display the welcome view.
-        return exits.success(stacks);
+        return exits.success(requests);
       }
     }
     catch (e) {

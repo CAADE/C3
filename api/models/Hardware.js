@@ -14,6 +14,7 @@ module.exports = {
     name: { type: 'string' },
     type: { type: 'string' },
     capacity: { type: 'number' },
+    reserved: { type: 'number', defaultsTo: 0 },
     available: { type: 'number' },
     state: { type: 'string', isIn: ['disabled', 'enabled'] },
 

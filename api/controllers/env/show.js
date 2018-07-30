@@ -1,8 +1,10 @@
 
 module.exports = {
 
-  friendlyName: 'stack list',
-  description: 'List Stacks',
+  friendlyName: 'env show',
+
+  description: 'Show graph of Environments',
+
   inputs: {
     mode: {
       description: 'results format: json or html',
@@ -14,7 +16,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'env/show'
     },
     json: {
       responseType: '', // with return json
@@ -28,15 +30,13 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let stacks = await ServiceStack.find().populateAll();
-      // Display the results
       if(inputs.mode === 'json') {
         // Return json
-        return exits.json(stacks);
+        return exits.json();
       }
       else {
         // Display the welcome view.
-        return exits.success(stacks);
+        return exits.success();
       }
     }
     catch (e) {

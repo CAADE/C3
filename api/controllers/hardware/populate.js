@@ -36,10 +36,8 @@ module.exports = {
       let cloud = await Cloud.findOne({name:inputs.cloud});
       if (!cloud) {return exits.notFound('/notFound');}
       let hw = this.req.body.hardware;
-      console.log(hw);
       let hardware = [];
       for(let name in hw) {
-        console.log("Adding:", name);
         let item = hw[name];
         item.name = name;
         item.available = item.capacity;
@@ -47,7 +45,6 @@ module.exports = {
         item.cloud = cloud.id;
         hardware.push(await Hardware.create(item).fetch());
       }
-      console.log(hardware);
       sails.sockets.broadcast('c3', 'hardware', hardware);
 
       // Display the results

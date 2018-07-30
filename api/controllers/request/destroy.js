@@ -1,9 +1,18 @@
 
 module.exports = {
 
-  friendlyName: 'stack list',
-  description: 'List Stacks',
+  friendlyName: 'request destroy',
+
+  description: 'Add description',
+
   inputs: {
+    /* <parameter name>: {
+      description: 'The ID of the user to look up.',
+      type: '<parameter type>',
+      required: true
+    },
+    */
+    
     mode: {
       description: 'results format: json or html',
       type: 'string',
@@ -28,15 +37,17 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let stacks = await ServiceStack.find().populateAll();
+      let user = await User.findOne(inputs.userId);
+      if (!user) {return exits.notFound('/signup');}
+
       // Display the results
       if(inputs.mode === 'json') {
         // Return json
-        return exits.json(stacks);
+        return exits.json({name: user.name});
       }
       else {
         // Display the welcome view.
-        return exits.success(stacks);
+        return exits.success({name: user.name});
       }
     }
     catch (e) {
