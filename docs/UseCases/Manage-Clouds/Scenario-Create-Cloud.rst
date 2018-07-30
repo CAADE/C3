@@ -8,7 +8,11 @@ Create Cloud using CLI and Web Interface with ... <parameters>
 .. image:: Create-Cloud.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
+
 .. code-block:: none
 
   # c3 cloud create --name <string> --type <string>
@@ -18,14 +22,19 @@ Create Cloud using CLI and Web Interface with ... <parameters>
   # c3 cloud create --name myCloud4 --type gce
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Create-CloudWeb.png
 
 
-** REST **
+**REST**
 
-cloud/create
+This is an example of the RESTful interface for the scenario.
+
+*cloud/create*
 
 ============  ========  ===================
 Name          Value     Description

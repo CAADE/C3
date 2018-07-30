@@ -8,7 +8,10 @@ Create Environment using CLI and Web Interface with a specified name
 .. image:: Create-Environment.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 env create --name <string>
@@ -17,14 +20,19 @@ Create Environment using CLI and Web Interface with a specified name
   # c3 env create --name prod
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Create-EnvironmentWeb.png
 
 
-** REST **
+**REST**
 
-env/create
+This is an example of the RESTful interface for the scenario.
+
+*env/create*
 
 ============  ========  ===================
 Name          Value     Description

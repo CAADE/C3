@@ -1,9 +1,4 @@
 @startuml
-actor User
-
-
-@enduml
-@startuml
 actor "Operations Manager" as Ops
 participant "Cloud Broker" as CB
 participant bin

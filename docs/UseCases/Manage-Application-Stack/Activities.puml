@@ -2,8 +2,10 @@
 |actorName|
 start
 |#ffffaa|c3|
-:activity1;
-|actor2|
-:activity2;
+:Create Application Stack;
+:Debug Application Stack;
+:Update Application Stack;
+:Publish Application Stack;
+:Destroy Application Stack;
 stop
 @enduml

@@ -8,21 +8,30 @@ across the environment and cloud.
 .. image:: Rebalance-Application.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
+
 .. code-block:: none
 
   # c3 application rebalance --name <string>
   # c3 application rebalance --name myApp
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Rebalance-ApplicationWeb.png
 
 
-** REST **
+**REST**
 
-application/rebalance
+This is an example of the RESTful interface for the scenario.
+
+*application/rebalance*
 
 ============  ========  ===================
 Name          Value     Description

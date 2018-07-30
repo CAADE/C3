@@ -15,14 +15,15 @@ Use Cases
 Users
 -----
 
-* :ref:`Actor-User`
+* :ref:`SubSystem-Application-Analyzer`
 
 .. image:: UserInteraction.png
 
 Uses
 ----
 
-* :ref:`Telemetry`
+* Application
+* Cloud
 
 Interface
 ---------

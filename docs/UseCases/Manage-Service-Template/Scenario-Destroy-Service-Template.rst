@@ -8,21 +8,29 @@ Destroy Service Template using CLI and Web Interface with ... <parameters>
 .. image:: Destroy-Service-Template.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 template destroy <parameters>
   # c3 template destroy exmaple
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Destroy-Service-TemplateWeb.png
 
 
-** REST **
+**REST**
 
-template/destroy
+This is an example of the RESTful interface for the scenario.
+
+*template/destroy*
 
 ============  ========  ===================
 Name          Value     Description

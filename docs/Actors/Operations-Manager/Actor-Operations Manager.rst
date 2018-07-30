@@ -41,6 +41,8 @@ Workflow
 User Interface
 --------------
 
+Mock up User Interface for the Operations Manager.
+
 .. image:: OperationsManagerWeb.png
 
 Command Line Interface

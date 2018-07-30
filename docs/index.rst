@@ -1,7 +1,17 @@
 Common Cloud Core (C3) Multi-Hybrid Cloud
 =========================================
 
-:ref:`Home`
+.. toctree::
+  :maxdepth: 2
+  :caption: Introduction
+
+  Home
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Solution
+
+  Solution/index
 
 .. toctree::
    :maxdepth: 2
@@ -14,10 +24,4 @@ Common Cloud Core (C3) Multi-Hybrid Cloud
    :caption: Use Cases
 
    UseCases/index
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Solution
-
-   Solution/index
 

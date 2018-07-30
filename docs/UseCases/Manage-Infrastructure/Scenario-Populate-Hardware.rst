@@ -7,7 +7,10 @@ Populate Hardware using CLI and Web Interface with ... <parameters>
 .. image:: Populate-Hardware.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 
 .. code-block:: shell
 
@@ -15,14 +18,19 @@ Populate Hardware using CLI and Web Interface with ... <parameters>
   # c3 hardware populate --cloud myCloud --filename hardware.yaml
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Populate-HardwareWeb.png
 
 
-** REST **
+**REST**
 
-hardware/populate
+This is an example of the RESTful interface for the scenario.
+
+*hardware/populate*
 
 ============  ========  ===================
 Name          Value     Description

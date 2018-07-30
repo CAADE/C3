@@ -15,14 +15,14 @@ Use Cases
 Users
 -----
 
-* :ref:`Actor-User`
+* :ref:`SubSystem-Application-Orchestrator`
 
 .. image:: UserInteraction.png
 
 Uses
 ----
 
-* :ref:`Policy-Manager`
+* :ref:`SubSystem-Policy-Manager`
 
 Interface
 ---------

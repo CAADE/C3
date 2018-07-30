@@ -10,6 +10,7 @@ Launch App using CLI and Web Interface with name and environment with an optiona
 
 
 **CLI**
+
 The :ref:`Actor-Developer` can launch the application from the command line into different environments.
 
 .. code-block:: none
@@ -20,6 +21,9 @@ The :ref:`Actor-Developer` can launch the application from the command line into
 
 **Web**
 
+Mock up web interface for the scenario.
+
+
 Simplified Web Interface
 
 .. image:: Launch-AppWeb.png
@@ -27,7 +31,9 @@ Simplified Web Interface
 
 **REST**
 
-*app/launch*
+This is an example of the RESTful interface for the scenario.
+
+**app/launch**
 
 ============  ========  ===================
 Name          Value     Description

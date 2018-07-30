@@ -8,21 +8,30 @@ Launch and Test Service Template using CLI and Web Interface with ... <parameter
 .. image:: Launch-and-Test-Service-Template.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
+
 .. code-block:: none
 
   # c3 template test <parameters>
   # c3 template test exmaple
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Launch-and-Test-Service-TemplateWeb.png
 
 
-** REST **
+**REST**
 
-template/test
+This is an example of the RESTful interface for the scenario.
+
+*template/test*
 
 ============  ========  ===================
 Name          Value     Description

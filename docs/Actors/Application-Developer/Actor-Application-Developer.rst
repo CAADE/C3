@@ -29,7 +29,7 @@ for the typical application developer.
 
 User Interface
 --------------
-User Interface for the Application Developer.
+Mock up User Interface for the Application Developer.
 
 .. image: ApplicationDeveloperWeb.png
 

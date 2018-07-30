@@ -8,21 +8,29 @@ Create Policy using CLI and Web Interface with name of the policy for cloud and 
 .. image:: Create-Policy.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 policy create --name <string> --cloud <string> --env <string> --filename <filename>
   # c3 policy create --name myPolicy --cloud myCloud --env dev --filename policy.yaml
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Create-PolicyWeb.png
 
 
-** REST **
+**REST**
 
-policy/create
+This is an example of the RESTful interface for the scenario.
+
+*policy/create*
 
 ============  ========  ===================
 Name          Value     Description

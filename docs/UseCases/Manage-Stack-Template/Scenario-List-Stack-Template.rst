@@ -8,21 +8,29 @@ List Stack Template using CLI and Web Interface with ... <parameters>
 .. image:: List-Stack-Template.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 template list <parameters>
   # c3 template list exmaple
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: List-Stack-TemplateWeb.png
 
 
-** REST **
+**REST**
 
-template/list
+This is an example of the RESTful interface for the scenario.
+
+*template/list*
 
 ============  ========  ===================
 Name          Value     Description

@@ -7,21 +7,29 @@ Get Service using CLI and Web Interface with the name of the service. It will re
 .. image:: Get-Service.png
 
 
-** CLI **
+**CLI**
+
+This shows how a user can interact with the system via the command line.
+
 .. code-block:: none
 
   # c3 service get --name <string>
   # c3 service get --name myService
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Get-ServiceWeb.png
 
 
-** REST **
+**REST**
 
-service/get
+This is an example of the RESTful interface for the scenario.
+
+*service/get*
 
 ============  ========  ===================
 Name          Value     Description

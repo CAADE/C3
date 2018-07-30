@@ -15,14 +15,14 @@ Use Cases
 Users
 -----
 
-* :ref:`Actor-User`
+* :ref:`Actor-Application-Developer`
 
 .. image:: UserInteraction.png
 
 Uses
 ----
 
-* :ref:`Stack-Manager`
+* :ref:`SubSystem-Stack-Manager`
 
 Interface
 ---------

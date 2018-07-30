@@ -8,21 +8,30 @@ Map Images using CLI and Web Interface with ... <parameters>
 .. image:: Map-Images.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
+
 .. code-block:: none
 
   # c3 cloud images <parameters>
   # c3 cloud images exmaple
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Map-ImagesWeb.png
 
 
-** REST **
+**REST**
 
-cloud/images
+This is an example of the RESTful interface for the scenario.
+
+*cloud/images*
 
 ============  ========  ===================
 Name          Value     Description

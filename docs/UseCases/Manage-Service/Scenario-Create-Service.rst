@@ -8,21 +8,29 @@ Create Service using CLI and Web Interface with ... <parameters>
 .. image:: Create-Service.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 service create <parameters>
   # c3 service create exmaple
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Create-ServiceWeb.png
 
 
-** REST **
+**REST**
 
-service/create
+This is an example of the RESTful interface for the scenario.
+
+*service/create*
 
 ============  ========  ===================
 Name          Value     Description

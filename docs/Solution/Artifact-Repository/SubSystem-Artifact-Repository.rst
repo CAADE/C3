@@ -18,7 +18,7 @@ Users
 * :ref:`Actor-Stack-Developer`
 * :ref:`Actor-Operations-Manager`
 * :ref:`Actor-Application-Developer`
-* :ref:`SubSystem-Application-Developer`
+* :ref:`SubSystem-Application-Manager`
 
 .. image:: UserInteraction.png
 

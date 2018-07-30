@@ -8,21 +8,30 @@ List App using CLI and Web Interface with ... <parameters>
 .. image:: List-App.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
+
 .. code-block:: none
 
   # c3 app list <parameters>
   # c3 app list exmaple
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: List-AppWeb.png
 
 
-** REST **
+**REST**
 
-app/list
+This is an example of the RESTful interface for the scenario.
+
+*app/list*
 
 ============  ========  ===================
 Name          Value     Description

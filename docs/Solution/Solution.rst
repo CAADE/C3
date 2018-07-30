@@ -1,5 +1,5 @@
-Architectural Overview
-======================
+Genereric Solution Overview
+===========================
 
 The Common Cloud Core is a reference architecture that
 targets IT and Software Developers that want to develop, test and deploy application ina Multi-Hybrid Cloud system.

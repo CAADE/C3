@@ -8,21 +8,29 @@ Update Storage Hardware using CLI and Web Interface with specific name for capac
 .. image:: Update-Storage-Hardware.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 hardware update --name <string> --type storage --capacity <number> --cloud <string>
   # c3 hardware update --name myStorage --type storage --capacity 10000 --cloud myCloud
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Update-Storage-HardwareWeb.png
 
 
-** REST **
+**REST**
 
-hardware/update
+This is an example of the RESTful interface for the scenario.
+
+*hardware/update*
 
 ============  ========  ===================
 Name          Value     Description

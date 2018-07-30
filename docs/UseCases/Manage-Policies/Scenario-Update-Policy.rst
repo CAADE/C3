@@ -8,21 +8,29 @@ Update Policy using CLI and Web Interface with specifc name for cloud and enviro
 .. image:: Update-Policy.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 policy update --name <string> --cloud <string> --env <string>
   # c3 policy update --name myPolicy --cloud myCloud --env dev
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Update-PolicyWeb.png
 
 
-** REST **
+**REST**
 
-policy/update
+This is an example of the RESTful interface for the scenario.
+
+*policy/update*
 
 ============  ========  ===================
 Name          Value     Description

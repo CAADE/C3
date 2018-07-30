@@ -15,14 +15,14 @@ Use Cases
 Users
 -----
 
-* :ref:`Actor-User`
+* :ref:`SubSystem-Application-Analyzer`
 
 .. image:: UserInteraction.png
 
 Uses
 ----
 
-* :ref:`app-analyzer`
+* :ref:`SubSystem-Application-Analyzer`
 
 Interface
 ---------

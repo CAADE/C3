@@ -8,7 +8,10 @@ List Policy using CLI and Web Interface with cloud or environment.
 .. image:: List-Policy.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 policy list --cloud <string> --env <string>
@@ -25,14 +28,19 @@ List Policy using CLI and Web Interface with cloud or environment.
   myPolicy5                         disabled
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: List-PolicyWeb.png
 
 
-** REST **
+**REST**
 
-policy/list
+This is an example of the RESTful interface for the scenario.
+
+*policy/list*
 
 ============  ========  ===================
 Name          Value     Description

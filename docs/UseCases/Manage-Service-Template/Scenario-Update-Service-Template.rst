@@ -8,21 +8,29 @@ Update Service Template using CLI and Web Interface with ... <parameters>
 .. image:: Update-Service-Template.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 .. code-block:: none
 
   # c3 template update <parameters>
   # c3 template update exmaple
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Update-Service-TemplateWeb.png
 
 
-** REST **
+**REST**
 
-template/update
+This is an example of the RESTful interface for the scenario.
+
+*template/update*
 
 ============  ========  ===================
 Name          Value     Description

@@ -1,15 +1,13 @@
-Sub Systems
------------
+Implementations
+---------------
 
-These are the high level Subsystems of the c3 Solution
-
-.. image:: Logical.png
+These are implementations of the architecture
 
 .. toctree::
-    :glob:
-    :maxdepth: 1
+  :glob:
+  :maxdepth: 1
 
-    **/SubSystem*
+  Solution*
 
 Services
 --------
@@ -22,14 +20,17 @@ These are the micro-services of the c3 Solution that are used to implement the s
 
   Services/index
 
-Implementations
----------------
 
-These are implementations of the architecture
+Sub Systems
+-----------
+
+These are the high level Subsystems of the c3 Solution
+
+.. image:: Logical.png
 
 .. toctree::
     :glob:
     :maxdepth: 1
 
-    Solution*
+    **/SubSystem*
 

@@ -1,6 +1,6 @@
 .. _SubSystem-Cloud-Broker:
 
-Cloud-Broker
+Cloud Broker
 ============
 
 Cloud Broker is responsible for allocating resources on the Clouds attached to C3. Based of policies it will
@@ -26,7 +26,7 @@ Users
 Uses
 ----
 
-* :ref:`SubSystem-Policy-Engine`
+* :ref:`SubSystem-Policy-Manager`
 * Cloud
 
 Interface

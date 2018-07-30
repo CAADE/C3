@@ -5,8 +5,8 @@ salt
   **Create App**
   {
       Name | "myApp"
-      Stack | "myMapp Stack"
-      [ Cancel ] | [ OK <&account-login> ]
+      Stack | "lamp"
+      [ Cancel ] | [ CREATE <&account-login> ]
   }
 }
 

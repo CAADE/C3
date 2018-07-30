@@ -8,7 +8,11 @@ List Clouds using CLI and Web Interface with ... <parameters>
 .. image:: List-Clouds.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
+
 .. code-block:: none
 
   # c3 cloud list
@@ -20,14 +24,19 @@ List Clouds using CLI and Web Interface with ... <parameters>
   MyCloud4    gce
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: List-CloudsWeb.png
 
 
-** REST **
+**REST**
 
-cloud/list
+This is an example of the RESTful interface for the scenario.
+
+*cloud/list*
 
 ============  ========  ===================
 Name          Value     Description

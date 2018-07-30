@@ -8,7 +8,10 @@ Destroy Network Hardware using CLI and Web Interface with name and cloud.
 .. image:: Destroy-Network-Hardware.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
 
 .. code-block:: none
 
@@ -18,14 +21,19 @@ Destroy Network Hardware using CLI and Web Interface with name and cloud.
 
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Destroy-Network-HardwareWeb.png
 
 
-** REST **
+**REST**
 
-hardware/destroy
+This is an example of the RESTful interface for the scenario.
+
+*hardware/destroy*
 
 ============  ========  ===================
 Name          Value     Description

@@ -8,21 +8,30 @@ Kill App using CLI and Web Interface with ... <parameters>
 .. image:: Kill-App.png
 
 
-** CLI **
+**CLI**
+
+This is an example of a command line interface for the user to interact with the system.
+
+
 .. code-block:: none
 
   # c3 app kill <parameters>
   # c3 app kill exmaple
 
 
-** Web **
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
 
 .. image:: Kill-AppWeb.png
 
 
-** REST **
+**REST**
 
-app/kill
+This is an example of the RESTful interface for the scenario.
+
+*app/kill*
 
 ============  ========  ===================
 Name          Value     Description

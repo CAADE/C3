@@ -15,14 +15,15 @@ Use Cases
 Users
 -----
 
-* :ref:`Actor-User`
+* :ref:`Actor-Application-Developer`
+* :ref:`Actor-Operations-Manager`
 
 .. image:: UserInteraction.png
 
 Uses
 ----
 
-* :ref:`Environment-Manager`
+* :ref:`SubSystem-Environment-Manager`
 
 Interface
 ---------
