@@ -89,15 +89,27 @@ primary services are running.
 
 High Level Architecture
 -----------------------
+
 The C3 Architecture contains several subsystems and components. The following is a diagram on
 how these components work together to fulfill the high level use cases.
 
 .. image:: Architecture.png
 
-.. toctree::
-  :maxdepth: 1
-  :glob:
-  :caption: Sub Systems
 
-  **/SubSystem*
+Sub Systems
+~~~~~~~~~~~
+
+* :ref:`SubSystem-Application-Analyzer`
+* :ref:`SubSystem-Application-Manager`
+* :ref:`SubSystem-Application-Orchestrator`
+* :ref:`SubSystem-Artifact-Repository`
+* :ref:`SubSystem-Cloud-Broker`
+* :ref:`SubSystem-Data-Coordinator`
+* :ref:`SubSystem-Environment-Manager`
+* :ref:`SubSystem-Identity-Manager`
+* :ref:`SubSystem-Operations-Manager`
+* :ref:`SubSystem-Policy-Manager`
+* :ref:`SubSystem-Provision-Engine`
+* :ref:`SubSystem-Stack-Manager`
+* :ref:`SubSystem-Telemetry`
 

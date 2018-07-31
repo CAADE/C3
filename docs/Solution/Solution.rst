@@ -7,17 +7,26 @@ This reference architecture shows the use cases, and specs for implementing the 
 broken up into several different components and sections.
 An introductory video that gives a brief overview of `Common Cloud Core <https://youtu.be/0s_tC5ZEWM4>`_.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Users
+Users
+-----
 
-   ../Actors/index
+* :ref:`Actor-Application-Developer`
+* :ref:`Actor-Operations-Manager`
+* :ref:`Actor-Stack-Developer`
 
-.. toctree::
-   :maxdepth: 2
-   :caption: High Level Use Cases
+Use Cases
+---------
 
-   ../UseCases/index
+* :ref:`UseCase-Manage-Applications`
+* :ref:`UseCase-Manage-Application-Stack`
+* :ref:`UseCase-Manage-Clouds`
+* :ref:`UseCase-Manage-Environments`
+* :ref:`UseCase-Manage-Infrastructure`
+* :ref:`UseCase-Manage-Policies`
+* :ref:`UseCase-Manage-Service`
+* :ref:`UseCase-Manage-Service-Template`
+* :ref:`UseCase-Manage-Stack-Template`
+* :ref:`UseCase-Manage-Users`
 
 .. image:: /UseCases/UseCases.png
 
