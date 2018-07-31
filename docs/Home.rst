@@ -28,8 +28,8 @@ Users
 -----
 
 * :ref:`Actor-Application-Developer`
-* :ref:`Actor-Operations Manager`
-* :ref:`Actor-Stack Developer`
+* :ref:`Actor-Operations-Manager`
+* :ref:`Actor-Stack-Developer`
 
 High Level Concepts
 -------------------
