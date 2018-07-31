@@ -32,7 +32,7 @@
     "design": "java -jar docs/plantuml.jar docs/*.puml docs/**/*.puml",
     "custom-tests": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js",
     "build": "npm update && node ./deploy/build build",
-    "build-doc": "docker run --rm -v c:/users/dwpulsip/yoly/C3/docs:/doc nickjer/docker-sphinx sphinx-build -a -q -b pdf . _build_html",
+    "build-doc": "docker run --rm -v c:/users/dwpulsip/yoly/C3/docs:/doc nickjer/docker-sphinx sphinx-build -a -q -b singlehtml . _build_html",
     "debug": "node debug app.js",
     "deploy-apps": "node ./deploy/build deploy",
     "deploy": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-dev.yaml c3Dev",
