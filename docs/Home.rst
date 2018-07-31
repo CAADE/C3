@@ -1,31 +1,35 @@
 .. _Home:
 
-C3 Overview
-===========
+Common Cloud Core (C3) Overview
+===============================
 
-The Common Cloud Core is a reference architecture that targets IT and Software Developers that want to develop, test and deploy application ina Multi-Hybrid Cloud system.
-This reference architecture shows the use cases, and specs for implementing the CCC Architecture. The architecture is
-broken up into several different components and sections.
+The Common Cloud Core is a reference architecture that targets IT and Software Developers that want to develop, test
+and deploy application ina Multi-Hybrid Cloud system. This reference architecture shows the use cases, and specs
+for implementing the CCC Architecture. The architecture is broken up into several different components and sections.
 An introductory video that gives a brief overview of `Common Cloud Core <https://youtu.be/0s_tC5ZEWM4>`_.
 
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: High Level Use Cases
+High Level Use Cases
+--------------------
+* :ref:`UseCase-Manage-Applications`
+* :ref:`UseCase-Manage-Application-Stack`
+* :ref:`UseCase-Manage-Clouds`
+* :ref:`UseCase-Manage-Environments`
+* :ref:`UseCase-Manage-Infrastructure`
+* :ref:`UseCase-Manage-Policies`
+* :ref:`UseCase-Manage-Service`
+* :ref:`UseCase-Manage-Service-Template`
+* :ref:`UseCase-Manage-Stack-Template`
+* :ref:`UseCase-Manage-Users`
 
-   UseCases/index
 
 .. image:: /UseCases/UseCases.png
-
 
 Users
 -----
 
-.. toctree::
-    :maxdepth: 2
-    :glob:
-
-    Actors/index
+* :ref:`Actor-Application-Developer`
+* :ref:`Actor-Operations Manager`
+* :ref:`Actor-Stack Developer`
 
 High Level Concepts
 -------------------
