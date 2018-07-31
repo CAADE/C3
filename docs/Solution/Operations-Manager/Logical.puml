@@ -1,7 +1,7 @@
 @startuml
 
-package "Operations-Manager" {
-    interface "Operations-Manager" {
+package "Operations Manager" #lightblue {
+    interface "Operations Manager" {
 
     }
     CLI ()-- "Operations-Manager"

@@ -1,11 +1,24 @@
 @startuml
 
-package "Telemetry" {
-component component1
-component component2
-interface i1
-
+package "Telemetry" #lightblue {
+    interface CLI
+    interface Web
+    interface REST
+    folder C3 #ffffff {
+        component sailsjs
+        component sails.io
+    }
+    folder bin #ffffff {
+      component telemetry
+    }
 }
-i1 - component1
-component1 --> component2
+CLI -- telemetry
+telemetry -- REST
+Web -- sailsjs
+Web -- REST
+REST -- sailsjs
+
+Web -- sails.io
+
 @enduml
+

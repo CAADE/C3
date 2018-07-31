@@ -10,6 +10,7 @@ An introductory video that gives a brief overview of `Common Cloud Core <https:/
 
 High Level Use Cases
 --------------------
+
 * :ref:`UseCase-Manage-Applications`
 * :ref:`UseCase-Manage-Application-Stack`
 * :ref:`UseCase-Manage-Clouds`

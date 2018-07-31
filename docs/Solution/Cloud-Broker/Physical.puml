@@ -1,9 +1,10 @@
 @startuml
-package "Cloud Broker" #ccffff {
+
+package "Cloud Broker" #lightblue {
     interface CLI
     interface Web
     interface REST
-    folder analyzer #ffffff {
+    folder C3 #ffffff {
         component sailsjs
         component sails.io
     }
@@ -11,6 +12,12 @@ package "Cloud Broker" #ccffff {
       component broker
       component cloud
       component resource
+    }
+    folder "cloud-proxy" #ffffff {
+        component micro as cpmicro
+    }
+    folder "cloud-broker" #ffffff {
+        component micro as cbmicro
     }
 }
 CLI -- broker
@@ -24,4 +31,8 @@ Web -- REST
 REST -- sailsjs
 
 Web -- sails.io
+REST -- cpmicro
+REST -- cbmicro
+
 @enduml
+

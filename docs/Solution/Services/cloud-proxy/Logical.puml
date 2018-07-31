@@ -1,0 +1,13 @@
+@startuml
+
+package "cloud-proxy" {
+    interface "cloud-proxy" {
+
+    }
+    CLI ()-- "cloud-proxy" : 5000
+    REST ()-- "cloud-proxy" : 3000
+    Web ()-- "cloud-proxy" : 80
+}
+
+
+@enduml

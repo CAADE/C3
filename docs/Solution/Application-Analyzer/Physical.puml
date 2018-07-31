@@ -13,6 +13,9 @@ package "Application Analyzer" #ccffff {
       component telemetry
       component app
     }
+    folder "app-analyzer" #ffffff {
+      component micro as amicro
+    }
 }
 CLI -- app
 CLI -- landscape
@@ -23,6 +26,8 @@ telemetry -- REST
 Web -- sailsjs
 Web -- REST
 REST -- sailsjs
+REST -- amicro
 
 Web -- sails.io
+
 @enduml

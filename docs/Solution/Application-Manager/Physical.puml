@@ -1,9 +1,9 @@
 @startuml
-package "Application Manager" #ccffff {
+package "Application Manager" #lightblue {
     interface CLI
     interface Web
     interface REST
-    folder analyzer #ffffff {
+    folder "app-manager" #ffffff {
         component sailsjs
         component sails.io
     }

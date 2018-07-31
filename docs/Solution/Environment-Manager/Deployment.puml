@@ -1,12 +1,25 @@
 @startuml
 
-package  "Environment-Manager" {
-  cloud cloud1
-  node node1
-  artifact artifact1
-  storage objectStore
-  database db1
-  folder folder1
+package  "Environment Manager"  #lightblue {
+  folder bin #ffffff {
+    file environment
+  }
+
+  folder Services #ffffff {
+    file "env-manager"
+  }
+
+  node micro
+
+  node sailsjs
+  database DB1
+
+  sailsjs -- DB1
+  bin .. sailsjs
+  Services .. micro
+
+  micro -- DB1
+  sailsjs -> micro
 }
 
 @enduml

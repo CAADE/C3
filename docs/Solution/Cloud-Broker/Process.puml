@@ -5,7 +5,7 @@ partition "Application Orchestrator"  #dddddd {
   (*) --> "Rebalance Application"
 }
 
-partition "Cloud Broker" #ccffff {
+partition "Cloud Broker" #lightblue {
   "Launch Application" --> "Get Resources"
   "Rebalance Application" --> "Get Resources"
 }

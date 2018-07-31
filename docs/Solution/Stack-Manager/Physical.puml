@@ -1,11 +1,24 @@
 @startuml
 
-package "Stack-Manager" {
-component component1
-component component2
-interface i1
-
+package "Stack Manager" #lightblue {
+    interface CLI
+    interface Web
+    interface REST
+    folder C3 #ffffff {
+        component sailsjs
+        component sails.io
+    }
+    folder bin #ffffff {
+      component stack
+    }
 }
-i1 - component1
-component1 --> component2
+CLI -- stack
+stack -- REST
+Web -- sailsjs
+Web -- REST
+REST -- sailsjs
+
+Web -- sails.io
+
 @enduml
+

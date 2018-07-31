@@ -10,12 +10,16 @@ package "Application Orchestrator" #ccffff {
     folder bin #ffffff {
       component app
     }
+    folder "app-orchestrator" #ffffff {
+      component micro
+    }
 }
 CLI -- app
 app -- REST
 Web -- sailsjs
 Web -- REST
 REST -- sailsjs
-
 Web -- sails.io
+REST -- micro
+
 @enduml

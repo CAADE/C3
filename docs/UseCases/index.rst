@@ -1,5 +1,5 @@
-C3 Use Cases
-============
+Use Cases
+=========
 
 .. toctree::
     :glob:

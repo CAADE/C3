@@ -1,11 +1,27 @@
 @startuml
 
-package "Environment-Manager" {
-component component1
-component component2
-interface i1
-
+package "Environment Manager" #lightblue {
+    interface CLI
+    interface Web
+    interface REST
+    folder C3 #ffffff {
+        component sailsjs
+        component sails.io
+    }
+    folder bin #ffffff {
+      component coordinate
+    }
+    folder "environment-manager" #ffffff {
+        component micro as emmicro
+    }
 }
-i1 - component1
-component1 --> component2
+CLI -- coordinate
+coordinate -- REST
+Web -- sailsjs
+Web -- REST
+REST -- sailsjs
+
+Web -- sails.io
+REST -- emmicro
+
 @enduml

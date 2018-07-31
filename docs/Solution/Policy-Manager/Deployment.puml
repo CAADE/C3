@@ -1,12 +1,26 @@
 @startuml
 
-package  "Policy-Manager" {
-  cloud cloud1
-  node node1
-  artifact artifact1
-  storage objectStore
-  database db1
-  folder folder1
+package  "Policy Manager"  #lightblue {
+  folder bin #ffffff {
+    file policy
+  }
+
+  folder Services #ffffff {
+    file "policy-manager"
+  }
+
+  node micro
+
+  node sailsjs
+  database DB1
+
+  sailsjs -- DB1
+  bin .. sailsjs
+  Services .. micro
+
+  micro -- DB1
+  sailsjs -> micro
 }
 
 @enduml
+

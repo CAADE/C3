@@ -1,6 +1,6 @@
 @startuml
 
-package  "Application Manager" #aaffff {
+package  "Application Manager" #lightblue {
   folder bin #ffffff {
     file app
     file env

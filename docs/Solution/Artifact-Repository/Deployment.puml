@@ -1,12 +1,14 @@
 @startuml
 
-package  "Artifact-Repository" {
-  cloud cloud1
-  node node1
-  artifact artifact1
-  storage objectStore
-  database db1
-  folder folder1
+package  "Artifact Repository" #lightblue {
+  folder bin #ffffff {
+    file artifact
+  }
+  node sailsjs
+  database DB1
+
+  sailsjs .. DB1
+  bin .. sailsjs
 }
 
 @enduml

@@ -1,17 +1,28 @@
 @startuml
 
-package  "Cloud Broker" #aaffff {
+package  "<%= nameSpaces %>"  #lightblue {
   folder bin #ffffff {
     file broker
     file cloud
     file resource
   }
+
+  folder Services #ffffff {
+    file "cloud-broker"
+    file "cloud-proxy"
+  }
+
+  node micro
+
   node sailsjs
   database DB1
 
-  sailsjs .. DB1
+  sailsjs -- DB1
   bin .. sailsjs
+  Services .. micro
+
+  micro -- DB1
+  sailsjs -> micro
 }
 
 @enduml
-

@@ -1,7 +1,7 @@
 @startuml
 
-package "Environment-Manager" {
-    interface "Environment-Manager" {
+package "Environment Manager" #lightblue {
+    interface "Environment Manager" {
 
     }
     CLI ()-- "Environment-Manager"

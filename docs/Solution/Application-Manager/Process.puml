@@ -11,7 +11,7 @@ partition CI/CD #cccccc {
   "Execute Tests" --> "Evaluate Test Results"
 }
 
-partition C3 #ccffff {
+partition C3 #lightblue {
     ===S1=== --> "Select Application Stack"
     --> "Modify Application Stack"
     --> "Test Application Stack"

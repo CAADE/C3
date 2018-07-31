@@ -5,14 +5,14 @@ partition "Artifact-Repository" {
 }
 
 partition SubSystem  #cccccc {
-  (*) --> "Create Project"
-  --> "Write Code"
+  (*) --> "Create Artifact"
 }
 
-partition "Artifact-Repository" {
-  "Write Code" --> "Test Code"
-  "Test Code" --> "Deploy Code"
-  "Deploy Code" --> (*)
+partition "Artifact-Repository" #lightblue {
+  "Create Artifact" --> "Publish Artifact"
+  "Update Artifact" --> "Publish Artifact"
+  "Create Artifact" --> "Destroy Artifact"
+  "Destroy Artifact" --> (*)
 }
 
 @enduml

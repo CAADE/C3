@@ -9,7 +9,7 @@ actor :Environment Manager:
 actor :Application Orchestrator:
 actor :Artifact Repository:
 
-rectangle "Application Manager" #ccffff {
+rectangle "Application Manager" #lightblue {
     UseCase DRA <<Main>> as "Deploy & Run Application
     ---
     On different environments

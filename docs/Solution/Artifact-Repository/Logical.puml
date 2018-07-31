@@ -7,7 +7,6 @@ package "Artifact-Repository" {
     CLI ()-- "Artifact-Repository"
     REST ()-- "Artifact-Repository"
     Web ()-- "Artifact-Repository"
-
 }
 
 

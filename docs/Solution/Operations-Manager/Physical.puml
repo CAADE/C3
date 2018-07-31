@@ -1,11 +1,28 @@
 @startuml
 
-package "Operations-Manager" {
-component component1
-component component2
-interface i1
-
+package "Operations Manager" #lightblue {
+    interface CLI
+    interface Web
+    interface REST
+    folder C3 #ffffff {
+        component sailsjs
+        component sails.io
+    }
+    folder bin #ffffff {
+      component ops
+    }
+    folder "ops-manager" #ffffff {
+        component micro as ommicro
+    }
 }
-i1 - component1
-component1 --> component2
+CLI -- coordinate
+coordinate -- REST
+Web -- sailsjs
+Web -- REST
+REST -- sailsjs
+
+Web -- sails.io
+REST -- ommicro
+
 @enduml
+

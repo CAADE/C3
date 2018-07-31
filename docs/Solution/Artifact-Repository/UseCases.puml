@@ -2,22 +2,16 @@
 
 left to right direction
 
-skinparam usecase {
-  BackgroudnColor #ffffaa
-  BackgroundColor<<Main>> #aaffff
-}
-actor :User: <<Person>>
-actor :SubSystem: <<Person>>
+actor :User:
 
 
-rectangle "Artifact-Repository" {
-UseCase UC1 <<Main>> as "Use Case1"
-UseCase UC2  as "Use Case2"
+rectangle "Artifact Repository" #lightblue {
+UseCase UC1 as "Manage Artifact"
+UseCase UC2 as "Use Artifact"
 
 
 User --> UC1
 UC1 --> UC2
-UC2 --> SubSystem
 }
 
 @enduml
