@@ -5,7 +5,7 @@ package  common-cloud-core #dddddd {
   interface CLI
   interface Web
   interface REST
-  package Portal #aaffff {
+  package Portal #lightblue {
     component portal
     component applicationManager
     component stackManager

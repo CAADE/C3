@@ -1,7 +1,7 @@
 @startuml
 |Operations Manager|
 start
-|#aaffff|c3|
+|#lightblue|c3|
 :Create Cloud;
 :List Clouds;
 :Update Cloud;

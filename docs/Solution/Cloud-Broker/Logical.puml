@@ -19,7 +19,7 @@ package "Application Orchestrator" #dddddd {
 
 Service *--> "Service Instance"
 
-package "Cloud Broker" #aaffff {
+package "Cloud Broker" #lightblue {
     interface "Cloud Broker" {
       broker()
       resource()

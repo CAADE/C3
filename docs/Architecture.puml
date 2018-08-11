@@ -3,7 +3,7 @@
 skinparam packageStyle rect
 
 package <size:32>C3</size> #dddddd {
-    package "<size:24>Portal</size>" as P #aaffff {
+    package "<size:24>Portal</size>" as P #lightblue {
         package "Application Manager" { }
         package "Operations Manager" { }
         package "Stack Manager" { }

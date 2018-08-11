@@ -23,8 +23,8 @@ package "Cloud Broker"  #ffffaa {}
 package "Provision Engine" #ffffaa {}
 package "Data Coordinator" #ffffaa {}
 package "Telemetry" #aaffaa {}
-package "Application Analyzer" #aaffff {}
-package "Application Manager" #aaffff {}
+package "Application Analyzer" #lightblue {}
+package "Application Manager" #lightblue {}
 package "Identity Manager"  #ffffaa {}
 package "Environment Manager" #ffffaa {
   class Environment {

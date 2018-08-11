@@ -3,7 +3,7 @@
 skinparam packageStyle rect
 
 package C3 {
-package "Portal" #aaffff {
+package "Portal" #lightblue {
     package "Application Manager" { }
     package "Operations Manager" { }
     package "Stack Manager" { }

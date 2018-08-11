@@ -1,10 +1,10 @@
 @startuml
 
 node switch
-folder "glusterfs:gvol1" as gv1 #aaffff {
+folder "glusterfs:gvol1" as gv1 #lightblue {
         folder "example"
 }
-folder "glusterfs:gvol2" #aaffff {
+folder "glusterfs:gvol2" #lightblue {
         folder "example2"
 }
 node node0 {

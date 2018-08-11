@@ -1,6 +1,6 @@
 @startuml
 
-package "Portal" #aaffff {
+package "Portal" #lightblue {
     package "Application Manager" as AM { }
     package "Operations Manager" as OM { }
     package "Stack Manager" as SM { }
