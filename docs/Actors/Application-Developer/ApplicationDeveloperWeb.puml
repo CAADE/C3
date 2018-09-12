@@ -1,0 +1,10 @@
+@startuml
+salt
+{
+
+  Application Manager
+
+  |[Create]|[Launch]|[Kill]|[Destroy]|[List]|[Rebalance]|[Run]|
+
+}
+@enduml

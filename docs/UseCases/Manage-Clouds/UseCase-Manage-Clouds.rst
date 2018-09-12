@@ -3,17 +3,22 @@
 Manage Clouds
 =============
 
-_Description_
+Manage Clouds is performed by the :ref:`Actor-Operations-Manager`.
 
 Actors
 ------
 
-* :ref:`Actor-Operstions-Manager`
+* :ref:`Actor-Operations-Manager`
 
 Activities
 ----------
 
 .. image:: Activities.png
+
+* Create Cloud
+* List Cloud
+* Map Resources
+* Destroy Cloud
 
 Detail Scenarios
 ----------------
@@ -27,7 +32,6 @@ Detail Scenarios
 Systems Involved
 ----------------
 
-* :ref:`SubSystem-Cloud-Broker`
 * :ref:`SubSystem-Artifact-Repository`
-
+* :ref:`SubSystem-Operations-Manager`
 

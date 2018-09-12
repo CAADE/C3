@@ -1,0 +1,14 @@
+@startuml
+Actor "Application Developer" as A
+
+box "Manage-Applications" #lightblue
+    participant CLI as CLI
+    participant Web as Web
+    participant "c3" as S
+    A -> CLI : c3-app-create(name,stack)
+    CLI -> S : app/create(name,stack)
+    A -> Web : app/create(name,stack)
+    Web -> S : app/create(name,stack)
+end box
+
+@enduml

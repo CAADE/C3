@@ -1,0 +1,24 @@
+@startuml
+
+package  "Application Analyzer" #lightblue {
+  folder bin #ffffff {
+    file app
+    file landscape
+    file telemetry
+  }
+  folder Services #ffffff {
+    file "app-analyzer"
+  }
+  node micro
+  node sailsjs
+  database DB1
+
+  sailsjs -- DB1
+  micro -> sailsjs
+  micro -- DB1
+  bin .. sailsjs
+  Services .. micro
+
+}
+
+@enduml

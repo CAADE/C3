@@ -1,0 +1,14 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "Manage Infrastructure" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-hardware-list(cloud)
+CLI -> S : hardware/list(cloud)
+A -> Web : hardware/list(cloud)
+Web -> S : hardware/list(cloud)
+end box
+
+@enduml

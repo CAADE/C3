@@ -1,0 +1,14 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "Manage Applications" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-app-check(name)
+CLI -> S : app/check(name)
+A -> Web : app/check(name)
+Web -> S : app/check(name)
+end box
+
+@enduml

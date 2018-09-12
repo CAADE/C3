@@ -1,12 +1,11 @@
 module.exports = {
 
   friendlyName: 'cloud list',
-
-  description: 'List all of the clouds in the C3',
+  description: 'List the Clouds',
 
   inputs: {
     mode: {
-      description: "results format: json or html",
+      description: 'results format: json or html',
       type: 'string',
       required: false
     }
@@ -15,33 +14,34 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'cloud/list'
+      viewTemplatePath: 'welcome'
     },
     json: {
       responseType: '', // with return json
     },
     notFound: {
-      description: 'No user with the specified ID was found in the database.',
+      description: 'No item with the specified ID was found in the database.',
       responseType: 'redirect'
     }
   },
 
   fn: async function (inputs, exits, env) {
+    // Register for socket events from the client
+    if (this.req.isSocket) {
+      sails.sockets.join(this.req, 'c3');
+    }
 
-    // Look up the user whose ID was specified in the request.
-    // Note that we don't have to validate that `userId` is a number;
-    // the machine runner does this for us and returns `badRequest`
-    // if validation fails.
     try {
-      let clouds = await Cloud.find();
+      let clouds = await Cloud.find().populateAll();
+
       // Display the results
-      if (inputs.mode === "json") {
+      if (inputs.mode === 'json') {
         // Return json
-        return exits.json({clouds: clouds});
+        return exits.json(clouds);
       }
       else {
         // Display the welcome view.
-        return exits.success({clouds: clouds});
+        return exits.success(clouds);
       }
     }
     catch (e) {

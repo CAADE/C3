@@ -1,0 +1,40 @@
+service:
+  name: streaming
+  version: 0.0.1
+  environments:
+    local:
+      resources:
+        network:
+          myNetwork: 2
+      services:
+        fastStreaming:
+          type: common
+          replicas: 1
+        slowStreaming:
+          type: common
+          replicas: 1
+    test:
+      resources:
+        network:
+          mynetwork: 2
+      services:
+        faststreaming:
+          type: common
+          replicas: 2
+        slowstreaming:
+          type: common
+          replicas: 2
+    prod:
+      resources:
+        network:
+          mynetwork: 2
+      services:
+        audit:
+          type: common
+          replicas: 1
+        faststreaming:
+          type: common
+          replicas: 4
+        slowstreaming:
+          type: common
+          replicas: 4

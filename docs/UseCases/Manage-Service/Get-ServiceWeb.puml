@@ -1,0 +1,12 @@
+@startuml
+
+salt
+{
+  <b>Get Service
+  {
+      name | "myService"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

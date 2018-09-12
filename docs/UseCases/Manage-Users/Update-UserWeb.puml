@@ -1,0 +1,14 @@
+@startuml
+
+salt
+{
+  Update User
+  {
+      Name | "darrenp"
+      Cloud | "myCloud"
+      User Name | "dwpulsip"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

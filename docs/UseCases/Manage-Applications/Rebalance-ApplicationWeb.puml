@@ -1,0 +1,12 @@
+@startuml
+
+salt
+{
+  **Rebalance Application**j
+  {
+      app | "myApp"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

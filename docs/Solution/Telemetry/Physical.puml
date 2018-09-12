@@ -1,0 +1,24 @@
+@startuml
+
+package "Telemetry" #lightblue {
+    interface CLI
+    interface Web
+    interface REST
+    folder C3 #ffffff {
+        component sailsjs
+        component sails.io
+    }
+    folder bin #ffffff {
+      component telemetry
+    }
+}
+CLI -- telemetry
+telemetry -- REST
+Web -- sailsjs
+Web -- REST
+REST -- sailsjs
+
+Web -- sails.io
+
+@enduml
+

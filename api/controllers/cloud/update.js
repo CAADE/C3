@@ -2,18 +2,21 @@ module.exports = {
 
   friendlyName: 'cloud update',
 
-  description: ' Add description ',
+  description: 'Update a Cloud',
 
   inputs: {
-    /* <parameter name>: {
-      description: 'The ID of the user to look up.',
-      type: '<parameter type>',
+    name: {
+      description: 'Name of the Cloud',
+      type: 'string',
       required: true
     },
-    */
-
+    type: {
+      description: 'Type of Cloud',
+      type: 'string',
+      required: true
+    },
     mode: {
-      description: "results format: json or html",
+      description: 'results format: json or html',
       type: 'string',
       required: false
     }
@@ -28,31 +31,35 @@ module.exports = {
       responseType: '', // with return json
     },
     notFound: {
-      description: 'No user with the specified ID was found in the database.',
+      description: 'No item with the specified ID was found in the database.',
       responseType: 'redirect'
     }
   },
 
   fn: async function (inputs, exits, env) {
 
-    // Look up the user whose ID was specified in the request.
-    // Note that we don't have to validate that `userId` is a number;
-    // the machine runner does this for us and returns `badRequest`
-    // if validation fails.
     try {
-      let user = await User.findOne(inputs.userId);
-      if (!user) {
-        return exits.notFound('/signup');
-      }
+      let cloud = await Cloud.findOrCreate({name:inputs.name}, {name:inputs.name, type:inputs.type});
 
-      // Display the results
-      if (inputs.mode === "json") {
-        // Return json
-        return exits.json({name: user.name});
+      cloud = await Cloud.update({id:cloud.id}, {type:inputs.type}).fetch();
+
+      // Broadcast change
+      sails.sockets.broadcast('c3', 'cloud', cloud);
+
+      if(cloud.length >0) {
+        cloud = cloud[0];
+        // Display the results
+        if (inputs.mode === 'json') {
+          // Return json
+          return exits.json(cloud);
+        }
+        else {
+          // Display the welcome view.
+          return exits.success(cloud);
+        }
       }
       else {
-        // Display the welcome view.
-        return exits.success({name: user.name});
+        return exits.notFound('/notFound');
       }
     }
     catch (e) {

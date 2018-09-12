@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Application-Stack" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-stack-destroy()
+CLI -> S : stack/destroy()
+A -> Web : stack/destroy()
+Web -> S : stack/destroy()
+end box
+
+@enduml

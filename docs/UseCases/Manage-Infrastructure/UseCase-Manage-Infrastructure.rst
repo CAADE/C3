@@ -3,39 +3,32 @@
 Manage Infrastructure
 =====================
 
-
-:ref:`Actor-Operations-Manager` manages infrastructure in the Private and Public Clouds.
-The C3 architecture should be a passthru to the SDI layers in the Private and Public Clouds.
+_Description_
 
 Actors
 ------
 
-* :ref:`Actor-Operations-Manager`
+* _Actors_
 
 Activities
 ----------
 
 .. image:: Activities.png
 
-* Manage Compute Resources
-* Manage Storage Resources
-* Manage Network Resources
-* Manage Security Domains
+* _Activities_
 
 Detail Scenarios
 ----------------
 
 .. toctree::
-    :maxdepth: 1
-    :glob:
+   :glob:
+   :maxdepth: 1
 
-    Scenario*
-
+   Scenario*
 
 Systems Involved
 ----------------
 
-* :ref:`SubSystem-SDI-Cloud`
-* :ref:`SubSystem-Telemetry-SNAP`
+* _Systems_
 
 

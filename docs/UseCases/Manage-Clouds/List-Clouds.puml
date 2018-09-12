@@ -2,8 +2,13 @@
 Actor "actorName" as A
 
 box "Manage-Clouds" #lightblue
+participant CLI as CLI
+participant Web as Web
 participant "c3" as S
-A -> S : List-Clouds
+A -> CLI : c3-cloud-list()
+CLI -> S : cloud/list()
+A -> Web : cloud/list()
+Web -> S : cloud/list()
 end box
 
 @enduml

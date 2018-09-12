@@ -3,7 +3,7 @@
 left to right direction
 Actor Dev
 
-package Local {
+package Local #lightblue {
   component NodeJS
   component MongoDB
   component Redis

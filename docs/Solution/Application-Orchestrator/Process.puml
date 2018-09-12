@@ -1,0 +1,29 @@
+@startuml
+
+partition "Application Manager" #dddddd {
+  (*) --> "Select Application"
+}
+
+partition "Application Analyzer" #dddddd {
+  "Get Telemetry" --> "Analyze Application"
+}
+
+partition "Application Orchestrator" #ccffff {
+  "Select Application" --> "Launch Application"
+  "Analyze Application" --> "Rebalance Application"
+}
+
+partition "Cloud Broker" #dddddd {
+  "Launch Application" --> "Get Resources"
+  "Rebalance Application" --> "Get Resources"
+}
+
+partition "Application Orchestrator" #ccffff {
+  "Get Resources" --> "Deploy Service"
+}
+
+partition "Provision Engine" #dddddd {
+  "Deploy Service" --> "Deploy Software"
+}
+
+@enduml

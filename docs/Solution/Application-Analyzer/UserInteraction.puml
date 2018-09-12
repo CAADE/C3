@@ -1,0 +1,22 @@
+@startuml
+actor Telemetry as T
+actor "Application Manager" as AM
+
+participant "Application Ananlyzer" as AA
+participant bin
+participant sailsjs
+
+T -> AA: Analyze Telemetry
+AA -> bin: telemetry-ingess(stream)
+bin -> sailjs: telemetry/ingess(stream)
+
+T -> AA: Map Application to Telemetry
+AA -> bin: app-ingess(app)
+bin -> sailsjs: app/ingess(app)
+
+AA --> AA: Build Landscape
+
+actor "Application Orchestrator" as AO
+AA --> AO: Recommend New Landscape
+
+@enduml

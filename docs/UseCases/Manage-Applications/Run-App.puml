@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Applications" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-app-run()
+CLI -> S : app/run()
+A -> Web : app/run()
+Web -> S : app/run()
+end box
+
+@enduml

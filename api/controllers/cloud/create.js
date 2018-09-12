@@ -1,20 +1,22 @@
 module.exports = {
+
   friendlyName: 'cloud create',
-  description: 'Add a cloud to the C3 instance with <name> and <type>',
+
+  description: 'Create a Cloud',
 
   inputs: {
-    type: {
-      description: 'The type of cloud to create',
+    name: {
+      description: 'name of the Cloud',
       type: 'string',
       required: true
     },
-    name: {
-      description: 'The name of cloud to create',
+    type: {
+      description: 'type of the Cloud (aws,openstack,vmware,gce,...)',
       type: 'string',
       required: true
     },
     mode: {
-      description: "results format: json or html",
+      description: 'results format: json or html',
       type: 'string',
       required: false
     }
@@ -29,32 +31,27 @@ module.exports = {
       responseType: '', // with return json
     },
     notFound: {
-      description: 'That type of cloud is not supported',
+      description: 'No item with the specified ID was found in the database.',
       responseType: 'redirect'
     }
   },
 
   fn: async function (inputs, exits, env) {
 
-    // Look up the user whose ID was specified in the request.
-    // Note that we don't have to validate that `userId` is a number;
-    // the machine runner does this for us and returns `badRequest`
-    // if validation fails.
     try {
-      let user = await;
-      Cloud.findOne(inputs.user);
-      if (!user) {
-        return exits.notFound('/signup');
-      }
+      let cloud = await Cloud.findOrCreate({name:inputs.name}, {name:inputs.name, type:inputs.type});
+
+      // Broadcast change
+      sails.sockets.broadcast('c3', 'cloud', cloud);
 
       // Display the results
-      if (inputs.mode === "json") {
+      if (inputs.mode === 'json') {
         // Return json
-        return exits.json({name: user.name});
+        return exits.json(cloud);
       }
       else {
         // Display the welcome view.
-        return exits.success({name: user.name});
+        return exits.success(cloud);
       }
     }
     catch (e) {

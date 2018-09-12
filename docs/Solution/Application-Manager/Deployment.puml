@@ -1,0 +1,15 @@
+@startuml
+
+package  "Application Manager" #lightblue {
+  folder bin #ffffff {
+    file app
+    file env
+  }
+  node sailsjs
+  database DB1
+
+  sailsjs .. DB1
+  bin .. sailsjs
+}
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+
+package  "Policy Manager"  #lightblue {
+  folder bin #ffffff {
+    file policy
+  }
+
+  folder Services #ffffff {
+    file "policy-manager"
+  }
+
+  node micro
+
+  node sailsjs
+  database DB1
+
+  sailsjs -- DB1
+  bin .. sailsjs
+  Services .. micro
+
+  micro -- DB1
+  sailsjs -> micro
+}
+
+@enduml
+

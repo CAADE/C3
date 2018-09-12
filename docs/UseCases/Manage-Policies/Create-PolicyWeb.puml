@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  Create Policy
+  {
+      name | "myPolicy"
+      cloud | "myCloud"
+      env | "dev"
+      filename | "policy.yaml"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

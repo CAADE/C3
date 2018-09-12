@@ -17,4 +17,4 @@ module.exports = async function (req, res) {
   }
 
   send(res, 200, 'Got it');
-};
+}

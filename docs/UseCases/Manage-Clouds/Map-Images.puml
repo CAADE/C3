@@ -2,8 +2,38 @@
 Actor "actorName" as A
 
 box "Manage-Clouds" #lightblue
+participant CLI as CLI
+participant Web as Web
 participant "c3" as S
-A -> S : Map-Images
+
+group Map Image
+A -> CLI : c3-image-create(cloud, name, image)
+CLI -> S : image/create(cloud, name, image)
+A -> Web : image/create(cloud, name, image)
+Web -> S : image/create(cloud, name, image)
+end
+
+group List Images
+A -> CLI : c3-image-list()
+CLI -> S : image/list()
+A -> Web : image/list()
+Web -> S : image/list()
+end
+
+group Update Image
+A -> CLI : c3-image-update(cloud, name, image)
+CLI -> S : image/update(cloud, name, image)
+A -> Web : image/update(cloud, name, image)
+Web -> S : image/update(cloud, name, image)
+end
+
+group Destroy Image
+A -> CLI : c3-image-destroy(cloud, name)
+CLI -> S : image/destroy(cloud, name)
+A -> Web : image/destroy(cloud, name)
+Web -> S : image/destroy(cloud, name)
+end
+
 end box
 
 @enduml

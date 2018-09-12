@@ -1,0 +1,13 @@
+service:
+  name: common
+  version: 0.0.1
+  environments:
+    local:
+      image: alpine
+      replicas: 1
+    test:
+      image: alpine
+      replicas: 1
+    prod:
+      image: alpine
+      replicas: 1

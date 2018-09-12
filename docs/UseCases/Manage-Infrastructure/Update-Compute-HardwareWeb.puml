@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  Update Compute Hardware
+  {
+      name | "myCompute"
+      cloud | "myCloud"
+      type | "compute"
+      capacity | "28"
+      [ Cancel <&circle-x>] | [ UPDATE <&account-login> ]
+  }
+}
+
+@enduml

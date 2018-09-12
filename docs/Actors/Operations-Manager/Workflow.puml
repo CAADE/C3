@@ -1,0 +1,35 @@
+@startuml
+|Operations Manager|
+start
+fork
+|#lightblue|C3|
+:Manage Applications;
+:List Applications;
+:Kill Application;
+:Get Application Logs;
+fork again
+:Manage Environments;
+:List Environments;
+:Create Environment;
+:Destory Environment;
+fork again
+:Manage Policies;
+:List Policies;
+:Create Policy;
+:Check Policy;
+:Destroy Policy;
+fork again
+:Manage Users;
+:Create User;
+:List Users;
+:Destory User;
+fork again
+:Map Cloud Resources;
+:Map Images;
+:Map Machine Types;
+:Map Users;
+fork end
+|Operations Manager|
+stop
+@enduml
+

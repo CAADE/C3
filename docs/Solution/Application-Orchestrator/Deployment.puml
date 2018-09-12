@@ -1,0 +1,21 @@
+@startuml
+
+package  "Application Orchestrator" #lightblue {
+  folder bin #ffffff {
+    file app
+  }
+  folder "Services" #ffffff {
+    file "app-orchestrator"
+  }
+  node micro
+  node sailsjs
+  database DB1
+  Services .. micro
+
+  sailsjs -> micro
+  sailsjs -- DB1
+  micro -- DB1
+  bin .. sailsjs
+}
+
+@enduml

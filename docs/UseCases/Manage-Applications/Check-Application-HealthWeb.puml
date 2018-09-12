@@ -1,0 +1,12 @@
+@startuml
+
+salt
+{
+  **Check Application Health**
+  {
+      name | "myApp"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

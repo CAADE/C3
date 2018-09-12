@@ -3,30 +3,26 @@ pipeline {
     label 'node'
   }
   environment {
-    CAADE_REGISTRY = 'node0:5000'
+    CAADE_REGISTRY = TBD
+    DOCKER_USER = TBD
+    DOCKER_PASS = TBD
   }
   stages {
-    stage('Build') {
+    stage('Build Docs') {
       steps {
-        sh 'npm run-script build'
-        sh 'npm run-script publish'
+        sh 'git submodule update --init --recursive'
+        sh 'npm run-script build-doc'
       }
     }
-    stage('Build Docs') {
-    agent
-        docker { image 'madajaju/caade-doc-node-agent' }
-      }
+    stage('Build') {
       steps {
-        sh 'cd docs && git stash'
-        sh 'git pull'
-        sh 'git submodule update --init --recursive'
-        sh 'npm run-script design'
-        sh 'npm run-script build-doc'
-        sh 'cd docs && git add . && git commit -m "Update Documents"'
+        sh 'docker login --username=$DOCKER_USER --password=$DOCKER_PASS'
+        sh 'npm run-script build'
+        sh 'npm run-script deploy-apps'
       }
     }
     stage('Test') {
-      agent {
+    agent {
         label 'docker-master'
       }
       steps {

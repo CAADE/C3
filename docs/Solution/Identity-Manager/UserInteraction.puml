@@ -1,0 +1,6 @@
+@startuml
+actor User
+
+User -> "Identity Manager": UseCase
+
+@enduml

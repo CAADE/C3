@@ -1,0 +1,18 @@
+@startuml
+
+partition "Artifact-Repository" {
+
+}
+
+partition SubSystem  #cccccc {
+  (*) --> "Create Artifact"
+}
+
+partition "Artifact-Repository" #lightblue {
+  "Create Artifact" --> "Publish Artifact"
+  "Update Artifact" --> "Publish Artifact"
+  "Create Artifact" --> "Destroy Artifact"
+  "Destroy Artifact" --> (*)
+}
+
+@enduml

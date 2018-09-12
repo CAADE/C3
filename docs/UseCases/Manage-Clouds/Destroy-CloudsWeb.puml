@@ -1,0 +1,12 @@
+@startuml
+
+salt
+{
+  **Destroy Clouds**
+  {
+      name | "myCloud"
+      [ Cancel <&circle-x>] | [ DELETE <&account-login> ]
+  }
+}
+
+@enduml

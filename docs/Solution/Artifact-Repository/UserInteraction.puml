@@ -1,0 +1,7 @@
+@startuml
+actor User
+
+User -> "Artifact-Repository": Manage Artifact
+User -> "Artifact-Repository": Use Artifact
+
+@enduml

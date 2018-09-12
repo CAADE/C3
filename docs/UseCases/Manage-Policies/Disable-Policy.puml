@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Policies" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-policy-disable(name)
+CLI -> S : policy/disable(name)
+A -> Web : policy/disable(name)
+Web -> S : policy/disable(name)
+end box
+
+@enduml

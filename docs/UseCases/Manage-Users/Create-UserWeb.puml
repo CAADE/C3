@@ -1,0 +1,14 @@
+@startuml
+
+salt
+{
+  **Create User**
+  {
+      Name | "darrenp"
+      Cloud | "myCloud"
+      UName | "dwpulsip"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

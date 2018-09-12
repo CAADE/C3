@@ -1,0 +1,14 @@
+@startuml
+
+package "Operations Manager" #lightblue {
+    interface "Operations Manager" {
+
+    }
+    CLI ()-- "Operations-Manager"
+    REST ()-- "Operations-Manager"
+    Web ()-- "Operations-Manager"
+
+}
+
+
+@enduml

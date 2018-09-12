@@ -1,0 +1,25 @@
+@startuml
+
+package  "Data Coordinator"  #lightblue {
+  folder bin #ffffff {
+    file coordinate
+  }
+
+  folder Services #ffffff {
+    file "data-coordinator"
+  }
+
+  node micro
+
+  node sailsjs
+  database DB1
+
+  sailsjs -- DB1
+  bin .. sailsjs
+  Services .. micro
+
+  micro -- DB1
+  sailsjs -> micro
+}
+
+@enduml

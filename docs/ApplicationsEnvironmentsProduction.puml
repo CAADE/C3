@@ -3,7 +3,7 @@
 left to right direction
 
 Actor Dev
-cloud "Production" {
+package "Production" #lightblue {
   component NGInX
   component NodeJS1
   component NodeJS2

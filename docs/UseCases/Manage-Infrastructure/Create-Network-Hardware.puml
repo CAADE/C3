@@ -1,0 +1,13 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "Manage-Infrastructure" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-hardware-create(cloud, name, 'network', capacity)
+CLI -> S : hardware/create(cloud, name, 'network', capacity)
+A -> Web : hardware/create(cloud, name, 'network', capacity)
+Web -> S : hardware/create(cloud, name, 'network', capacity)
+end box
+@enduml

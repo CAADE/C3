@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Stack-Template" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-template-destroy()
+CLI -> S : template/destroy()
+A -> Web : template/destroy()
+Web -> S : template/destroy()
+end box
+
+@enduml

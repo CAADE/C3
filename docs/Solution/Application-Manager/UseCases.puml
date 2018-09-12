@@ -1,0 +1,43 @@
+@startuml
+
+left to right direction
+
+actor :Developer:
+
+actor :Policy Manager:
+actor :Environment Manager:
+actor :Application Orchestrator:
+actor :Artifact Repository:
+
+rectangle "Application Manager" #lightblue {
+    UseCase DRA <<Main>> as "Deploy & Run Application
+    ---
+    On different environments
+    Locally, Dev, Test, Production
+    "
+
+    UseCase SAS as "Select Application Stack"
+    UseCase SE  as "Select Environment"
+    UseCase DA as "Debug Application"
+    UseCase MAS as "Modify Application Stack"
+    UseCase SAS2 as "Share Application Stack"
+    UseCase LA  as "Launch Application"
+
+    Developer --> DRA
+    Developer --> LA
+    Developer --> SAS
+    Developer --> DA
+    Developer --> MAS
+    Developer --> SAS2
+    Developer --> SE
+    SE --> (Environment Manager)
+    SAS2 --> (Artifact Repository)
+    SAS --> (Artifact Repository)
+    MAS --> (Artifact Repository)
+    DRA --> (Application Orchestrator)
+    DA --> (Application Orchestrator)
+    DRA --> (Policy Manager)
+}
+
+@enduml
+

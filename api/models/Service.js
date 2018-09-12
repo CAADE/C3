@@ -1,20 +1,42 @@
 /**
  * Service.js
  *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
- * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+ * @description :: A model definition.  Represents a database table/collection/etc.
+ * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
 module.exports = {
 
   attributes: {
+
+    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
+    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
+    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     name: {type: 'string'},
-    version: {type: 'string'},
-    ports: {type: 'Array'},
-    expose: {type: 'Array'},
-    parameters: {type: 'Array'},
-    config: {type: 'string'},
-    templates: {collection: 'ServiceTemplate', via: 'service'}
-  }
+    ports: {type: 'json'},
+    parameters: {type: 'json'},
+    config: {type: 'json'},
+    replicas: {type: 'number'},
+
+
+    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
+    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
+    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
+
+
+    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
+    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
+    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+    servicelet: {model: 'Servicelet'},
+    children: {collection: 'Service', via: 'parent'},
+    instances: {collection: 'ServiceInstance', via: 'service'},
+    apps: {collection: 'ApplicationInstance', via: 'services'},
+    links: {collection: 'Service', via: 'dependant'},
+    dependant: {model: 'Service'},
+    parent: {model: 'Service'},
+    requirements: {type: 'json'},
+    app: {model: 'ApplicationInstance'}
+  },
+
 };
 

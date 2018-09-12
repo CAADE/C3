@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Users" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-user-destroy(name)
+CLI -> S : user/destroy(name)
+A -> Web : user/destroy(name)
+Web -> S : user/destroy(name)
+end box
+
+@enduml

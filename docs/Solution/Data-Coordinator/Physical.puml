@@ -1,0 +1,28 @@
+@startuml
+
+package "Data Coordinator" #lightblue {
+    interface CLI
+    interface Web
+    interface REST
+    folder C3 #ffffff {
+        component sailsjs
+        component sails.io
+    }
+    folder bin #ffffff {
+      component coordinate
+    }
+    folder "data-coordinator" #ffffff {
+        component micro as dcmicro
+    }
+}
+CLI -- coordinate
+coordinate -- REST
+Web -- sailsjs
+Web -- REST
+REST -- sailsjs
+
+Web -- sails.io
+REST -- dcmicro
+
+@enduml
+

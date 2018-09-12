@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  **List Clouds**
+  {
+      **Name** | **Type**
+      myPublic | aws
+      my Private | openstack
+      my Private2 | vmware
+      [ Close <&circle-x>]
+  }
+}
+
+@enduml

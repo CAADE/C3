@@ -3,16 +3,38 @@
 Enable Policy
 =============
 
-The :ref:`Actor-Operations-Manager` enables policies before they effect the clouds,
-resources, services and users. Policies can be "disabled" using the :ref:`Scenario-Disable-Policy` command.
+Enable Policy using CLI and Web Interface with specific name
 
 .. image:: Enable-Policy.png
 
-**Users**
 
-* :ref:`Actor-Operations-Manager`
+**CLI**
 
-**Systems**
+This is an example of a command line interface for the user to interact with the system.
 
-* :ref:`SubSystem-Operatons-Manager`
 
+.. code-block:: none
+
+  # c3 policy enable --name <string>
+  # c3 policy enable --name myPolicy
+
+
+**Web Interface(Mock-up)**
+
+Mock up web interface for the scenario.
+
+
+.. image:: Enable-PolicyWeb.png
+
+
+**REST**
+
+This is an example of the RESTful interface for the scenario.
+
+*policy/enable*
+
+============  ========  ===================
+Name          Value     Description
+------------  --------  -------------------
+name          string    Name of the policy to enable
+============  ========  ===================

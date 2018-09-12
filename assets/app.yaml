@@ -1,0 +1,137 @@
+service:
+  name: alert
+  version: 0.0.1
+  environments:
+    local:
+      resources:
+        network:
+          myNetwork: 150
+        storage:
+          myStorage: 1000
+          externalStorage: 5000
+      services:
+        ingestion:
+          type: ingestion
+          version: 0.0.1
+          replicas: 2
+          storage: myStorage
+          network: myNetwork
+          links:
+            - annotation
+            - streaming
+          ports:
+            - 1337:80
+          config:
+            INGESTION_PORT: 1234
+        annotation:
+          type: ingestion
+          replicas: 2
+          network: myNetwork
+          ports:
+            - 2345:1234
+        streaming:
+          type: streaming
+          replicas: 2
+          network: myNetwork
+          links:
+            - notificationGateway
+          ports:
+            - 2345: 3456
+        notificationGateway:
+          type: notification
+          replicas: 1
+          network: myNetwork
+          storage: externalStorage
+    test:
+      resources:
+        network:
+          myNetwork: 150
+        storage:
+          myStorage: 1000
+          externalStorage: 5000
+          testStorage: 1000
+      services:
+        ingestion:
+          type: ingestion
+          replicas: 2
+          storage: myStorage
+          network: myNetwork
+          links:
+            - annotation
+            - streaming
+          ports:
+            - 1337:80
+          config:
+            INGESTION_PORT: 1234
+        annotation:
+          type: ingestion
+          replicas: 2
+          network: myNetwork
+          ports:
+            - 2345:1234
+        streaming:
+          type: streaming
+          replicas: 2
+          network: myNetwork
+          links:
+            - notificationGateway
+          ports:
+            - 2345: 3456
+        notificationGateway:
+          type: notification
+          replicas: 2
+          network: myNetwork
+          storage: externalStorage
+        alertTestRunner:
+          type: testRunner
+          replicas: 10
+          network: myNetwork
+          storage:
+            - externalStorage
+            - testStorage
+    prod:
+      resources:
+        network:
+          myNetwork: 150
+        storage:
+          myStorage: 1000
+          externalStorage: 5000
+          testStorage: 1000
+      services:
+        ingestion:
+          type: ingestion
+          replicas: 10
+          storage: myStorage
+          network: myNetwork
+          links:
+            - annotation
+            - streaming
+          ports:
+            - 1337:80
+          config:
+            INGESTION_PORT: 1234
+        annotation:
+          type: ingestion
+          replicas: 5
+          network: myNetwork
+          ports:
+            - 2345:1234
+        streaming:
+          type: streaming
+          replicas: 10
+          network: myNetwork
+          links:
+            - notificationGateway
+          ports:
+            - 2345: 3456
+        notificationGateway:
+          type: notification
+          replicas: 10
+          network: myNetwork
+          storage: externalStorage
+        auditLogger:
+          type: auditLogger
+          replicas: 2
+          network: myNetwork
+          storage:
+            - externalStorage

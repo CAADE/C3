@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  Update Network Hardware
+  {
+      name | "myNetwork"
+      cloud | "myCloud"
+      type | "network"
+      capacity | "254"
+      [ Cancel <&circle-x>] | [ UPDATE <&account-login> ]
+  }
+}
+
+@enduml

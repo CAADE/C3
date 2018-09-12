@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Environments" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-env-update()
+CLI -> S : env/update()
+A -> Web : env/update()
+Web -> S : env/update()
+end box
+
+@enduml

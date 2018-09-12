@@ -1,0 +1,14 @@
+@startuml
+
+salt
+{
+  **Map Images**
+  {
+      cloud | "myCloud"
+      name | "linuxSmall"
+      image | "ami-124125"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

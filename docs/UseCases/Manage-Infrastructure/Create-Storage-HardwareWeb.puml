@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  Create Storage Hardware
+  {
+      name | "myStorage"
+      cloud | "myCloud"
+      type | "storage"
+      capacity | "254"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

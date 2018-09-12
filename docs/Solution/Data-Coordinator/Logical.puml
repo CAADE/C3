@@ -1,0 +1,14 @@
+@startuml
+
+package "Data-Coordinator" {
+    interface "Data-Coordinator" {
+
+    }
+    CLI ()-- "Data-Coordinator"
+    REST ()-- "Data-Coordinator"
+    Web ()-- "Data-Coordinator"
+
+}
+
+
+@enduml

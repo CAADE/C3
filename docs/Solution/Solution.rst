@@ -1,26 +1,32 @@
-.. _Solution:
+Genereric Solution Overview
+===========================
 
-Architectural Overview
-======================
-The Common Cloud Core has 4 categories of services: Portal, Registry, Control and Orchestrator.
+The Common Cloud Core is a reference architecture that
+targets IT and Software Developers that want to develop, test and deploy application ina Multi-Hybrid Cloud system.
+This reference architecture shows the use cases, and specs for implementing the CCC Architecture. The architecture is
+broken up into several different components and sections.
+An introductory video that gives a brief overview of `Common Cloud Core <https://youtu.be/0s_tC5ZEWM4>`_.
 
 Users
 -----
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Actors
+* :ref:`Actor-Application-Developer`
+* :ref:`Actor-Operations-Manager`
+* :ref:`Actor-Stack-Developer`
 
-   /**/Actor*
+Use Cases
+---------
 
-High level Use Cases
---------------------
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Use Cases
-
-   /**/UseCase*
+* :ref:`UseCase-Manage-Applications`
+* :ref:`UseCase-Manage-Application-Stack`
+* :ref:`UseCase-Manage-Clouds`
+* :ref:`UseCase-Manage-Environments`
+* :ref:`UseCase-Manage-Infrastructure`
+* :ref:`UseCase-Manage-Policies`
+* :ref:`UseCase-Manage-Service`
+* :ref:`UseCase-Manage-Service-Template`
+* :ref:`UseCase-Manage-Stack-Template`
+* :ref:`UseCase-Manage-Users`
 
 .. image:: /UseCases/UseCases.png
 
@@ -41,14 +47,14 @@ how these components work together to fulfill the high level use cases.
 * :ref:`SubSystem-Operations-Manager` - Operations Portal for managing Operations and Stack development.
 * :ref:`SubSystem-Policy-Manager` - Manage Policies for execution of services and applications in the system
 * :ref:`SubSystem-Provision-Engine` - Provision services and application on resources from the cloud
-* :ref:`SubSystem-SDI-Cloud` - Any Private SDI Cloud including VMWare, OpenStack, Nutantix, Containers, etc...
-* :ref:`SubSystem-Public-Cloud` - Public Clouds including AWS, IBM Cloud, Google Cloud Engine, etc...
-* :ref:`SubSystem-Telemetry-SNAP` - Telemety Bus from multiple clouds, services and application stacks.
+* :ref:`SubSystem-Stack-Manager` - Manage reusable application and service stacks.
+* :ref:`SubSystem-Telemetry` - Telemety Bus from multiple clouds, services and application stacks.
 
 .. image:: Logical.png
 
 Process Architecture
 --------------------
+
 The subsystems of C3 request information from each other to accomplish the use cases of the system.
 This diagram shows how these microservices are connected and what they share between each other.
 
@@ -56,6 +62,7 @@ This diagram shows how these microservices are connected and what they share bet
 
 Deployment model
 ----------------
+
 The architecture consists of several micro services that form the application this diagram shows how those
 microservices are connected together, deployed and storage requirements.
 

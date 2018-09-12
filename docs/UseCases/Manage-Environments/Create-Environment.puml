@@ -1,0 +1,14 @@
+@startuml
+Actor "Operstions Manager" as A
+
+box "Manage-Environments" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-env-create(name)
+CLI -> S : env/create(name)
+A -> Web : env/create(name)
+Web -> S : env/create(name)
+end box
+
+@enduml

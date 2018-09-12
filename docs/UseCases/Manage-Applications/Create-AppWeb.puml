@@ -1,0 +1,13 @@
+@startuml
+
+salt
+{
+  **Create App**
+  {
+      Name | "myApp"
+      Stack | "lamp"
+      [ Cancel ] | [ CREATE <&account-login> ]
+  }
+}
+
+@enduml

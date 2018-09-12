@@ -1,0 +1,43 @@
+@startuml
+
+package "Policy Manager"  #lightgreen {}
+package "Environment Manager" #lightgreen {}
+package "Application Orchestrator" #lightgreen {}
+package "Artifact Repository" #lightgreen {
+    class ApplicationStack {
+    }
+}
+
+package "Application Manager" #ccffff {
+  interface "Application Manager" {
+      stack()
+      app()
+      service()
+  }
+  class Application {
+
+  }
+  class Service {
+
+  }
+  class Config {
+    Map values;
+  }
+  class ApplicationInstance {
+
+  }
+
+  Application "1" *--> "n" Config
+  Application "1" o--> "1" ApplicationStack
+}
+"CLI" ()-- "Application Manager"
+"REST API" ()-- "Application Manager"
+"Portal" ()-- "Application Manager"
+
+
+"Application Manager" --> "Artifact Repository"
+"Application Manager" --> "Policy Manager"
+"Application Manager" --> "Application Orchestrator"
+"Application Manager" --> "Environment Manager"
+@enduml
+

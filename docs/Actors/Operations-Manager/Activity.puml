@@ -1,0 +1,15 @@
+@startuml
+participant "Operations Manager" as OM
+participant "Operations Interface" as OI
+participant "Environments Manager" as EM
+participant "Policy Manager"  as PM
+participant "Identity Manager"  as IM
+participant "Artifact Repository" as AR
+
+OM -> EM : Manage Environments
+OM -> PM : Manage Policies
+OM -> OI : Manage Running Applications
+OM -> IM : Manage Users
+OM -> AR : Map Cloud Resources
+@enduml
+

@@ -1,0 +1,25 @@
+@startuml
+
+package  "Telemetry"  #lightblue {
+  folder bin #ffffff {
+    file telemetry
+  }
+
+  folder Services #ffffff {
+    file "tele-bus"
+  }
+
+  node micro
+
+  node sailsjs
+  database DB1
+
+  sailsjs -- DB1
+  bin .. sailsjs
+  Services .. micro
+
+  micro -- DB1
+  sailsjs -> micro
+}
+
+@enduml

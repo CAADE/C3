@@ -1,0 +1,14 @@
+@startuml
+Actor "Operations Manager" as A
+
+box "Manage-Environments" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-env-get(name)
+CLI -> S : env/get(name)
+A -> Web : env/get(name)
+Web -> S : env/get(name)
+end box
+
+@enduml

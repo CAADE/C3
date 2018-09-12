@@ -1,0 +1,14 @@
+@startuml
+
+package  "Artifact Repository" #lightblue {
+  folder bin #ffffff {
+    file artifact
+  }
+  node sailsjs
+  database DB1
+
+  sailsjs .. DB1
+  bin .. sailsjs
+}
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Clouds" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-cloud-destroy(name)
+CLI -> S : cloud/destroy(name)
+A -> Web : cloud/destroy(name)
+Web -> S : cloud/destroy(name)
+end box
+
+@enduml

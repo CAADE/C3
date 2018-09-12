@@ -1,0 +1,12 @@
+@startuml
+
+salt
+{
+  Enable Policy
+  {
+      name | "myPolicy"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

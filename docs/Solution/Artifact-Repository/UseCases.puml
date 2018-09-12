@@ -1,0 +1,17 @@
+@startuml
+
+left to right direction
+
+actor :User:
+
+
+rectangle "Artifact Repository" #lightblue {
+UseCase UC1 as "Manage Artifact"
+UseCase UC2 as "Use Artifact"
+
+
+User --> UC1
+UC1 --> UC2
+}
+
+@enduml

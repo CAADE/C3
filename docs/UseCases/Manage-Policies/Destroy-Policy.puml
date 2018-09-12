@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Policies" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-policy-destroy(name,cloud,env)
+CLI -> S : policy/destroy(name,cloud,env)
+A -> Web : policy/destroy(name,cloud,env)
+Web -> S : policy/destroy(name,cloud,env)
+end box
+
+@enduml

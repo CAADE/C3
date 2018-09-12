@@ -1,0 +1,12 @@
+@startuml
+
+salt
+{
+  **Destroy Environment**
+  {
+      Name | "Development"
+      [ Cancel <&circle-x>] | [ DELETE <&account-login> ]
+  }
+}
+
+@enduml

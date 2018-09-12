@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "Manage-Environments" #lightblue
-participant "c3" as S
-A -> S : Show-Environment-Processes
-end box
-
-@enduml

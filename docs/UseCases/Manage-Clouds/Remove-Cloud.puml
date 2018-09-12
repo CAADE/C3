@@ -1,9 +1,0 @@
-@startuml
-Actor "actorName" as A
-
-box "Manage-Clouds" #lightblue
-participant "c3" as S
-A -> S : Remove-Cloud
-end box
-
-@enduml

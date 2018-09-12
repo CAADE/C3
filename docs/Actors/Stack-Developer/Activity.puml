@@ -1,0 +1,23 @@
+@startuml
+partition "Stack Developer"  #cccccc {
+  (*) --> "Start Here"
+}
+
+partition "Stack App Manager" #lightblue {
+  "Start Here" --> "Create Application Stack"
+  --> "Modify Application Stack"
+  --> "Version Application Stack"
+  --> "Create Service Template"
+  --> "Modify Service Template"
+  --> "Version Service Template"
+}
+
+partition "Application Manager" #lightblue {
+  "Version Service Template" -> "Test Application Stack"
+  "Version Application Stack" --> "Test Application Stack"
+  --> "Create an Application"
+  --> "Launch an Application\nin an environment"
+  --> "Kill Application and Services"
+}
+
+@enduml

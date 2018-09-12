@@ -1,0 +1,14 @@
+@startuml
+
+salt
+{
+  Destroy Policy
+  {
+      name | "myPolicy"
+      cloud | "myCloud"
+      env | "dev"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

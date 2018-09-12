@@ -1,0 +1,26 @@
+@startuml
+actor Developer
+participant "Application Manager" as AM
+participant bin
+participant sailsjs
+
+Developer -> AM : Select Application Stack
+AM -> bin: stack-select(name)
+bin -> sailsjs : stack/select(name)
+
+Developer -> AM : Create Application
+AM -> bin: app-create(name, stack, config)
+bin -> sailsjs: app/create(name, stack, config)
+Developer -> AM : Select Environment
+AM -> bin: env-select(name)
+bin -> sailsjs : env/select(name)
+
+Developer -> AM : Launch Application
+AM -> bin: app/launch(app, env, config)
+bin -> sailsjs: app/launch(app, env, config)
+
+Developer -> AM : Debug Application
+AM -> bin: app/debug(app, env, config)
+bin -> sailsjs: app/debug(app, env, config)
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+actor "Operations Manager" as Ops
+participant "Cloud Broker" as CB
+participant bin
+participant sailsjs
+
+Ops -> CB: Manage Infrastructure
+CB -> bin: broker-getResources(resources)
+bin -> sailsjs : broker/getResources(resources)
+CB -> bin: resource-create(cloud, name, type)
+bin -> sailsjs : resource/create(cloud, name, type)
+CB -> bin: resource-destroy(cloud, name)
+bin -> sailsjs : resource/destroy(cloud, name)
+
+Ops -> CB: Manage Cloud
+CB -> bin: cloud-create(cloud, type)
+bin -> sailsjs : cloud/create(cloud, type)
+CB -> bin: cloud-destroy(cloud, type)
+bin -> sailsjs : cloud/destroy(cloud, type)
+CB -> bin: cloud-list(cloud, type)
+bin -> sailsjs : cloud/list(cloud, type)
+CB -> bin: cloud-update(cloud, type)
+bin -> sailsjs : cloud/update(cloud, type)
+
+@enduml

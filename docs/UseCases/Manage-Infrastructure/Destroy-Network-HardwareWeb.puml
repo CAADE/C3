@@ -1,0 +1,13 @@
+@startuml
+
+salt
+{
+  Destroy Network Hardware
+  {
+      name | "myNetwork"
+      cloud | "myCloud"
+      [ Cancel <&circle-x>] | [ DELETE <&account-login> ]
+  }
+}
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+
+package "data-coordinator" #lightblue {
+    interface "data-coordinator" {
+
+    }
+    CLI ()-- "data-coordinator" : 5000
+    REST ()-- "data-coordinator" : 3000
+    Web ()-- "data-coordinator" : 80
+}
+
+
+@enduml

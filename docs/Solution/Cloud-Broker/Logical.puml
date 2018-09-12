@@ -1,0 +1,81 @@
+@startuml
+
+package "Artifact Repository" #dddddd {
+  class "Service" {
+  }
+}
+
+package "Application Orchestrator" #dddddd {
+  class "Service Instance" {
+  }
+  class "Resource Request" {
+    string type
+    number quantity
+    string name
+  }
+  class Request {
+  }
+}
+
+Service *--> "Service Instance"
+
+package "Cloud Broker" #lightblue {
+    interface "Cloud Broker" {
+      broker()
+      resource()
+      cloud()
+    }
+    class Resource {
+      string name
+      boolean disabled
+      number capacity
+      number available
+      add(name, type, capacity)
+      remove(name, type, capacity)
+      list()
+    }
+    class ComputeResource {
+    }
+    class NetworkResource {
+    }
+    class StorageResource {
+    }
+    Resource <|-- ComputeResource
+    Resource <|-- StorageResource
+    Resource <|-- NetworkResource
+}
+package Cloud #dddddd {
+    class Reservation {
+      datetime goodTil
+    }
+  abstract Hardware {
+  }
+  class Compute {
+  }
+  class Network {
+  }
+  class Storage {
+  }
+  Hardware <|-- Compute
+  Hardware <|-- Storage
+  Hardware <|-- Network
+}
+
+CLI ()-- "Cloud Broker"
+REST ()-- "Cloud Broker"
+Web ()-- "Cloud Broker"
+"Cloud Broker" .. Resource
+
+Resource o--> Hardware
+
+"Service Instance" o--> Resource
+Request o-> "Service Instance"
+Request *--> "Resource Request"
+
+Reservation o--> "Request"
+Reservation o--> "Hardware"
+Reservation .. Resource
+
+
+@enduml
+

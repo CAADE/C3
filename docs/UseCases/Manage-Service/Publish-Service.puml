@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Service" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-service-publish()
+CLI -> S : service/publish()
+A -> Web : service/publish()
+Web -> S : service/publish()
+end box
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  Create Compute Hardware
+  {
+      name | "myCompute"
+      cloud | "myCloud"
+      type | "compute"
+      capacity | "28"
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

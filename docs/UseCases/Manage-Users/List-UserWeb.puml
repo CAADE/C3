@@ -1,0 +1,15 @@
+@startuml
+
+salt
+{
+  **List User**
+  {
+      **Name** | **Cloud** | **User Name**
+      darrenp | myCloud | dwpulsip
+      darrenp | myPrivate | darren
+      darrenp | myPrivate2 | darren
+      [ Cancel <&circle-x>] | [ OK <&account-login> ]
+  }
+}
+
+@enduml

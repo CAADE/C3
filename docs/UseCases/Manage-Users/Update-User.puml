@@ -1,0 +1,14 @@
+@startuml
+Actor "actorName" as A
+
+box "Manage-Users" #lightblue
+participant CLI as CLI
+participant Web as Web
+participant "c3" as S
+A -> CLI : c3-user-update(name,cloud,uname)
+CLI -> S : user/update(name,cloud,uname)
+A -> Web : user/update(name,cloud,uname)
+Web -> S : user/update(name,cloud,uname)
+end box
+
+@enduml
