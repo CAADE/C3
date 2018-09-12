@@ -1,7 +1,7 @@
 @startuml
 |Stack Developer|
 start
-|#aaffaa|Common Cloud Core|
+|#pink|Common Cloud Core|
 :Create Service Template;
 while(has bugs?)
 :Debug Service Template;

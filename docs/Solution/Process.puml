@@ -1,22 +1,22 @@
 @startuml
 
-package "Portal" #aaffff {
+package "Portal" #lightblue {
     package "Application Manager" as AM { }
     package "Operations Manager" as OM { }
     package "Stack Manager" as SM { }
 }
-package "Orchestrator" #aaffaa {
+package "Orchestrator" #pink {
     package "Application Orchestrator" as AO { }
     package "Environment Manager" as EM { }
     package "Policy Manager" as PM { }
     package "Application Analytics" as AA { }
 }
-package "Registry" #ffffaa {
+package "Registry" #lightgreen {
     package "Identity Manager" as IM { }
     package "Artifact Repository" as AR { }
 }
 
-package "Control" #ffaaaa {
+package "Control" #lightyellow {
     package "Cloud Broker" as CB { }
     package "Data Coordinator" as DC { }
     package "Provision Engine" as PE { }

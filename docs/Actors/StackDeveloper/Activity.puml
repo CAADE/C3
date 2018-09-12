@@ -5,7 +5,7 @@ partition "StackDeveloper"  #cccccc {
   (*) --> "Start Here"
 }
 
-partition "system.name" #ffaaaa {
+partition "system.name" #lightyellow {
   "Start Here" --> "Here"
 }
 

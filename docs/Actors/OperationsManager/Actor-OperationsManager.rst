@@ -25,24 +25,12 @@ Typical Workflow
 User Interface
 --------------
 
-TBD
+.. image:: OperationsManagerWeb.png
 
 Command Line
 ------------
 
 Examples on how to use C3 for the Operations Manager
-
-:ref:`UseCase-Manage-Environments`
-----------------------------------
-
-This is a set of commands that can used to create, update and remove an environment from the system.
-Environments can represent Local machines, Development, Test, and Production.
-Operations Managers can creeate any number of environments that they need for the application and stack developers.
-
-:ref:`Scenario-Create-Environment`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Create an environment with the name environmentName
 
 .. code-block:: none
 

@@ -6,7 +6,7 @@ start
 :Select Application Stack;
 |Application Developer|
 :Create Working Direectory;
-|#aaffff|Application Manager|
+|#lightblue|Application Manager|
 :Create Application;
 :Modify Application Definition;
 |Application Developer|

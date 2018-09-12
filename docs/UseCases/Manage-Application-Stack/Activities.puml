@@ -1,14 +1,14 @@
 @startuml
 |Stack Developer|
 start
-|#aaffaa|Common Cloud Core|
+|#lightblue|Common Cloud Core|
 :Create Application Stack;
 while(has bugs?)
 :Debug Application Stack;
 :Test Application Stack;
 endwhile
 :Publish Application Stack;
-|Application Developer|
+|#lightgreen|Application Developer|
 :Find Application Stack;
 |Common Cloud Core|
 :Select Application Stack;

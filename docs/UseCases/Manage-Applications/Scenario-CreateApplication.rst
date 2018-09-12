@@ -16,3 +16,11 @@ of the project for the application.
 **Systems**
 
 * :ref:`Subsystem-Application-Manager`
+
+**Command Line Interface**
+
+Create a new application from the selected stack
+
+.. code-block:: none
+
+  # c3 app create <Application Name> --stack <Application Stack>

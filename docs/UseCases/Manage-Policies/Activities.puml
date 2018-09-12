@@ -1,7 +1,7 @@
 @startuml
 |Operations Manager|
 start
-|#ffffaa|common-cloud-core|
+|#lightgreen|common-cloud-core|
 :Create Policy;
 :Check Policy;
 if(check) then (failed)

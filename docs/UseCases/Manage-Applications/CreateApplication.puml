@@ -1,13 +1,13 @@
 @startuml
-Actor "Application Developer"
+Actor "Application Developer" as A
 
-"Application Developer" -> "Application Manager" : createApplication(name, ApplicationStack)
-activate "Application Manager"
-"Application Manager" -> "Application Manager" :findApplicationStack(name) : appStack
-create Application
-"Application Manager" -> "Application" : new(name, appStack)
-"Application Manager" -> "Application" : getJSON()
-"Application Developer" <- "Application Manager" : json(Application)
-deactivate "Application Manager"
+box "Manage Applications" #lightblue
+participant "CLI" as S
+A -> S : c3-app-create(name, stack)
+participant "Application Manager" as AM
+S -> AM : app/create(name, stack)
+AM -> AM : Application.create(name)
+AM -> AM : Application.update(stack)
+end box
 
 @enduml

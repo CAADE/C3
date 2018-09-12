@@ -1,16 +1,16 @@
 @startuml
 |Operations Manager|
 start
-|#ffffaa|Common Cloud Core|
+|#lightblue|Common Cloud Core|
 :Create Environment;
 :Update Environment;
 fork
-|Application Developer|
+|#lightgreen|Application Developer|
 :Find Environment;
 :Select Environment;
 :Launch Application;
 fork again
-|Stack Developer|
+|#pink|Stack Developer|
 :Find Environment;
 :Select Environment;
 :Update Application Stack;

@@ -7,7 +7,7 @@ left to right direction
 :Operations Engineer: as Ops
 :Clouds: as Cloud
 
-rectangle "C3" {
+rectangle "C3" #lightblue {
     Dev --> (Create Application)
     Dev --> (Run Application)
     Dev --> (Deploy Application)

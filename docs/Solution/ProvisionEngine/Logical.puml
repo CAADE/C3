@@ -1,10 +1,10 @@
 @startuml
 
-package "Application Orchestrator" #ffffaa {}
-package "SDI Cloud" #ffffaa {}
-package "Cloud Broker" #ffffaa {}
-package "Identity Manager" #ffffaa {}
-package "Artifact Repository" #ffffaa {}
+package "Application Orchestrator" #lightgreen {}
+package "SDI Cloud" #lightgreen {}
+package "Cloud Broker" #lightgreen {}
+package "Identity Manager" #lightgreen {}
+package "Artifact Repository" #lightgreen {}
 
 package "Provision Engine" {
   interface "ProvisionEngine" {

@@ -1,8 +1,8 @@
 .. _Actor-Developer:
 .. _Actor-Application-Developer:
 
-Actor Developer
-==================
+Developer
+=========
 
 The Application Developer develops cloud aware applications.
 
@@ -35,18 +35,6 @@ TBD
 
 Command Line
 ------------
-
-Examples on how to use C3
-
-:ref:`Scenario-Create-Application`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: none
-
-  # C3 app create <Application Name> --stack=<Application Stack>  # creates a new application from selected stack
-
-:ref:`Scenario-Get-Application`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Allow the developer to attach an existing application to a project.
 Great if they want to share an application or re-attach an application to a project.

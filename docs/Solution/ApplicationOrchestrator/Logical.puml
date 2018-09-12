@@ -15,18 +15,18 @@ package "Application Orchestrator" {
   ApplicationInstance *--> ServiceInstance
 }
 
-package "Cloud Broker"  #ffffaa {}
-package "Provision Engine" #ffffaa {}
-package "Data Coordinator" #ffffaa {}
-package "Telemetry Bus SNAP" #aaffaa {}
-package "Application Analyzer" #aaffff {}
-package "Application Manager" #aaffff {}
-package "Identity Manager"  #ffffaa {}
-package "Environment Manager" #ffffaa {
+package "Cloud Broker"  #lightgreen {}
+package "Provision Engine" #lightgreen {}
+package "Data Coordinator" #lightgreen {}
+package "Telemetry Bus SNAP" #pink {}
+package "Application Analyzer" #lightblue {}
+package "Application Manager" #lightblue {}
+package "Identity Manager"  #lightgreen {}
+package "Environment Manager" #lightgreen {
   class Environment {
   }
 }
-package "Artifact Repository"  #aaffaa {
+package "Artifact Repository"  #pink {
     class Application {
     }
     class Servicelet {

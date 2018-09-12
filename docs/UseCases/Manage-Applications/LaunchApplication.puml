@@ -12,7 +12,7 @@ ApplicationManager -> ApplicationOrchestration : void launchServices(ServiceGrap
 activate ApplicationOrchestration
 
 ApplicationOrchestration -> PolicyManager : ExecutionGraph injectPolicies(ServiceGraph sgraph)
-loop ExecutionGraph
+loop #lightblue ExecutionGraph
     ApplicationOrchestration -> CloudBroker : findCloud(ExecutionItem item)
     ApplicationOrchestration -\ DataCoordinator : syncImage(Image image, SDI)
     ApplicationOrchestration -\ DataCoordinator : syncData(Service service, SDI)

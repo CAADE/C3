@@ -62,12 +62,12 @@ ApplicationStack o--> "Service" : services
 "REST API" ()-- "Artifact Repository"
 "Portal" ()-- "Artifact Repository"
 
-package "Cloud Broker"  #ffffaa {}
-package "Application Orchestrator" #ffffaa {}
-package "Provision Engine" #ffffaa {}
-package "Data Coordinator" #ffffaa {}
-package "Operations Manager" #aaffff {}
-package "Application Manager" #aaffff {}
+package "Cloud Broker"  #lightgreen {}
+package "Application Orchestrator" #lightgreen {}
+package "Provision Engine" #lightgreen {}
+package "Data Coordinator" #lightgreen {}
+package "Operations Manager" #lightblue {}
+package "Application Manager" #lightblue {}
 
 "Operations Manager" --> "Artifact Repository"
 "Application Manager" --> "Artifact Repository"

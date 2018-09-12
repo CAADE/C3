@@ -1,7 +1,7 @@
 @startuml
 |Developer|
 start
-|#aaffaa|Common Cloud Core|
+|#lightblue|Common Cloud Core|
 if(Application exists) then (no)
 :Create Application;
 endif
@@ -13,7 +13,7 @@ while(has bug?)
 endwhile
 :Publish Application;
 :Deploy Application;
-|cloud|
-:activity2;
+|#lightgreen|cloud|
+:spin up Application;
 stop
 @enduml

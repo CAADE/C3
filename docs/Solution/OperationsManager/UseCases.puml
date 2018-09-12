@@ -1,8 +1,8 @@
 @startuml
 
 skinparam usecase {
-  BackgroudnColor #ffffaa
-  BackgroundColor<<Main>> #aaffff
+  BackgroudnColor #lightgreen
+  BackgroundColor<<Main>> #lightblue
 }
 left to right direction
 

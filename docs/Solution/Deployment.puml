@@ -1,29 +1,29 @@
 @startuml
 
 
-package  common-cloud-core #dddddd {
+package  common-cloud-core #lightgray {
   interface CLI
   interface Web
   interface REST
-  package Portal #aaffff {
+  package Portal #lightblue {
     component portal
     component applicationManager
     component stackManager
     component operationsManager
   }
-  package Orchestrator #aaffaa {
+  package Orchestrator #pink {
     component applicationOrchestrator
     component environmentManager
     component policyManager
     component applicationAnalytics
   }
-  package "Registry" #ffffaa {
+  package "Registry" #lightgreen {
     component identityManager
     component artifactRepository
     database "identityRepo"
     database "artifactRepo"
   }
-  package "Control" #ffaaaa {
+  package "Control" #lightyellow {
     component cloudBroker
     component dataCoordinator
     component provisionEngine

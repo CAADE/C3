@@ -5,12 +5,6 @@ module.exports = {
   description: 'Get information about the application',
 
   inputs: {
-    /* <parameter name>: {
-      description: 'The ID of the user to look up.',
-      type: '<parameter type>',
-      required: true
-    },
-    */
     name: {
       description: 'Name of the Application',
       type: 'string',
@@ -39,7 +33,7 @@ module.exports = {
 
   fn: async function (inputs, exits, env) {
     try {
-      let app = await Application.findOne({name:inputs.name});
+      let app = await Application.findOne({name: inputs.name});
       if (!app) {
         return exits.notFound('app/list');
       }

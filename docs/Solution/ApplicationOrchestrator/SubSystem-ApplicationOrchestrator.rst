@@ -23,9 +23,8 @@ Users
 Use Cases
 ---------
 * :ref:`Scenario-Launch-Application`
-* Rebalance Application
-* Get Application Analyzer
-* Check Health of Application
+* :ref:`Scenario-Rebalance-Application`
+* :ref:`Scenario-Check-Health of Application
 * Coordinate Application StartUp
 
 .. image:: UseCases.png

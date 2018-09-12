@@ -1,6 +1,6 @@
 @startuml
 
-package C3 {
+package C3 #lightblue {
     class MaintainPlan {
 
     }
@@ -13,8 +13,10 @@ package C3 {
     class Script {
     }
 
+    class Environment {
+    }
 
-    class ApplicationStack {
+    class ServiceStack {
     }
 
     class Image {
@@ -26,11 +28,10 @@ package C3 {
 
     Service <|-- CompositeService
     CompositeService *--> Service : composes
-    ApplicationStack *-> MaintainPlan
+    ServiceStack *-> MaintainPlan
     Service o--> Image
-    ApplicationStack o--> Service : composes
-    Service --> Service : connections
-
+    ServiceStack o--> Service : composes
+    Service -> Service : links
 }
 
 @enduml

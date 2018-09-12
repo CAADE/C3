@@ -1,9 +1,9 @@
 @startuml
 
-package "Policy Manager"  #ffffaa {}
-package "Environment Manager" #ffffaa {}
-package "Application Orchestrator" #ffffaa {}
-package "Artifact Repository" #ffffaa {
+package "Policy Manager"  #lightgreen {}
+package "Environment Manager" #lightgreen {}
+package "Application Orchestrator" #lightgreen {}
+package "Artifact Repository" #lightgreen {
     class ApplicationStack {
     }
 }

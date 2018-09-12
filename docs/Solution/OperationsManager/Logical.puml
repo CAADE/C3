@@ -10,9 +10,9 @@ package "Operations Manager" {
 "REST API" ()-- "Operations Manager"
 "Portal" ()-- "Operations Manager"
 
-package "Policy Manager"  #ffffaa {}
-package "Environment Manager" #ffffaa {}
-package "Artifact Repository" #ffffaa {}
+package "Policy Manager"  #lightgreen {}
+package "Environment Manager" #lightgreen {}
+package "Artifact Repository" #lightgreen {}
 
 "Operations Manager" --> "Artifact Repository"
 "Operations Manager" --> "Policy Manager"

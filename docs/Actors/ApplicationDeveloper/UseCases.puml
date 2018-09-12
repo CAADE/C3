@@ -4,7 +4,7 @@ left to right direction
 
 :Application Developer: as Dev
 
-rectangle "Application Manager" {
+rectangle "Application Manager" #lightblue {
     (Create an Application) as CA
     (Launch application in an environment) as LAE
     (Run Command) as RC

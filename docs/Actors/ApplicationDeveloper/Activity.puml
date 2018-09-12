@@ -1,5 +1,14 @@
 @startuml
-Dev -> ApplicationManager: Application create(name, ApplicationStack)
-Dev -> ApplicationManager: update(Application, code, appConfig, environment) // appConfig has the version
-Dev -> ApplicationManager: update(Service, code, appConfig, environment) // appConfig has the version
+participant "Developer" as Dev
+participant "Application Manager" as AM
+
+Dev -> AM: Create Application(Application Stack)
+Dev -> AM: Launch Application(name, environment, config)
+Dev -> AM: Debug Application(name, environment, config)
+Dev -> AM: Run Command(name, environment, command)
+Dev -> AM: View Processes(App Name | Service)
+Dev -> AM: Kill (App Name | Service)
+Dev -> AM: Get Logs(App Name)
+Dev -> AM: Deploy(App Name)
+
 @enduml

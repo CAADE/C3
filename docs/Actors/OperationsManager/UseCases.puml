@@ -3,7 +3,7 @@ left to right direction
 
 :Operations Engineer: as Ops
 
-rectangle "Operations Manager" {
+rectangle "Operations Manager" #lightblue {
 Ops --> (Create Policy)
 Ops --> (Manage Policy)
 Ops --> (Manage Running Applications)

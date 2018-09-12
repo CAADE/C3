@@ -19,4 +19,9 @@ as a set of yaml or json files.
 
 * :ref:`Subsystem-ApplicationManager`
 
+**Command Line Interface**
 
+.. code-block:: none
+
+  # C3 app clone <Application Name> [--version=<Application Version>]
+  # c3 app clone testApp --version 1.0.2

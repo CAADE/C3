@@ -3,8 +3,8 @@
 left to right direction
 
 skinparam usecase {
-  BackgroudnColor #ffffaa
-  BackgroundColor<<Main>> #aaffff
+  BackgroudnColor #lightgreen
+  BackgroundColor<<Main>> #lightblue
 }
 actor :User: <<Person>>
 actor :SubSystem: <<Person>>

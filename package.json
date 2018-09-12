@@ -29,7 +29,7 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
+    "start": "node app.js",
     "test": "npm update && npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 && echo '✔  Your code looks good.'",
     "design": "java -jar docs/plantuml.jar docs/*.puml docs/**/*.puml",

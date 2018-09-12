@@ -1,7 +1,7 @@
 @startuml
 |actorName|
 start
-|#ffffaa|c3|
+|#lightgreen|c3|
 :activity1;
 |actor2|
 :activity2;
