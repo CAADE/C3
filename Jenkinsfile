@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build Docs') {
       agent {
-        docker { image: 'nickjer/docker-sphinx' }
+            docker { image: 'nickjer/docker-sphinx' }
       }
       steps {
         sh 'ls -latr'
