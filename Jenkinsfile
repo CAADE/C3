@@ -12,7 +12,7 @@ pipeline {
       }
       steps {
         sh 'ls -latr'
-        sh 'sphinx-build -a -q -b singlehtml . _build_html'
+        sh 'sphinx-build -a -q -b singlehtml ./docs _build_html'
       }
     }
     stage('Build') {
