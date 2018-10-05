@@ -5,8 +5,11 @@ const root = process.cwd();
 
 // Build all of the puml files that have changed.
 
-const cmd = "docker run --rm -v " + root + "/docs:/doc nickjer/docker-sphinx sphinx-build -a -q -b singlehtml . _build_html";
+let cmd = "docker run --rm -v " + root + "/docs:/doc nickjer/docker-sphinx ls -latr /doc"
 console.error(cmd);
-
-
 childProcess.execSync(cmd, {env: process.env, stdio: 'inherit', stderr: 'inherit'});
+cmd = "docker run --rm -v " + root + "/docs:/doc nickjer/docker-sphinx sphinx-build -a -q -b singlehtml . _build_html";
+console.error(cmd);
+childProcess.execSync(cmd, {env: process.env, stdio: 'inherit', stderr: 'inherit'});
+
+
