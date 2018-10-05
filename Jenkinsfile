@@ -7,12 +7,8 @@ pipeline {
   }
   stages {
     stage('Build Docs') {
-      agent {
-            docker { image: 'nickjer/docker-sphinx' }
-      }
       steps {
         sh 'ls -latr'
-        sh 'sphinx-build -a -q -b singlehtml ./docs _build_html'
       }
     }
     stage('Build') {
