@@ -3,9 +3,7 @@ pipeline {
     label 'node'
   }
   environment {
-    CAADE_REGISTRY = TBD
-    DOCKER_USER = TBD
-    DOCKER_PASS = TBD
+    CAADE_REGISTRY = "madajaju"
   }
   stages {
     stage('Build Docs') {
@@ -16,7 +14,6 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'docker login --username=$DOCKER_USER --password=$DOCKER_PASS'
         sh 'npm run-script build'
         sh 'npm run-script deploy-apps'
       }

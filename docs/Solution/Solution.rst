@@ -1,4 +1,4 @@
-Genereric Solution Overview
+Generic Solution Overview
 ===========================
 
 The Common Cloud Core is a reference architecture that
