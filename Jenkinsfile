@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build Docs') {
       steps {
-        sh 'ls -latr'
+        sh 'npm run build-doc'
       }
     }
     stage('Build') {
