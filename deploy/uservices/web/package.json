@@ -6,7 +6,6 @@
   "keywords": [],
   "dependencies": {
     "async": "^2.6.0",
-    "bcrypt": "^1.0.3",
     "commander": "^2.14.1",
     "eslint": "^4.17.0",
     "grunt": "^1.0.2",

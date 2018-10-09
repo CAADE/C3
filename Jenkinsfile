@@ -22,17 +22,36 @@ pipeline {
         }
     }
     stage('Test') {
-    agent {
-        label 'docker-master'
-      }
-      steps {
-        sh 'npm run-script deploy-test'
-        sh 'npm run-script test'
-        sh 'npm run-script teardown-test'
-      }
-      post {
-        always {
-          junit "report.xml"
+      parallel {
+        stage('Test Unit') {
+            agent {
+                label 'node'
+            }
+            steps {
+                sh 'npm run-script deploy-test'
+                sh 'npm run-script test'
+                sh 'npm run-script teardown-test'
+            }
+            post {
+                always {
+                  junit "report.xml"
+                }
+            }
+        }
+        stage('Test Integration') {
+            agent {
+                label 'docker-master'
+            }
+            steps {
+                sh 'npm run-script deploy-test'
+                sh 'npm run-script test'
+                sh 'npm run-script teardown-test'
+            }
+            post {
+                always {
+                  junit "report.xml"
+                }
+            }
         }
       }
     }
