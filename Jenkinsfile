@@ -7,17 +7,18 @@ pipeline {
   }
   stages {
     stage ('Build') {
-    parallel {
-        stage('Build Docs') {
-          steps {
-            sh 'npm run build-doc'
-          }
-        }
-        stage('Build Services') {
-          steps {
-            sh 'npm run-script build'
-            sh 'npm run-script deploy-apps'
-          }
+        parallel {
+            stage('Build Docs') {
+              steps {
+                sh 'npm run build-doc'
+              }
+            }
+            stage('Build Services') {
+              steps {
+                sh 'npm run-script build'
+                sh 'npm run-script deploy-apps'
+              }
+            }
         }
     }
     stage('Test') {
