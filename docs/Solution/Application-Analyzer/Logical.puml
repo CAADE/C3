@@ -1,6 +1,6 @@
 @startuml
 
-package "Application Analyzer" #ccffff {
+package "Application Analyzer" #lightblue {
     interface "Application Analyzer" {
       ingestTelemetry()
       mapApplication()

@@ -1,15 +1,11 @@
 @startuml
 
-partition "app-analyzer" {
-
-}
-
-partition SubSystem  #cccccc {
+partition User  #lightgray {
   (*) --> "Create Project"
   --> "Write Code"
 }
 
-partition "app-analyzer" {
+partition "app-analyzer" #lightblue {
   "Write Code" --> "Test Code"
   "Test Code" --> "Deploy Code"
   "Deploy Code" --> (*)

@@ -1,7 +1,7 @@
-describe('Actor Stack-Developer', function () {
-  describe('Primary UseCase', function () {
-    it('Primary Scenario', function (done) {
-                done();
+describe('Actor Stack-Developer', () => {
+  describe('Primary UseCase', () => {
+    it('Primary Scenario', (done) => {
+      done();
     });
   });
 });

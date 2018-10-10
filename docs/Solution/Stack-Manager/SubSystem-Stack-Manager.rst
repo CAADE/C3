@@ -22,7 +22,7 @@ Users
 Uses
 ----
 
-* :ref:`Stack-Manager`
+* :ref:`SubSystem-Stack-Manager`
 
 Interface
 ---------

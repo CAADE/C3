@@ -7,7 +7,7 @@ actor :Application Orchestrator: as AO
 actor :Private Cloud: as PC1
 actor :Public Cloud: as PC2
 
-rectangle "Cloud Broker" #ccffff {
+rectangle "Cloud Broker" #lightblue {
     UseCase UC1 as "Manage Infrastructure"
     UseCase UC2 as "Manage Cloud"
     UseCase UC3 as "Request Resources"

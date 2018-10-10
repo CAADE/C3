@@ -1,13 +1,79 @@
 @startuml
-
-package "Artifact-Repository" {
-    interface "Artifact-Repository" {
-
+package "Artifact Repository" {
+  interface "Artifact Repository" {
+      ServiceStack createServiceStack()
+      ServiceStack modifyServiceStack()
+      ServiceTemplate createServiceTemplate()
+      ServiceTemplate modifyServiceTemplate()
+  }
+  class ServiceStack {
+    string name
+    string version
+  }
+  class ServiceStacklet {
+    string name
+    string version
+  }
+  class Service {
+    string name
+    string version
+    integer ports[]
+    integer expose[]
+    map parameters[]
+  }
+  class ServiceTemplate {
+    string version
+    integer ports[]
+    integer expose[]
+    map parameters
+    string config
+  }
+  class Servicelet {
+    map args
+    integer expose[]
     }
-    CLI ()-- "Artifact-Repository"
-    REST ()-- "Artifact-Repository"
-    Web ()-- "Artifact-Repository"
-}
 
+  class RunScript {
+    string event
+    string script
+    string parameters[]
+  }
+  class Image {
+    string name
+    string filename
+  }
+  class Environment {
+    string name
+  }
+}
+Service *--> Service: subServices
+Service *--> ServiceTemplate : templates
+ServiceTemplate o--> Environment : env
+ServiceTemplate *--> RunScript : scripts
+ServiceTemplate o--> Image : image
+Servicelet o--> Environment : env
+Servicelet o--> ServiceTemplate : template
+ServiceStack *--> "ServiceStacklet" : stacklets
+ServiceStacklet o--> "Environment" : env
+ServiceStacklet *--> "Servicelet" : servicelets
+ServiceStack o--> "Service" : services
+
+"CLI" ()-- "Artifact Repository"
+"REST API" ()-- "Artifact Repository"
+"Portal" ()-- "Artifact Repository"
+
+package "Cloud Broker"  #lightgreen {}
+package "Application Orchestrator" #lightgreen {}
+package "Provision Engine" #lightgreen {}
+package "Data Coordinator" #lightgreen {}
+package "Operations Manager" #lightblue {}
+package "Application Manager" #lightblue {}
+
+"Operations Manager" --> "Artifact Repository"
+"Application Manager" --> "Artifact Repository"
+"Artifact Repository" --> "Cloud Broker"
+"Artifact Repository" --> "Provision Engine"
+"Artifact Repository" --> "Data Coordinator"
+"Artifact Repository" --> "Application Orchestrator"
 
 @enduml

@@ -1,6 +1,6 @@
 @startuml
 
-package "app-orchestrator" {
+package "app-orchestrator" #lightblue {
     interface "app-orchestrator" {
 
     }

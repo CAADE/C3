@@ -1,7 +1,9 @@
 Implementations
 ---------------
 
-These are implementations of the architecture
+The C3 architecture is the integration of several tools that fulfill the use cases
+and features of the architecture. The following are different implementations of the
+conceptual architecture.
 
 .. toctree::
   :glob:

@@ -9,7 +9,7 @@ partition SubSystem  #cccccc {
   --> "Write Code"
 }
 
-partition "cloud-broker" {
+partition "cloud-broker" #lightblue {
   "Write Code" --> "Test Code"
   "Test Code" --> "Deploy Code"
   "Deploy Code" --> (*)

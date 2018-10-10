@@ -1,5 +1,5 @@
 @startuml
-package "Application Orchestrator" #ccffff {
+package "Application Orchestrator" #lightblue {
     interface CLI
     interface Web
     interface REST

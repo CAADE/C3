@@ -2,7 +2,7 @@
 
 interface external
 
-package  "cloud-proxy" {
+package  "cloud-proxy" #lightblue {
   interface internal
   node service
   folder image

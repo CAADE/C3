@@ -1,7 +1,7 @@
-.. _Service-cloud-proxy:
+.. _Service-Cloud-Proxy:
 
 cloud-proxy
-================
+===========
 
 cloud-proxy is a micro-service of c3 ...
 
@@ -15,14 +15,14 @@ Use Cases
 Users
 -----
 
-* :ref:`Actor-User`
+* :ref:`Actor-Operations-Manager`
 
 .. image:: UserInteraction.png
 
 Uses
 ----
 
-* :ref:`cloud-proxy`
+* :ref:`Service-Cloud-Proxy`
 
 Interface
 ---------

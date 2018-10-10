@@ -4,14 +4,14 @@ left to right direction
 
 Actor Dev
 package "Test" #lightblue {
-  component NodeJS1
-  component NodeJS2
-  component "NodeJS Worker 1"
-  component "NodeJS Worker 2"
-  component MongoDB1
-  component MongoDB2
-  component Redis1
-  component Redis2
+  component NodeJS1 #lightgreen
+  component NodeJS2 #lightgreen
+  component "NodeJS Worker 1" #lightgreen
+  component "NodeJS Worker 2" #lightgreen
+  component MongoDB1 #pink
+  component MongoDB2 #pink
+  component Redis1 #orange
+  component Redis2 #orange
 }
 Dev --> Test
 @endum

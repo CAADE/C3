@@ -1,7 +1,7 @@
 @startuml
 Actor "actorName" as A
 
-box "ManageApplicationStack" #lightblue
+box "ManageServiceStack" #lightblue
 participant "C3" as S
 A -> S : Publish Application Stack
 end box

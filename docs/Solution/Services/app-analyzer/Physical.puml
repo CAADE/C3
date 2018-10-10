@@ -2,10 +2,10 @@
 
 interface external
 
-package "app-analyzer" #dddddd {
+package "app-analyzer" #lightblue {
     component service
     interface internal
 }
-external - service
+external -- service
 internal - service
 @enduml

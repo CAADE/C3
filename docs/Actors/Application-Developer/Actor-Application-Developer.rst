@@ -54,3 +54,4 @@ see the scenarios.
   # c3 app rebalance [options]    Rebalance an Application on an environment
   # c3 app run [options]          Run a command in the context of an application by environment.
 
+

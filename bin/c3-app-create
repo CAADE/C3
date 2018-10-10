@@ -14,14 +14,14 @@ let client = new Client();
 const action = require('../api/controllers/app/create');
 program.description(action.description);
 for(key in action.inputs) {
-    if(key != "mode") { // Used to force json output instead of html
-        program.option('-' + key[0] + ", --" + key + " <" + action.inputs[key].type + ">", action.inputs[key].description);
-    }
-};
+  if(key !== 'mode') { // Used to force json output instead of html
+    program.option('-' + key[0] + ', --' + key + ' <' + action.inputs[key].type + '>', action.inputs[key].description);
+  }
+}
 
 program.parse(process.argv);
 
-var url = config.Url + "/app/create?";
+var url = config.Url + '/app/create?';
 url += '&mode=json';
 
 for(key in action.inputs) {
@@ -29,12 +29,13 @@ for(key in action.inputs) {
 }
 // END: Dynamic Mapping based on Controller Action
 
-client.get(url, function (data, response) {
+client.get(url, (data, response) => {
   // parsed response body as js object
   if (data.error) {
-    console.error("Error:" + data.error);
+    console.error('Error:' + data.error);
   }
   else {
   // Process the data returned.
+    console.log('Application Name:', data.name);
   }
 });

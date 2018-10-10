@@ -60,7 +60,7 @@ This diagram shows how these microservices are connected and what they share bet
 
 .. image:: Process.png
 
-Deployment model
+Deployment Model
 ----------------
 
 The architecture consists of several micro services that form the application this diagram shows how those

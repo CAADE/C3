@@ -1,6 +1,6 @@
 @startuml
 
-package "cloud-proxy" {
+package "cloud-proxy" #lightblue {
     interface "cloud-proxy" {
 
     }

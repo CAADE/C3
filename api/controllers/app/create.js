@@ -12,9 +12,18 @@ module.exports = {
       required: true
     },
     */
-    
+    name: {
+      description: 'Name of the new application',
+      type: 'string',
+      required: true
+    },
+    stack: {
+      description: 'Name of the stack to use for the application',
+      type: 'string',
+      required: true
+    },
     mode: {
-      description: "results format: json or html",
+      description: 'results format: json or html',
       type: 'string',
       required: false
     }
@@ -41,17 +50,22 @@ module.exports = {
     // the machine runner does this for us and returns `badRequest`
     // if validation fails.
     try {
-      let user = await User.findOne(inputs.userId);
-      if (!user) {return exits.notFound('/signup');}
-
+      let stack = await ServiceStack.findOne({name: inputs.stack});
+      if (!stack) {
+        console.error("Stack not found!:", inputs);
+        return exits.notFound('/signup');
+      }
+      let app = await Application.create({name: inputs.name, stack: stack.id}).fetch();
       // Display the results
-      if(inputs.mode === "json") {
+      if(inputs.mode === 'json') {
         // Return json
-        return exits.json({name: user.name});
+        console.log("App :", app);
+        console.log("App 2:", inputs);
+        return exits.json({name: app.name});
       }
       else {
         // Display the welcome view.
-        return exits.success({name: user.name});
+        return exits.success({name: app.name});
       }
     }
     catch (e) {

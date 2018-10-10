@@ -17,7 +17,7 @@ as a set of yaml or json files.
 
 **Systems**
 
-* :ref:`Subsystem-ApplicationManager`
+* :ref:`Subsystem-Application-Manager`
 
 **Command Line Interface**
 

@@ -9,7 +9,7 @@ actor :Telemetry:
 actor :Application Manager:
 actor :Application Analyzer:
 
-rectangle "Application Orchestrator" #ccffff {
+rectangle "Application Orchestrator" #lightblue {
 UseCase LA as "Launch Application"
 UseCase RA as "Rebalance Application"
 UseCase GAA as "Get Application Analyzer"

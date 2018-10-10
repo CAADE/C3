@@ -1,6 +1,6 @@
 @startuml
 
-package "app-analyzer" {
+package "app-analyzer" #lightblue {
     interface "app-analyzer" {
 
     }

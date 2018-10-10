@@ -4,11 +4,11 @@ package "Policy Manager"  #lightgreen {}
 package "Environment Manager" #lightgreen {}
 package "Application Orchestrator" #lightgreen {}
 package "Artifact Repository" #lightgreen {
-    class ApplicationStack {
+    class ServiceStack {
     }
 }
 
-package "Application Manager" #ccffff {
+package "Application Manager" #lightblue {
   interface "Application Manager" {
       stack()
       app()
@@ -28,7 +28,7 @@ package "Application Manager" #ccffff {
   }
 
   Application "1" *--> "n" Config
-  Application "1" o--> "1" ApplicationStack
+  Application "1" o--> "1" ServiceStack
 }
 "CLI" ()-- "Application Manager"
 "REST API" ()-- "Application Manager"

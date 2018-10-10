@@ -2,7 +2,7 @@
 
 interface external
 
-package  "app-analyzer" {
+package  "app-analyzer" #lightblue {
   interface internal
   node service
   folder image

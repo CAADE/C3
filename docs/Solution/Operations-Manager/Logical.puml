@@ -1,14 +1,21 @@
 @startuml
 
-package "Operations Manager" #lightblue {
-    interface "Operations Manager" {
-
-    }
-    CLI ()-- "Operations-Manager"
-    REST ()-- "Operations-Manager"
-    Web ()-- "Operations-Manager"
-
+package "Operations Manager" {
+  interface "Operations Manager" {
+      ServiceStack createServiceStack()
+      Service createServiceTemplate()
+  }
 }
+"CLI" ()-- "Operations Manager"
+"REST API" ()-- "Operations Manager"
+"Portal" ()-- "Operations Manager"
 
+package "Policy Manager"  #lightgreen {}
+package "Environment Manager" #lightgreen {}
+package "Artifact Repository" #lightgreen {}
+
+"Operations Manager" --> "Artifact Repository"
+"Operations Manager" --> "Policy Manager"
+"Operations Manager" --> "Environment Manager"
 
 @enduml

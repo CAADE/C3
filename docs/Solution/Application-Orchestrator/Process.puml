@@ -8,7 +8,7 @@ partition "Application Analyzer" #dddddd {
   "Get Telemetry" --> "Analyze Application"
 }
 
-partition "Application Orchestrator" #ccffff {
+partition "Application Orchestrator" #lightblue {
   "Select Application" --> "Launch Application"
   "Analyze Application" --> "Rebalance Application"
 }
@@ -18,7 +18,7 @@ partition "Cloud Broker" #dddddd {
   "Rebalance Application" --> "Get Resources"
 }
 
-partition "Application Orchestrator" #ccffff {
+partition "Application Orchestrator" #lightblue {
   "Get Resources" --> "Deploy Service"
 }
 

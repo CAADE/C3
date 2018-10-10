@@ -3,7 +3,7 @@
 
 package "Application Orchestrator" {
   interface "Application Orchestrator" {
-      Application launchApplication(ApplicationStack, Environment, Map config)
+      Application launchApplication(ServiceStack, Environment, Map config)
       rebalanceApplication(Application)
   }
   class ApplicationInstance {

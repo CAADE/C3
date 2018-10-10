@@ -2,17 +2,28 @@
 
 left to right direction
 
-actor :User:
-actor :SubSystem:
+skinparam usecase {
+  BackgroudnColor #lightgreen
+  BackgroundColor<<Main>> #lightblue
+}
 
+actor AO as :Application Orchestrator:
+actor SDI as :SDI Cloud:
+actor CB as :Cloud Broker:
+actor IM as :Identity Manager:
 
-rectangle "Provision Engine" #lightblue {
-UseCase UC1 as "Use Case1"
-UseCase UC2 as "Use Case2"
+rectangle "Provision Engine" {
 
-User --> UC1
-UC1 --> UC2
-UC2 --> SubSystem
+UseCase RCS as "Run Command with Service"
+UseCase SS as "Start Service"
+UseCase KS as "Kill Service"
+
+AO --> RCS
+AO --> SS
+AO --> KS
+RCS --> SDI
+SS --> SDI
+KS --> SDI
 }
 
 @enduml

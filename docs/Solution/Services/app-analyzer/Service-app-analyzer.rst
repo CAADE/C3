@@ -1,9 +1,9 @@
 .. _Service-app-analyzer:
 
 app-analyzer
-================
+============
 
-app-analyzer is a micro-service of c3 ...
+app-analyzer is a micro-service of C3 Architecture and implements parts of the :ref:`SubSystem-Application-Analyzer`
 
 Use Cases
 ---------

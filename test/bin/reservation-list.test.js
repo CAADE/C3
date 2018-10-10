@@ -1,5 +1,5 @@
 const exec = require('child_process').exec;
-const taction = require('../../controllers/reservation/list');
+const taction = require('../../api/controllers/reservation/list');
 
 describe('reservation list Script Test Cases', () => {
   describe('Primary reservation list Test Case', () => {

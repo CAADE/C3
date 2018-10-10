@@ -7,7 +7,7 @@ actor :Application Orchestrator: as AO
 actor :Application Manager: as AM
 
 
-rectangle "Application Analyzer" #ccffff {
+rectangle "Application Analyzer" #lightblue {
     UseCase UC1 as "Analyze Telemetry"
     UseCase UC2 as "Map Application\nto Telemetry"
     UseCase UC3 as "Recommend new Landscape"

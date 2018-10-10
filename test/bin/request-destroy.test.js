@@ -1,5 +1,5 @@
 const exec = require('child_process').exec;
-const taction = require('../../controllers/request/destroy');
+const taction = require('../../api/controllers/request/destroy');
 
 describe('request destroy Script Test Cases', () => {
   describe('Primary request destroy Test Case', () => {

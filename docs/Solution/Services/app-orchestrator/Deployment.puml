@@ -2,7 +2,7 @@
 
 interface external
 
-package  "app-orchestrator" {
+package  "app-orchestrator" #lightblue {
   interface internal
   node service
   folder image

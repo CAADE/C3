@@ -5,8 +5,7 @@ Launch and Test Service Template
 
 Launch and Test Service Template using CLI and Web Interface with ... <parameters>
 
-.. image:: Launch-and-Test-Service-Template.png
-
+.. image:: Launch-And-Test-Service-Template.png
 
 **CLI**
 

@@ -4,9 +4,9 @@ left to right direction
 Actor Dev
 
 package Local #lightblue {
-  component NodeJS
-  component MongoDB
-  component Redis
+  component NodeJS #lightgreen
+  component MongoDB #pink
+  component Redis #orange
 }
 
 Dev --> Local

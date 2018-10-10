@@ -1,7 +1,7 @@
-describe('Actor Operations-Manager', function () {
-  describe('Primary UseCase', function () {
-    it('Primary Scenario', function (done) {
-                done();
+describe('Actor Operations-Manager', () => {
+  describe('Primary UseCase', () => {
+    it('Primary Scenario', (done) => {
+      done();
     });
   });
 });

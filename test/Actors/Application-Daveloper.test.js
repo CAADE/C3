@@ -1,7 +1,7 @@
-describe('Actor Application-Daveloper', function () {
-  describe('Primary UseCase', function () {
-    it('Primary Scenario', function (done) {
-                done();
+describe('Actor Application-Daveloper', () => {
+  describe('Primary UseCase', () => {
+    it('Primary Scenario', (done) => {
+      done();
     });
   });
 });

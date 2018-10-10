@@ -7,7 +7,7 @@ partition "Application Manager" {
 partition "Telemetry" {
   (*) --> "Gather Telemetry"
 }
-partition "Application Analyzer"  #ccffff {
+partition "Application Analyzer"  #lightblue {
   "Manage Application" --> "Ingest Application"
   "Gather Telemetry" --> "Ingest Telemetry"
   "Ingest Telemetry" --> "Map Telemetry"

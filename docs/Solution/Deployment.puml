@@ -6,27 +6,27 @@ package  common-cloud-core #lightgray {
   interface Web
   interface REST
   package Portal #lightblue {
-    component portal
-    component applicationManager
-    component stackManager
-    component operationsManager
+    component portal #white
+    component applicationManager #white
+    component stackManager #white
+    component operationsManager #white
   }
   package Orchestrator #pink {
-    component applicationOrchestrator
-    component environmentManager
-    component policyManager
-    component applicationAnalytics
+    component applicationOrchestrator #white
+    component environmentManager #white
+    component policyManager #white
+    component applicationAnalytics #white
   }
   package "Registry" #lightgreen {
-    component identityManager
-    component artifactRepository
-    database "identityRepo"
-    database "artifactRepo"
+    component identityManager #white
+    component artifactRepository #white
+    database "identityRepo" #white
+    database "artifactRepo" #white
   }
   package "Control" #lightyellow {
-    component cloudBroker
-    component dataCoordinator
-    component provisionEngine
+    component cloudBroker #white
+    component dataCoordinator #white
+    component provisionEngine #white
   }
 }
 
@@ -45,5 +45,10 @@ REST -- portal
 portal -- applicationManager
 portal -- stackManager
 portal -- operationsManager
+
+Portal ---> Orchestrator
+Portal ---> Registry
+Registry ---> Control
+Orchestrator ---> Control
 @enduml
 

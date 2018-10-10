@@ -2,10 +2,10 @@
 
 interface external
 
-package "cloud-broker" #dddddd {
+package "cloud-broker" #lightblue {
     component service
     interface internal
 }
-external - service
+external -- service
 internal - service
 @enduml

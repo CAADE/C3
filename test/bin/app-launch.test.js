@@ -16,9 +16,9 @@ describe('app launch Script Test Cases', () => {
       for (let i in commands) {
         let command = 'bash -c \"' + commands[i] + '\"';
 
-        console.log("Command:", command);
+        console.log('Command:', command);
         let stdout = exec(command);
-        console.log("Output:", stdout.toString('utf8'));
+        console.log('Output:', stdout.toString('utf8'));
       }
       return done();
     });
@@ -34,9 +34,9 @@ describe('app launch Script Test Cases', () => {
       for (let i in commands) {
         let command = 'bash -c \"' + commands[i] + '\"';
 
-        console.log("Command:", command);
+        console.log('Command:', command);
         let stdout = exec(command);
-        console.log("Output:", stdout.toString('utf8'));
+        console.log('Output:', stdout.toString('utf8'));
       }
       return done();
     });
@@ -48,9 +48,9 @@ describe('app launch Script Test Cases', () => {
       for (let i in commands) {
         let command = 'bash -c \"' + commands[i] + '\"';
 
-        console.log("Command:", command);
+        console.log('Command:', command);
         let stdout = exec(command);
-        console.log("Output:", stdout.toString('utf8'));
+        console.log('Output:', stdout.toString('utf8'));
       }
       return done();
     });
@@ -61,9 +61,9 @@ describe('app launch Script Test Cases', () => {
       for (let i in commands) {
         let command = 'bash -c \"' + commands[i] + '\"';
 
-        console.log("Command:", command);
+        console.log('Command:', command);
         let stdout = exec(command);
-        console.log("Output:", stdout.toString('utf8'));
+        console.log('Output:', stdout.toString('utf8'));
       }
       return done();
     });
@@ -74,22 +74,22 @@ describe('app launch Script Test Cases', () => {
       for (let i in commands) {
         let command = 'bash -c \"' + commands[i] + '\"';
 
-        console.log("Command:", command);
+        console.log('Command:', command);
         let stdout = exec(command);
-        console.log("Output:", stdout.toString('utf8'));
+        console.log('Output:', stdout.toString('utf8'));
       }
       return done();
     });
-     it('Launch Prod Application', (done) => {
+    it('Launch Prod Application', (done) => {
       let commands = [
         'bin/c3-app-launch --name myApp --env prod'
       ];
       for (let i in commands) {
         let command = 'bash -c \"' + commands[i] + '\"';
 
-        console.log("Command:", command);
+        console.log('Command:', command);
         let stdout = exec(command);
-        console.log("Output:", stdout.toString('utf8'));
+        console.log('Output:', stdout.toString('utf8'));
       }
       return done();
     });

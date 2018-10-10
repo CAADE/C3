@@ -1,7 +1,7 @@
 .. _Service-cloud-broker:
 
 cloud-broker
-================
+============
 
 cloud-broker is a micro-service of c3 ...
 
@@ -15,14 +15,14 @@ Use Cases
 Users
 -----
 
-* :ref:`Actor-User`
+* :ref:`Actor-Operations-Manager`
 
 .. image:: UserInteraction.png
 
 Uses
 ----
 
-* :ref:`cloud-broker`
+* :ref:`SubSystem-Cloud-Broker`
 
 Interface
 ---------

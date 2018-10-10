@@ -4,22 +4,22 @@ left to right direction
 
 Actor Dev
 package "Production" #lightblue {
-  component NGInX
-  component NodeJS1
-  component NodeJS2
-  component NodeJS3
-  component "NodeJS Worker 1"
-  component "NodeJS Worker 2"
-  component "NodeJS Worker 3"
-  component "NodeJS Worker 4"
-  component "NodeJS Worker 5"
-  component "NodeJS Worker 6"
-  component MongoDB1
-  component MongoDB2
-  component MongoDB3
-  component Redis1
-  component Redis2
-  component Redis3
+  component NGInX #lightyellow
+  component NodeJS1 #lightgreen
+  component NodeJS2 #lightgreen
+  component NodeJS3 #lightgreen
+  component "NodeJS Worker 1" #lightgreen
+  component "NodeJS Worker 2" #lightgreen
+  component "NodeJS Worker 3" #lightgreen
+  component "NodeJS Worker 4" #lightgreen
+  component "NodeJS Worker 5" #lightgreen
+  component "NodeJS Worker 6" #lightgreen
+  component MongoDB1 #pink
+  component MongoDB2 #pink
+  component MongoDB3 #pink
+  component Redis1 #orange
+  component Redis2 #orange
+  component Redis3 #orange
 }
 Dev --> Production
 

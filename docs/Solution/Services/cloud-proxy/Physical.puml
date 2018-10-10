@@ -2,10 +2,10 @@
 
 interface external
 
-package "cloud-proxy" #dddddd {
+package "cloud-proxy" #lightblue {
     component service
     interface internal
 }
-external - service
+external -- service
 internal - service
 @enduml

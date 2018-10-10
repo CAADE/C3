@@ -1,6 +1,6 @@
 @startuml
 
-package "cloud-broker" {
+package "cloud-broker" #lightblue {
     interface "cloud-broker" {
 
     }
