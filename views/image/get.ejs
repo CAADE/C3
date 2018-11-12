@@ -1,0 +1,52 @@
+<div class="gadget" style="width:calc(100% - 15px);">
+  <div class="gadget-header">Image <%= image.name %><span style="float: right;"></span>
+  </div>
+  <div class="gadget-body" id="image-details" style="height:auto;">
+    <div>
+      <table>
+        <tr>
+          <td align="right"><b>Name</b></td>
+          <td align="left"><%= image.name %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Version</b></td>
+          <td align="left"><%= image.version %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>File</b></td>
+          <td align="left"><%= image.file %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="gadget" style="width:calc(100% - 15px);">
+  <div class="gadget-header">Users of the Image <%= image.name %><span style="float: right;"> <%- stacklets.length %></span>
+  </div>
+  <div class="gadget-body" id="stacklet-list" style="height:auto;">
+    <div>
+      <table width="100%">
+        <tr>
+          <th>Name</th>
+          <th>Environment</th>
+          <th>Replicas</th>
+          <th>Ports</th>
+          <th>Parameters</th>
+          <th>Resources</th>
+        </tr>
+        <% for(let i in stacklets) {
+        let stacklet = stacklets[i];
+        %>
+        <tr>
+          <td><a href="/stack/get?id=<%= stacklet.stack.id %>"><%= stacklet.stack.name %></a></td>
+          <td><a href="/env/get?id=<%= stacklet.env.id %>"><%= stacklet.env.name %></a></td>
+          <td><%= stacklet.replicas %> </td>
+          <td><%- stacklet.ports %></td>
+          <td><%- partial("../partials/jsonTable", {json:stacklet.parameters}) %></td>
+          <td><%- partial("../partials/jsonTable", {json:stacklet.resources}) %></td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+  </div>
+</div>

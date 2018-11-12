@@ -11,9 +11,9 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    quantity: { type: 'number' },
-    state: { type:'string'},
-    cost: { type:'number'},
+    quantity: {type: 'number'},
+    state: {type: 'string', isIn: ['Created', 'Confirmed', 'Rejected']},
+    cost: {type: 'number'},
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -22,9 +22,10 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    hardware: { model: 'hardware' },
-    resource: { model: 'resource' },
-    instance: { model: 'ServiceInstance' },
+    hardware: {model: 'hardware'},
+    env: {model: 'Environment'},
+    resource: {model: 'resource'},
+    instance: {model: 'ServiceInstance'},
     request: {model: 'Request'}
   }
 

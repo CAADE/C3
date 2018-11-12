@@ -1,4 +1,3 @@
-
 module.exports = {
 
   friendlyName: 'app list',
@@ -16,7 +15,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'app/list'
     },
     json: {
       responseType: '', // with return json
@@ -29,16 +28,35 @@ module.exports = {
 
   fn: async function (inputs, exits, env) {
 
+    // Connect to the socket room.
+    if (this.req.isSocket) {
+      sails.sockets.join(this.req, 'c3');
+    }
+
     try {
       let apps = await Application.find().populateAll();
       // Display the results
-      if(inputs.mode === 'json') {
+      if (inputs.mode === 'json') {
         // Return json
         return exits.json(apps);
       }
       else {
         // Display the welcome view.
-        return exits.success(apps);
+        let allApps = [];
+        for (let i in apps) {
+          let app = apps[i];
+          let stack = await ServiceStack.findOne({id: app.stack.id}).populateAll();
+          let stacklets = [];
+          for (let j in stack.stacklets) {
+            let stacklet = stack.stacklets[j];
+            let nstacklet = await Stacklet.findOne({id: stacklet.id}).populateAll();
+            stacklets.push(nstacklet);
+          }
+          stack.stacklets = stacklets;
+          app.stack = stack;
+          allApps.push(app);
+        }
+        return exits.success({apps: allApps});
       }
     }
     catch (e) {

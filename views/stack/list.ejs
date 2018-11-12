@@ -1,0 +1,45 @@
+<div class="gadget" style="width:calc(100% - 15px);">
+  <div class="gadget-header">Stacks<span style="float: right;" id="stack-number"><a href="/repo/show"> Graph </a> <%= stacks.length %></span>
+  </div>
+  <div class="gadget-body" id="environments-list" style="height:calc(100% - 30px);">
+    <table width="100%">
+      <tr>
+        <th>Name</th>
+        <th>Version</th>
+        <th>Parameters</th>
+        <th>Ports</th>
+        <th>Environments</th>
+      </tr>
+      <% for(let i=0; i < stacks.length; i++) {
+      let stack = stacks[i];
+      %>
+      <tr>
+        <td><a href="/stack/get?id=<%= stack.id %>"><%= stack.name %></a></td>
+        <td align="left"><%= stack.version %></td>
+        <td align="center"><%- partial("../partials/jsonTable", {json:stack.parameters}) %></td>
+        <td align="left"><%= stack.ports %></td>
+        <td align="center" style="padding:5px;margin:5px;">
+            <% for(let j=0; j < stack.stacklets.length; j++) {
+            let stacklet = stack.stacklets[j];
+            %>
+              <span style="padding:5px;margin:5px;">
+                <a href="/stacklet/get?id=<%= stacklet.id %>"><%= stacklet.env.name %></a>
+              </span>
+            <% } %>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  function initialize() {
+    let currentPage = document.getElementsByClassName('current-page');
+    currentPage[0].innerHTML = "App >> List";
+  }
+
+  window.addEventListener("load", initialize());
+
+</script>

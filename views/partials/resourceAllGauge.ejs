@@ -1,0 +1,106 @@
+<div class="gadget">
+  <div class="gadget-header"><%- title %> <span style="float:right"></div>
+  <div class="gadget-body">
+    <canvas id="ResourceChart" width="200" height="200"></canvas>
+  </div>
+</div>
+
+<script>
+  <%
+  {
+    let states = {};
+    const backgroundColors = {
+      compute: {
+         'available': '#00aa00',
+          'used': '#aaffaa',
+      },
+      storage: {
+         'available': '#00aaaa',
+         'used': '#aaffff',
+      },
+      network: {
+         'available': '#cc5522',
+         'used': '#ffaa88',
+      }
+    };
+    for (let i in resources) {
+      let resource = resources[i];
+      if(!states.hasOwnProperty(resource.type)) {
+        states[resource.type] = {total:0, available:0, used:0}
+      }
+      states[resource.type].available += resource.available;
+      states[resource.type].used += (resource.available - resource.capacity);
+      states[resource.type].total+= resource.available;
+    }
+  %>
+
+  function initResourceGauge() {
+    let datasets = [];
+    let data = [];
+    let bcolors = {};
+    let total = "";
+  <%
+    let labels = [];
+    let data = [];
+    let bcolors = [];
+    let total = "";
+    let myType = "";
+    for (let type in states) {
+      myType = type;
+      let data = [];
+      let colors = [];
+      labels = [];
+      for (let state in states[type]) {
+        if (state != 'total') {
+          labels.push('"' + state + '"');
+          data.push(states[type][state]);
+          colors.push('"' + backgroundColors[type][state] + '"');
+        }
+      }
+      %>
+        data = [<%- data.join(',') %>];
+        bcolors = [<%- colors.join(',') %>];
+        total += " <%- myType %>:" + <%- states[type].total %>;
+        datasets.push( { label: "<%- myType %>", backgroundColor: bcolors, data: data});
+      <%
+    }
+   %>
+    let labels = [<%- labels.join(',') %>];
+
+      let canvas = document.getElementById("ResourceChart");
+      let chart = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: datasets,
+        },
+        options: {
+          title: {
+            display: true,
+            text: total
+          },
+          legendCallback: function(chart) {
+            var text = [];
+            text.push('<ul class="' + chart.id + '-legend">');
+            for (var i = 0; i < chart.data.datasets.length; i++) {
+              text.push('<li><span style="background-color:' +
+                chart.data.datasets[i].backgroundColor +
+                '"></span>');
+              if (chart.data.datasets[i].label) {
+                text.push(chart.data.datasets[i].label);
+              }
+              text.push('</li>');
+            }
+            text.push('</ul>');
+            return text.join('');
+          }
+        }
+      });
+  }
+  initResourceGauge();
+
+    <%
+  }
+  %>
+</script>
+

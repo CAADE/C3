@@ -21,7 +21,14 @@ module.exports = {
   },
 
 
-  exits: {},
+  exits: {
+    stackletNotFound: {
+      description: 'Stacklet has not be found!'
+    },
+    notFound: {
+      description: 'Service has not be found!'
+    }
+  },
 
 
   fn: async function (inputs, exits) {
@@ -30,7 +37,7 @@ module.exports = {
       parent = await Service.findOne({name: inputs.service});
       if (!parent) {
         console.error('Service not found:', inputs.service);
-        return exits.notFound(service);
+        return exits.notFound(inputs);
       }
     }
     parent = await Service.findOne(parent.id).populateAll();
@@ -42,10 +49,14 @@ module.exports = {
     let stacklet = await Stacklet.findOne({stack: servicelet.stack.id, env: servicelet.env.id}).populateAll();
     if (!stacklet) {
       console.error('Stack ', servicelet.stack.name, ' for ', servicelet.env.name, ' environment not found!');
-      return exits.success();
+      await Service.update({id: parent.id}, {state: 'Error', message: 'Stacklet Not found!'});
+      return exits.stackletNotFound(servicelet.stack.name);
     }
 
-
+    // Oct 17, 2018
+    // Changing the request to make sure I am requesting for an environment not wide open.
+    // This requires request, reservation, resource and cloud to have env as an attribute.
+    //
     // July 15, 2018
     // Should I get resources right now. Or map the resources at the highest level.
     // Pros: If I map them right now I can reuse this method to incrementally add instances
@@ -80,12 +91,15 @@ module.exports = {
       if (stacklet.image) {
         let instance = await ServiceInstance.create({
           name: parent.name + '-' + i,
-          state: 'Initialized',
-          service: parent.id
+          state: 'Initializing',
+          service: parent.id,
+          env: stacklet.env.id
         }).fetch();
+        await sails.helpers.events.inc.with({events:"ServiceInstance", value:1});
         requests.push(await Request.create({
-          state: 'Initialized',
+          state: 'Initializing',
           instance: instance.id,
+          env: stacklet.env.id,
           requirements: [{type: 'compute', quantity: 1}]
         }).fetch());
 
@@ -94,8 +108,9 @@ module.exports = {
           for (let rname in rtype) {
             let resource = rtype[rname];
             requests.push(await Request.create({
-              state: 'Initialized',
+              state: 'Initializing',
               instance: instance.id,
+              env: stacklet.env.id,
               requirements: [{type: mtype, name: rname, quantity: resource}]
             }).fetch());
           }
@@ -111,19 +126,30 @@ module.exports = {
           name: parent.name + '-' + servicelet.name,
           config: inputs.config,
           servicelet: servicelet.id,
-          replicas: servicelet.replicas
+          state: 'Initializing',
+          replicas: servicelet.replicas,
+          env: servicelet.env.id
         }).fetch();
         // await Service.addToCollection(subService.id, 'parent', parent.id);
         await Service.addToCollection(parent.id, 'children', child.id);
+        sails.sockets.broadcast('c3', 'service', [child]);
         await sails.helpers.service.set.with({service: child, replicas: servicelet.replicas});
       }
     }
-    // Injection of Policies for the Application should happen here.
+    // TODO: Injection of Policies for the Application should happen here.
     // These policies should be attached to the request.
 
     // Save some time by sending the replicas together as one request to the cloud broker.
     let resources = await sails.helpers.broker.getResources.with({requests: requests});
-    return exits.success(resources);
+
+    // Ok now provision the software from the requests that the resources are tied.
+    let myRequests = await sails.helpers.engine.provision.with({requests:requests});
+    await Service.update({id:parent.id}, {state:'Running'});
+    service = await Service.find({id:parent.id}).populateAll();
+    service = service[0];
+    sails.sockets.broadcast('c3', 'service', [service]);
+
+    return exits.success(service);
   }
 };
 

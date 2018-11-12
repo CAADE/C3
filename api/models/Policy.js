@@ -25,8 +25,10 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     triggers: {collection: 'Trigger', via: 'policy'},
     env: {model: 'Environment'},
-    cloud: {model: 'Cloud'}
-  },
+    cloud: {model: 'Cloud'},
+    app: {model: 'Application'},
+    stack: {model: 'ServiceStack'}
+  }
 
 };
 

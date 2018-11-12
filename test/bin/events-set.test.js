@@ -1,30 +1,22 @@
 const exec = require('child_process').exec;
 const taction = require('../../api/controllers/events/set');
 
-describe('events set Script Test Cases', function () {
-  describe('Primary events set Test Case', function () {
-    it('Primary events set Good Path', function (done) {
-      // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
-      let command = "bash -c bin/c3-events-set ";
-      let params = [];
-      for(let key in taction.inputs) {
-        if(key != "mode") {
-          params.push("--" + key + " " + taction.inputs[key].type);
-        }
+describe('events set Script Test Cases', () => {
+  describe('Primary events set Test Case', () => {
+    it('Primary events set Good Path', (done) => {
+      let commands = [
+        'bin/c3-events-set --name faults --value 100',
+        'bin/c3-events-set --name accidents --value 1000',
+        'bin/c3-events-set --name dwp --value 200',
+      ];
+      for (let i in commands) {
+        let command = 'bash -c \"' + commands[i] + '\"';
+
+        console.log('Command:', command);
+        let stdout = exec(command);
+        console.log('Output:', stdout.toString('utf8'));
       }
- command += params.join(" ");
-      let results = exec(command, function (err, stdout, stderr) {
-        console.log(stderr);
-        if (err) {
-          done(err);
-        }
-        else {
-          console.log(stdout);
-        }
-      });
-      results.on('exit', function (code) {
-        done(code);
-      });
+      return done();
     });
   });
 });

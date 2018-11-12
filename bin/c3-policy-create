@@ -13,20 +13,31 @@ let client = new Client();
 
 // BEGIN: Dynamic Mapping based on Controller Action
 const action = require('../api/controllers/policy/create');
+
 program.description(action.description);
 program.option('-f, --filename <filename>', 'Create hardware into the data center');
-program.option('-n, --name <string>', 'The name of the policy');
-program.option('-c, --cloud <string>', 'The name of the cloud to apply the policy');
-program.option('-e, --env <string>', 'The name of environment to apply the policy ');
+for (key in action.inputs) {
+  if (key !== 'mode') { // Used to force json output instead of html
+    program.option('-' + key[0] + ', --' + key + ' <' + action.inputs[key].type + '>', action.inputs[key].description);
+  }
+}
+;
+
 program.parse(process.argv);
 
-var url = config.Url + '/policy/create?';
+let url = config.Url + '/policy/create?';
 url += 'name=' + program.name;
 if (program.cloud) {
   url += '&cloud=' + program.cloud;
 }
 if (program.env) {
   url += '&env=' + program.env;
+}
+if (program.app) {
+  url += '&app=' + program.app;
+}
+if (program.stack) {
+  url += '&stack=' + program.stack;
 }
 url += '&mode=json';
 

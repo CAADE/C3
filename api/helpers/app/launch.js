@@ -20,10 +20,16 @@ module.exports = {
   },
 
 
-  exits: {},
+  exits: {
+    notFound: {
+      description: 'The Item could not be found',
+      responseType: 'redirect'
+    }
+  },
 
 
   fn: async function (inputs, exits) {
+    let appInstance;
 
     try {
       let app = inputs.app;
@@ -44,28 +50,35 @@ module.exports = {
       }
       let appStacklet = await Stacklet.findOne({stack: app.stack.id, env: environ.id}).populateAll();
       if (!appStacklet) {
-        console.error('Application Stacklet not found:');
-        return exits.notFound('Application Stacklet not found');
+        console.error('Application Stacklet not found:', environ.name, '>>', environ.id, '>>', app.stack);
+        let stacklets = await Stacklet.find({stack: app.stack.id});
+        console.error('Stacklets:', stacklets);
+        return exits.notFound('Application Stacklet not found:', app.stack.name);
       }
       // Create the ApplicationInstance from the appStacklet
-      let appInstance = await ApplicationInstance.create({
+      appInstance = await ApplicationInstance.create({
         name: app.name + '-' + environ.name,
         stacklet: appStacklet.id,
         state: 'Initializing',
         app: app.id,
         env: environ.id
       }).fetch();
+      sails.sockets.broadcast('c3', 'instance', [appInstance]);
+      await sails.helpers.events.inc.with({events:"ApplicationInstance", value:1});
 
       // Recursively build the services from the servicelets.
       if (appStacklet.image) {
         let service = await Service.create({
           name: appInstance.name,
           config: inputs.config,
-          replicas: appStacklet.replicas
+          state: 'Initializing',
+          replicas: appStacklet.replicas,
+          env: environ.id
         }).fetch();
         await Service.addToCollection(service.id, 'apps', appInstance.id);
         await ApplicationInstance.addToCollection(appInstance.id, 'services', service.id);
         // await sails.helpers.service.set.with({service:service,replicas:appStacklet.replicas});
+        sails.sockets.broadcast('c3', 'service', [service]);
       }
       for (let i in appStacklet.servicelets) {
         // Create a service for each servicelet and attach it to the applicationInstance.
@@ -73,19 +86,35 @@ module.exports = {
         let service = await Service.create({
           name: appInstance.name + '-' + servicelet.name,
           config: inputs.config,
+          state: 'Initializing',
           servicelet: servicelet.id,
-          replicas: servicelet.replicas
+          replicas: servicelet.replicas,
+          env: environ.id
         }).fetch();
         await Service.addToCollection(service.id, 'apps', appInstance.id);
         await ApplicationInstance.addToCollection(appInstance.id, 'services', service.id);
-        await sails.helpers.service.set.with({service:service,replicas:servicelet.replicas});
+
+        let resources = await sails.helpers.service.set.with({service: service, replicas: servicelet.replicas})
+          .intercept('stackletNotFound', () => {
+            console.error('Inside StackletNotFound!');
+            return new Error('Stacklet Not Found');
+          });
       }
-      return exits.success(appInstance);
+      let appInstances = await ApplicationInstance.update({id: appInstance.id}, {state: 'Running'}).fetch();
+      appInstance =appInstances[0];
+      sails.sockets.broadcast('c3', 'instance',appInstances);
+      return exits.success(appInstances);
     }
     catch (e) {
-      console.error(e);
-      console.error(e);
-      return exits.notFound(e);
+      console.log("Error for Launch:", e);
+      await sails.helpers.app.kill.with({instance: appInstance, signal: 9, reason: 'Error during launch'});
+      let appInstances = await ApplicationInstance.update({id: appInstance.id}, {
+        state: 'Error',
+        message: 'Stacklet not Found' + e
+      }).fetch();
+      sails.sockets.broadcast('c3', 'instance',appInstances);
+
+      return exits.success(appInstance);
     }
   }
 };

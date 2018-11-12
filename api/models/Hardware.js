@@ -11,12 +11,12 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    name: { type: 'string' },
-    type: { type: 'string' },
-    capacity: { type: 'number' },
-    reserved: { type: 'number', defaultsTo: 0 },
-    available: { type: 'number' },
-    state: { type: 'string', isIn: ['disabled', 'enabled'] },
+    name: {type: 'string'},
+    type: {type: 'string'},
+    capacity: {type: 'number'}, // What is the total capacity
+    reserved: {type: 'number', defaultsTo: 0},
+    available: {type: 'number'}, // How many are still available
+    state: {type: 'string', isIn: ['disabled', 'enabled']},
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -25,8 +25,8 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    resources: { collection: 'Resource', via: 'hardware' },
-    cloud: { model: 'Cloud' }
+    resources: {collection: 'Resource', via: 'hardware'},
+    cloud: {model: 'Cloud'}
   },
 
 };

@@ -1,0 +1,190 @@
+  <script type='text/javascript' src="/js/dcvis.js"></script>
+  <script type='text/javascript' src="/dependencies/sails.io.js"></script>
+
+<div id="mynetwork" style="height:<%= height %>px;">
+  <div class="vis-network" tabindex="900"
+       style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+    <canvas width="<%= width %>" height="<%= height %>"
+            style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 1000px;"></canvas>
+  </div>
+</div>
+
+<script type="text/javascript">
+  //////////////////////////////////////////////
+  // Initialize
+  let container = document.getElementById('mynetwork');
+  let states = {
+    "Running": {background: '#00ff00', border: '#00aa00'},
+    "Stopping": {background: '#ffff00', border: '#cccc00'},
+    "Stopped": {background: '#bbbbbb', border: '#777777'},
+    "Initializing": {background: '#00ffff', border: '#00cccc'},
+    "Error": {background: '#ff0000', border: '#cc0000'},
+    "Pause": {background: '#ffaa88', border: '#cc8866'},
+    "Deploying": {background: '#00aaff', border: '#0088cc'}
+  };
+  let types = {
+    "AppInstance": {shape: 'hexagon', /*level: 3*/},
+    "Service": {shape: 'square', /*level: 4*/},
+    "ServiceInstance": {shape: 'triangle', /*level: 5*/}
+  };
+
+  let groups = {
+    "Application": {shape: 'circle', /* level:2, */ color: {background: "#cc00cc", border: "#880088"}}
+  };
+  for (let i in types) {
+    for (let j in states) {
+      let groupname = i + j;
+      groups[groupname] = {};
+      for (let k in types[i]) {
+        groups[groupname][k] = types[i][k];
+      }
+      groups[groupname].color = {};
+      for (let k in states[j]) {
+        groups[groupname].color[k] = states[j][k];
+      }
+    }
+  }
+  let options = {
+    layout: {
+      hierarchical: {
+        enabled: true,
+        nodeSpacing: 70,
+        treeSpacing: 200,
+        sortMethod: 'directed'
+      }
+    },
+    nodes: {
+      shape: 'dot',
+      size: 20,
+      font: {
+        size: 15,
+        color: '#000000'
+      },
+      borderWidth: 2,
+      //level: 15
+    },
+    groups: groups
+  };
+  let dc = new DCVis(container, options);
+
+  function getServices(parent, service,items) {
+    for(let i in service.children) {
+      let child = service.children[i];
+      let item = {
+        id: 'c' + child.id,
+        label: child.name.split(/-/).pop(),
+        group: 'Service' + service.state,
+        title: child.name + ' (' + child.replicas + ')' + '[' + child.state + ']' + child.message
+      };
+      items.push(item);
+      dc.addEdge({to: item.id, from: parent.id});
+      getServices(item, child,items);
+    }
+    for(let i in service.instances) {
+      let instance = service.instances[i];
+      let item = {
+        id: 'si' + instance.id,
+        label: instance.name.split(/-/).pop(),
+        group: 'ServiceInstance' + instance.state,
+        title: instance.name + '[' + instance.state + ']' + instance.message
+      };
+      items.push(item);
+      dc.addEdge({to: item.id, from: parent.id});
+    }
+  }
+
+  ///////////////////////////////////////////////
+  // SERVICES
+  function getApp(id) {
+    io.socket.get('/app/get?mode=json&deep=true&id=' + id, function (body, response) {
+      let items = [];
+      let app = body.app;
+
+      for (let i in app.instances) {
+        let instance = app.instances[i];
+        let item = {
+          id: 'ai' + instance.id,
+          label: instance.name,
+          group: 'AppInstance' + instance.state,
+          title: instance.name + ' (' + instance.env + ')' + '[' + instance.state + ']' + instance.message
+        };
+        items.push(item);
+        for (let j in instance.services) {
+          let service = instance.services[j];
+          let sitem = {
+            id: 'c' + service.id,
+            label: service.name.split(/-/).pop(),
+            group: 'Service' + service.state,
+            title: service.name + ' (' + service.replicas + ')' + '[' + service.state + ']' + service.message
+          };
+          items.push(sitem);
+          dc.addEdge({to: sitem.id, from: item.id});
+          getServices(sitem, service, items);
+        }
+
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+
+    io.socket.on('instance', function (objs) {
+      let items = [];
+      for (let i = 0; i < objs.length; i++) {
+        let obj = objs[i];
+        let item = {
+          id: 'ai' + obj.id,
+          label: obj.name,
+          group: 'AppInstance' + obj.state,
+          title: obj.name + ' (' + obj.env + ')' + '[' + obj.state + ']' + obj.message
+        };
+        items.push(item);
+      }
+      dc.addNode(items);
+    });
+    io.socket.on('service', function (objs) {
+      let items = [];
+      for (let i = 0; i < objs.length; i++) {
+        let obj = objs[i];
+        let item = {
+          id: 'c' + obj.id,
+          label: obj.name.split(/-/).pop(),
+          group: 'Service' + obj.state,
+          title: obj.name + '[' + obj.state + ']' + obj.message
+        };
+        items.push(item);
+        if(obj.parent) {
+          dc.addEdge({to: item.id, from: 'c' + obj.parent.id});
+        }
+      }
+      dc.addNode(items);
+    });
+    io.socket.on('sinstance', function (objs) {
+      let items = [];
+      for (let i = 0; i < objs.length; i++) {
+        let obj = objs[i];
+        let item = {
+          id: 'si' + obj.id,
+          label: obj.name.split(/-/).pop(),
+          group: 'ServiceInstance' + obj.state,
+          title: obj.name + '[' + obj.state + ']' + obj.message
+        };
+        items.push(item);
+        if(obj.service) {
+          dc.addEdge({to: item.id, from: 'c' + obj.service.id});
+        }
+      }
+      dc.addNode(items);
+    });
+  }
+
+  function init() {
+    getApp(<%= app.id %>);
+  }
+
+  function selectgraph(id) {
+
+  }
+  window.addEventListener("load", init());
+
+</script>
+

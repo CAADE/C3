@@ -1,0 +1,155 @@
+<script type='text/javascript' src="/js/dcvis.js"></script>
+<script type='text/javascript' src="/dependencies/sails.io.js"></script>
+
+<div id="mynetwork" style="height:<%= height %>px;">
+  <div class="vis-network" tabindex="900"
+       style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+    <canvas width="<%= width %>" height="<%= height %>"
+            style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 1000px;"></canvas>
+  </div>
+</div>
+
+<script type="text/javascript">
+  //////////////////////////////////////////////
+  // Initialize
+  let container = document.getElementById('mynetwork');
+
+  let groups = {
+    "ServiceStack": {
+      shape: 'circle', /* level:2, */
+      color: {background: "#cc00cc", border: "#880088"}
+    },
+    "Stacklet": {
+      shape: 'hexagon', /* level:2, */
+      color: {background: "#00cccc", border: "#008888"}
+    },
+    "Servicelet": {
+      shape: 'square', /* level:2, */
+      color: {background: "#00ff00", border: "#00aa00"}
+    },
+    "Image": {
+      shape: 'triangle', /* level:2, */
+      color: {background: "#ffaa00", border: "#cc7700"}
+    },
+  };
+  let options = {
+    layout: {
+      hierarchical: {
+        enabled: true,
+        sortMethod: 'directed'
+      }
+    },
+    nodes: {
+      shape: 'dot',
+      size: 20,
+      font: {
+        size: 15,
+        color: '#000000'
+      },
+      borderWidth: 2,
+      //level: 15
+    },
+    groups: groups
+  };
+  let dc = new DCVis(container, options);
+  let visted = {};
+
+  function getStacklet(parent, stacklet) {
+    let items = [];
+    let item = {
+      id: 'SL' + stacklet.id,
+      label: stacklet.name + '-' + stacklet.env.name,
+      group: 'Stacklet',
+      title: stacklet.name + '-' + stacklet.env.name
+    };
+    items.push(item);
+    dc.addEdge({to: 'SL' + stacklet.id, from: parent.id});
+
+    for (let j in stacklet.servicelets) {
+      let servicelet = stacklet.servicelets[j];
+      let item = {
+        id: 'S' + servicelet.id,
+        label: servicelet.name,
+        group: 'Serviclet',
+        title: servicelet.name
+      };
+      items.push(item);
+      dc.addEdge({to: 'S' + servicelet.id, from: 'SL' + stacklet.id});
+      getStacklet(item, servicelet.stack.stacklet);
+    }
+    if (stacklet.image) {
+      let image = {
+        id: 'I' + stacklet.image.id,
+        label: stacklet.image.name,
+        group: 'Image',
+        title: stacklet.image.name
+      };
+      dc.addEdge({to: 'I' + stacklet.image.id, from: 'SL' + stacklet.id});
+      items.push(image);
+    }
+    dc.addNode(items);
+    dc.drawEdges();
+  }
+
+  // SERVICESTACK
+  function getServices(id) {
+    io.socket.get('/stack/get?mode=json&deep=true&id=' + id, function (body, response) {
+      let items = [];
+      let stack = body.stack;
+     /* let item = {
+        id: 'SS' + stack.id,
+        label: stack.name,
+        group: 'ServiceStack',
+        title: stack.name,
+      };
+      items.push(item);
+*/
+      for (let i in stack.stacklets) {
+        let stacklet = stack.stacklets[i];
+        let item = {
+          id: 'SL' + stacklet.id,
+          label: stacklet.name + '-' + stacklet.env.name,
+          group: 'Stacklet',
+          title: stacklet.name + '-' + stacklet.env.name
+        };
+        items.push(item);
+ //       dc.addEdge({to: 'SL' + stacklet.id, from: 'SS' + stack.id});
+        if (stacklet.image) {
+          let image = {
+            id: 'I' + stacklet.image.id,
+            label: stacklet.image.name,
+            group: 'Image',
+            title: stacklet.image.name
+          };
+          dc.addEdge({to: 'I' + stacklet.image.id, from: 'SL' + stacklet.id});
+          items.push(image);
+        }
+        for (let j in stacklet.servicelets) {
+          let servicelet = stacklet.servicelets[j];
+          let item = {
+            id: 'S' + servicelet.id,
+            label: servicelet.name,
+            group: 'Serviclet',
+            title: servicelet.name
+          };
+          items.push(item);
+          dc.addEdge({to: 'S' + servicelet.id, from: 'SL' + stacklet.id});
+          if (servicelet.stack.stacklet) {
+            getStacklet(item, servicelet.stack.stacklet);
+          }
+        }
+ //       dc.addEdge({to: 'SL' + stacklet.id, from: 'SS' + stack.id});
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+  }
+
+  function init() {
+    getServices(<%= stack.id %>);
+  }
+
+  window.addEventListener('load', init());
+
+</script>
+

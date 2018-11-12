@@ -1,0 +1,9 @@
+<%
+let d = new Date(seconds);
+let y = d.getFullYear();
+let mm = d.getMonth() + 1;
+let dd = d.getDate();
+let h = d.getHours();
+let m = d.getMinutes();
+%>
+<%= y + '/' + mm + '/' + dd + '  ' + h + ':' + m %>

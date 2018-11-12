@@ -36,16 +36,12 @@ module.exports = {
 
     let requests = await sails.helpers.policy.evaluate.with({requests: inputs.requests});
 
+    // For each request get the environment and ask the environment for reservations.
     // Iterate the cloud and ask for reservations.
-    let clouds = await Cloud.find();
     let reservations = [];
-    for (let i in clouds) {
-      // Connect to the cloud and then ask it for a set of reservations from the requests.
-      let cloud = clouds[i];
-      let reservers = await sails.helpers.cloud.getReservations.with({cloud: cloud, requests: requests});
-      for (j in reservers) {
-        reservations.push(reservers[j]);
-      }
+    let reservers = await sails.helpers.env.getReservations.with({requests: requests});
+    for (j in reservers) {
+      reservations.push(reservers[j]);
     }
     ////////////////////////////////////////////////////////////////////////////////
     // Evaluate Reservations
@@ -63,11 +59,13 @@ module.exports = {
     let resources = [];
     for (let iid in maps) {
       let entry = maps[iid];
-      for (rid in entry) {
-        if (rid == 0) {
+      // TODO: Insert Adaptor for Selection Criteria
+      // Dummy Selector is to grab the first one.
+      for (let rid in entry) {
+        if (rid === '0') {
           let resource = await sails.helpers.cloud.confirmReservation.with({reservation: entry[0]});
           resources.push(resource);
-          let trequests = await Request.update({id:entry.request}, {state:'Selected'}).fetch();
+          let trequests = await Request.update({id: entry.request}, {state: 'Selected'}).fetch();
           sails.sockets.broadcast('c3', 'request', trequests);
         }
         else {
@@ -78,7 +76,6 @@ module.exports = {
     }
 
     // TODO: Call the Provision Engine to deploy software on the resource.
-
     return exits.success(resources);
   }
 

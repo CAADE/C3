@@ -488,6 +488,8 @@
 
 
   function init() {
+    let currentPage = document.getElementsByClassName('current-page');
+    currentPage[0].innerHTML = "Environments >> Show";
     getEnv();
     getApps();
     getCloud();

@@ -24,13 +24,19 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-  '/': {view: 'pages/homepage'},
+  '/': {view: 'pages/home'},
+  '/homepage': {view: 'pages/homepage'},
   '/dc/show': {view: 'dc/show'},
+
+  '/image/get': {action: 'image/get'},
+
   '/cloud/create': {action: 'cloud/create'},
+  '/cloud/get': {action: 'cloud/get'},
   '/cloud/update': {action: 'cloud/update'},
   '/cloud/destroy': {action: 'cloud/destroy'},
   '/cloud/list': {action: 'cloud/list'},
 
+  '/hardware/metrics': {action: 'hardware/metrics'},
   '/hardware/create': {action: 'hardware/create'},
   '/hardware/update': {action: 'hardware/update'},
   '/hardware/destroy': {action: 'hardware/destroy'},
@@ -43,17 +49,21 @@ module.exports.routes = {
   '/env/destroy': {action: 'env/destroy'},
   '/env/list': {action: 'env/list'},
   '/env/get': {action: 'env/get'},
+  '/env/metrics': {action: 'env/metrics'},
   '/env/select': {action: 'env/select'},
+  '/env/addHardware': {action: 'env/addHardware'},
 
   '/stack/create': {action: 'stack/create'},
   '/stack/update': {action: 'stack/update'},
   '/stack/publish': {action: 'stack/publish'},
   '/stack/destroy': {action: 'stack/destroy'},
   '/stack/list': {action: 'stack/list'},
+  '/stack/get': {action: 'stack/get'},
 
   '/service/list': {action: 'service/list'},
 
   '/stacklet/list': {action: 'stacklet/list'},
+  '/stacklet/get': {action: 'stacklet/get'},
 
   '/events/create': {action: 'events/create'},
   '/events/set': {action: 'events/set'},
@@ -68,12 +78,24 @@ module.exports.routes = {
   '/app/list': {action: 'app/list'},
   '/app/show': {action: 'app/show'},
   '/app/create': {action: 'app/create'},
+  '/app/get': {action: 'app/get'},
+  '/app/kill': {action: 'app/kill'},
 
   '/reservation/list': {action: 'reservation/list'},
 
   '/resource/list': {action: 'resource/list'},
   '/request/list': {action: 'request/list'},
   '/request/show': {action: 'request/show'},
+  '/policy/create': {action: 'policy/create'},
+  '/policy/show': {action: 'policy/show'},
+  '/policy/list': {action: 'policy/list'},
+  '/policy/get': {action: 'policy/get'},
+  '/dc/metrics': {action: 'dc/metrics'},
+
+  '/instance/list': {action: 'instance/list'},
+  '/instance/get': {action: 'instance/get'},
+  '/instance/kill': {action: 'instance/kill'},
+  '/instance/destroy': {action: 'instance/destroy'},
 
   /***************************************************************************
    *                                                                          *

@@ -22,10 +22,11 @@ module.exports = {
   fn: async function (inputs, exits) {
 
     try {
-      for (let k in input.events) {
-        let event = input.events[k];
+      let events;
+      for (let k in inputs.events) {
+        let event = inputs.events[k];
 
-        let events = await Events.findOne({id: event.id}).populateAll();
+        events = await Events.findOne({id: event.id}).populateAll();
         for (let i = 0; i < events.triggers.length; i++) {
           // Connect the Service Instance to resources.
           let trigger = events.triggers[i];
@@ -35,20 +36,20 @@ module.exports = {
             let actions = trigger.action.split(/;/);
             await Trigger.update({id: trigger.id}, {fired: true});
             trigger = await Trigger.findOne({id: trigger.id}).populateAll();
-            sails.sockets.broadcast('fleet', 'triggered', {policy: trigger.policy, trigger: trigger});
+            sails.sockets.broadcast('c3', 'triggered', {policy: trigger.policy, trigger: trigger});
             for (let j = 0; j < actions.length; j++) {
               try {
                 await eval(actions[j]);
               }
               catch (e) {
-                console.error('Handle Event Error:', e);
+                console.error('Action Error: ', e);
               }
             }
           }
           else if (!flag && trigger.fired) {
             await Trigger.update({id: trigger.id}, {fired: false});
             trigger = await Trigger.findOne({id: trigger.id}).populateAll();
-            sails.sockets.broadcast('fleet', 'triggered', {policy: trigger.policy, trigger: trigger});
+            sails.sockets.broadcast('c3', 'triggered', {policy: trigger.policy, trigger: trigger});
           }
         }
       }
@@ -60,9 +61,18 @@ module.exports = {
       return exits.success();
     }
     // All done.
-
   }
-
-
 };
 
+function incService(name, amount) {
+  console.log("IncService", name, amount);
+}
+function decService(name, amount) {
+  console.log("DecService", name, amount);
+}
+function killService(name, signal, message) {
+  console.log("KillService", name, signal, message);
+}
+function killApp(name,signal, message) {
+  console.log("KillApp", name, signal, message);
+}

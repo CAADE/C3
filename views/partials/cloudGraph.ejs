@@ -1,0 +1,214 @@
+<div id="mynetwork" style="height:<%= height %>px;">
+  <div class="vis-network" tabindex="900"
+       style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+    <canvas width="<%= width %>" height="<%= height %>"
+            style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 1000px;"></canvas>
+  </div>
+</div>
+
+<script type="text/javascript">
+  //////////////////////////////////////////////
+  // Initialize
+  let container = document.getElementById('mynetwork');
+  let options = {
+    layout: {
+      hierarchical: {
+        enabled: true,
+        sortMethod: 'directed'
+      }
+    },
+    nodes: {
+      shape: 'dot',
+      size: 20,
+      font: {
+        size: 15,
+        color: '#ffffff'
+      },
+      borderWidth: 2,
+      level: 15
+    },
+    groups: {
+      storage: {
+        shape: 'hexagon',
+        color: {background: '#0088aa', border: '#0088aa'},
+        level: 3,
+      },
+      rstorage: {
+        shape: 'hexagon',
+        color: {background: '#00cc66', border: '#00cc66'},
+        level: 8,
+      },
+      compute: {
+        shape: 'square',
+        color: {background: '#006688', border: '#006688'},
+        level: 2,
+      },
+      rcompute: {
+        shape: 'square',
+        color: {background: '#00ffaa', border: '#00ffaa'},
+        level: 7
+      },
+      network: {
+        shape: 'star',
+        color: {background: '#004466', border: '#004466'},
+        level: 4,
+      },
+      rnetwork: {
+        shape: 'star',
+        color: {background: '#00aa44', border: '#00aa44'},
+        level: 9
+      },
+      cloud: {
+        shape: 'cloud',
+        color: {background: '#cccc00', border: '#cccc00'},
+        level: 1
+      }
+    }
+  };
+  let dc = new DCVis(container, options);
+
+  ///////////////////////////////////////////////
+  // HARDWARE
+  function getHardware() {
+    io.socket.get('/hardware/list?mode=json', function (body, response) {
+      let items = [];
+      for (let i = 0; i < body.hardware.length; i++) {
+        let hw = body.hardware[i];
+        items.push({
+          id: 'h' + hw.id,
+          label: hw.name,
+          group: hw.type,
+          title: hw.name + ' (' + hw.available + "/" + hw.capacity + ')'
+        });
+        console.log("HW.Cloud", hw.cloud);
+        if (hw.cloud) {
+          dc.addEdge({to: 'd' + hw.cloud.id, from: 'h' + hw.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('hardware', function (body) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let hw = body[i];
+        items.push({
+          id: 'h' + hw.id,
+          label: hw.name,
+          group: hw.type,
+          title: hw.name + ' (' + hw.available + "/" + hw.capacity + ')'
+        });
+        if (hw.cloud.id) {
+          dc.addEdge({to: 'd' + hw.cloud.id, from: 'h' + hw.id});
+        }
+        else if (hw.cloud) {
+          dc.addEdge({to: 'd' + hw.cloud, from: 'h' + hw.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+
+    io.socket.on('hardware-destroy', function (body) {
+      for (let i = 0; i < body.length; i++) {
+        removeNode('h' + body[i].id);
+      }
+    });
+  }
+
+  ///////////////////////////////////////////
+  // CLOUD
+  function getCloud() {
+    io.socket.get('/cloud/list?mode=json', function (body, response) {
+      let items = [];
+      for (let i = 0; i < body.length; i++) {
+        let obj = body[i];
+        items.push({
+          id: 'd' + obj.id,
+          label: obj.name,
+          group: 'cloud',
+          title: obj.name
+        });
+      }
+      dc.addNode(items);
+    });
+    io.socket.on('cloud', function (obj) {
+      item = {
+        id: 'd' + obj.id,
+        label: obj.name,
+        group: 'cloud',
+        title: obj.name
+      };
+      dc.addNode([item]);
+    });
+    io.socket.on('cloud-destroy', function (body) {
+      for (let i = 0; i < body.length; i++) {
+        removeNode('d' + body[i].id);
+      }
+    });
+  }
+
+  ///////////////////////////////////////////////
+  // RESOURCES
+  function getResources() {
+    io.socket.get('/resource/list?mode=json', function (body, response) {
+      let items = [];
+      let es = [];
+      for (let i = 0; i < body.length; i++) {
+        let obj = body[i];
+        items.push({
+          id: 'r' + obj.id,
+          label: obj.name,
+          group: 'r' + obj.type,
+          title: obj.name + ' (' + obj.available + "/" + obj.capacity + ')'
+        });
+        if (obj.hardware) {
+          dc.addEdge({to: 'h' + obj.hardware.id, from: 'r' + obj.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('resource', function (obj) {
+      let item = {
+        id: 'r' + obj.id,
+        label: obj.name,
+        group: 'r' + obj.type,
+        title: obj.name + ' (' + obj.available + "/" + obj.capacity + ')'
+      };
+      dc.addNode([item]);
+      dc.addEdge({to: 'h' + obj.hardware.id, from: 'r' + obj.id});
+      dc.drawEdges();
+    });
+    io.socket.on('resource-move', function (obj) {
+      // Select the hw and the resource.
+      let rid = 'r' + obj.resource.id;
+      let hid = 'h' + obj.to;
+      let oid = 'h' + obj.from;
+      removeEdge(rid, oid);
+      let snodes = network.getSelectedNodes();
+      snodes.push(rid);
+      snodes.push(hid);
+      network.selectNodes(snodes);
+
+      // Add an edge between them.
+      dc.addEdge({to: hid, from: rid});
+      dc.drawEdges();
+    });
+    io.socket.on('resource-destroy', function (body) {
+      for (let i = 0; i < body.length; i++) {
+        removeNode('r' + body[i].id);
+      }
+    });
+  }
+
+
+  function init() {
+    getCloud();
+    getHardware();
+    getResources();
+  }
+
+  init();
+
+</script>

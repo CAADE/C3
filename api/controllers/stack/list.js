@@ -1,4 +1,3 @@
-
 module.exports = {
 
   friendlyName: 'stack list',
@@ -14,7 +13,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'stack/list'
     },
     json: {
       responseType: '', // with return json
@@ -30,13 +29,21 @@ module.exports = {
     try {
       let stacks = await ServiceStack.find().populateAll();
       // Display the results
-      if(inputs.mode === 'json') {
+      if (inputs.mode === 'json') {
         // Return json
         return exits.json(stacks);
       }
       else {
         // Display the welcome view.
-        return exits.success(stacks);
+        for (let j in stacks) {
+          let stack = stacks[j];
+          for (let i in stack.stacklets) {
+            let stacklet = stack.stacklets[i];
+            stacklet = await Stacklet.findOne({id: stacklet.id}).populateAll();
+            stack.stacklets[i] = stacklet;
+          }
+        }
+        return exits.success({stacks: stacks});
       }
     }
     catch (e) {

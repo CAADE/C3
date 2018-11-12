@@ -28,6 +28,10 @@ module.exports = {
 
   fn: async function (inputs, exits, env) {
 
+    if (this.req.isSocket) {
+      sails.sockets.join(this.req, 'c3');
+    }
+
     try {
       let services = await Service.find().populateAll();
 

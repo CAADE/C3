@@ -2,6 +2,17 @@ service:
   name: streaming
   version: 0.0.1
   environments:
+    dev:
+      resources:
+        network:
+          myNetwork: 2
+      services:
+        fastStreaming:
+          type: common
+          replicas: 1
+        slowStreaming:
+          type: common
+          replicas: 1
     local:
       resources:
         network:

@@ -8,12 +8,12 @@ module.exports = {
     cloud: {
       description: 'Description of Attribute',
       type: 'string',
-      required: true
+      required: false
     },
     env: {
       description: 'Description of Attribute',
       type: 'string',
-      required: true
+      required: false
     },
 
     mode: {
@@ -26,7 +26,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'policy/list'
     },
     json: {
       responseType: '', // with return json
@@ -38,6 +38,11 @@ module.exports = {
   },
 
   fn: async function (inputs, exits, env) {
+
+    // Connect to the socket room.
+    if (this.req.isSocket) {
+      sails.sockets.join(this.req, 'c3');
+    }
 
     try {
       let options = {};
@@ -56,7 +61,15 @@ module.exports = {
         }
         options.env = environ.id;
       }
-      let policies = await Policy.find(options);
+      let policies = await Policy.find(options).populateAll();
+      for (let i in policies) {
+        let policy = policies[i];
+        for (let j in policy.triggers) {
+          let trigger = policy.triggers[j];
+          trigger = await Trigger.findOne({id: trigger.id}).populateAll();
+          policy.triggers[j] = trigger;
+        }
+      }
 
       // Display the results
       if (inputs.mode === 'json') {
@@ -65,7 +78,7 @@ module.exports = {
       }
       else {
         // Display the welcome view.
-        return exits.success(policies);
+        return exits.success({policies: policies});
       }
     }
     catch (e) {

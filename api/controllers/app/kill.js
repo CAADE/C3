@@ -8,12 +8,22 @@ module.exports = {
     name: {
       description: 'Name of the Application',
       type: 'string',
-      required: true
+      required: false
+    },
+    id: {
+      description: 'Name of the Application',
+      type: 'string',
+      required: false
     },
     signal: {
       description: 'Kill signal',
       type: 'number',
-      required: true
+      required: false
+    },
+    message: {
+      description: 'Kill Message',
+      type: 'string',
+      required: false
     },
     mode: {
       description: 'results format: json or html',
@@ -37,13 +47,29 @@ module.exports = {
   },
 
   fn: async function (inputs, exits, env) {
-
+    if (this.req.isSocket) {
+      sails.sockets.join(this.req, 'c3');
+    }
     try {
-      let app = await Application.findOne({name: inputs.name});
+      let app;
+      if (inputs.name) {
+        app = await Application.findOne({name: inputs.name});
+      }
+      else if (inputs.id) {
+        app = await Application.findOne({id: inputs.id});
+      }
       if (!app) {
         return exits.notFound('/notFound');
       }
+      if (!inputs.signal) {
+        inputs.signal = 15;
+      }
+      if (!inputs.message) {
+        inputs.message = 'Application Killed';
+      }
+      await sails.helpers.app.kill.with({app: app, signal: inputs.signal, reason: inputs.message});
 
+      app = await Application.findOne({id: app.id});
 
       // Display the results
       if (inputs.mode === 'json') {

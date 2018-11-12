@@ -20,6 +20,16 @@ module.exports = {
       type: 'string',
       required: false
     },
+    stack: {
+      description: 'Name of the stack to apply the policy',
+      type: 'string',
+      required: false
+    },
+    app: {
+      description: 'Name of the application to apply the policy',
+      type: 'string',
+      required: false
+    },
 
     mode: {
       description: 'results format: json or html',
@@ -45,25 +55,43 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let cloud;
-      let environ;
-      let options = {name: inputs.name, state:'enabled'};
+      let options = {name: inputs.name, state: 'enabled'};
 
       if (inputs.cloud) {
-        cloud = await Cloud.findOne({name: inputs.cloud});
+        let cloud = await Cloud.findOne({name: inputs.cloud});
         if (!cloud) {
+          console.error("Could not find Cloud:", inputs.cloud);
           return exits.notFound('/notFound');
         }
         options.cloud = cloud.id;
       }
       if (inputs.env) {
-        environ = await Environment.findOne({name: inputs.env});
+        let environ = await Environment.findOne({name: inputs.env});
         if (!environ) {
+          console.error("Could not find Environment:", inputs.env);
           return exits.notFound('/notFound');
         }
         options.env = environ.id;
       }
+      if (inputs.stack) {
+        let stack = await ServiceStack.findOne({name: inputs.stack});
+        if (!stack) {
+          console.error("Could not find ServiceStack:", inputs.stack);
+          return exits.notFound('/notFound');
+        }
+        options.stack = stack.id;
+      }
+      if (inputs.app) {
+        let app = await Application.findOne({name: inputs.app});
+        if (!app) {
+          console.error("Could not find Application:", inputs.app);
+          return exits.notFound('/notFound');
+        }
+        options.app = app.id;
+      }
+      console.log("Options:", options);
       let policy = await Policy.findOrCreate({name: inputs.name}, options);
+
 
       // Now create the resources in the cloud for the application.
       let data = this.req.body.policy;
@@ -73,7 +101,7 @@ module.exports = {
         let tdata = data.triggers[id];
         let trigger = await sails.helpers.trigger.create.with({
           name: name,
-          events: tdata.events,
+          event: tdata.events,
           condition: tdata.condition,
           action: tdata.action,
           policy: policy.id,
@@ -93,6 +121,7 @@ module.exports = {
       }
     }
     catch (e) {
+      console.error("Error:", e);
       return exits.error(e);
     }
   }

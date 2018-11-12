@@ -43,18 +43,21 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let app = await Application.findOne({name:inputs.name}).populateAll();
-      if(!app) {
+      if (this.req.isSocket) {
+        sails.sockets.join(this.req, 'c3');
+      }
+      let app = await Application.findOne({name: inputs.name}).populateAll();
+      if (!app) {
         return exits.notFound('/notFound');
       }
-      let environ = await Environment.findOne({name:inputs.env}).populateAll();
-      if(!environ) {
+      let environ = await Environment.findOne({name: inputs.env}).populateAll();
+      if (!environ) {
         return exits.notFound('/notFound');
       }
-      if(!inputs.hasOwnProperty('config')) {
+      if (!inputs.hasOwnProperty('config')) {
         inputs.config = {};
       }
-      let results = await sails.helpers.app.launch.with({app:app, env: environ, config:inputs.config});
+      let results = await sails.helpers.app.launch.with({app: app, env: environ, config: inputs.config});
 
       // Display the results
       if (inputs.mode === 'json') {

@@ -1,0 +1,49 @@
+<div class="dialog" id="<%= dialogName %>">
+  <div class="dialog-header">Launch Application <span class="dialog-close" onclick="closeDialog();">X</span></div>
+  <div class="dialog-body">
+    <% for(let i in apps) {
+    let app = apps[i];
+    %>
+    <h3><%= app.name %> <button class="launch-button" onclick="launchApp('<%- app.name %>');">Launch</button></h3>
+    <table>
+      <tr>
+        <td><input type="checkbox" id="launchApp<%- app.name %>" onclick="selectAll('<%- app.name %>');"> Environments</td>
+        <%
+        for(let j in app.stack.stacklets) {
+            let stacklet = app.stack.stacklets[j];
+        %>
+            <td><input type="checkbox" class="selectedEnv-<%- app.name %>" name="<%- stacklet.env.name %>"><%= stacklet.env.name %></td>
+        <% } %>
+      </tr>
+    </table>
+    <%- partial("../partials/jsonInput", {prefix:app.id, json:app.stack.parameters}) %>
+    <% } %>
+  </div>
+</div>
+
+<script>
+  function selectAll(id) {
+    let all = document.getElementById("launchApp" + id);
+    let envs = document.getElementsByClassName('selectedEnv-' + id);
+    for(let i in envs) {
+      envs[i].checked = all.checked;
+    }
+  }
+  function closeDialog() {
+    let dialog = document.getElementById('<%= dialogName %>');
+    dialog.style.display = 'none';
+  }
+
+  function launchApp(id) {
+    let envs = document.getElementsByClassName('selectedEnv-' + id);
+    for(let i=0; i < envs.length; i++) {
+      if(envs[i].checked) {
+        io.socket.get('/app/launch?mode=json&name=' + id +"&env=" + envs[i].name , function (body, response) {
+        });
+      }
+    }
+    let dialog = document.getElementById('<%= dialogName %>');
+    dialog.style.display = 'none';
+  }
+</script>
+

@@ -1,0 +1,56 @@
+<%
+  let prefix = Math.floor(Math.random() * 1000000);
+  let labels = [];
+  let data = [];
+  let colors = [];
+  let total = 0;
+  const backgroundColors = {
+        'Running': '#00ff00',
+        'Stopping': '#ffff00',
+        'Stopped': '#bbbbbb',
+        'Initializing': '#00ffff',
+        'Error': '#ff4444',
+        'Paused': '#ffaa88',
+        'Deploying': '#00aaff'
+      };
+  for(let state in services) {
+    labels.push('"' + state + '"');
+    data.push(services[state]);
+    colors.push('"' + backgroundColors[state] + '"');
+    total += services[state];
+  }
+%>
+
+<div class="gadget">
+  <div class="gadget-header"><%= title %> <span style="float: right;" id="number<%= prefix %>"><%= total %></span></div>
+  <div class="gadget-body" id="metrics<%= prefix %>">
+    <canvas id="Chart<%= prefix %>" width="200" height="200"></canvas>
+  </div>
+</div>
+<script>
+  function chart<%= prefix %>()
+  {
+    let canvas = document.getElementById("Chart<%= prefix %>");
+    let chart = new Chart(canvas, {
+      type: 'doughnut',
+      data: {
+        labels: [<%- labels %>],
+        datasets: [
+          {
+            backgroundColor: [<%- colors %>],
+            data: [<%= data %>]
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: false,
+        }
+      }
+    });
+  }
+
+  window.addEventListener("load", chart<%= prefix %>());
+</script>
+
+

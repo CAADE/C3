@@ -2,6 +2,26 @@ application:
   name: alert
   version: 0.0.1
   environments:
+    dev:
+      resources:
+        network:
+          myNetwork: 150
+        storage:
+          myStorage: 1000
+          externalStorage: 5000
+      services:
+        ingestion:
+          type: ingestion
+          version: 0.0.1
+          replicas: 1
+          links:
+            - annotation
+        annotation:
+          type: ingestion
+          replicas: 1
+        gateway:
+          type: ingestion
+          replicas: 1
     local:
       resources:
         network:

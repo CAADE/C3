@@ -1,0 +1,45 @@
+<table width="100%" border="0">
+  <tr>
+    <th>Name</th>
+    <th>Events</th>
+    <th>Condition</th>
+    <th>Fired</th>
+    <th>Action</th>
+  </tr>
+  <% for(let i=0; i < triggers.length; i++) {
+  let trigger = triggers[i];
+  %>
+  <tr class="row-<%- i % 2 %>" id="Trigger<%- trigger.id %>">
+    <td align="center"><%= trigger.name %></a></td>
+    <td align="center"><%= trigger.event.name %>
+      (<span class="EventsValue<%- trigger.event.id%>"><%- trigger.event.value %></span>)
+    </td>
+    <td align="left"><%= trigger.condition %></td>
+    <td align="left" id="TriggerState<%- trigger.id %>" class="fired-<%= trigger.fired %>"><%= trigger.fired %></td>
+    <td align="left"><%= trigger.action %></td>
+  </tr>
+  <% } %>
+</table>
+
+<script>
+  io.socket.on('triggered', function (obj) {
+    let trigger = document.getElementById("TriggerState" + obj.trigger.id);
+    if (trigger) {
+      trigger.className = "fired-" + obj.trigger.fired;
+    }
+  });
+  io.socket.on('events', function (objs) {
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i];
+      let events = document.getElementsByClassName("EventsValue" + obj.id);
+      for (let j = 0; events.length; j++) {
+        if(events[j]) {
+          events[j].innerHTML = obj.value;
+        }
+      }
+    }
+  });
+  io.socket.get('/policy/list?mode=json', function (objs, respone) {
+  });
+
+</script>

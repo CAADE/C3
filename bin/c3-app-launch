@@ -15,11 +15,11 @@ let client = new Client();
 const action = require('../api/controllers/app/launch');
 program.description(action.description);
 for (key in action.inputs) {
-  if (key != 'mode') { // Used to force json output instead of html
+  if (key !== 'mode') { // Used to force json output instead of html
     program.option('-' + key[0] + ', --' + key + ' <' + action.inputs[key].type + '>', action.inputs[key].description);
   }
 }
-;
+
 
 program.parse(process.argv);
 
@@ -33,7 +33,7 @@ for (key in action.inputs) {
 }
 // END: Dynamic Mapping based on Controller Action
 
-client.get(url, function (data, response) {
+client.get(url, (data, response) => {
   // parsed response body as js object
   if (data.problems) {
     console.error('Error:' + data.problems);

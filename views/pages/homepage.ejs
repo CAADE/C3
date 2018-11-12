@@ -1,131 +1,107 @@
-<html>
-<head>
-  <title>C3</title>
-
-  <script type='text/javascript' src="/dependencies/sails.io.js"></script>
-
-  <style>
-    body {
-      font: 12pt arial;
-      margin: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 30px;
-      width: 100%;
-      background: lightblue;
-      color: black
-    }
-
-    .side-bar {
-      position: absolute;
-      top: 30px;
-      left: 0px;
-      width: 200px;
-      height: 100%;
-      background: lightblue;
-      color: black;
-    }
-
-    .work-area {
-      position: absolute;
-      top: 30px;
-      left: 200px;
-      width: 100%;
-      height: 100%;
-      background: lightgray;
-    }
-
-    .gadget {
-      margin: 30px;
-      padding: 2px 2px 2px 2px;
-      background: #777777;
-      color: black;
-      float: left;
-      width: 250px;
-    }
-
-    .gadget-header {
-      padding: 5px;
-      position: relative;
-      top: 0px;
-      left: 0px;
-      height: 30px;
-      background: lightseagreen;
-
-    }
-
-    .gadget-body {
-      background: white;
-      padding: 5px;
-      top: 30px;
-      left: 0px;
-      height: 250px;
-    }
-  </style>
-</head>
-
-
-<div class="default-page">
-  <div class="header">
-    C3
+<div class="gadget">
+  <div class="gadget-header">Applications <span style="float:right"><a href="/app/list">All</a></span></div>
+  <div class="gadget-body" id="apps-metrics">
+    Application: 12
   </div>
-  <div class="side-bar">
-    <h3>Application Developer</h3>
-    <h3>Operations Manager</h3>
-    <h3>Stack Developer</h3>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Stacks <span style="float:right"><a href="/stack/list">All</a></span></div>
+  <div class="gadget-body" id="stacks-metrics">
+    Stacks: 12
   </div>
-  <div class="work-area">
-    <div class="gadget">
-      <div class="gadget-header">Applications</div>
-      <div class="gadget-body">
-        Application: 12
-      </div>
-    </div>
-    <div class="gadget">
-      <div class="gadget-header">Stacks</div>
-      <div class="gadget-body">
-        Stacks: 12
-      </div>
-    </div>
-    <div class="gadget">
-      <div class="gadget-header">Environments</div>
-      <div class="gadget-body">
-        Local: 12
-        Development: 12
-        Test: 10
-        Production: 8
-      </div>
-    </div>
-    <div class="gadget">
-      <div class="gadget-header">Clouds</div>
-      <div class="gadget-body">
-        Cloud 1: 12
-        Cloud 2: 12
-      </div>
-    </div>
-    <div class="gadget">
-      <div class="gadget-header">Events</div>
-      <div class="gadget-body">
-        Event 1: 12
-        Event 2: 12
-      </div>
-    </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Environments <span style="float:right"><a href="/env/list">All</a></span></div>
+  <div class="gadget-body" id="envs-metrics">
+    Local: 12
+    Development: 12
+    Test: 10
+    Production: 8
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Clouds <span style="float:right"><a href="/cloud/list">All</a></span></div>
+  <div class="gadget-body" id="cloud-metrics">
+    Cloud 1: 12
+    Cloud 2: 12
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Events <span style="float:right"><a href="/events/list">All</a></span></div>
+  <div class="gadget-body" id="event-metrics">
+    Event 1: 12
+    Event 2: 12
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Policies <span style="float:right"><a href="/policy/list">All</a></span></div>
+  <div class="gadget-body" id="policy-metrics">
+    Policies
   </div>
 </div>
 
+<%- partial("../partials/hardwareGauge", {type:'compute', title:'Compute', cloud:''}); %>
+<%- partial("../partials/hardwareGauge", {type:'storage', title:'Storage', cloud:''}); %>
+<%- partial("../partials/hardwareGauge", {type:'network', title:'Network', cloud:''}); %>
 
 <script type="text/javascript">
   function initialize() {
-      io.socket.get('/dc/metrics?mode=json', function (body, response) {
-        console.log(body);
-      });
+    io.socket.get('/dc/metrics?mode=json', function (body, response) {
+      let appDiv = document.getElementById('apps-metrics');
+      let iHTML = "<table>";
+      iHTML += "<tr><td><a href='/app/list'>Application</a></td><td>" + body.apps + "</td>";
+      iHTML += "<tr><td><a href='/instance/list'>App Instances</a></td><td>" + body.appInstances + "</td>";
+      iHTML += "</table>";
+      appDiv.innerHTML = iHTML;
+
+      let serviceDiv = document.getElementById('stacks-metrics');
+      iHTML = "<table><tr><td align='right'><b>Stacks</b></td><td align='left'>" + body.stacks + "</td></tr>";
+      iHTML += "<tr><td align='right'><b>Services</b></td><td align='left'>" + body.services + "</td></tr>";
+      iHTML += "<tr><td align='right'><b>Instances</b></td><td align='left'>" + body.instances + "</td></tr>";
+      iHTML += "</table>";
+      serviceDiv.innerHTML = iHTML;
+
+      let envDiv = document.getElementById('envs-metrics');
+      iHTML = "<table>";
+      for (let index in body.envs) {
+        iHTML += "<tr><td align='right'><a href='/env/get?id=" + body.envs[index].id + "'>" + body.envs[index].name + "</a></td>";
+        iHTML += "</tr>";
+      }
+      iHTML += "</table>";
+      envDiv.innerHTML = iHTML;
+
+      let cloudDiv = document.getElementById('cloud-metrics');
+      iHTML = "<table>";
+      for (let index in body.clouds) {
+        iHTML += "<tr><td align='right'><a href='/cloud/get?id=" + body.clouds[index].id + "'>" + body.clouds[index].name + "</a></td><td align='left'>" + body.clouds[index].type + "</td></tr>";
+      }
+      iHTML += "</table>";
+      cloudDiv.innerHTML = iHTML;
+
+      let policyDiv = document.getElementById('policy-metrics');
+      iHTML = "<table width='100%'>";
+      for (let index in body.policies) {
+        iHTML += "<tr class='policy-" + body.policies[index].state + "'><td align='right' ><a href='policy/get?id=" + body.policies[index].id + "'>" + body.policies[index].name + "</a></td>";
+        iHTML += "<td align='left'>" + body.policies[index].state + "</td>";
+        iHTML += "</tr>";
+      }
+      iHTML += "</table>";
+      policyDiv.innerHTML = iHTML;
+
+      let eventDiv = document.getElementById('event-metrics');
+      iHTML = "<table>";
+      for (let index in body.events) {
+        iHTML += "<tr><td align='right'>" + body.events[index].name + "</td>";
+        iHTML += "<td align='left'>" + body.events[index].value + "</td>";
+        iHTML += "</tr>";
+      }
+      iHTML += "</table>";
+      eventDiv.innerHTML = iHTML;
+
+    });
   }
-  initialize();
+
+
+  window.addEventListener("load", initialize());
+
 </script>
-</html>

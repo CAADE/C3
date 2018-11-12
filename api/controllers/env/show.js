@@ -6,6 +6,11 @@ module.exports = {
   description: 'Show graph of Environments',
 
   inputs: {
+    id: {
+      description: 'id for the environment',
+      type: 'string',
+      required: false
+    },
     mode: {
       description: 'results format: json or html',
       type: 'string',
@@ -30,6 +35,7 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
+
       if(inputs.mode === 'json') {
         // Return json
         return exits.json();

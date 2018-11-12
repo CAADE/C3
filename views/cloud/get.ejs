@@ -1,0 +1,110 @@
+
+<% for(let i in cloud.hardware) {
+  let hardware = cloud.hardware[i];
+%>
+<div class="gadget">
+  <div class="gadget-header"><%= i %> Hardware <span style="float: right;" id="hardware-number"><%= hardware.number %>(<%= hardware.capacity %>)</span></div>
+  <div class="gadget-body" id="hardware-<%= i %>-metrics">
+    <canvas id="<%= i %>-Chart" width="200" height="200"></canvas>
+  </div>
+</div>
+<script>
+  function chart<%= i %>()
+  {
+    let canvas = document.getElementById("<%= i %>-Chart");
+    let chart = new Chart(canvas, {
+      type: 'doughnut',
+      data: {
+        labels: ['Available', 'Used', 'Reserved'],
+        datasets: [
+          {
+            backgroundColor: ["#00ffaa", "#ccffcc", "#00cc88"],
+            data: [
+              <%= hardware.available %>,
+              <%= hardware.capacity  - hardware.available %>,
+              <%= hardware.reserved %>
+            ]
+          },
+
+        {
+          backgroundColor: ["#00aaff", "#ccccff"],
+            data: [
+                <%= hardware.number - hardware.used %>,
+                <%= hardware.used %>,
+            ]
+            },
+        ],
+      },
+      options: {
+        title: {
+          display: false,
+        }
+      }
+    });
+  }
+
+  window.addEventListener("load", chart<%= i %>());
+</script>
+<% } %>
+
+
+<%- partial('../partials/serviceChart.ejs', { title: "Services", services: cloud.services}) %>
+
+<%- partial('../partials/gadgetList.ejs', { title: 'Environments', query: '/env/list?mode=json&cloud=' + cloud.id }) %>
+
+<div class="gadget">
+  <div class="gadget-header">Stacks <span style="float: right;" id="stacks-number">?</span></div>
+  <div class="gadget-body" id="stacks-metrics">
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Services <span style="float: right;" id="servicelets-number">?</span></div>
+  <div class="gadget-body" id="servicelets-metrics">
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Environments</div>
+  <div class="gadget-body" id="env-metrics">
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Events</div>
+  <div class="gadget-body" id="event-metrics">
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Policies</div>
+  <div class="gadget-body" id="policy-metrics">
+    Policies
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Compute</div>
+  <div class="gadget-body">
+    <canvas id="computeChart" width="200" height="200"></canvas>
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Storage</div>
+  <div class="gadget-body">
+    <canvas id="storageChart" width="200" height="200"></canvas>
+  </div>
+</div>
+<div class="gadget">
+  <div class="gadget-header">Network</div>
+  <div class="gadget-body">
+    <canvas id="networkChart" width="200" height="200"></canvas>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  function initialize() {
+    let currentPage = document.getElementsByClassName('current-page');
+    currentPage[0].innerHTML = "Cloud >> <%= cloud.name %>";
+  }
+
+
+  window.addEventListener("load", initialize());
+
+</script>

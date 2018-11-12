@@ -1,0 +1,48 @@
+<div class="gadget" style="width:calc(100% - 20px);">
+  <div class="gadget-header">Environments <span style="float: right;" id="env-number"><a href="/env/show"> Graph </a> <%= envs.length %></span>
+  </div>
+  <div class="gadget-body" id="environments-list">
+    <table width="100%">
+      <tr style="background:#cccccc;">
+        <th>Name</th>
+        <th>Clouds</th>
+        <th>Policies</th>
+        <th>Applications</th>
+        <th>Compute</th>
+        <th>Storage</th>
+        <th>Network</th>
+        <th>Services</th>
+      </tr>
+      <% for(let i=0; i < envs.length; i++) {
+      let env = envs[i];
+      %>
+      <tr class="row-<%- i % 2 %>">
+        <td><a href="/env/get?id=<%= env.id %>"><%= env.name %></a></td>
+        <td align="center">
+          <% for(let j=0; j < env.clouds.length; j++) {
+          let cloud = env.clouds[j];
+          %>
+          <a href="/cloud/get?id=<%= cloud.id %>"><%= cloud.name %></a>
+          <% } %>
+        </td>
+        <td align="right"><%= env.policies.length %></td>
+        <td align="right"><%= env.applications %></td>
+        <td align="right"><%= env.resources.compute %></td>
+        <td align="right"><%= env.resources.storage %></td>
+        <td align="right"><%= env.resources.network %></td>
+        <td align="right"><%= env.services %></td>
+      </tr>
+      <% } %>
+    </table>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  function initialize() {
+  }
+
+  window.addEventListener("load", initialize());
+
+</script>

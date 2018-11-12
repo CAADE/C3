@@ -1,0 +1,69 @@
+<div class="gadget">
+  <div class="gadget-header"><%- title %> <span style="float:right"></div>
+  <div class="gadget-body">
+    <canvas id="<%- type %>Chart" width="200" height="200"></canvas>
+  </div>
+</div>
+
+<script>
+  <%
+  {
+    let states = {available: 0, used: 0};
+    let labels = [];
+    let data = [];
+    let colors = [];
+    let total = 0;
+    const backgroundColors = {
+      'available': '#00aa00',
+      'used': '#00aaaa',
+    };
+    for (let i in resources) {
+      let resource = resources[i];
+      if (resource.type === type) {
+        states.available += resource.available;
+        states.used += (resource.available - resource.capacity);
+      }
+    }
+    total = states.available + states.used;
+    for (let state in states) {
+      labels.push('"' + state + '"');
+      data.push(states[state]);
+      colors.push('"' + backgroundColors[state] + '"');
+    }
+  %>
+
+  function init<%- type %>Gauge() {
+
+    let labels = [<%- labels.join(',') %>];
+    let data = [<%- data.join(',') %>];
+    let bcolors = [<%- colors.join(',') %>];
+    let total = <%- total %>;
+
+      let canvas = document.getElementById("<%- type %>Chart");
+      let chart = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Total",
+              backgroundColor: bcolors,
+              data: data
+            }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: "Total: " + total
+          }
+        }
+      });
+  }
+  init<%- type %>Gauge();
+
+    <%
+  }
+  %>
+</script>
+

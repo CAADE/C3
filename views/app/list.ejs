@@ -1,0 +1,100 @@
+<div class="gadget" style="width:calc(100% - 15px);">
+  <div class="gadget-header">Application<span style="float: right;" id="app-number"><a href="/app/show"> Graph </a> <%= apps.length %></span>
+  </div>
+  <div class="gadget-body" id="environments-list">
+    <div class="table-actions">
+      <button class="launch-button" onclick="openLaunchDialog();">Launch</button>
+      <button class="kill-button" onclick="killApp();">Kill</button>
+      <button class="remove-button" onclick="removeApp();">Remove</button>
+      <button onclick="updateApp();">Update</button>
+      <button onclick="rebalanceApp();">Rebalance</button>
+    </div>
+    <table width="100%" style="border-spacing:0;">
+      <thead>
+      <tr style="background:#dddddd;">
+        <th align="left"><input type="checkbox" name="all" id="selectAll" onclick="toggleAll();"></th>
+        <th align="left">Name</th>
+        <th align="left">Version</th>
+        <th align="left">Stack</th>
+        <th align="left">Instances</th>
+      </tr>
+      </thead>
+      <% for(let i=0; i < apps.length; i++) {
+      let app = apps[i];
+      %>
+      <tr>
+        <td><input class="selectedItems" type="checkbox" name="<%= app.id %>"></td>
+        <td><a href="/app/get?id=<%= app.id %>"><%= app.name %></a></td>
+        <td align="left"><%= app.version %></td>
+        <td align="left"><a href="/stack/get?id=<%- app.stack.id %>"> <%= app.stack.name %></a></td>
+        <td align="left" id="InstanceContainer<%- app.id %>" style="padding:5px;margin:5px;line-height:2;">
+          <% for(let j=0; j < app.instances.length; j++) {
+          let instance = app.instances[j];
+          %>
+          <span class="state-<%- instance.state %>" id="Instance<%- instance.id %>">
+                <a href="/instance/get?id=<%= instance.id %>"><%= instance.name %></a>
+              </span>
+          <% } %>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+  </div>
+</div>
+<%- partial("../partials/appLaunchDialog", {dialogName:"launchDialog", apps: apps}); %>
+
+<script type="text/javascript">
+
+
+  io.socket.on('app', function (obj) {
+    console.log("App:", obj);
+  });
+
+  io.socket.on('instance', function (objs) {
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i];
+      let instance = document.getElementById("Instance" + obj.id);
+      if (instance) {
+        instance.className = "state-" + obj.state;
+      }
+      else {
+        let parent = document.getElementById("InstanceContainer" + obj.app);
+        if(parent) {
+          parent.innerHTML += '<span class="state-' + obj.state + '" id="Instance' + obj.id + '"><a href="/instance/get?id=' + obj.id + '">' + obj.name + '</a></span>';
+        }
+        else {
+          console.log("Could not find:", "InstanceContainer" + obj.app);
+        }
+      }
+    }
+
+  });
+  // Call this to register for live events.
+  io.socket.get("/app/list?mode=json", function (body, res) {
+
+  });
+
+  function toggleAll() {
+    let topSelect = document.getElementById('selectAll');
+    let all = document.getElementsByClassName('selectedItems');
+    for (let i = 0; all.length; i++) {
+      all[i].checked = topSelect.checked;
+    }
+  }
+
+  function killApp() {
+    let all = document.getElementsByClassName('selectedItems');
+    for (let i = 0; all.length; i++) {
+      let app = all[i];
+      if (app.checked) {
+        io.socket.get('/app/kill?mode=json&id=' + app.name, function (body, response) {
+        });
+      }
+    }
+  }
+
+  function openLaunchDialog() {
+    let dialog = document.getElementById('launchDialog');
+    dialog.style.display = "block";
+  }
+</script>

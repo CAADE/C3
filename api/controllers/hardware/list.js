@@ -1,4 +1,3 @@
-
 module.exports = {
 
   friendlyName: 'hardware list',
@@ -8,6 +7,11 @@ module.exports = {
   inputs: {
     cloud: {
       description: 'Cloud that the hardware is installed',
+      type: 'string',
+      required: false
+    },
+    type: {
+      description: 'Type of Hardware',
       type: 'string',
       required: false
     },
@@ -21,7 +25,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'hardware/list'
     },
     json: {
       responseType: '', // with return json
@@ -35,27 +39,32 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let item;
+      let query = {};
 
-      if(inputs.cloud) {
-        let cloud = await Cloud.findOne({name:inputs.cloud});
-        if(!cloud) {
+      if (inputs.cloud) {
+        let cloud = await Cloud.findOne({name: inputs.cloud}).populateAll();
+
+        if (!cloud) {
           return exits.notFound('/notFound');
         }
-        item = await Hardware.find({cloud:cloud.id}).populateAll();
+        else {
+          query.cloud = cloud.id;
+        }
+        item = await Hardware.find({cloud: cloud.id}).populateAll();
       }
-      else {
-        item = await Hardware.find().populateAll();
+      if (inputs.type) {
+        query.type = inputs.type;
       }
+      let hardware = await Hardware.find(query).populateAll();
 
       // Display the results
-      if(inputs.mode === 'json') {
+      if (inputs.mode === 'json') {
         // Return json
-        return exits.json(item);
+        return exits.json({hardware:hardware});
       }
       else {
         // Display the welcome view.
-        return exits.success(item);
+        return exits.success({hardware: hardware});
       }
     }
     catch (e) {

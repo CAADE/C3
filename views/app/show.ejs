@@ -1,6 +1,4 @@
 <head>
-  <title>Artifact Repo</title>
-
   <style>
     body {
       color: #d3d3d3;
@@ -91,6 +89,37 @@
   //////////////////////////////////////////////
   // Initialize
   let container = document.getElementById('mynetwork');
+  let states = {
+    "Running": {background: '#00ff00', border: '#00aa00'},
+    "Stopping": {background: '#ffff00', border: '#cccc00'},
+    "Stopped": {background: '#bbbbbb', border: '#777777'},
+    "Initializing": {background: '#00ffff', border: '#00cccc'},
+    "Error": {background: '#ff0000', border: '#cc0000'},
+    "Pause": {background: '#ffaa88', border: '#cc8866'},
+    "Deploying": {background: '#00aaff', border: '#0088cc'}
+  };
+  let types = {
+    "AppInstance": {shape: 'hexagon', /*level: 3*/},
+    "Service": {shape: 'square', /*level: 4*/},
+    "ServiceInstance": {shape: 'triangle', /*level: 5*/}
+  };
+
+  let groups = {
+    "Application": {shape: 'circle', /* level:2, */ color: {background: "#cc00cc", border: "#880088"}}
+  };
+  for (let i in types) {
+    for (let j in states) {
+      let groupname = i + j;
+      groups[groupname] = {};
+      for (let k in types[i]) {
+        groups[groupname][k] = types[i][k];
+      }
+      groups[groupname].color = {};
+      for (let k in states[j]) {
+        groups[groupname].color[k] = states[j][k];
+      }
+    }
+  }
   let options = {
     layout: {
       hierarchical: {
@@ -106,70 +135,9 @@
         color: '#ffffff'
       },
       borderWidth: 2,
-      level: 15
+      //level: 15
     },
-    groups: {
-      environment: {
-        shape: 'triangleDown',
-        color: {background: '#aa8800', border: '#aa8800'},
-        level: 1,
-      },
-      Application: {
-        shape: 'triangle',
-        color: {background: '#004466', border: '#004466'},
-        level: 2,
-      },
-      AppInstance: {
-        shape: 'triangle',
-        color: {background: '#006688', border: '#006688'},
-        level: 3,
-      },
-      Service: {
-        shape: 'triangle',
-        color: {background: '#0088aa', border: '#0088aa'},
-        level: 4,
-      },
-      ServiceInstance: {
-        shape: 'triangle',
-        color: {background: '#00aacc', border: '#00aacc'},
-        level: 5,
-      },
-      storage: {
-        shape: 'hexagon',
-        color: {background: '#cc00cc', border: '#cc00cc'},
-        level: 10,
-      },
-      rstorage: {
-        shape: 'hexagon',
-        color: {background: '#00cc66', border: '#00cc66'},
-        level: 6,
-      },
-      compute: {
-        shape: 'square',
-        color: {background: '#880088', border: '#880088'},
-        level: 11,
-      },
-      rcompute: {
-        shape: 'square',
-        color: {background: '#00ffaa', border: '#00ffaa'},
-        level: 7
-      },
-      network: {
-        shape: 'star',
-        color: {background: '#aa00aa', border: '#aa00aa'},
-        level: 12,
-      },
-      rnetwork: {
-        shape: 'star',
-        color: {background: '#00aa44', border: '#00aa44'},
-        level: 8
-      },
-      cloud: {
-        shape: 'cloud',
-        color: {background: '#cccc00', border: '#cccc00'},
-        level: 15
-      }
-    }
+    groups: groups
   };
   let dc = new DCVis(container, options);
 
@@ -178,104 +146,27 @@
     });
   }
 
-  ///////////////////////
-  // Environments
-  function getEnv() {
-    io.socket.get('/env/list?mode=json', function (body, response) {
-      let items = [];
-      for (let i in body) {
-        let item = body[i];
-        items.push({
-          id: 'e' + item.id,
-          label: item.name,
-          group: 'environment',
-          title: item.name
-        });
-      }
-      dc.addNode(items);
-    });
-  }
-
-  ///////////////////////////////////////////////
-  // RESOURCES
-  function getResources() {
-    io.socket.get('/resource/list?mode=json', function (body, response) {
-      let items = [];
-      let es = [];
-      for (let i = 0; i < body.length; i++) {
-        let obj = body[i];
-        items.push({
-          id: 'r' + obj.id,
-          label: obj.name,
-          group: 'r' + obj.type,
-          title: obj.name + ' (' + obj.available + "/" + obj.capacity + ')'
-        });
-        for(let j in obj.instances) {
-          let instance = obj.instances[j];
-          dc.addEdge({from: 'si' + instance.id, to: 'r' + obj.id});
-        }
-      }
-      dc.addNode(items);
-      dc.drawEdges();
-    });
-    io.socket.on('resource', function (obj) {
-      let item = {
-        id: 'r' + obj.id,
-        label: obj.name,
-        group: 'r' + obj.type,
-        title: obj.name + ' (' + obj.available + "/" + obj.capacity + ')'
-      };
-      dc.addNode([item]);
-      dc.addEdge({to: 'h' + obj.hardware.id, from: 'r' + obj.id});
-      dc.drawEdges();
-      getMetrics();
-    });
-    io.socket.on('resource-move', function (obj) {
-      // Select the hw and the resource.
-      let rid = 'r' + obj.resource.id;
-      let hid = 'h' + obj.to;
-      let oid = 'h' + obj.from;
-      removeEdge(rid, oid);
-      let snodes = network.getSelectedNodes();
-      snodes.push(rid);
-      snodes.push(hid);
-      network.selectNodes(snodes);
-
-      // Add an edge between them.
-      dc.addEdge({to: hid, from: rid});
-      dc.drawEdges();
-      getMetrics();
-    });
-    io.socket.on('resource-destroy', function (body) {
-      for (let i = 0; i < body.length; i++) {
-        removeNode('r' + body[i].id);
-      }
-      getMetrics();
-    });
-  }
-
   ///////////////////////////////////////////////
   // SERVICES
   function getServices() {
     io.socket.get('/service/list?mode=json', function (body, response) {
       let items = [];
-      let es = [];
 
       for (let i in body) {
         let service = body[i];
         let item = {
           id: 'c' + service.id,
           label: service.name.split(/-/).pop(),
-          group: 'Service',
-          title: service.name + ' (' + service.replicas + ')',
+          group: 'Service' + service.state,
+          title: service.name + ' (' + service.replicas + ')' + '[' + service.state + ']' + service.message
         };
         items.push(item);
         for (let j in service.children) {
           let item = {
             id: 'c' + service.id,
             label: service.name.split(/-/).pop(),
-            group: 'Service',
-            title: service.name + ' (' + service.replicas + ')',
+            group: 'Service' + service.state,
+            title: service.name + ' (' + service.replicas + ')' + '[' + service.state + ']' + service.message
           };
           items.push(item);
           let subs = service.children[j];
@@ -290,8 +181,8 @@
           let item = {
             id: 'si' + instance.id,
             label: instance.name.split(/-/).pop(),
-            group: 'ServiceInstance',
-            title: instance.name
+            group: 'ServiceInstance' + instance.state,
+            title: instance.name + '[' + instance.state + ']' + instance.message
           };
           items.push(item);
           dc.addEdge({to: 'si' + instance.id, from: 'c' + service.id});
@@ -300,8 +191,63 @@
       dc.addNode(items);
       dc.drawEdges();
     });
-    io.socket.on('stacklet', function (obj) {
 
+    io.socket.on('service', function (obj) {
+      let items = [];
+      for (let i in obj) {
+        let service = obj[i];
+        let item = {
+          id: 'c' + service.id,
+          label: service.name.split(/-/).pop(),
+          group: 'Service' + service.state,
+          title: service.name + ' (' + service.replicas + ')' + '[' + service.state + ']' + service.message
+        };
+        items.push(item);
+        for (let j in service.children) {
+          let item = {
+            id: 'c' + service.id,
+            label: service.name.split(/-/).pop(),
+            group: 'Service' + service.state,
+            title: service.name + ' (' + service.replicas + ')' + '[' + service.state + ']' + service.message
+          };
+          items.push(item);
+          let subs = service.children[j];
+          dc.addEdge({to: 'c' + subs.id, from: 'c' + service.id});
+        }
+        for (let j in service.apps) {
+          let appi = service.apps[j];
+          dc.addEdge({from: 'ai' + appi.id, to: 'c' + service.id});
+        }
+        for (let j in service.instances) {
+          let instance = service.instances[j];
+          let item = {
+            id: 'si' + instance.id,
+            label: instance.name.split(/-/).pop(),
+            group: 'ServiceInstance' + instance.state,
+            title: instance.name + '[' + instance.state + ']' + instance.message
+          };
+          items.push(item);
+          dc.addEdge({to: 'si' + instance.id, from: 'c' + service.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('instance', function (obj) {
+      let items = [];
+      for (let j in obj) {
+        let instance = obj[j];
+        let item = {
+          id: 'si' + instance.id,
+          label: instance.name.split(/-/).pop(),
+          group: 'ServiceInstance' + instance.state,
+          title: instance.name + '[' + instance.state + ']' + instance.message
+        };
+        items.push(item);
+        dc.addEdge({to: 'si' + instance.id, from: 'c' + instance.service.id});
+      }
+      dc.addNode(items);
+      dc.drawEdges();
     });
   }
 
@@ -327,178 +273,73 @@
           let item = {
             id: 'ai' + instance.id,
             label: instance.name,
-            group: 'AppInstance',
-            title: instance.name + ' (' + instance.env + ')'
+            group: 'AppInstance' + instance.state,
+            title: instance.name + ' (' + instance.env + ')' + '[' + instance.state + ']' + instance.message
           };
           items.push(item);
           dc.addEdge({to: item.id, from: 'A' + app.id});
-          dc.addEdge({to: item.id, from: 'e' + instance.env});
         }
       }
       dc.addNode(items);
       dc.drawEdges();
     });
-    io.socket.on('stacklet', function (obj) {
 
+    io.socket.on('app', function (obj) {
+      let items = [];
+
+      for (let i in obj) {
+        let app = obj[i];
+        let item = {
+          id: 'A' + app.id,
+          label: app.name,
+          group: 'Application',
+          title: app.name,
+        };
+        items.push(item);
+
+        for (let j in app.instances) {
+          let instance = app.instances[j];
+          let item = {
+            id: 'ai' + instance.id,
+            label: instance.name,
+            group: 'AppInstance' + instance.state,
+            title: instance.name + ' (' + instance.env + ')' + '[' + instance.state + ']' + instance.message
+          };
+          items.push(item);
+          dc.addEdge({to: item.id, from: 'A' + app.id});
+        }
+      }
+      dc.addNode(items);
+      dc.drawEdges();
+    });
+    io.socket.on('appInstance', function (obj) {
+      let items = [];
+
+      for (let j in obj) {
+        let instance = obj[j];
+        let item = {
+          id: 'ai' + instance.id,
+          label: instance.name,
+          group: 'AppInstance' + instance.state,
+          title: instance.name + ' (' + instance.env + ')' + '[' + instance.state + ']' + instance.message
+        };
+        items.push(item);
+        dc.addEdge({to: item.id, from: 'A' + instance.app.id});
+      }
+      dc.addNode(items);
+      dc.drawEdges();
     });
   }
-
-  ///////////////////////////////////////////
-  // CLOUD
-  function getCloud() {
-    io.socket.get('/cloud/list?mode=json', function (body, response) {
-      let items = [];
-      for (let i = 0; i < body.length; i++) {
-        let obj = body[i];
-        items.push({
-          id: 'd' + obj.id,
-          label: obj.name,
-          group: 'cloud',
-          title: obj.name
-        });
-      }
-      dc.addNode(items);
-    });
-    io.socket.on('cloud', function (obj) {
-      item = {
-        id: 'd' + obj.id,
-        label: obj.name,
-        group: 'cloud',
-        title: obj.name
-      };
-      dc.addNode([item]);
-      getMetrics();
-    });
-    io.socket.on('cloud-destroy', function (body) {
-      for (let i = 0; i < body.length; i++) {
-        removeNode('d' + body[i].id);
-      }
-      getMetrics();
-    });
-  }
-
-  ///////////////////////////////////////////////
-  // RESOURCES
-  function getResources() {
-    io.socket.get('/resource/list?mode=json', function (body, response) {
-      let items = [];
-      let es = [];
-      for (let i = 0; i < body.length; i++) {
-        let obj = body[i];
-        items.push({
-          id: 'r' + obj.id,
-          label: obj.name,
-          group: 'r' + obj.type,
-          title: obj.name + ' (' + obj.available + "/" + obj.capacity + ')'
-        });
-        for(let j in obj.instances) {
-          let instance = obj.instances[j];
-          dc.addEdge({from: 'si' + instance.id, to: 'r' + obj.id});
-        }
-        if (obj.hardware) {
-          dc.addEdge({to: 'h' + obj.hardware.id, from: 'r' + obj.id});
-        }
-      }
-      dc.addNode(items);
-      dc.drawEdges();
-    });
-    io.socket.on('resource', function (obj) {
-      let item = {
-        id: 'r' + obj.id,
-        label: obj.name,
-        group: 'r' + obj.type,
-        title: obj.name + ' (' + obj.available + "/" + obj.capacity + ')'
-      };
-      dc.addNode([item]);
-      dc.addEdge({to: 'h' + obj.hardware.id, from: 'r' + obj.id});
-      dc.drawEdges();
-      getMetrics();
-    });
-    io.socket.on('resource-move', function (obj) {
-      // Select the hw and the resource.
-      let rid = 'r' + obj.resource.id;
-      let hid = 'h' + obj.to;
-      let oid = 'h' + obj.from;
-      removeEdge(rid, oid);
-      let snodes = network.getSelectedNodes();
-      snodes.push(rid);
-      snodes.push(hid);
-      network.selectNodes(snodes);
-
-      // Add an edge between them.
-      dc.addEdge({to: hid, from: rid});
-      dc.drawEdges();
-      getMetrics();
-    });
-    io.socket.on('resource-destroy', function (body) {
-      for (let i = 0; i < body.length; i++) {
-        removeNode('r' + body[i].id);
-      }
-      getMetrics();
-    });
-  }
-  ///////////////////////////////////////////////
-  // HARDWARE
-  function getHardware() {
-    io.socket.get('/hardware/list?mode=json', function (body, response) {
-      let items = [];
-      for (let i = 0; i < body.length; i++) {
-        let hw = body[i];
-        items.push({
-          id: 'h' + hw.id,
-          label: hw.name,
-          group: hw.type,
-          title: hw.name + ' (' + hw.available + "/" + hw.capacity + ')'
-        });
-        if (hw.cloud) {
-          dc.addEdge({to: 'd' + hw.cloud.id, from: 'h' + hw.id});
-        }
-      }
-      dc.addNode(items);
-      dc.drawEdges();
-    });
-    io.socket.on('hardware', function (body) {
-      let items = [];
-      for (let i = 0; i < body.length; i++) {
-        let hw = body[i];
-        items.push({
-          id: 'h' + hw.id,
-          label: hw.name,
-          group: hw.type,
-          title: hw.name + ' (' + hw.available + "/" + hw.capacity + ')'
-        });
-        if (hw.cloud.id) {
-          dc.addEdge({to: 'd' + hw.cloud.id, from: 'h' + hw.id});
-        }
-        else if (hw.cloud) {
-          dc.addEdge({to: 'd' + hw.cloud, from: 'h' + hw.id});
-        }
-      }
-      dc.addNode(items);
-      dc.drawEdges();
-    });
-
-    io.socket.on('hardware-destroy', function (body) {
-      for (let i = 0; i < body.length; i++) {
-        removeNode('h' + body[i].id);
-      }
-      getMetrics();
-    });
-  }
-
 
   function init() {
-    getEnv();
+    let currentPage = document.getElementsByClassName('current-page');
+    currentPage[0].innerHTML = "App >> Show";
     getApps();
-    getCloud();
-    getHardware();
-    // getStacks();
-    // getStacklets();
     getServices();
-    getResources();
   }
 
-  init();
+  window.addEventListener("load", init());
+
 </script>
 </body>
 </html>

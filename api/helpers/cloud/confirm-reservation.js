@@ -21,13 +21,12 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     let reservation = inputs.reservation;
-
     reservation = await Reservation.findOne({id: reservation.id}).populateAll();
     let treservations = await Reservation.update({id: reservation.id}, {state: 'Confirmed'}).fetch();
     sails.sockets.broadcast('c3', 'reservation', treservations);
     let resource = null;
     if (reservation.resource) {
-      resource = await Resource.findOne({id:reservation.resource.id});
+      resource = await Resource.findOne({id: reservation.resource.id});
     }
     else {
       let hardware = await Hardware.findOne({id: reservation.hardware.id}).populateAll();
@@ -44,7 +43,8 @@ module.exports = {
         type: hardware.type,
         disabled: false,
         cloud: hardware.cloud.id,
-        hardware: hardware.id
+        hardware: hardware.id,
+        env: reservation.env.id
       }).fetch();
       await Hardware.update({id: hardware.id}, {
         available: hardware.available - reservation.quantity,

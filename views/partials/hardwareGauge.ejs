@@ -1,0 +1,57 @@
+<div class="gadget">
+  <div class="gadget-header"><%- title %> <span style="float:right"><a href="/hardware/list">All</a></div>
+  <div class="gadget-body">
+    <canvas id="<%- type %>Chart" width="200" height="200"></canvas>
+  </div>
+</div>
+
+<script>
+
+  function initGauge(type, cloud) {
+    let query = "?";
+    if (type) {
+      query += "type=" + type;
+    }
+    if (cloud) {
+      query += "&cloud=" + cloud;
+    }
+    io.socket.get("/hardware/metrics" + query, function (obj, response) {
+
+      let canvas = document.getElementById(type + "Chart");
+      let chart = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+          labels: ['Available', 'Used', "Reserved"],
+          datasets: [
+            {
+              label: "Total",
+              backgroundColor: ["#00ffaa", "#ccffcc", "#00cc88"],
+              data: [
+                obj.hardware[type].available,
+                obj.hardware[type].capacity - obj.hardware[type].available,
+                obj.hardware[type].reserved
+              ]
+            },
+            {
+              label: "Total2",
+              backgroundColor: ["#00aaff", "#ccccff"],
+              data: [
+                obj.hardware[type].total - obj.hardware[type].used,
+                obj.hardware[type].used
+              ]
+            }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Total: ' + obj.hardware[type].total + '(' + obj.hardware[type].capacity + ')'
+          }
+        }
+      });
+    });
+  }
+  initGauge('<%- type %>', '<%- cloud %>');
+
+</script>
+

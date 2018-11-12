@@ -1,0 +1,51 @@
+<div class="gadget" style="width:calc(100% - 20px);">
+  <div class="gadget-header">Clouds <span style="float: right;" id="cloud-number"><a href="/cloud/show"> Graph </a> <%= clouds.length %></span>
+  </div>
+  <div class="gadget-body" id="environments-list" style="overflow-y:auto;background:white;">
+    <table width="100%">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Hardware</th>
+        <th>Images</th>
+        <th>Policies</th>
+        <th>Environments</th>
+      </tr>
+      <% for(let i=0; i < clouds.length; i++) {
+      let cloud = clouds[i];
+      console.log("Cloud:", cloud);
+      %>
+      <tr>
+        <td><a href="/cloud/get?id=<%= cloud.id %>"><%= cloud.name %></a></td>
+        <td><a href="/cloud/get?id=<%= cloud.id %>"><%= cloud.type %></a></td>
+        <td align="center">
+          <table>
+            <% for(let j in cloud.hardware) {
+            %>
+            <tr>
+              <td><%= j %></td>
+              <td><%= cloud.hardware[j] %></td>
+            </tr>
+            <% } %>
+          </table>
+        </td>
+        <td><%= cloud.images.length %></td>
+        <td align="right"><%= cloud.policies.length %></td>
+        <td align="right">
+          <% for(let k in cloud.envs) {
+          let env = cloud.envs[k];
+          %>
+          <a href="/env/get?id=<%= env.id %>"> <%= env.name %> </a>
+          <% } %>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+
+  </div>
+  <hr>
+  <div id="graph" style="overflow-y:auto;height:500px;background:white;">
+    <%- partial('../partials/cloudGraph', {height: 500, width: 1000}) %>
+  </div>
+
+</div>

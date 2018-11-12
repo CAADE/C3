@@ -1,0 +1,45 @@
+
+<%
+let envs = {};
+let types = {};
+let items = {};
+for(let i in reservations) {
+  let reservation = reservations[i];
+  let env = reservation.env.name;
+  let type = reservation.request.requirements[0].type;
+  if(!items.hasOwnProperty(env)) {
+    items[env] = {};
+  }
+  if(!items[env].hasOwnProperty(type)) {
+    items[env][type] = [];
+  }
+  items[env][type].push('<span class="reserve-'+ reservation.state + '" id="Reservation' + reservation.id + '">' + reservation.quantity + '</span>');
+  types[type] = 1;
+}
+
+%>
+<table>
+  <thead>
+  <th>Environments</th>
+  <% for(let type in types) {
+  %>
+  <th><%- type %></th>
+  <%
+  }
+  %>
+  </thead>
+  <%
+  for(let env in items) {
+  %>
+  <tr>
+    <td><%- env %></td>
+    <%
+    for(let type in items[env]) {
+    %>
+    <td> <%- items[env][type].join(" "); %> </td>
+    <%
+    }
+    %>
+  </tr>
+<% } %>
+</table>

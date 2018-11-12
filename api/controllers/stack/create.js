@@ -34,11 +34,12 @@ module.exports = {
       let dstack = this.req.body.service;
       let stack = await ServiceStack.findOrCreate({name: dstack.name, version: dstack.version}, {
         name: dstack.name,
-        version: dstack.version
+        version: dstack.version,
+        parameters: dstack.parameters
       });
 
       for (let name in dstack.environments) {
-        let environ = dstack.environments[name];
+        let dstacklet = dstack.environments[name];
         let environment = await Environment.findOrCreate({name: name}, {name: name});
         ////////////////////////////////////////
         // Resources for the Service that will be passed down to all of the
@@ -47,16 +48,28 @@ module.exports = {
           env: environment.id,
           stack: stack.id
         };
-        if(environ.hasOwnProperty('replicas')) { options.replicas = environ.replicas; }
-        if(environ.hasOwnProperty('image')) { options.image = environ.image; }
-        if(environ.hasOwnProperty('ports')) { options.ports = environ.ports; }
-        if(environ.hasOwnProperty('config')) { options.config = environ.config; }
-        if(environ.hasOwnProperty('resources')) { options.resources = environ.resources; }
-
-        let stacklet = await Stacklet.findOrCreate({env: environment.id, stack: stack.id}, options );
+        if (dstacklet.hasOwnProperty('replicas')) {
+          options.replicas = dstacklet.replicas;
+        }
+        if (dstacklet.hasOwnProperty('image')) {
+          options.image = dstacklet.image;
+          // Find or create an image.
+          let image = await Image.findOrCreate({name: dstacklet.image}, {name: dstacklet.image});
+          options.image = image.id;
+        }
+        if (dstacklet.hasOwnProperty('ports')) {
+          options.ports = dstacklet.ports;
+        }
+        if (dstacklet.hasOwnProperty('config')) {
+          options.config = dstacklet.config;
+        }
+        if (dstacklet.hasOwnProperty('resources')) {
+          options.resources = dstacklet.resources;
+        }
+        let stacklet = await Stacklet.findOrCreate({env: environment.id, stack: stack.id}, options);
         let servicelets = [];
-        for (let sname in environ.services) {
-          let dservice = environ.services[sname];
+        for (let sname in dstacklet.services) {
+          let dservice = dstacklet.services[sname];
           ///////////////////////////
           // findOrCreate should be replacedd with find.
           // let serviceStack = await ServiceStack.find({name: dservice.type});
@@ -93,10 +106,11 @@ module.exports = {
             env: environment.id,
             name: sname
           }, options);
+          await Stacklet.addToCollection(stacklet.id, 'servicelets', servicelet.id);
         }
         // Now add the links and dependent for the Servicelet
-        for (let sname in environ.services) {
-          let dservice = environ.services[sname];
+        for (let sname in dstacklet.services) {
+          let dservice = dstacklet.services[sname];
           let serviceStack = await ServiceStack.findOne({name: dservice.type});
           let servicelet = await Servicelet.findOne({stack: serviceStack.id, env: environment.id, name: sname});
           let links = [];
@@ -104,15 +118,14 @@ module.exports = {
             let link = dservice.links[i];
             let slink = await Servicelet.findOne({stack: serviceStack.id, env: environment.id, name: link});
             if (!slink) {
-              console.error("Could not find:", link);
+              console.error('Could not find link to Servicelet:', environment.name, link);
             }
             else {
-              console.error("Found:", link);
               links.push(slink.id);
             }
           }
           if (links.length > 0) {
-            await Servicelet.addToCollection(servicelet.id, 'links',  links);
+            await Servicelet.addToCollection(servicelet.id, 'links', links);
           }
         }
       }

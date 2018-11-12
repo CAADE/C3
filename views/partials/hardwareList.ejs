@@ -1,0 +1,42 @@
+<table width="100%" border="0">
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Capacity</th>
+      <th>Reserved</th>
+      <th>Available</th>
+      <th>State</th>
+      <th>Cloud</th>
+    </tr>
+    <% for(let i=0; i < hardware.length; i++) {
+    let hw = hardware[i];
+    %>
+    <tr class="row-<%- i % 2 %>" id="Hardware<%- hw.id %>">
+      <td align="center"><a href="/hardware/get?id=<%- hw.id %>"><%= hw.name %></a></td>
+      <td align="center"><%= hw.type %></td>
+      <td align="center"><%= hw.capacity %></td>
+      <td align="center"><%= hw.reserved %></td>
+      <td align="center"><%= hw.available %></td>
+      <td align="center" class="state-<%- hw.state %>" id="hardwareState<%- hw.id %>"><%= hw.state %></td>
+      <td align="center"><a href="/cloud/get?id=<%- hw.cloud.id %>" ><%= hw.cloud.name %></a></td>
+    </tr>
+    <% } %>
+  </table>
+
+<script>
+  io.socket.on('hardware', function (objs) {
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i];
+      let hardware = document.getElementById("Hardware" + obj.id);
+      if (hardware) {
+        console.log("Hardware");
+      }
+      else {
+        // Add Hardware
+      }
+    }
+  });
+
+  io.socket.get('/hardware/list?mode=json', function (objs, respone) {
+  });
+</script>

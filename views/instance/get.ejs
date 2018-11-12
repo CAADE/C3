@@ -1,0 +1,85 @@
+<div class="gadget" style="width:calc(100% - 20px);max-height:100%">
+  <div class="gadget-header">Application Instance <%= instance.name %><span style="float: right;"></span>
+  </div>
+  <div class="gadget-body" id="instance-list" style="height:auto;">
+    <div>
+      <table>
+        <tr>
+          <td align="right"><b>Name</b></td>
+          <td align="left"><%= instance.name %></td>
+        </tr>
+
+        <tr>
+          <td align="right"><b>State</b></td>
+          <td align="left" class="state-<%- instance.state %>"><%= instance.state %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Last Message</b></td>
+          <td align="left"><%= instance.message %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Application</b></td>
+          <td align="left"><a href="/app/get?id=<%- instance.app.id %>"><%= instance.app.name %></a></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Environment</b></td>
+          <td align="left"><a href="/app/env?id=<%- instance.env.id %>"><%= instance.env.name %></a></td>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div>
+      <div style="overflow-y:auto;position:relative;max-height:300px;height:auto;">
+        <table width="100%" border="0">
+          <tr>
+            <th>Service</th>
+            <th>State</th>
+            <th>Message</th>
+            <th>Replicas</th>
+            <th>Ports</th>
+            <th>Parameters</th>
+            <th>Config</th>
+            <th>Children</th>
+          </tr>
+          <% for(let i=0; i < instance.services.length; i++) {
+          let service = instance.services[i];
+          %>
+          <tr class="row-<%- i % 2 %>">
+            <td align="center"><a href="/service/get?id=<%- service.id %>"><%= service.name %></a></td>
+            <td align="center" class="state-<%- service.state %>"><%= service.state %></td>
+            <td align="center"><%= service.message %></td>
+            <td align="center"><%= service.replicas %></td>
+            <td align="center"><%= service.ports %></td>
+            <td align="center"><%= service.ports %></td>
+            <td align="center"><a href="/env/get?id=<%= instance.env.id %>"><%= instance.env.name %></td>
+            <td align="left" style="line-height:2;padding:5px;margin:5px;">
+                <% if(service.children) {
+                for(let j=0; j < service.children.length; j++) {
+                let child = service.children[j];
+                %>
+                  <span class="state-<%- child.state %>" align="right" style="padding:5px;margin:5px;">
+                    <a href="/service/get?id=<%= child.id %>"><%= child.name.split('-').pop(); %></a>
+                  </span>
+                <% }
+                }
+                %>
+                <%
+                if(service.instances) {
+                for(let j=0; j < service.instances.length; j++) {
+                let subi = service.instances[j];
+                %>
+                  <span class="state-<%- subi.state %>" align="right" style="padding:5px;margin:5px;">
+                    <a href="/serviceInstance/get?id=<%= subi.id %>"><%= subi.name.split('-').pop(); %></a>
+                  </span>
+                <% }
+                } %>
+            </td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+      <div id="graph" style="overflow-y:auto;height:500px;">
+        <%- partial('../partials/appInstanceGraph', {height: 450, width: 1000, instance: instance}) %>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,17 @@ service:
   name: notification
   version: 0.0.1
   environments:
+    dev:
+      resources:
+        network:
+          myNetwork: 1
+        storage:
+          myStorage: 100
+          externalStorage: 500
+      image: kafka
+      replicas: 1
+      ports:
+        - 1344:80
     local:
       resources:
         network:

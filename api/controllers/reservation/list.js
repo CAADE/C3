@@ -1,4 +1,3 @@
-
 module.exports = {
 
   friendlyName: 'reservation list',
@@ -16,7 +15,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'reservation/list'
     },
     json: {
       responseType: '', // with return json
@@ -28,18 +27,21 @@ module.exports = {
   },
 
   fn: async function (inputs, exits, env) {
-
     try {
-      let reservations = await Reservation.find();
+      let reservations = await Reservation.find().populateAll();
+      for(let i in reservations) {
+        let reservation =reservations[i];
+        reservations[i].request = await Request.findOne({id:reservation.request.id}).populateAll();
+      }
 
       // Display the results
-      if(inputs.mode === 'json') {
+      if (inputs.mode === 'json') {
         // Return json
-        return exits.json(reservations);
+        return exits.json({reservations:reservations});
       }
       else {
         // Display the welcome view.
-        return exits.success(reservations);
+        return exits.success({reservations:reservations});
       }
     }
     catch (e) {

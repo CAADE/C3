@@ -1,0 +1,55 @@
+<table width="100%" border="0" >
+  <thead style="background: #cccccc;">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Capacity</th>
+    <th>Reserved</th>
+    <th>Available</th>
+    <th>State</th>
+    <th>Cloud</th>
+  </tr>
+  </thead>
+  <tbody id="hardwareTable<%- type + cloud %>">
+
+  </tbody>
+</table>
+
+<script>
+  function loadHardware<%- type %>()
+  {
+    io.socket.get('/hardware/list?mode=json&type=<%- type %>&cloud=<%- cloud %>', function (objs, response) {
+      let listHW = document.getElementById("hardwareTable<%- type + cloud %>");
+      let innerHTML = "";
+      for (let i = 0; i < objs.hardware.length; i++) {
+        let obj = objs.hardware[i];
+        innerHTML += '<tr class="row-' + i % 2 + '" id="Hardware' + obj.id + '">';
+        innerHTML += '<td align="center"><a href="/hardware/get?id=' + obj.id + '">' + obj.name + '</a></td>';
+        innerHTML += '<td align="center">' + obj.type + '</td>';
+        innerHTML += '<td align="center">' + obj.capacity + '</td>';
+        innerHTML += '<td align="center">' + obj.reserved + '</td>';
+        innerHTML += '<td align="center">' + obj.available + '</td>';
+        innerHTML += '<td align="center" class="state-' + obj.state + '" id="hardwareState' + obj.id + '">' + obj.state + '</td>';
+        innerHTML += '<td align="center"><a href="/cloud/get?id=' + obj.cloud.id + '" >' + obj.cloud.name + '</a></td>';
+        innerHTML += '</tr>';
+      }
+      listHW.innerHTML = innerHTML;
+    });
+
+    io.socket.on('hardware', function (objs) {
+      for (let i = 0; i < objs.length; i++) {
+        let obj = objs[i];
+        let hardware = document.getElementById("Hardware" + obj.id);
+        if (hardware) {
+          console.log("Hardware");
+        }
+        else {
+          // Add Hardware
+        }
+      }
+    });
+  }
+
+  loadHardware<%- type %>();
+
+</script>

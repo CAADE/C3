@@ -1,0 +1,68 @@
+<div class="gadget">
+  <div class="gadget-header"><%- title %> <span style="float:right"><a href="/instance/list">All</a></div>
+  <div class="gadget-body">
+    <canvas id="Chart" width="200" height="200"></canvas>
+  </div>
+</div>
+
+<script>
+  <%
+  let states = {};
+  let labels = [];
+  let data = [];
+  let colors = [];
+  const backgroundColors = {
+    'Running': '#00aa00',
+    'Stopping': '#aaaa00',
+    'Stopped': '#bbbbbb',
+    'Initializing': '#00aaaa',
+    'Error': '#ff4444',
+    'Paused': '#cc8855',
+    'Deploying': '#0088cc'
+  };
+
+  console.log("Instances:", instances);
+  for (let i in instances) {
+    let instance = instances[i];
+    if(!states.hasOwnProperty(instance.state)) {
+      states[instance.state] = 0;
+    }
+    states[instance.state]++;
+  }
+  for(let state in states) {
+    labels.push('"' + state + '"');
+    data.push(states[state]);
+    colors.push('"' + backgroundColors[state] + '"');
+  }
+  %>
+
+  let labels = [<%- labels.join(',') %>];
+  let data = [<%- data.join(',') %>];
+  let bcolors = [<%- colors.join(',') %>];
+
+
+  function initGauge() {
+
+      let canvas = document.getElementById("Chart");
+      let chart = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Total",
+              backgroundColor: bcolors,
+              data: data
+            }
+          ],
+        },
+        options: {
+          title: {
+            display: false,
+          }
+        }
+      });
+  }
+  initGauge();
+</script>
+

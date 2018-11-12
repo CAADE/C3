@@ -1,0 +1,21 @@
+policy:
+  triggers:
+   -  events: faults
+      action: incService('ingestion', 10);decService('analytics', 4);
+      condition: events.value>100
+   -  events: faults
+      action: incService('ingestion', 10);decService('analytics', 4);
+      condition: events.value>200
+   -  events: faults
+      action: incService('ingestion', 10);decService('analytics', 4);
+      condition: events.value>300
+   -  events: faults
+      action: decService('ingestion', 10);incService('analytics', 4);
+      condition: events.value<100
+   -  events: faults
+      action: decService('ingestion', 10);incService('analytics', 4);
+      condition: events.value<200
+   -  events: faults
+      action: decService('ingestion', 10);incService('analytics', 4);
+      condition: events.value<300
+

@@ -1,4 +1,3 @@
-
 module.exports = {
 
   friendlyName: 'repo show',
@@ -30,13 +29,17 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      if(inputs.mode === 'json') {
+      if (inputs.mode === 'json') {
+        let images = await Image.find().populateAll();
+        let stacks = await ServiceStack.find().populateAll();
         // Return json
-        return exits.json();
+        return exits.json({images:images, services:stacks});
       }
       else {
         // Display the welcome view.
-        return exits.success();
+        let images = await Image.find().populateAll();
+        let stacks = await ServiceStack.find().populateAll();
+        return exits.success({images: images, services:stacks});
       }
     }
     catch (e) {

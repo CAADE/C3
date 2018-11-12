@@ -26,8 +26,8 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     images: {collection: 'Image', via: 'cloud'},
     hardware: {collection: 'Hardware', via: 'cloud'},
-    policies: {collection: 'Policy', via:'cloud'}
+    policies: {collection: 'Policy', via: 'cloud'},
+    envs: {collection: 'Environment'}
   },
-
 };
 

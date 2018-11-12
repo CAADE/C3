@@ -42,9 +42,9 @@ module.exports = {
         retval.hardware[hw.type].capacity += hw.capacity;
       }
       let util = Math.round(100 - 100*(retval.hardware.compute.available/retval.hardware.compute.capacity));
-      await sails.helpers.setEvents('util', util);
+      // await sails.helpers.setEvents('util', util);
 
-      let resources = await CloudResource.find();
+      let resources = await Resource.find();
       for(let i = 0; i < resources.length; i++) {
         let resource = resources[i];
         if(!retval.resources.hasOwnProperty(resource.type))  {
@@ -54,9 +54,21 @@ module.exports = {
         retval.resources[resource.type].available += resource.available;
         retval.resources[resource.type].capacity += resource.capacity;
       }
+      retval.stacks =  await ServiceStack.count();
       retval.services =  await Service.count();
       retval.instances = await ServiceInstance.count();
       retval.apps = await Application.count();
+      retval.envs = await Environment.find().populateAll();
+      retval.appInstances = await ApplicationInstance.count();
+      for(let index in retval.envs) {
+        let env = retval.envs[index];
+        env.stacklets = await Stacklet.count({env:env.id});
+        env.serviceslets = await Servicelet.count({env:env.id});
+        env.applets = await ApplicationInstance.count({env:env.id});
+      }
+      retval.clouds = await Cloud.find();
+      retval.events = await Events.find();
+      retval.policies = await Policy.find();
       // await sails.helpers.setEvents('compute', retval.resources.compute.total);
       // await sails.helpers.setEvents('instances', retval.instances);
       // await sails.helpers.setEvents('services', retval.services);

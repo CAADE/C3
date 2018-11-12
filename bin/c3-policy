@@ -4,7 +4,7 @@ const fs = require('fs');
 const program =  require('commander');
 const filename = __filename.replace(__dirname,'').substring(1); // Strip the leading slash '/'
 
-program.version('0.0.1')
+program.version('0.0.1');
 
 files = fs.readdirSync(__dirname);
 for(let i in files) {

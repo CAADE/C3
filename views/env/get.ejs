@@ -1,0 +1,10 @@
+<%- partial("../partials/appInstanceGauge", {title:"Applications", instances:env.apps}) %>
+<%- partial("../partials/serviceInstanceGauge", {title:"Services", services:env.services}) %>
+<%- partial("../partials/policySmallList", {policies:env.policies}); %>
+<%- partial("../partials/resourceAllGauge", {title:"Resources", resources: env.resources}) %>
+<div class="gadget" style="width:calc(100% - 25px);">
+  <div class="gadget-header">Environment <%- env.name %></div>
+  <div class="gadget-body" style="overflow-y:auto;position:relative;max-height:450px;width:100%;height:auto;">
+    <%- partial('../partials/envGraph', {height: 450, width: 1000, env: env}) %>
+  </div>
+</div>

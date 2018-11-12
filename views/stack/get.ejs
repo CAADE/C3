@@ -1,0 +1,98 @@
+<div class="gadget" style="width:calc(100% - 15px);">
+  <div class="gadget-header">Stack <%= stack.name %><span style="float: right;"><a href="/stack/show"> Graph </a></span>
+  </div>
+  <div class="gadget-body" id="stacklet-list" style="height:auto;">
+    <div>
+      <table>
+        <tr>
+          <td align="right"><b>Name</b></td>
+          <td align="left"><%= stack.name %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Version</b></td>
+          <td align="left"><%= stack.version %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Parameters</b></td>
+          <td align="left"><%= stack.parameters %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Ports</b></td>
+          <td align="left"><%= stack.ports %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Policies</b></td>
+          <td align="left">
+            <% for(let i in stack.policies) {
+                let policy = stack.policies[i];
+            %>
+                <a href="/policy/get?id=<%= policy.id %>"><%= policy.name %></a>
+            <% } %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div>
+      <div style="overflow-y:auto;position:relative;max-height:300px;height:auto;">
+        <table width="100%" border="0">
+          <tr>
+            <th>Environment</th>
+            <th>Version</th>
+            <th>Parameters</th>
+            <th>Resources</th>
+            <th>Image</th>
+            <th>Replicas</th>
+            <th>Ports</th>
+            <th>Services</th>
+          </tr>
+          <% for(let i=0; i < stack.stacklets.length; i++) {
+          let stacklet = stack.stacklets[i];
+          %>
+          <tr class="row-<%- i % 2 %>">
+            <td align="center"><a href="/stacklet/get?id=<%= stacklet.id %>"><%= stacklet.env.name %></a></td>
+            <td align="center"><%= stacklet.version %></td>
+            <td align="center"><%- partial('../partials/jsonTable', {json:stacklet.parameters}) %></td>
+            <td align="center"><%- partial('../partials/jsonTable', {json:stacklet.resources}) %></td>
+            <% if(stacklet.image) { %>
+            <td align="center"><a href="/image/get?id=<%- stacklet.image.id %>"><%= stacklet.image.name %></a></td>
+            <% } else { %>
+            <td></td>
+            <% } %>
+            <td align="center"><%= stacklet.replicas %></td>
+            <td align="center"><%= stacklet.ports %></td>
+            <td align="center" style="padding:5px;margin:5px;">
+              <table>
+                <% for(let j=0; j < stacklet.servicelets.length; j++) {
+                let servicelet = stacklet.servicelets[j];
+                %>
+                <tr>
+                  <td style="padding:5px;margin:5px;">
+                    <a href="/servicelet/get?id=<%= servicelet.id %>"><%= servicelet.name %></a>
+                  </td>
+                </tr>
+                <% } %>
+              </table>
+            </td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+      <hr/>
+      <div id="graph" style="overflow-y:auto;height:500px;">
+        <%- partial('../partials/stackGraph', {height: 500, width: 1000, stack: stack}) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  function initialize() {
+    let currentPage = document.getElementsByClassName('current-page');
+    currentPage[0].innerHTML = "Stack >> <%= stack.name %>";
+  }
+
+  window.addEventListener("load", initialize());
+
+</script>

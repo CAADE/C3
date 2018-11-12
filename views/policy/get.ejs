@@ -1,0 +1,38 @@
+<div class="gadget" style="width:calc(100% - 15px);">
+  <div class="gadget-header">Policy <%= policy.name %><span style="float: right;"><a href="/policy/show">Graph</a></span>
+  </div>
+  <div class="gadget-body" id="policy-list" style="height:auto;">
+    <div>
+      <table>
+        <tr>
+          <td align="right"><b>Name</b></td>
+          <td align="left"><%= policy.name %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>State</b></td>
+          <td align="left"><%= policy.state %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Scope</b></td>
+          <% if(policy.env) { %>
+              <td align="left"><a href="/env/get?id=<%= policy.env.id %>">Environment: <%= policy.env.name %></a></td>
+          <% } else if(policy.cloud) { %>
+              <td align="left"><a href="/cloud/get?id=<%= policy.cloud.id %>">Cloud: <%= policy.cloud.name %></a></td>
+          <% } else if(policy.app) { %>
+              <td align="left"><a href="/app/get?id=<%= policy.app.id %>">Application: <%= policy.app.name %></a></td>
+          <% } else if(policy.stack) { %>
+              <td align="left"><a href="/stack/get?id=<%= policy.stack.id %>">Stack: <%= policy.stack.name %></a></td>
+          <% } else { %>
+              <td></td>
+          <% } %>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div>
+      <div style="overflow-y:auto;position:relative;max-height:calc(100% - 300px);height:auto;">
+          <%- partial("../partials/triggerList", {triggers:policy.triggers}) %>
+      </div>
+    </div>
+  </div>
+</div>

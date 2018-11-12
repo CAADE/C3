@@ -1,0 +1,102 @@
+  <table width="100%" border="0">
+    <tr>
+      <th>Actions</th>
+      <th>Policy Name</th>
+      <th>State</th>
+      <th>Scope</th>
+      <th>Triggers</th>
+    </tr>
+    <% for(let i=0; i < policies.length; i++) {
+    let policy = policies[i];
+    %>
+    <tr class="row-<%- i % 2 %>" id="Policy<%- policy.id %>">
+      <td>
+        <span class="stop-small"></span>
+        <span class="pause-small"></span>
+        <span class="update-small"></span>
+        <span class="launch-small"></span>
+        <span class="remove-small"></span>
+      </td>
+      <td align="center"><a href="/policy/get?id=<%- policy.id %>"><%= policy.name %></a></td>
+      <td align="center" class="policy-<%- policy.state %>" id="PolicyState<%- policy.id %>"><%= policy.state %></td>
+      <% if(policy.env) { %>
+          <td align="center">Env: <a href="/env/get?id=<%= policy.env.id %>"><%= policy.env.name %></td>
+      <% } else if(policy.cloud) { %>
+          <td align="center">Cloud: <a href="/cloud/get?id=<%= policy.cloud.id %>"><%= policy.cloud.name %></td>
+      <% } else if(policy.app) { %>
+          <td align="center">App: <a href="/app/get?id=<%= policy.app.id %>"><%= policy.app.name %></td>
+      <% } else if(policy.stack) { %>
+          <td align="center">Stack: <a href="/stack/get?id=<%= policy.stack.id %>"><%= policy.stack.name %></td>
+      <% } else { %>
+          <td></td>
+      <% } %>
+      <td align="left" style="padding:5px;margin:5px;line-height:2;" id="PolicyTriggers<%- policy.id %>">
+        <%
+        for(let j=0; j < policy.triggers.length; j++) {
+        let trigger = policy.triggers[j];
+        %>
+        <span class="fired-<%- trigger.fired %>" id="Trigger<%- trigger.id %>" align="right"
+              style="padding:5px;margin:5px;">
+          <a href="/event/get?id=<%= trigger.event.id %>"><%= trigger.event.name %></a> ( <%- trigger.condition.replace(/events.value/g, '<span class="Event-' + trigger.event.id + '">' + trigger.event.value + '</span>');  %> )
+                  </span>
+        <% } %>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+
+<script>
+  io.socket.on('policy', function (objs) {
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i];
+      let instance = document.getElementById("Policy" + obj.id);
+      if (instance) {
+        let state = document.getElementById("PolicyState" + obj.id);
+        let triggers = document.getElementById("PolicyTriggers" + obj.id);
+        if (state) {
+          state.className = "policy-" + obj.state;
+          state.innerHTML = obj.state;
+        }
+        if (triggers) {
+          let innerHTML = "";
+
+          for(let j = 0; j < obj.triggers; j++) {
+            let trigger = obj.triggers[j];
+            innerHTML += '<span class="fired-' + trigger.fired + '" id="Trigger' + trigger.id + '" align="right" style="padding:5px;margin:5px;">';
+            innerHTML += '<a href="/event/get?id=' + trigger.event.id + '">' + trigger.event.name + '</a> ( ' + trigger.condition.replace(/events.value/g, '<span class="Event-' + trigger.event.id + '">' + trigger.event.value + '</span>') + ' )</span>';
+          }
+        }
+      }
+      else { // Add an new Policy.
+      }
+    }
+  });
+
+  io.socket.on('events', function (objs) {
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i];
+      let events = document.getElementsByClassName("Event-" + obj.id);
+      let events = document.getElementsByClassName("Event-" + obj.id);
+      for(let j =0; j < events.length; j++) {
+          events[j].innerHTML = obj.value;
+      }
+    }
+  });
+  io.socket.on('triggered', function(obj) {
+    let trigger = document.getElementById("Trigger" + obj.trigger.id);
+    if(trigger) {
+      trigger.className = "fired-" + obj.trigger.fired;
+    }
+    let policy = document.getElementById("Policy" + obj.policy.id);
+    if(policy) {
+      // policy.addClassName("Highlighted");
+
+      // policy.removeClassName("Highlighted");
+    }
+
+  });
+
+  io.socket.get('/policy/list?mode=json', function (objs, respone) {
+  });
+
+</script>

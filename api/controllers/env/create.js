@@ -1,4 +1,3 @@
-
 module.exports = {
 
   friendlyName: 'env create',
@@ -10,7 +9,12 @@ module.exports = {
       description: 'Description of Attribute',
       type: 'string',
       required: true
-},
+    },
+    clouds: {
+      description: 'Comma separated list of clouds',
+      type: 'string',
+      required: true
+    },
 
     mode: {
       description: 'results format: json or html',
@@ -36,13 +40,18 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let environment = await Environment.findOrCreate({name: inputs.name}, {name:inputs.name});
-
+      let environment = await Environment.findOrCreate({name: inputs.name}, {name: inputs.name});
+      let myClouds = inputs.clouds.split(/,/);
+      let clouds = await Cloud.find({name: myClouds});
+      for(let i in clouds) {
+        await Environment.addToCollection(environment.id, 'clouds', clouds[i].id);
+        await Cloud.addToCollection(clouds[i].id, 'envs', environment.id);
+      }
       // broadcast change
       sails.sockets.broadcast('c3', 'environment', environment);
 
       // Display the results
-      if(inputs.mode === 'json') {
+      if (inputs.mode === 'json') {
         // Return json
         return exits.json(environment);
       }

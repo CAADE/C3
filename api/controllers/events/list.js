@@ -14,7 +14,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'events/list'
     },
     json: {
       responseType: '', // with return json
@@ -28,16 +28,24 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let events = await Events.find();
+      let events = await Events.find().populateAll();
+      for(let i in events) {
+        let event = events[i];
+        for(let j in event.triggers) {
+          let trigger = event.triggers[j];
+          trigger = await Trigger.findOne({id: trigger.id}).populateAll();
+          event.triggers[j] = trigger;
+        }
+      }
 
       // Display the results
       if (inputs.mode === 'json') {
         // Return json
-        return exits.json(events);
+        return exits.json({events:events});
       }
       else {
         // Display the welcome view.
-        return exits.success(events);
+        return exits.success({events:events});
       }
     }
     catch (e) {

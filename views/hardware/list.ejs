@@ -1,0 +1,35 @@
+<%- partial("../partials/hardwareGauge", {type:'compute', title:'Compute', cloud:''}); %>
+
+<div class="gadget" style="width:calc(100% - 350px);height:350px;">
+  <div class="gadget-header">Compute Hardware<span style="float: right;"></span>
+  </div>
+  <div style>
+  </div>
+  <div style="overflow-y:scroll;position:relative;height:310px;background:white;">
+      <%- partial("../partials/HardwareListAJAX", {type:'compute', cloud:''}); %>
+  </div>
+</div>
+
+<%- partial("../partials/hardwareGauge", {type:'storage', title:'Storage', cloud:''}); %>
+
+<div class="gadget" style="width:calc(100% - 350px);height:350px;">
+  <div class="gadget-header">Storage Hardware<span style="float: right;"></span>
+  </div>
+  <div style>
+  </div>
+  <div style="overflow-y:scroll;position:relative;height:310px;background:white;">
+      <%- partial("../partials/HardwareListAJAX", {type:'storage', cloud:''}); %>
+  </div>
+</div>
+
+<%- partial("../partials/hardwareGauge", {type:'network', title:'Network', cloud:''}); %>
+
+<div class="gadget" style="width:calc(100% - 350px);height:350px;">
+  <div class="gadget-header">Network Hardware<span style="float: right;"></span>
+  </div>
+  <div style>
+  </div>
+  <div style="overflow-y:scroll;position:relative;height:310px;background:white;">
+      <%- partial("../partials/HardwareListAJAX", {type:'network', cloud:''}); %>
+  </div>
+</div>

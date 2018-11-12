@@ -14,7 +14,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'cloud/list'
     },
     json: {
       responseType: '', // with return json
@@ -41,7 +41,19 @@ module.exports = {
       }
       else {
         // Display the welcome view.
-        return exits.success(clouds);
+        let hw = {};
+        for(let i in clouds) {
+          let cloud = clouds[i];
+          for(let j in cloud.hardware) {
+            let hard = cloud.hardware[j];
+            if(!hw.hasOwnProperty(hard.type)) {
+              hw[hard.type] = 0;
+            }
+            hw[hard.type] += hard.capacity;
+          }
+          clouds[i].hardware = hw;
+        }
+        return exits.success({clouds:clouds});
       }
     }
     catch (e) {

@@ -1,0 +1,7 @@
+<div class="gadget" style="width:calc(100% - 15px);height:100%">
+  <div class="gadget-header">Policies<span style="float: right;"><%= policies.length %></span>
+  </div>
+  <div style="overflow-y:auto;position:relative;max-height:100%;height:auto;background:white;">
+      <%- partial("../partials/policyList", {policies:policies}); %>
+  </div>
+</div>

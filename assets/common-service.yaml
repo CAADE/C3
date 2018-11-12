@@ -2,6 +2,9 @@ service:
   name: common
   version: 0.0.1
   environments:
+    dev:
+      image: alpine
+      replicas: 1
     local:
       image: alpine
       replicas: 1

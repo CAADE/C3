@@ -1,0 +1,32 @@
+<table>
+  <%
+    let output = [];
+    function getItems(prefix, items) {
+      let newPrefix = "";
+      if (prefix) {
+        newPrefix = prefix;
+      }
+      for (let i in items) {
+        let name = i;
+        if(newPrefix != "") {
+            name = newPrefix + '.' + i;
+        }
+
+        if (typeof items[i] === 'object') {
+          getItems(name, items[i]);
+        }
+        else {
+          output.push("<td align='right'><i>" + name + "</i></td><td>" + items[i] + "</td>");
+        }
+      }
+    }
+
+    getItems("", json);
+
+    for (let i in output) {
+  %>
+  <tr>
+    <td align="right" valign="top"><%- output[i] %></td>
+  </tr>
+  <% } %>
+</table>

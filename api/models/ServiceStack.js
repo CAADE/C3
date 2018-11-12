@@ -27,6 +27,7 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     // servicelets: { collection: 'Servicelet', via: 'stack' },
     stacklets: { collection: 'Stacklet', via: 'stack' },
+    policies: {collection: 'Policy', via:'stack'},
 
   },
 

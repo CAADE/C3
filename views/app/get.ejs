@@ -1,0 +1,49 @@
+<div class="gadget" style="width:calc(100% - 15px);">
+  <div class="gadget-header">Application <%= app.name %><span style="float: right;"><a href="/app/show">Graph</a></span>
+  </div>
+  <div class="gadget-body" id="app-list" style="height:auto;">
+    <div>
+      <table>
+        <tr>
+          <td align="right"><b>Name</b></td>
+          <td align="left"><%= app.name %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Version</b></td>
+          <td align="left"><%= app.version %></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Stack</b></td>
+          <td align="left"><a href="/stack/get?id=<%= app.stack.id %>"><%= app.stack.name %></a></td>
+        </tr>
+        <tr>
+          <td align="right"><b>Policies</b></td>
+          <td align="left">
+            <% for(let i in app.policies) {
+                let policy = app.policies[i];
+            %>
+                <a href="/policy/get?id=<%= policy.id %>"><%= policy.name %></a>
+            <% } %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <hr/>
+    <div>
+      <div style="overflow-y:auto;position:relative;max-height:300px;height:auto;">
+          <%- partial("../partials/appInstanceList", {instances:app.instances}) %>
+      </div>
+      <hr/>
+      <div id="graph" style="overflow-y:auto;height:500px;">
+        <%
+        let ids = [];
+        for(let i=0; i < app.instances.length; i++) {
+          ids.push(app.instances.id);
+        }
+        let query = "/instance/list?mode=json&ids=" + ids.join(",");
+        %>
+        <%- partial('../partials/instanceGraph', {height: 450, width: 1000, query: query}) %>
+      </div>
+    </div>
+  </div>
+</div>

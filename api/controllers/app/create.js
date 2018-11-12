@@ -59,8 +59,6 @@ module.exports = {
       // Display the results
       if(inputs.mode === 'json') {
         // Return json
-        console.log("App :", app);
-        console.log("App 2:", inputs);
         return exits.json({name: app.name});
       }
       else {

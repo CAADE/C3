@@ -17,6 +17,8 @@ module.exports = {
     parameters: {type: 'json'},
     config: {type: 'json'},
     replicas: {type: 'number'},
+    state: {type: 'string', isIn: ['Running', 'Stopping', 'Stopped', 'Initializing', 'Error', 'Pause']},
+    message: {type: 'string'},
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -28,6 +30,7 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     servicelet: {model: 'Servicelet'},
+    env: {model: 'Environment'},
     children: {collection: 'Service', via: 'parent'},
     instances: {collection: 'ServiceInstance', via: 'service'},
     apps: {collection: 'ApplicationInstance', via: 'services'},
@@ -35,7 +38,9 @@ module.exports = {
     dependant: {model: 'Service'},
     parent: {model: 'Service'},
     requirements: {type: 'json'},
-    app: {model: 'ApplicationInstance'}
+    app: {model: 'ApplicationInstance'},
+    states: {collection: 'ServiceState', via: 'service'},
+    currentState: {model: 'ServiceState'}
   },
 
 };

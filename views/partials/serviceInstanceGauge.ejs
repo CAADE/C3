@@ -1,0 +1,67 @@
+<div class="gadget">
+  <div class="gadget-header"><%- title %> <span style="float:right"><a href="/instance/list">All</a></div>
+  <div class="gadget-body">
+    <canvas id="ServiceChart" width="200" height="200"></canvas>
+  </div>
+</div>
+
+<script>
+  <%
+  let sstates = {};
+  let slabels = [];
+  let sdata = [];
+  let scolors = [];
+  const sbackgroundColors = {
+    'Running': '#00aa00',
+    'Stopping': '#aaaa00',
+    'Stopped': '#bbbbbb',
+    'Initializing': '#00aaaa',
+    'Error': '#ff4444',
+    'Paused': '#cc8855',
+    'Deploying': '#0088cc'
+  };
+
+  for (let i in services) {
+    let service = services[i];
+    if(!sstates.hasOwnProperty(service.state)) {
+      sstates[service.state] = 0;
+    }
+    sstates[service.state]++;
+  }
+  for(let state in sstates) {
+    slabels.push('"' + state + '"');
+    sdata.push(sstates[state]);
+    scolors.push('"' + sbackgroundColors[state] + '"');
+  }
+  %>
+
+  let slabels = [<%- slabels.join(',') %>];
+  let sdata = [<%- sdata.join(',') %>];
+  let sbcolors = [<%- scolors.join(',') %>];
+
+
+  function initServiceGauge() {
+
+      let canvas = document.getElementById("ServiceChart");
+      let chart = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+          labels: slabels,
+          datasets: [
+            {
+              label: "Total",
+              backgroundColor: sbcolors,
+              data: sdata
+            }
+          ],
+        },
+        options: {
+          title: {
+            display: false,
+          }
+        }
+      });
+  }
+  initServiceGauge();
+</script>
+

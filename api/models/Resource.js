@@ -13,11 +13,11 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    name: { type: 'string' },
-    type: { type: 'string' },
-    capacity: { type: 'number' },
-    available: { type: 'number' },
-    state: { type: 'string', isIn: ['enabled', 'disabled'] },
+    name: {type: 'string'},
+    type: {type: 'string'},
+    capacity: {type: 'number'},
+    available: {type: 'number'},
+    state: {type: 'string', isIn: ['enabled', 'disabled']},
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -28,9 +28,10 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    hardware: { model: 'Hardware' },
+    hardware: {model: 'Hardware'},
+    env: {model: 'Environment'},
     cloud: {model: 'Cloud'},
-    instances: { collection: 'ServiceInstance', via: 'resources' }
+    instances: {collection: 'ServiceInstance', via: 'resources'}
   },
 
 };

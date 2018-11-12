@@ -22,6 +22,22 @@ describe('app launch Script Test Cases', () => {
       }
       return done();
     });
+    it('Primary Set up Environments', (done) => {
+      // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
+      let commands = [
+        'bin/c3-env-create --name dev --clouds dc1',
+        'bin/c3-env-create --name test --clouds dc1,dc2',
+        'bin/c3-env-create --name prod --clouds dc2,dc3',
+      ];
+      for (let i in commands) {
+        let command = 'bash -c \"' + commands[i] + '\"';
+
+        console.log('Command:', command);
+        let stdout = exec(command);
+        console.log('Output:', stdout.toString('utf8'));
+      }
+      return done();
+    });
     it('Set up Service Stacks', (done) => {
       // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
       let commands = [
@@ -43,7 +59,9 @@ describe('app launch Script Test Cases', () => {
     it('Set up Application', (done) => {
       // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
       let commands = [
-        'bin/c3-app-create --name myApp --stack alert',
+        'bin/c3-stack-create --name basicAnnotation --filename assets/app2.yaml',
+        // 'bin/c3-app-create --name myApp --stack alert',
+        'bin/c3-app-create --name basicA --stack basicAnnotation',
       ];
       for (let i in commands) {
         let command = 'bash -c \"' + commands[i] + '\"';
@@ -56,7 +74,7 @@ describe('app launch Script Test Cases', () => {
     });
     it('Launch Local Application', (done) => {
       let commands = [
-        'bin/c3-app-launch --name myApp --env local'
+        'bin/c3-app-launch --name myApp --env dev'
       ];
       for (let i in commands) {
         let command = 'bash -c \"' + commands[i] + '\"';

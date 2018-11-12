@@ -11,13 +11,13 @@ module.exports = {
       type: 'string',
       required: false
     },
-    events: {
+    event: {
       description: 'Name of the Events to monitor',
       type: 'string',
       required: false
     },
     condition: {
-      description: 'Condition to meet (events > 100',
+      description: 'Condition to meet (events > 100)',
       type: 'string',
       required: false
     },
@@ -39,14 +39,14 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    let events;
+    let event;
 
-    if (inputs.events) {
-      events = await Events.findOrCreate({name: inputs.events}, {name: inputs.events});
+    if (inputs.event) {
+      event = await Events.findOrCreate({name: inputs.event}, {name: inputs.event});
     }
     let trigger = await Trigger.create({
       name: inputs.name,
-      events: events.id,
+      event: event.id,
       condition: inputs.condition,
       action: inputs.action,
       policy: inputs.policy,

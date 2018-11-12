@@ -1,20 +1,20 @@
 policy:
   triggers:
    -  events: accidents
-      action: sails.helpers.service.inc('ingestion', 10);sails.helpers.service.dec('analytics', 4);
+      action: incService('ingestion', 10);decService('analytics', 4);
       condition: events.value>100
    -  events: accidents
-      action: sails.helpers.service.inc('ingestion', 10);sails.helpers.service.dec('analytics', 4);
+      action: incService('ingestion', 10);decService('analytics', 4);
       condition: events.value>200
    -  events: accidents
-      action: sails.helpers.service.inc('ingestion', 10);sails.helpers.service.dec('analytics', 4);
+      action: incService('ingestion', 10);decService('analytics', 4);
       condition: events.value>300
    -  events: accidents
-      action: sails.helpers.service.dec('ingestion', 10);sails.helpers.service.inc('analytics', 4);
+      action: decService('ingestion', 10);incService('analytics', 4);
       condition: events.value<100
    -  events: accidents
-      action: sails.helpers.service.dec('ingestion', 10);sails.helpers.service.inc('analytics', 4);
+      action: decService('ingestion', 10);incService('analytics', 4);
       condition: events.value<200
    -  events: accidents
-      action: sails.helpers.service.dec('ingestion', 10);sails.helpers.service.inc('analytics', 4);
+      action: decService('ingestion', 10);incService('analytics', 4);
       condition: events.value<300

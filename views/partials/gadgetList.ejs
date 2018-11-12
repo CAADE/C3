@@ -1,0 +1,45 @@
+
+<div class="gadget">
+  <div class="gadget-header"><%= title %> <span style="float: right;" id="env-number">?</span></div>
+  <div class="gadget-body" id="services-metrics">
+    <table widht="100%">
+      <tr>
+        <th>Name</th>
+        <th>Policies</th>
+        <th>Clouds</th>
+      </tr>
+      <tbody id="gadget-env-table">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  function gadgetEnvironmentInit() {
+    io.socket.get('<%- query %>', function (body, response) {
+      let iHTML = "";
+      let envNumber = document.getElementById('env-number');
+      let tablebody = document.getElementById('gadget-env-table');
+      let total = 0;
+      for (let i in body) {
+        let env = body[i];
+        total++;
+        iHTML += '<tr>';
+        iHTML += '<td><a href="/env/get?id=' + env.id + '">' + env.name + '</a></td >';
+        iHTML += '<td>' + env.policies.length + '</td>';
+        iHTML += '<td>';
+        for (let j in env.clouds) {
+          let cloud = env.clouds[j];
+          iHTML += '<a href="/cloud/get?id="' + cloud.id + '>' + cloud.name + '</a> ';
+        }
+        iHTML += '</td>';
+        iHTML += '</tr>';
+        console.log(iHTML);
+        envNumber.innerHTML = total;
+      }
+      tablebody.innerHTML = iHTML;
+    });
+  }
+  window.addEventListener("load", gadgetEnvironmentInit());
+</script>

@@ -13,7 +13,8 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     name: {type:'string'},
-    state: { type: 'string', isIn: ['Running', 'Stopped', 'Initializing', 'Exit 0', 'Exit 1', 'Error'] },
+    state: { type: 'string', isIn: ['Running', 'Stopping', 'Stopped', 'Initializing', 'Exit 0', 'Exit 1', 'Error'] },
+    message: { type: 'string'},
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

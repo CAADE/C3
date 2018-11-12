@@ -1,6 +1,5 @@
-
 class DCVis {
-  constructor(container,options) {
+  constructor(container, options) {
     this.container = container;
     this.nodesMap = {};
     this.edgesMap = {};
@@ -63,12 +62,13 @@ class DCVis {
     let mnodes = [];
     for (let i = 0; i < lnodes.length; i++) {
       let node = lnodes[i];
-      if (node.group === 'Instance') {
+      /* if (node.group === 'Instance') {
         node.level = (i % 3) + 3;
       }
       else if (node.group === 'rcompute') {
         node.level = (i % 3) + 8;
       }
+      */
       if (!this.nodesMap.hasOwnProperty(node.id)) {
         this.nodesMap[node.id] = {node: node, to: [], from: []};
       }
@@ -106,8 +106,8 @@ class DCVis {
           delete this.edgesMap[eid];
         }
         let newNodes = [];
-        for(let j = 0; j < this.nodesMap[dnode.to[i]].from.length; j++) {
-          if(this.nodesMap[dnode.to[i]].from[j] !== id) {
+        for (let j = 0; j < this.nodesMap[dnode.to[i]].from.length; j++) {
+          if (this.nodesMap[dnode.to[i]].from[j] !== id) {
             newNodes.push(this.nodesMap[dnode.to[i]].from[j]);
           }
         }

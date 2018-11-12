@@ -13,6 +13,11 @@ module.exports = {
       type: 'number',
       required: true
     },
+    data: {
+      description: 'data attached to the event',
+      type: 'string',
+      required: false
+    },
     mode: {
       description: 'results format: json or html',
       type: 'string',
@@ -40,8 +45,12 @@ module.exports = {
       if (!events) {
         return exits.notFound('/notFound');
       }
-
-      events = await Events.update({id: events.id}, {value: events.value - inputs.amount}).fetch();
+      let updateData = {value: events.value - inputs.amount};
+      if (inputs.data) {
+        let data = JSON.parse(inputs.data);
+        updataData.data = data;
+      }
+      events = await Events.update({id: events.id}, updateData).fetch();
 
       sails.sockets.broadcast('c3', 'events', events);
       await sails.helpers.events.handle(events);

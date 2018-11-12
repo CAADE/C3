@@ -1,0 +1,51 @@
+<div class="gadget">
+  <div class="gadget-header">Policies<span style="float:right;"><%= policies.length %></span>
+  </div>
+  <div style="overflow-y:auto;position:relative;max-height:100%;height:auto;background:white;">
+    <table width="100%" border="0">
+      <tr>
+        <th>Policy</th>
+        <th>State</th>
+      </tr>
+      <% for(let i=0; i < policies.length; i++) {
+      let policy = policies[i];
+      %>
+      <tr class="row-<%- i % 2 %>" id="Policy<%- policy.id %>">
+        <td align="center"><a href="/policy/get?id=<%- policy.id %>"><%= policy.name %></a></td>
+        <td align="center" class="policy-<%- policy.state %>" id="PolicyState<%- policy.id %>"><%= policy.state %></td>
+      </tr>
+      <% } %>
+    </table>
+  </div>
+</div>
+<script>
+  io.socket.on('policy', function (objs) {
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i];
+      let instance = document.getElementById("Policy" + obj.id);
+      if (instance) {
+        let state = document.getElementById("PolicyState" + obj.id);
+        let triggers = document.getElementById("PolicyTriggers" + obj.id);
+        if (state) {
+          state.className = "policy-" + obj.state;
+          state.innerHTML = obj.state;
+        }
+        if (triggers) {
+          let innerHTML = "";
+
+          for (let j = 0; j < obj.triggers; j++) {
+            let trigger = obj.triggers[j];
+            innerHTML += '<span class="fired-' + trigger.fired + '" id="Trigger' + trigger.id + '" align="right" style="padding:5px;margin:5px;">';
+            innerHTML += '<a href="/event/get?id=' + trigger.event.id + '">' + trigger.event.name + '</a> ( ' + trigger.condition.replace(/events.value/g, '<span class="Event-' + trigger.event.id + '">' + trigger.event.value + '</span>') + ' )</span>';
+          }
+        }
+      }
+      else { // Add an new Policy.
+      }
+    }
+  });
+
+  io.socket.get('/policy/list?mode=json', function (objs, respone) {
+  });
+
+</script>

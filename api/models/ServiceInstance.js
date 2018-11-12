@@ -12,8 +12,11 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    name: { type: 'string' },
-    state: { type: 'string' },
+    name: {type: 'string'},
+    state: { type: 'string', isIn: ['Running', 'Stopping', 'Stopped', 'Initializing', 'Deploying', 'Exit 0', 'Exit 1', 'Error'] },
+    requirement: { type: 'json'},
+    consumption: { type: 'json'},
+    message: { type: 'string'},
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -24,9 +27,10 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    service: { model: 'Service' },
-    resources: { collection: 'Resource', via: 'instances' },
-    app: {model: 'ApplicationInstance'}
+    service: {model: 'Service'},
+    resources: {collection: 'Resource', via: 'instances'},
+    app: {model: 'ApplicationInstance'},
+    env: {model: 'Environment'}
 
   },
 

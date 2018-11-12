@@ -15,7 +15,7 @@ module.exports = {
     name: {type: 'string'},
     parameters: {type: 'json'},
     resources: {type: 'json'},
-    image: { type: 'ref' },
+    image: {model: 'Image'},
     replicas: {type: 'number'},
     ports: {type: 'json'},
 
@@ -29,8 +29,8 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     env: {model: 'Environment'},
     stack: {model: 'ServiceStack'},
-   //  servicelet: {model: 'Servicelet'}
-    servicelets: { collection: 'Servicelet', via: 'stacklet' },
+    //  servicelet: {model: 'Servicelet'}
+    servicelets: {collection: 'Servicelet', via: 'stacklet'},
 
   },
 
