@@ -35,7 +35,7 @@
     "debug": "node debug app.js",
     "build-uservices": "node ./deploy/build",
     "build": "cd ../../.. && docker build . --file ./deploy/uservices/web/Dockerfile -t ${CAADE_REGISTRY}/c3-web",
-    "deploy": "docker push ${CAADE_RESTISTRY}/c3/web"
+    "deploy": "docker push ${CAADE_REGISTRY}/c3/web"
   },
   "main": "app.js",
   "repository": {
