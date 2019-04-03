@@ -2,9 +2,9 @@
   "main": "index.js",
   "scripts": {
     "start": "micro",
-    "build": "docker build . -t ${CAADE_REGISTRY}/c3/data-coordinator",
-    "deploy": "docker push ${CAADE_REGISTRY}/c3/data-coordinator",
-    "publish": "docker push ${CAADE_REGISTRY}/c3/data-coordinator"
+    "build": "docker build . -t ${CAADE_REGISTRY}/c3-data-coordinator",
+    "deploy": "docker push ${CAADE_REGISTRY}/c3-data-coordinator",
+    "publish": "docker push ${CAADE_REGISTRY}/c3-data-coordinator"
   },
   "dependencies": {
     "micro": "latest",

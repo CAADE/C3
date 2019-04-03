@@ -2,9 +2,9 @@
   "main": "index.js",
   "scripts": {
     "start": "micro",
-    "build": "docker build . -t ${CAADE_REGISTRY}/c3/cloud-proxy",
-    "deploy": "docker push ${CAADE_REGISTRY}/c3/cloud-proxy",
-    "publish": "docker push ${CAADE_REGISTRY}/c3/cloud-proxy"
+    "build": "docker build . -t ${CAADE_REGISTRY}/c3-cloud-proxy",
+    "deploy": "docker push ${CAADE_REGISTRY}/c3-cloud-proxy",
+    "publish": "docker push ${CAADE_REGISTRY}/c3-cloud-proxy"
   },
   "dependencies": {
     "micro": "latest",

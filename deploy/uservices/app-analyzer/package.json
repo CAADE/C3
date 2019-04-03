@@ -2,9 +2,9 @@
   "main": "index.js",
   "scripts": {
     "start": "micro",
-    "build": "docker build . -t ${CAADE_REGISTRY}/c3/app-analyzer",
-    "deploy": "docker push ${CAADE_REGISTRY}/c3/app-analyzer",
-    "publish": "docker push ${CAADE_REGISTRY}/c3/app-analyzer"
+    "build": "docker build . -t ${CAADE_REGISTRY}/c3-app-analyzer",
+    "deploy": "docker push ${CAADE_REGISTRY}/c3-app-analyzer",
+    "publish": "docker push ${CAADE_REGISTRY}/c3-app-analyzer"
   },
   "dependencies": {
     "micro": "latest",
