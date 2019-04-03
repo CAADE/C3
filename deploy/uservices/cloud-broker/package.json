@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "micro": "latest",
-    "node-fetch": "latest"
+    "socket.io-client": "latest",
+    "sails.io.js": "latest"
   }
 }

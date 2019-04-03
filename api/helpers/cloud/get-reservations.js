@@ -21,7 +21,7 @@ module.exports = {
       outputType: 'ref'
     },
     notFound: {
-      description: 'Resources could be Not Found',
+      description: 'Resources could not be found',
     }
   },
 
@@ -59,6 +59,8 @@ module.exports = {
         // Name Resource. Just access it. Don't need add quantity.
         if (requirement.hasOwnProperty('name')) {
           // if name is there then look for a resource with that name.
+          // How do I select the resource for the reservation if there is more than one.
+          // To I push back all of them as individual reservations?
           resources = await Resource.find({env: eid, cloud: inputs.cloud.id, name: requirement.name});
           if (resources.length > 0) {
             let reservation = await Reservation.create({
@@ -98,15 +100,18 @@ module.exports = {
 // TODO: We should try and find Resources first that can be used. Not just hardware.
 async function getReservationFromResources(env, cloud, request, requirement) {
   let resources = [];
-  let tres = await Resource.find({cloud: cloud.id, type: requirement.type, disabled: false});
+  let tres = await Resource.find({cloud: cloud.id, type: requirement.type, disabled: false}).populateAll();
   for (let j in tres) {
     resources.push(tres[j]);
   }
-  resources = resources.sort((a, b) => b.available - a.available);
 
+  // This should be configurable on how to select a resource for reservation.
+  resources = resources.sort((a, b) => b.available - a.available);
   let hi = 0;
+  // How many should I push back?
+  // Just the first one or a set of the resources returned.
   while (hi < resources.length) {
-    if (requirement.quantity <= resources[hi].available - resources[hi].reserved) {
+    if (requirement.quantity <= resources[hi].available) {
       let reservation = await
         Reservation.create({
           requirement: requirement.id,

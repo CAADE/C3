@@ -1,5 +1,5 @@
-const { send } = require('micro');
-const { URL, URLSearchParams } = require('url');
+const {send} = require('micro');
+const {URL, URLSearchParams} = require('url');
 const fetch = require('node-fetch');
 
 module.exports = async function (req, res) {
@@ -9,7 +9,7 @@ module.exports = async function (req, res) {
   const id = newSearchParams.get("id");
   var callback = newSearchParams.get("callback");
 
-  if(callback) {
+  if (callback) {
     console.log("Callback:", callback);
     const response = await fetch(callback);
     const json = await response.text();

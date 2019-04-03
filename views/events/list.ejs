@@ -2,6 +2,6 @@
   <div class="gadget-header">Telemetry Events<span style="float: right;"><%= events.length %></span>
   </div>
   <div style="overflow-y:auto;position:relative;max-height:100%;height:auto;background:white;">
-      <%- partial("../partials/eventsList", {events:events}); %>
+      <%- partial("../events/_list", {events:events}); %>
   </div>
 </div>

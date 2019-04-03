@@ -4,6 +4,7 @@ pipeline {
   }
   environment {
     CAADE_REGISTRY = "madajaju"
+    DOCKER = credentials('dockerhub')
   }
   stages {
     stage ('Build') {
@@ -15,6 +16,7 @@ pipeline {
             }
             stage('Build Services') {
               steps {
+                sh 'docker login -u="$DOCKER_USR" -p="$DOCKER_PSW" && npm run-script build'
                 sh 'npm run-script build'
                 sh 'npm run-script deploy-apps'
               }

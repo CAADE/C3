@@ -106,7 +106,7 @@ module.exports = {
       return exits.success(appInstances);
     }
     catch (e) {
-      console.log("Error for Launch:", e);
+      console.error("Error for Launch:", e);
       await sails.helpers.app.kill.with({instance: appInstance, signal: 9, reason: 'Error during launch'});
       let appInstances = await ApplicationInstance.update({id: appInstance.id}, {
         state: 'Error',

@@ -41,19 +41,37 @@ module.exports = {
       }
       else {
         // Display the welcome view.
-        let hw = {};
-        for(let i in clouds) {
+        for (let i in clouds) {
+          let hw = {};
+          let rs = {};
+          clouds[i].services = 0;
           let cloud = clouds[i];
-          for(let j in cloud.hardware) {
-            let hard = cloud.hardware[j];
-            if(!hw.hasOwnProperty(hard.type)) {
-              hw[hard.type] = 0;
+          let resources = await Resource.find({cloud: cloud.id}).populateAll();
+          for (let j in resources) {
+            let resource = resources[j];
+            if (!rs.hasOwnProperty(resource.type)) {
+              rs[resource.type] = {amount: 0, capacity: 0, available: 0};
             }
-            hw[hard.type] += hard.capacity;
+            rs[resource.type].capactiy += resource.capacity;
+            rs[resource.type].available += resource.available;
+            rs[resource.type].amount++;
+            if (resource.type === 'compute') {
+              clouds[i].services += resource.instances.length;
+            }
           }
+          for (let j in cloud.hardware) {
+            let hard = cloud.hardware[j];
+            if (!hw.hasOwnProperty(hard.type)) {
+              hw[hard.type] = {amount:0, capacity:0, available:0};
+            }
+            hw[hard.type].amount++;
+            hw[hard.type].capacity += hard.capacity;
+            hw[hard.type].available += hard.available;
+          }
+          clouds[i].resources = rs;
           clouds[i].hardware = hw;
         }
-        return exits.success({clouds:clouds});
+        return exits.success({clouds: clouds});
       }
     }
     catch (e) {

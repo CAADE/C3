@@ -54,6 +54,6 @@ module.exports = {
       return exits.error(e);
     }
   }
-}
-;
+};
+
 

@@ -1,4 +1,3 @@
-
 module.exports = {
 
   friendlyName: 'resource list',
@@ -16,7 +15,7 @@ module.exports = {
   exits: {
     success: {
       responseType: 'view',
-      viewTemplatePath: 'welcome'
+      viewTemplatePath: 'resource/list'
     },
     json: {
       responseType: '', // with return json
@@ -33,13 +32,13 @@ module.exports = {
       let resources = await Resource.find().populateAll();
 
       // Display the results
-      if(inputs.mode === 'json') {
+      if (inputs.mode === 'json') {
         // Return json
         return exits.json(resources);
       }
       else {
         // Display the welcome view.
-        return exits.success(resources);
+        return exits.success({resources:resources});
       }
     }
     catch (e) {

@@ -6,13 +6,11 @@ module.exports = {
   description: 'Add description',
 
   inputs: {
-    /* <parameter name>: {
-      description: 'The ID of the user to look up.',
-      type: '<parameter type>',
+    id: {
+      description: 'ID of the instance to kill',
+      type: 'number',
       required: true
     },
-    */
-    
     mode: {
       description: 'results format: json or html',
       type: 'string',
@@ -37,13 +35,14 @@ module.exports = {
   fn: async function (inputs, exits, env) {
 
     try {
-      let user = await User.findOne(inputs.userId);
-      if (!user) {return exits.notFound('/signup');}
+      let appI = await ApplicationInstance.findOne(inputs.id);
+      if (!appI) {return exits.notFound('/home');}
+      let instances = await sails.helpers.app.kill.with({instance:appI});
 
       // Display the results
       if(inputs.mode === 'json') {
         // Return json
-        return exits.json({name: user.name});
+        return exits.json({instance: appI});
       }
       else {
         // Display the welcome view.

@@ -31,7 +31,7 @@
     <hr/>
     <div>
       <div style="overflow-y:auto;position:relative;max-height:300px;height:auto;">
-          <%- partial("../partials/appInstanceList", {instances:app.instances}) %>
+          <%- partial("../instance/_list", {instances:app.instances}) %>
       </div>
       <hr/>
       <div id="graph" style="overflow-y:auto;height:500px;">
@@ -42,7 +42,7 @@
         }
         let query = "/instance/list?mode=json&ids=" + ids.join(",");
         %>
-        <%- partial('../partials/instanceGraph', {height: 450, width: 1000, query: query}) %>
+        <%- partial('../app/_instanceGraph', {height: 450, width: 1000, query: query}) %>
       </div>
     </div>
   </div>

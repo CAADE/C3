@@ -1,0 +1,30 @@
+<%
+let types = {};
+let items = {};
+for(let i in resources) {
+  let resource = resources[i];
+  let type = resource.type;
+  if(!items.hasOwnProperty(type)) {
+    items[type] = {resources:[], entries:[]};
+  }
+items[type].resources.push(resource);
+items[type].entries.push('<div class="resource-'+ resource.state + '" id="resource' + resource.id + '"><div class="resourceIndicator" style="width:' + ((1-(resource.available / resource.capacity))*100) + '%;"><p>' + resource.available +'</p><div class="floatOver" id="resourceFloat-' + resource.id + "</div></div></div>');
+}
+%>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Resources</th>
+      </tr>
+  </thead>
+  <% for(let type in items) {
+  %>
+  <tr>
+    <td><%- partial("../resource/_gauge", {title:type, type:type, resources:items[type].resources}); %></td>
+    <td valign="top"><%- items[type].entries.join(" "); %></td>
+  </tr>
+  <%
+  }
+  %>
+</table>

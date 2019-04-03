@@ -17,7 +17,8 @@ module.exports = {
     type: {type: 'string'},
     capacity: {type: 'number'},
     available: {type: 'number'},
-    state: {type: 'string', isIn: ['enabled', 'disabled']},
+    disabled: {type: 'boolean'},
+    state: {type: 'string', isIn: ['Init', 'Provisioning', 'Ready']},
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

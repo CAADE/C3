@@ -1,0 +1,84 @@
+<table width="100%" border="0">
+  <tr>
+    <th>Actions</th>
+    <th>Name</th>
+    <th>State</th>
+    <th>Message</th>
+    <th>Environment</th>
+    <th>Services</th>
+  </tr>
+  <% for(let i=0; i < instances.length; i++) {
+  let instance = instances[i];
+  %>
+  <tr class="row-<%- i % 2 %>" id="Instance<%- instance.id %>">
+    <td>
+      <span class="update-small"></span>
+      <span class="pause-small"></span>
+      <span class="launch-small"></span>
+      <span class="remove-small"></span>
+      <span class="kill-small" onclick="killInstance(<%- instance.id %>);"></span>
+    </td>
+    <td align="center"><a href="/instance/get?id=<%- instance.id %>"><%= instance.name %></a></td>
+    <td align="center" class="state-<%- instance.state %>" id="InstanceState<%- instance.id %>"><%= instance.state
+      %>
+    </td>
+    <td align="center id=" InstanceMessage
+    <%- instance.id %>"><%= instance.message %></td>
+    <td align="center"><a href="/env/get?id=<%= instance.env.id %>"><%= instance.env.name %></td>
+    <td align="left" style="padding:5px;margin:5px;line-height:2;">
+      <% for(let j=0; j < instance.services.length; j++) {
+      let service = instance.services[j];
+      %>
+      <span class="state-<%- service.state %>" id="Service<%- service.id %>" align="right"
+            style="padding:5px;margin:5px;">
+                    <a href="/service/get?id=<%= service.id %>"><%= service.name.split('-').pop(); %></a>
+                  </span>
+      <% } %>
+    </td>
+  </tr>
+  <% } %>
+</table>
+
+<script>
+  io.socket.on('instance', function (objs) {
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i];
+      let instance = document.getElementById("Instance" + obj.id);
+      if (instance) {
+        let state = document.getElementById("InstanceState" + obj.id);
+        let message = document.getElementById("InstanceMessage" + obj.id);
+        if (state) {
+          state.className = "state-" + obj.state;
+          state.innerHTML = obj.state;
+        }
+        if (message) {
+          message.innerHTML = obj.message;
+        }
+      }
+      else {
+        // Add the instance.
+      }
+    }
+  });
+
+  io.socket.on('service', function (objs) {
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i];
+      let service = document.getElementById("Service" + obj.id);
+      if (service) {
+        service.className = "state-" + obj.state;
+      }
+      else {
+        // Add Service
+      }
+    }
+  });
+
+  io.socket.get('/app/list?mode=json', function (objs, respone) {
+  });
+
+  function killInstance(id) {
+    io.socket.get('/instance/kill?mode=json&id=' + id, function (body, response) {
+    });
+  }
+</script>

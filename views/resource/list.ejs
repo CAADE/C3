@@ -1,0 +1,8 @@
+<div class="gadget" style="width:calc(100% - 15px);height:100%;background:white;">
+  <div class="gadget-header">Resources<span style="float: right;"><%= resources.length %></span>
+  </div>
+  <div style="overflow-y:auto;position:relative;max-height:50%;height:auto;background:white;">
+    <% console.log("Resources", resources); %>
+    <%- partial("../resource/_list", {resources:resources}); %>
+  </div>
+</div>

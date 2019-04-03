@@ -1,9 +1,9 @@
 
 module.exports = {
 
-  friendlyName: 'app create',
+  friendlyName: 'App Create',
 
-  description: ' Add description ',
+  description: 'Create Application',
 
   inputs: {
     /* <parameter name>: {

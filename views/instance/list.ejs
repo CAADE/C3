@@ -2,10 +2,10 @@
   <div class="gadget-header">Application Instances<span style="float: right;"><%= instances.length %></span>
   </div>
   <div style="overflow-y:auto;position:relative;max-height:50%;height:auto;background:white;">
-    <%- partial("../partials/appInstanceList", {instances:instances}); %>
+    <%- partial("../app/_instanceList", {instances:instances}); %>
   </div>
   <hr>
   <div id="graph" style="overflow-y:auto;height:500px;">
-    <%- partial('../partials/instanceGraph', {height: 500, width: 1000, query: "/instance/list?mode=json"}) %>
+    <%- partial('../app/_instanceGraph', {height: 500, width: 1000, query: "/instance/list?mode=json"}) %>
   </div>
 </div>

@@ -92,10 +92,13 @@ module.exports.routes = {
   '/policy/get': {action: 'policy/get'},
   '/dc/metrics': {action: 'dc/metrics'},
 
+  '/instance/update': {action: 'instance/update'},
   '/instance/list': {action: 'instance/list'},
   '/instance/get': {action: 'instance/get'},
   '/instance/kill': {action: 'instance/kill'},
   '/instance/destroy': {action: 'instance/destroy'},
+
+  '/bouquet/register': {action: 'bouquet/register'},
 
   /***************************************************************************
    *                                                                          *

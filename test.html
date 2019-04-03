@@ -1,0 +1,1230 @@
+<style>
+  .site-header {
+    margin-top: 50px;
+    margin-bottom: 50px
+  }
+
+  .site-header h1 {
+    font-size: 26px;
+    margin: 0;
+    text-align: center;
+    flex: 1 1
+  }
+
+  .site-header h1 a {
+    display: block;
+    text-decoration: none
+  }
+
+  .site-header h1 a img {
+    display: block;
+    width: auto;
+    max-height: 144px;
+    max-width: 155px;
+    margin: 0 auto;
+    border: 0
+  }
+
+  .site-header nav {
+    display: flex;
+    align-items: center;
+    margin: 0 -22px
+  }
+
+  .site-header nav > .group {
+    flex: none;
+    width: 280px
+  }
+
+  .site-header nav > .group a {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 16px;
+    padding: 0 0 3px 0;
+    margin: 0 22px;
+    font-weight: bold
+  }
+
+  .site-header nav > .group a:hover {
+    border-bottom: 2px solid #222;
+    padding-bottom: 1px
+  }
+
+  @font-face {
+    font-family: 'transistor';
+    src: url(https://assets.transistor.fm/assets/transistor-09e3a8af782918c90a9c999f4ba89723a85ec0f10c3e13ffabb3a0ca907c40d2.woff?i8xw92) format("woff");
+    font-weight: normal;
+    font-style: normal
+  }
+
+  [class^="icon-"], [class*=" icon-"] {
+    font-family: 'transistor' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+  }
+
+  .icon-donate:before {
+    content: "\e914";
+    color: #fff
+  }
+
+  .icon-apple-podcasts:before {
+    content: "\e915";
+    color: #fff
+  }
+
+  .icon-rss:before {
+    content: "\e916";
+    color: #fff
+  }
+
+  .icon-linkedIn:before {
+    content: "\e912";
+    color: #fff
+  }
+
+  .icon-instagram:before {
+    content: "\e911";
+    color: #fff
+  }
+
+  .icon-email:before {
+    content: "\e90d";
+    color: #fff
+  }
+
+  .icon-youtube:before {
+    content: "\e90e";
+    color: #fff
+  }
+
+  .icon-twitter:before {
+    content: "\e90f";
+    color: #fff
+  }
+
+  .icon-facebook:before {
+    content: "\e910";
+    color: #fff
+  }
+
+  .icon-copy:before {
+    content: "\e90a";
+    color: #fff
+  }
+
+  .icon-check:before {
+    content: "\e90c";
+    color: #fff
+  }
+
+  .icon-check-circle:before {
+    content: "\e913";
+    color: #fff
+  }
+
+  .icon-info:before {
+    content: "\e908";
+    color: #fff
+  }
+
+  .icon-share-alt:before {
+    content: "\e909";
+    color: #fff
+  }
+
+  .icon-ellipsis:before {
+    content: "\e90b";
+    color: #fff
+  }
+
+  .icon-cancel:before {
+    content: "\e906";
+    color: #fff
+  }
+
+  .icon-menu:before {
+    content: "\e907";
+    color: #fff
+  }
+
+  .icon-player-pause:before {
+    content: "\e902";
+    color: #fff
+  }
+
+  .icon-player-play:before {
+    content: "\e903";
+    color: #fff
+  }
+
+  .icon-player-forward:before {
+    content: "\e900";
+    color: #fff
+  }
+
+  .icon-player-rewind:before {
+    content: "\e904";
+    color: #fff
+  }
+
+  .icon-player-unmuted:before {
+    content: "\e905";
+    color: #fff
+  }
+
+  .icon-player-muted:before {
+    content: "\e901";
+    color: #fff
+  }
+
+  .site-social {
+    text-align: center;
+    padding-top: 25px;
+    margin: 50px 0
+  }
+
+  .site-social a {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    font-size: 24px;
+    margin: 0px 14px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center center;
+    text-decoration: none
+  }
+
+  .site-social a:before {
+    color: #222
+  }
+
+  .site-subscribe {
+    display: flex;
+    background: none transparent;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 800px
+    overflow: hidden;
+  }
+
+  .site-subscribe a {
+    flex: none;
+    line-height: 14px;
+    border: 1px solid #222;
+    border-radius: 4px;
+    padding: 8px 12px 10px 12px;
+    padding-left: 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin: 0 6px 15px 6px;
+    background-repeat: no-repeat;
+    background-size: auto 28px;
+    background-position: 12px 9px;
+    transition: transform 0.1s ease-in-out
+  }
+
+  .site-subscribe a:hover {
+    transform: translateY(-3px)
+  }
+
+  .site-subscribe a span {
+    display: block;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: #111;
+    font-weight: 600;
+    letter-spacing: 0
+  }
+
+  .site-subscribe a.rss {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/rss-74724be90f1e436f8eeded33030f100e9381770734d1dbde30b8f7a995f1ba81.svg);
+    background-size: auto 24px;
+    background-position: 14px 11px
+  }
+
+  .site-subscribe a.google_play {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/google_play-5d895ee279fc9558acb3578981b15addb7a12907526420c5df31790a415dcda4.svg)
+  }
+
+  .site-subscribe a.google_podcasts {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/google_podcasts-44b48caef7aadfe9c287952f8fb11ac1f7364acb9aacc8250af12c2641b0edf0.svg)
+  }
+
+  .site-subscribe a.spotify {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/spotify-5f433e08f0d7b4bfcd0a79f8a156afaf1e7e5209c0e0ed6415337343d778a43f.svg)
+  }
+
+  .site-subscribe a.apple_podcasts {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/apple_podcasts-37e37000d6e8190b2b223c304e4bc3114f6e673e95cf2ad7d35450a90ff0ff98.svg);
+    background-size: auto 32px;
+    background-position: 10px 7px
+  }
+
+  .site-subscribe a.overcast {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/overcast-3c82ed1c1c75373882c850819991a9ebc3a440c4bb20045ae2eaa77003b068ee.svg)
+  }
+
+  .site-subscribe a.stitcher {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/stitcher-4cff4f18174c4c59b989bc852370195276a3357c1eb5303b00a0f96ac7ca216d.svg)
+  }
+
+  .site-subscribe a.castro {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/castro-b943e157c52202a43ec44a66fa83d95a2eee335b1cad5236807cdbc41750b0e6.svg)
+  }
+
+  .site-subscribe a.pocket_casts {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/pocket_casts-ff0d9f3bb5678bd6b8a3ac2975777235846f06585f72e32b4d8e51d1c8817dcd.svg)
+  }
+
+  .site-subscribe a.radioPublic {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/radiopublic-c89bd57e0730c5560a64c027954a82ed8566e853d6f73cb801d8029da05fa549.svg)
+  }
+
+  .site-subscribe a.breaker {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/breaker-45103739d221d7ccd5adb02875df017bca73bf1bfc395bf1442209d59dd98e18.svg)
+  }
+
+  .site-subscribe a.tuneIn {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/tunein-88f99061339f3c5a1b66fd941fe303d391409dbec8f6c634c73af40c0584ce44.svg);
+    background-size: 36px auto;
+    background-position: 8px 15px
+  }
+
+  .site-subscribe a.castbox {
+    background-image: url(https://assets.transistor.fm/assets/subscribe/castbox-a740d15ba5f637789d10d3c7830fb0a45b1daefbfa11766f8e2270d9b6220ddb.svg)
+  }
+
+  .site-episode {
+    margin-bottom: 50px
+  }
+
+  .site-episode time {
+    font-size: 14px;
+    border-top: 2px solid #222;
+    display: block;
+    margin-bottom: 16px
+  }
+
+  .site-episode time span {
+    background: #222;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    display: inline-block
+  }
+
+  .site-episode h2 {
+    margin: 0.20em 0;
+    line-height: 1.25em;
+    font-size: 32px
+  }
+
+  .site-episode h2 a {
+    text-decoration: none
+  }
+
+  .site-episode h2 a:hover {
+    text-decoration: underline
+  }
+
+  .site-episode .site-episode-summary {
+    margin: .75em 0 1em 0
+  }
+
+  .site-episode .site-button {
+    margin-right: 8px
+  }
+
+  .site-featured-episodes {
+    background: #222;
+    color: #fff;
+    padding: 50px 0
+  }
+
+  .site-featured-episodes .site-container {
+    padding: 0;
+    display: flex
+  }
+
+  .site-featured-episodes .site-episode {
+    margin-bottom: 0;
+    padding: 0 15px;
+    flex: 1
+  }
+
+  .site-featured-episodes .site-episode .site-episode-summary {
+    font-size: 18px
+  }
+
+  .site-featured-episodes .site-episode header {
+    border-top: 2px solid #fff;
+    margin-bottom: 20px
+  }
+
+  .site-featured-episodes .site-episode header span {
+    background: #fff;
+    color: #222;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 6px;
+    display: inline-block
+  }
+
+  .site-featured-episodes .site-episode time {
+    display: block;
+    border: 0;
+    margin: 0
+  }
+
+  .site-featured-episodes .site-episode time span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    background: transparent;
+    padding: 0;
+    display: inline
+  }
+
+  .site-featured-episodes .site-episode h2 {
+    font-size: 26px
+  }
+
+  .site-featured-episodes .site-episode h2 a {
+    color: #fff
+  }
+
+  .site-featured-episodes .site-episode .site-button {
+    border-color: #fff;
+    color: #fff;
+    font-size: 14px;
+    padding: 4px 8px
+  }
+
+  .site-featured-episodes .site-episode .site-button:hover {
+    background: #fff;
+    color: #222
+  }
+
+  .site-episode-show-notes {
+    margin-top: 40px
+  }
+
+  .site-episode-show-notes h1 {
+    font-size: inherit;
+    line-height: inherit
+  }
+
+  .site-episode-show-notes div > br:only-child {
+    display: none
+  }
+
+  .site-episode-show-notes blockquote {
+    font-style: italic
+  }
+
+  #site-archive-form {
+    margin-bottom: 40px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold
+  }
+
+  #site-archive-form .filter-label, #site-archive-form .select-wrapper {
+    vertical-align: middle;
+    letter-spacing: 0.05em
+  }
+
+  #site-archive-form .select-wrapper {
+    border: 2px solid #222;
+    display: inline-block;
+    position: relative;
+    margin-left: 8px;
+    width: 160px;
+    padding-right: 36px;
+    overflow: hidden;
+    cursor: pointer
+  }
+
+  #site-archive-form .select-wrapper:after {
+    background: #222;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 110%;
+    width: 36px;
+    height: 100%;
+    content: '\25BE';
+    line-height: 1.75em;
+    text-align: center;
+    z-index: -1
+  }
+
+  #site-archive-form .select-wrapper select {
+    padding: 8px 10px 8px 10px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    z-index: 2;
+    cursor: pointer
+  }
+
+  #site-archive-form .select-wrapper select option {
+    z-index: 2
+  }
+
+  #site-archive-form .select-wrapper select:focus {
+    outline: none
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #fff
+  }
+
+  a {
+    color: #222
+  }
+
+  .preview-notice {
+    background: #FCC853;
+    color: #0C1824;
+    padding: 4px 10px;
+    text-align: center;
+    width: 100%;
+    font-size: 80%
+  }
+
+  .preview-notice a {
+    color: inherit;
+    font-weight: bold
+  }
+
+  .text-centered {
+    text-align: center
+  }
+
+  .site-container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 15px
+  }
+
+  .mobile-nav-menu, .mobile-nav {
+    display: none
+  }
+
+  .site-main {
+    padding: 0;
+    line-height: 1.45em;
+    font-size: 20px
+  }
+
+  .site-content {
+    min-height: 400px
+  }
+
+  .site-intro {
+    font-size: 40px;
+    line-height: 1.33333em;
+    margin-bottom: 50px
+  }
+
+  .site-first-episode {
+    text-align: center;
+    margin-bottom: 50px
+  }
+
+  .site-credits {
+    font-size: 16px;
+    margin: 50px 0;
+    text-align: center
+  }
+
+  .site-button {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid #222;
+    font-size: 18px;
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    cursor: pointer;
+    outline: 0
+  }
+
+  .site-button:hover {
+    background-color: #222;
+    color: #fff
+  }
+
+  .site-mailinglist {
+    padding: 50px 0px 0px 0px;
+    text-align: center
+  }
+
+  .site-mailinglist h3 {
+    margin: 0 0 10px 0
+  }
+
+  .site-mailinglist .email-input {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    background-color: transparent;
+    -webkit-appearance: none;
+    border: 2px solid #222;
+    color: #222;
+    font-size: 18px;
+    display: block;
+    margin: 0 auto 10px auto;
+    text-align: center;
+    width: 360px;
+    padding: 8px 12px;
+    outline: 0
+  }
+
+  .site-newsletter-success {
+    display: none
+  }
+
+  .site-newsletter-success .icon-check:before {
+    color: #222
+  }
+
+  #site-newsletter-form {
+    height: 100px
+  }
+
+  #site-newsletter-form.subscribed {
+    display: none
+  }
+
+  #site-newsletter-form.subscribed + .site-newsletter-success {
+    height: 100px;
+    line-height: 100px;
+    display: block
+  }
+
+  #site-footer {
+    background: #222;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 105px
+  }
+
+  .powered-by {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 15px;
+    font-size: 7px;
+    line-height: 20px;
+    text-transform: uppercase;
+    opacity: 0.55;
+    transition: opacity 0.2s
+  }
+
+  .powered-by strong {
+    font-weight: normal;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    top: 1px
+  }
+
+  .powered-by a {
+    color: white;
+    display: inline-block;
+    text-decoration: none
+  }
+
+  .powered-by img {
+    display: inline-block;
+    vertical-align: middle;
+    height: 18px;
+    margin-left: 5px
+  }
+
+  .powered-by:hover {
+    opacity: 1.0
+  }
+
+  .player {
+    padding: 15px;
+    display: flex
+  }
+
+  .playback-controls {
+    flex: 0 0 80px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px
+  }
+
+  .playback-progress {
+    padding: 0 14px;
+    flex: 1 1 auto;
+    font-size: 14px;
+    min-width: 0
+  }
+
+  .currently-playing {
+    height: 18px
+  }
+
+  #title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+  }
+
+  .playback-duration {
+    font-size: 80%;
+    opacity: 0.7
+  }
+
+  #timer {
+    float: left
+  }
+
+  #duration {
+    float: right
+  }
+
+  .volume-speed-controls {
+    flex: 0 0 60px;
+    margin-top: 15px
+  }
+
+  #volumeBtn {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+    margin: 0 0 0 5px
+  }
+
+  #playbackSpeed {
+    border: 1px solid #fff;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 60%;
+    line-height: 1.5em;
+    width: 32px;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 0.6;
+    transition: opacity 0.15s
+  }
+
+  #playbackSpeed:hover {
+    opacity: 1.0
+  }
+
+  #progressBar {
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 4px 0;
+    overflow: hidden
+  }
+
+  #progress {
+    background: #fff;
+    height: 8px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    border-radius: 4px
+  }
+
+  .playPause {
+    flex: 1
+  }
+
+  #playBtn, #pauseBtn {
+    cursor: pointer;
+    display: block;
+    width: 36px;
+    height: 36px
+  }
+
+  #playBtn.icon-player-play:before {
+    font-size: 36px
+  }
+
+  #pauseBtn {
+    display: none
+  }
+
+  #pauseBtn.icon-player-pause:before {
+    font-size: 36px
+  }
+
+  #rewindBtn, #fastForwardBtn {
+    flex: 0 0 18px;
+    opacity: 0.6;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+    font-size: 18px;
+    transition: opacity 0.15s
+  }
+
+  #rewindBtn:hover, #fastForwardBtn:hover {
+    opacity: 1.0
+  }
+
+  #rewindBtn {
+    margin-right: 5px
+  }
+
+  #fastForwardBtn {
+    margin-left: 5px
+  }
+
+  @media all and (max-width: 480px) {
+    #rewindBtn, #fastForwardBtn, #playbackSpeed {
+      display: none
+    }
+
+    .site-container.player {
+      padding: 5px 25px 0 22px
+    }
+
+    #playBtn, #pauseBtn {
+      cursor: pointer;
+      display: block;
+      width: 24px;
+      height: 24px
+    }
+
+    #playBtn.icon-player-play:before {
+      font-size: 24px
+    }
+
+    #pauseBtn {
+      display: none
+    }
+
+    #pauseBtn.icon-player-pause:before {
+      font-size: 24px
+    }
+
+    .playback-controls {
+      flex: 0 0 24px;
+      display: flex;
+      align-items: center;
+      margin-top: 0px
+    }
+
+    .playback-progress {
+      padding: 0 4px;
+      flex: 1 1 auto;
+      font-size: 14px;
+      min-width: 0
+    }
+
+    .currently-playing {
+      height: 14px;
+      font-size: 12px
+    }
+
+    #title {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .volume-speed-controls {
+      flex: 0 0 20px;
+      margin-top: 12px
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0
+    }
+    20% {
+      opacity: 0
+    }
+    40% {
+      opacity: 0.3
+    }
+    60% {
+      opacity: 0.5
+    }
+    80% {
+      opacity: 0.9
+    }
+    100% {
+      opacity: 1
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0
+    }
+    20% {
+      opacity: 0
+    }
+    40% {
+      opacity: 0.3
+    }
+    60% {
+      opacity: 0.5
+    }
+    80% {
+      opacity: 0.9
+    }
+    100% {
+      opacity: 1
+    }
+  }
+
+  @media all and (max-width: 480px) {
+    body {
+      padding-bottom: 100px;
+      position: relative
+    }
+
+    body.noscroll {
+      overflow: hidden
+    }
+
+    .mobile-nav-menu {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 25px;
+      cursor: pointer;
+      font-size: 25px;
+      height: 25px;
+      width: 30px;
+      text-align: center
+    }
+
+    .mobile-nav {
+      z-index: 2;
+      position: fixed;
+      display: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background: #222;
+      color: #fff
+    }
+
+    .mobile-nav.open {
+      display: block
+    }
+
+    .mobile-nav .mobile-nav-close {
+      cursor: pointer;
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      font-size: 25px;
+      height: 25px;
+      width: 30px;
+      text-align: center;
+      line-height: 35px
+    }
+
+    .mobile-nav .mobile-nav-content {
+      padding: 50px 0;
+      text-align: center
+    }
+
+    .mobile-nav .mobile-nav-content a {
+      padding: 20px 0;
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 30px 0;
+      font-size: 32px
+    }
+
+    .site-container {
+      padding: 0 25px
+    }
+
+    .site-header {
+      margin-top: 30px;
+      margin-bottom: 10px
+    }
+
+    .site-header h1 {
+      font-size: 22px;
+      margin: 0 0 20px 0;
+      order: 0;
+      flex: none;
+      width: 100%;
+      text-align: left
+    }
+
+    .site-header h1 a {
+      display: block;
+      text-decoration: none
+    }
+
+    .site-header h1 a img {
+      display: block;
+      width: auto;
+      max-height: 100px;
+      max-width: 110px;
+      margin: 0 auto;
+      border: 0
+    }
+
+    .site-header nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 0px
+    }
+
+    .site-header nav > .group {
+      display: none
+    }
+
+    .site-intro {
+      font-size: 25px;
+      line-height: 1.33333em;
+      margin-bottom: 20px
+    }
+
+    .site-first-episode {
+      margin-bottom: 28px
+    }
+
+    .site-button {
+      font-size: 12px;
+      padding: 4px 8px
+    }
+
+    .site-content {
+      min-height: auto
+    }
+
+    .site-episode time {
+      font-size: 13px;
+      margin-bottom: 12px
+    }
+
+    .site-episode time span {
+      font-size: 14px
+    }
+
+    .site-episode h2 {
+      margin: 0.15em 0;
+      line-height: 1.1em;
+      font-size: 30px
+    }
+
+    .site-episode .site-episode-summary {
+      margin: .5em 0 .6666em 0
+    }
+
+    .site-episode-show-notes {
+      margin-top: 20px
+    }
+
+    .site-episode-show-notes ul, .site-episode-show-notes ol {
+      padding-left: 20px
+    }
+
+    .site-episode .site-button {
+      margin-right: 5px
+    }
+
+    .site-episode {
+      margin-bottom: 30px
+    }
+
+    .site-featured-episodes {
+      padding: 0 0 20px 0
+    }
+
+    .site-featured-episodes .site-container {
+      display: block
+    }
+
+    .site-featured-episodes .site-episode {
+      margin-top: 0;
+      margin-bottom: 0;
+      flex: none;
+      padding: 30px 25px 15px 25px
+    }
+
+    .site-credits {
+      margin: 20px 0
+    }
+
+    .site-social {
+      padding-top: 25px;
+      margin: 20px 0
+    }
+
+    .site-social a {
+      margin: 0px 8px
+    }
+
+    .site-mailinglist .email-input {
+      width: 85%
+    }
+
+    .site-subscribe a {
+      transform: scale(0.8);
+      margin: 0 4px 4px 4px
+    }
+
+    .site-subscribe a:hover {
+      transform: scale(0.8)
+    }
+
+    #site-footer {
+      padding-top: 5px;
+      height: 75px
+    }
+
+    .powered-by {
+      text-align: center;
+      display: block;
+      position: relative;
+      padding: 0;
+      margin: 0 auto;
+      opacity: 0.3;
+      top: -5px;
+      transform: scale(0.9)
+    }
+
+    #site-archive-form {
+      padding-top: 10px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      text-transform: uppercase
+    }
+
+    #site-archive-form .filter-label, #site-archive-form .select-wrapper {
+      vertical-align: middle
+    }
+
+    #site-archive-form .select-wrapper {
+      margin-left: 2px;
+      width: 120px;
+      padding-right: 24px
+    }
+
+    #site-archive-form .select-wrapper.select-wrapper-year {
+      width: 80px
+    }
+
+    #site-archive-form .select-wrapper:after {
+      width: 24px
+    }
+
+    #site-archive-form .select-wrapper select {
+      padding: 0px 6px;
+      font-size: 12px
+    }
+  }
+</style>
+
+<nav class="site-subscribe">
+  <a class="rss" target="_blank" href="https://feeds.transistor.fm/wheres-the-lemonade">
+    Subscribe
+    <span>RSS Feed</span>
+  </a>
+  <a class="apple_podcasts" target="_blank" title="Listen to Where's the Lemonade? in Apple Podcasts"
+     href="https://itunes.apple.com/us/podcast/wheres-the-lemonade/id1453954584 ">
+    Listen In
+    <span>apple podcasts</span>
+  </a> <a class="google_play" target="_blank" title="Listen to Where's the Lemonade? in Google Play"
+          href="https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/Iscipa6z673bu4l4wdnbfrmb7q4?t%3DWhere's_the_Lemonade?%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16">
+  Listen In
+  <span>google play</span>
+</a> <a class="stitcher" target="_blank" title="Listen to Where's the Lemonade? in Stitcher"
+        href="https://www.stitcher.com/podcast/wheres-the-lemonade">
+  Listen In
+  <span>stitcher</span>
+</a> <a class="spotify" target="_blank" title="Listen to Where's the Lemonade? in Spotify"
+        href="https://open.spotify.com/show/7oMa1XGZ6FUQot2pxsreOn">
+  Listen In
+  <span>spotify</span>
+</a> <a class="pocket_casts" target="_blank" title="Listen to Where's the Lemonade? in Pocket Casts"
+        href="https://pca.st/elx3">
+  Listen In
+  <span>pocket casts</span>
+</a> <a class="castro" target="_blank" title="Listen to Where's the Lemonade? in Castro"
+        href="https://castro.fm/itunes/143954584">
+  Listen In
+  <span>castro</span>
+</a> <a class="radioPublic" target="_blank" title="Listen to Where's the Lemonade? in Radio Public"
+        href="https://radiopublic.com/wheres-the-lemonade-WkPBBM">
+  Listen In
+  <span>radioPublic</span>
+</a> <a class="breaker" target="_blank" title="Listen to Where's the Lemonade? in Breaker"
+        href="https://www.breaker.audio/wheres-the-lemonade">
+  Listen In
+  <span>breaker</span>
+</a> <a class="tuneIn" target="_blank" title="Listen to Where's the Lemonade? in Tune In" href="http://tun.in/pjm0H">
+  Listen In
+  <span>tuneIn</span>
+</a></nav>

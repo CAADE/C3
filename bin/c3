@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 const program =  require('commander');
+require('./lib/subcommander');
 
 program
   .version("0.0.1")
-  .command('app [cmd]', 'Manage applications')
+  .command('app <cmd> [options]', 'Manage applications')
   .command('cloud [cmd]', 'Manage Clouds')
   .command('dc [cmd]', 'Manage Data Centers')
   .command('dev [cmd]', 'Developer Command Line Interface')

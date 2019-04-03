@@ -30,11 +30,23 @@ module.exports = {
         await Request.update({id: request.id}, {state: 'Completed'});
         let instances = await ServiceInstance.update({id: request.instance.id}, {state: 'Deploying'}).fetch();
         sails.sockets.broadcast('c3', 'sinstance', instances);
+
         // TODO: Do some work here to deploy the software.
+        sails.sockets.broadcast('c3', 'provision', {instance: instances[0]});
 
-
-        instance = await ServiceInstance.update({id: request.instance.id}, {state: 'Running'}).fetch();
+        /* let consumption = instances[0].consumption;
+        if (!consumption) {
+          consumption = {};
+        }
+        for (let i in request.requirements) {
+          consumption[i] = request.requirements[i];
+        }
+        instances = await ServiceInstance.update({id: request.instance.id}, {
+          consumption: consumption,
+          state: 'Running'
+        }).fetch();
         sails.sockets.broadcast('c3', 'sinstance', instances);
+        */
       }
     }
 

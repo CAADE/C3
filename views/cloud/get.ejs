@@ -48,7 +48,7 @@
 <% } %>
 
 
-<%- partial('../partials/serviceChart.ejs', { title: "Services", services: cloud.services}) %>
+<%- partial('../service/_chart.ejs', { title: "Services", services: cloud.services}) %>
 
 <%- partial('../partials/gadgetList.ejs', { title: 'Environments', query: '/env/list?mode=json&cloud=' + cloud.id }) %>
 

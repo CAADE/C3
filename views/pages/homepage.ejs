@@ -40,9 +40,9 @@
   </div>
 </div>
 
-<%- partial("../partials/hardwareGauge", {type:'compute', title:'Compute', cloud:''}); %>
-<%- partial("../partials/hardwareGauge", {type:'storage', title:'Storage', cloud:''}); %>
-<%- partial("../partials/hardwareGauge", {type:'network', title:'Network', cloud:''}); %>
+<%- partial("../hardware/_gauge", {type:'compute', title:'Compute', cloud:''}); %>
+<%- partial("../hardware/_gauge", {type:'storage', title:'Storage', cloud:''}); %>
+<%- partial("../hardware/_gauge", {type:'network', title:'Network', cloud:''}); %>
 
 <script type="text/javascript">
   function initialize() {

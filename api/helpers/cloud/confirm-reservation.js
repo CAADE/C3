@@ -36,25 +36,18 @@ module.exports = {
       if (request.requirements[0].name) {
         iname = request.requirements[0].name;
       }
-      resource = await Resource.create({
+      resource = await sails.helpers.resource.create.with({
         name: iname,
-        capacity: reservation.quantity,
-        available: reservation.quantity,
-        type: hardware.type,
-        disabled: false,
-        cloud: hardware.cloud.id,
-        hardware: hardware.id,
-        env: reservation.env.id
-      }).fetch();
-      await Hardware.update({id: hardware.id}, {
-        available: hardware.available - reservation.quantity,
-        reserved: hardware.reserved - reservation.quantity
+        quantity: reservation.quantity,
+        hardware: hardware,
+        env: reservation.env
       });
     }
     // Map Resources to "Service Instance"
     // Connect  the ServiceInstances and Resources together.
     await Resource.addToCollection(resource.id, 'instances', reservation.instance.id);
     await ServiceInstance.addToCollection(reservation.instance.id, 'resources', resource.id);
+    resource = await Resource.update({id: resource.id}, {available: resource.available - reservation.quantity}).fetch();
     sails.sockets.broadcast('c3', 'resource', resource);
 
     return exits.success(resource);
