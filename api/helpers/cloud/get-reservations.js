@@ -112,16 +112,16 @@ async function getReservationFromResources(env, cloud, request, requirement) {
   while (hi < resources.length) {
     if (requirement.quantity <= resources[hi].available) {
       let reservation = await
-        Reservation.create({
-          requirement: requirement.id,
-          instance: request.instance.id,
-          request: request.id,
-          resource: resources[hi].id,
-          quantity: requirement.quantity,
-          env: env.id,
-          state: 'Created',
-          cost: 0.01
-        }).fetch();
+      Reservation.create({
+        requirement: requirement.id,
+        instance: request.instance.id,
+        request: request.id,
+        resource: resources[hi].id,
+        quantity: requirement.quantity,
+        env: env.id,
+        state: 'Created',
+        cost: 0.01
+      }).fetch();
       sails.sockets.broadcast('c3', 'reservation', [reservation]);
       await Resource.update({id: resources[hi].id}, {reserved: requirement.quantity});
       retval = reservation;
@@ -157,16 +157,16 @@ async function getReservationFromHardware(env, cloud, request, requirement) {
   while (hi < hardware.length) {
     if (requirement.quantity <= hardware[hi].available - hardware[hi].reserved) {
       let reservation = await
-        Reservation.create({
-          requirement: requirement.id,
-          instance: request.instance.id,
-          request: request.id,
-          hardware: hardware[hi].id,
-          quantity: requirement.quantity,
-          env: env.id,
-          state: 'Created',
-          cost: 0.01
-        }).fetch();
+      Reservation.create({
+        requirement: requirement.id,
+        instance: request.instance.id,
+        request: request.id,
+        hardware: hardware[hi].id,
+        quantity: requirement.quantity,
+        env: env.id,
+        state: 'Created',
+        cost: 0.01
+      }).fetch();
       sails.sockets.broadcast('c3', 'reservation', [reservation]);
       let reserved = hardware[hi].reserved + requirement.quantity;
       await Hardware.update({id: hardware[hi].id}, {reserved: reserved});
