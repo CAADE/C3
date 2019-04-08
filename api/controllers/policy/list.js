@@ -37,7 +37,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     // Connect to the socket room.
     if (this.req.isSocket) {

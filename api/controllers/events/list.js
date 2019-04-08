@@ -25,7 +25,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let events = await Events.find().populateAll();

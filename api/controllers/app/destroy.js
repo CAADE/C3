@@ -32,7 +32,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let app = await Application.find({name:inputs.name});

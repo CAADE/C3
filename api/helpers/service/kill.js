@@ -60,7 +60,7 @@ module.exports = {
     parent = parent[0];
     // Kill all of the now replicas.
     // First kill the instances.
-    let childMessage = message + "\n-> Stopped by " + parent.name;
+    let childMessage = message + '\n-> Stopped by ' + parent.name;
     for (let i in parent.instances) {
       let instance = parent.instances[i];
       await sails.helpers.instance.kill.with({instance: instance, signal: signal, reason: childMessage});

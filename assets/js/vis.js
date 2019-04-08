@@ -285,7 +285,7 @@ exports.assignAllKeys = function (obj, value) {
  * @param {object} a  target object
  * @param {object} b  source object
  * @param {string} prop  name of property to copy to a
- * @param {boolean} allowDeletion  if true, delete property in a if explicitly set to null in b 
+ * @param {boolean} allowDeletion  if true, delete property in a if explicitly set to null in b
  * @private
  */
 function copyOrDelete(a, b, prop, allowDeletion) {
@@ -309,7 +309,7 @@ function copyOrDelete(a, b, prop, allowDeletion) {
  *
  * @param {object} a
  * @param {object} b
- * @param {boolean} [allowDeletion=false]  if true, delete properties in a that are explicitly set to null in b 
+ * @param {boolean} [allowDeletion=false]  if true, delete properties in a that are explicitly set to null in b
  */
 exports.fillIfDefined = function (a, b) {
   var allowDeletion = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -389,7 +389,7 @@ exports.selectiveExtend = function (props, a, b) {
  * @param {Array.<string>} props names of first-level properties to copy over
  * @param {object} a  target object
  * @param {object} b  source object
- * @param {boolean} [allowDeletion=false]  if true, delete property in a if explicitly set to null in b 
+ * @param {boolean} [allowDeletion=false]  if true, delete property in a if explicitly set to null in b
  * @returns {Object} a
  */
 exports.selectiveDeepExtend = function (props, a, b) {
@@ -423,9 +423,9 @@ exports.selectiveDeepExtend = function (props, a, b) {
 };
 
 /**
- * Extend object `a` with properties of object `b`, ignoring properties which are explicitly 
+ * Extend object `a` with properties of object `b`, ignoring properties which are explicitly
  * specified to be excluded.
- * 
+ *
  * The properties of `b` are considered for copying.
  * Properties which are themselves objects are are also extended.
  * Only properties with defined values are copied
@@ -433,20 +433,20 @@ exports.selectiveDeepExtend = function (props, a, b) {
  * @param {Array.<string>} propsToExclude  names of properties which should *not* be copied
  * @param {Object}                      a  object to extend
  * @param {Object}                      b  object to take properties from for extension
- * @param {boolean} [allowDeletion=false]  if true, delete properties in a that are explicitly set to null in b 
+ * @param {boolean} [allowDeletion=false]  if true, delete properties in a that are explicitly set to null in b
  * @return {Object} a
  */
 exports.selectiveNotDeepExtend = function (propsToExclude, a, b) {
   var allowDeletion = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
   // TODO: add support for Arrays to deepExtend
-  // NOTE: array properties have an else-below; apparently, there is a problem here. 
+  // NOTE: array properties have an else-below; apparently, there is a problem here.
   if (Array.isArray(b)) {
     throw new TypeError('Arrays are not supported by deepExtend');
   }
 
   for (var prop in b) {
-    if (!b.hasOwnProperty(prop)) continue; // Handle local properties only 
+    if (!b.hasOwnProperty(prop)) continue; // Handle local properties only
     if (propsToExclude.indexOf(prop) !== -1) continue; // In exclusion list, skip
 
     if (b[prop] && b[prop].constructor === Object) {
@@ -517,10 +517,10 @@ exports.deepExtend = function (a, b) {
  *                   elements.
  */
 exports.equalArray = function (a, b) {
-  if (a.length != b.length) return false;
+  if (a.length !== b.length) return false;
 
   for (var i = 0, len = a.length; i < len; i++) {
-    if (a[i] != b[i]) return false;
+    if (a[i] !== b[i]) return false;
   }
 
   return true;
@@ -937,7 +937,7 @@ exports.getTarget = function (event) {
     target = event.srcElement;
   }
 
-  if (target.nodeType != undefined && target.nodeType == 3) {
+  if (target.nodeType !== undefined && target.nodeType == 3) {
     // defeat Safari bug
     target = target.parentNode;
   }
@@ -977,8 +977,8 @@ exports.option.asBoolean = function (value, defaultValue) {
     value = value();
   }
 
-  if (value != null) {
-    return value != false;
+  if (value !== null) {
+    return value !== false;
   }
 
   return defaultValue || null;
@@ -995,7 +995,7 @@ exports.option.asNumber = function (value, defaultValue) {
     value = value();
   }
 
-  if (value != null) {
+  if (value !== null) {
     return Number(value) || defaultValue || null;
   }
 
@@ -1013,7 +1013,7 @@ exports.option.asString = function (value, defaultValue) {
     value = value();
   }
 
-  if (value != null) {
+  if (value !== null) {
     return String(value);
   }
 
@@ -1082,9 +1082,9 @@ exports.hexToRGB = function (hex) {
  */
 exports.overrideOpacity = function (color, opacity) {
   var rgb;
-  if (color.indexOf("rgba") != -1) {
+  if (color.indexOf("rgba") !== -1) {
     return color;
-  } else if (color.indexOf("rgb") != -1) {
+  } else if (color.indexOf("rgb") !== -1) {
     rgb = color.substr(color.indexOf("(") + 1).replace(")", "").split(",");
     return "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + opacity + ")";
   } else {
@@ -1221,7 +1221,7 @@ var cssUtil = {
     var styles = {};
 
     cssText.split(';').forEach(function (style) {
-      if (style.trim() != '') {
+      if (style.trim() !== '') {
         var parts = style.split(':');
         var key = parts[0].trim();
         var value = parts[1].trim();
@@ -1589,7 +1589,7 @@ exports.binarySearchValue = function (orderedItems, target, field, sidePreferenc
   var high = orderedItems.length - 1;
   var prevValue, value, nextValue, middle;
 
-  comparator = comparator != undefined ? comparator : function (a, b) {
+  comparator = comparator !== undefined ? comparator : function (a, b) {
     return a == b ? 0 : a < b ? -1 : 1;
   };
 
@@ -1734,7 +1734,7 @@ exports.topMost = function (pile, accessors) {
             continue;
           }
         }
-        if (typeof candidate != 'undefined') {
+        if (typeof candidate !== 'undefined') {
           break;
         }
       }
@@ -2088,7 +2088,7 @@ DataSet.prototype.off = function (event, callback) {
   var subscribers = this._subscribers[event];
   if (subscribers) {
     this._subscribers[event] = subscribers.filter(function (listener) {
-      return listener.callback != callback;
+      return listener.callback !== callback;
     });
   }
 };
@@ -2288,13 +2288,13 @@ DataSet.prototype.get = function (args) {
       len;
 
   // convert items
-  if (id != undefined) {
+  if (id !== undefined) {
     // return a single item
     item = me._getItem(id, type);
     if (item && filter && !filter(item)) {
       item = null;
     }
-  } else if (ids != undefined) {
+  } else if (ids !== undefined) {
     // return a subset of items
     for (i = 0, len = ids.length; i < len; i++) {
       item = me._getItem(ids[i], type);
@@ -2322,7 +2322,7 @@ DataSet.prototype.get = function (args) {
   // filter fields of the items
   if (options && options.fields) {
     var fields = options.fields;
-    if (id != undefined) {
+    if (id !== undefined) {
       item = this._filterFields(item, fields);
     } else {
       for (i = 0, len = items.length; i < len; i++) {
@@ -2341,7 +2341,7 @@ DataSet.prototype.get = function (args) {
     }
     return result;
   } else {
-    if (id != undefined) {
+    if (id !== undefined) {
       // a single item
       return item;
     } else {
@@ -2539,7 +2539,7 @@ DataSet.prototype._filterFields = function (item, fields) {
   if (Array.isArray(fields)) {
     for (i = 0; i < len; i++) {
       field = itemFields[i];
-      if (fields.indexOf(field) != -1) {
+      if (fields.indexOf(field) !== -1) {
         filteredItem[field] = item[field];
       }
     }
@@ -2604,7 +2604,7 @@ DataSet.prototype.remove = function (id, senderId) {
     item = this._remove(ids[i]);
     if (item) {
       itemId = item[this._fieldId];
-      if (itemId != undefined) {
+      if (itemId !== undefined) {
         removedIds.push(itemId);
         removedItems.push(item);
       }
@@ -2683,7 +2683,7 @@ DataSet.prototype.max = function (field) {
     var id = itemIds[i];
     var item = data[id];
     var itemField = item[field];
-    if (itemField != null && (!max || itemField > maxField)) {
+    if (itemField !== null && (!max || itemField > maxField)) {
       max = item;
       maxField = itemField;
     }
@@ -2709,7 +2709,7 @@ DataSet.prototype.min = function (field) {
     var id = itemIds[i];
     var item = data[id];
     var itemField = item[field];
-    if (itemField != null && (!min || itemField < minField)) {
+    if (itemField !== null && (!min || itemField < minField)) {
       min = item;
       minField = itemField;
     }
@@ -2768,7 +2768,7 @@ DataSet.prototype.distinct = function (field) {
 DataSet.prototype._addItem = function (item) {
   var id = item[this._fieldId];
 
-  if (id != undefined) {
+  if (id !== undefined) {
     // check whether this id is already taken
     if (this._data[id]) {
       // item already exists
@@ -3071,7 +3071,7 @@ DataView.prototype.get = function (args) {
 
   // build up the call to the linked data set
   var getArguments = [];
-  if (ids != undefined) {
+  if (ids !== undefined) {
     getArguments.push(ids);
   }
   getArguments.push(viewOptions);
@@ -3492,7 +3492,7 @@ exports.drawPoint = function (x, y, groupTemplate, JSONcontainer, svgContainer, 
  * @param {string} style
  */
 exports.drawBar = function (x, y, width, height, className, JSONcontainer, svgContainer, style) {
-  if (height != 0) {
+  if (height !== 0) {
     if (height < 0) {
       height *= -1;
       y -= height;
@@ -3633,7 +3633,7 @@ var Validator = function () {
         // we do not look deeper into the object.
         is_object = Validator.getType(options[option]) === 'object';
       } else {
-        // Since all options in the reference are objects, we can check whether 
+        // Since all options in the reference are objects, we can check whether
         // they are supposed to be the object to look for the __type__ field.
         // if this is an object, we check if the correct type has been supplied to account for shorthand options.
       }
@@ -4008,7 +4008,7 @@ var $export = function (type, name, source) {
     // export native or passed
     out = own ? target[key] : source[key];
     // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+    exports[key] = IS_GLOBAL && typeof target[key] !== 'function' ? source[key]
     // bind timers to global for call from export context
     : IS_BIND && own ? ctx(out, global)
     // wrap global constructors for prevent change them in library
@@ -4051,8 +4051,8 @@ module.exports = $export;
 /***/ (function(module, exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
+    var global = module.exports = typeof window !== 'undefined' && window.Math == Math
+      ? window : typeof self !== 'undefined' && self.Math == Math ? self
   // eslint-disable-next-line no-new-func
   : Function('return this')();
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
@@ -4092,7 +4092,11 @@ exports.f = __webpack_require__(21) ? Object.defineProperty : function definePro
 
 // Thank's IE8 for his funny defineProperty
 module.exports = !__webpack_require__(28)(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+  return Object.defineProperty({}, 'a', {
+    get: function () {
+      return 7;
+    }
+  }).a !== 7;
 });
 
 
@@ -5047,7 +5051,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /**
  * used in Core to convert the options into a volatile variable
- * 
+ *
  * @param {function} moment
  * @param {Object} body
  * @param {Array | Object} hiddenDates
@@ -5118,7 +5122,7 @@ exports.updateHiddenDates = function (moment, body, hiddenDates) {
           switch (hiddenDates[i].repeat) {
             case "daily":
               // case of time
-              if (startDate.day() != endDate.day()) {
+              if (startDate.day() !== endDate.day()) {
                 offset = 1;
               }
               startDate.dayOfYear(start.dayOfYear());
@@ -5152,7 +5156,7 @@ exports.updateHiddenDates = function (moment, body, hiddenDates) {
               runUntil.add(1, 'weeks');
               break;
             case "monthly":
-              if (startDate.month() != endDate.month()) {
+              if (startDate.month() !== endDate.month()) {
                 offset = 1;
               }
               startDate.month(start.month());
@@ -5167,7 +5171,7 @@ exports.updateHiddenDates = function (moment, body, hiddenDates) {
               runUntil.add(1, 'months');
               break;
             case "yearly":
-              if (startDate.year() != endDate.year()) {
+              if (startDate.year() !== endDate.year()) {
                 offset = 1;
               }
               startDate.year(start.year());
@@ -5240,7 +5244,7 @@ exports.removeDuplicates = function (body) {
   var safeDates = [];
   for (var i = 0; i < hiddenDates.length; i++) {
     for (var j = 0; j < hiddenDates.length; j++) {
-      if (i != j && hiddenDates[j].remove != true && hiddenDates[i].remove != true) {
+      if (i !== j && hiddenDates[j].remove !== true && hiddenDates[i].remove !== true) {
         // j inside i
         if (hiddenDates[j].start >= hiddenDates[i].start && hiddenDates[j].end <= hiddenDates[i].end) {
           hiddenDates[j].remove = true;
@@ -5295,15 +5299,15 @@ exports.stepOverHiddenDates = function (moment, timeStep, previousTime) {
     }
   }
 
-  if (stepInHidden == true && currentValue < timeStep._end.valueOf() && currentValue != previousTime) {
+  if (stepInHidden == true && currentValue < timeStep._end.valueOf() && currentValue !== previousTime) {
     var prevValue = moment(previousTime);
     var newValue = moment(endDate);
     //check if the next step should be major
-    if (prevValue.year() != newValue.year()) {
+    if (prevValue.year() !== newValue.year()) {
       timeStep.switchedYear = true;
-    } else if (prevValue.month() != newValue.month()) {
+    } else if (prevValue.month() !== newValue.month()) {
       timeStep.switchedMonth = true;
-    } else if (prevValue.dayOfYear() != newValue.dayOfYear()) {
+    } else if (prevValue.dayOfYear() !== newValue.dayOfYear()) {
       timeStep.switchedDay = true;
     }
 
@@ -5700,8 +5704,8 @@ Item.prototype.unselect = function () {
  * @param {Object} data
  */
 Item.prototype.setData = function (data) {
-  var groupChanged = data.group != undefined && this.data.group != data.group;
-  if (groupChanged && this.parent != null) {
+  var groupChanged = data.group !== undefined && this.data.group !== data.group;
+  if (groupChanged && this.parent !== null) {
     this.parent.itemSet._moveToGroup(this, data.group);
   }
 
@@ -5709,8 +5713,8 @@ Item.prototype.setData = function (data) {
     this.parent.stackDirty = true;
   }
 
-  var subGroupChanged = data.subgroup != undefined && this.data.subgroup != data.subgroup;
-  if (subGroupChanged && this.parent != null) {
+  var subGroupChanged = data.subgroup !== undefined && this.data.subgroup !== data.subgroup;
+  if (subGroupChanged && this.parent !== null) {
     this.parent.changeSubgroup(this, this.data.subgroup, data.subgroup);
   }
 
@@ -5837,7 +5841,7 @@ Item.prototype._repaintDragCenter = function () {
  * @protected
  */
 Item.prototype._repaintDeleteButton = function (anchor) {
-  var editable = (this.options.editable.overrideItems || this.editable == null) && this.options.editable.remove || !this.options.editable.overrideItems && this.editable != null && this.editable.remove;
+  var editable = (this.options.editable.overrideItems || this.editable == null) && this.options.editable.remove || !this.options.editable.overrideItems && this.editable !== null && this.editable.remove;
 
   if (this.selected && editable && !this.dom.deleteButton) {
     // create and show button
@@ -5910,7 +5914,7 @@ Item.prototype._repaintOnItemUpdateTimeTooltip = function (anchor) {
     var tooltipOffset = 50; // TODO: should be tooltip height (depends on template)
     var scrollTop = this.parent.itemSet.body.domProps.scrollTop;
 
-    // TODO: this.top for orientation:true is actually the items distance from the bottom... 
+    // TODO: this.top for orientation:true is actually the items distance from the bottom...
     // (should be this.bottom)
     var itemDistanceFromTop;
     if (this.options.orientation.item == 'top') {
@@ -5978,7 +5982,7 @@ Item.prototype._updateContents = function (element) {
         if (itemVisibleFrameContent instanceof Element) {
           itemVisibleFrameContentElement.innerHTML = '';
           itemVisibleFrameContentElement.appendChild(itemVisibleFrameContent);
-        } else if (itemVisibleFrameContent != undefined) {
+        } else if (itemVisibleFrameContent !== undefined) {
           itemVisibleFrameContentElement.innerHTML = itemVisibleFrameContent;
         } else {
           if (!(this.data.type == 'background' && this.data.content === undefined)) {
@@ -6007,7 +6011,7 @@ Item.prototype._updateContents = function (element) {
       if (content instanceof Element) {
         element.innerHTML = '';
         element.appendChild(content);
-      } else if (content != undefined) {
+      } else if (content !== undefined) {
         element.innerHTML = content;
       } else {
         if (!(this.data.type == 'background' && this.data.content === undefined)) {
@@ -6040,7 +6044,7 @@ Item.prototype._updateDataAttributes = function (element) {
       var name = attributes[i];
       var value = this.data[name];
 
-      if (value != null) {
+      if (value !== null) {
         element.setAttribute('data-' + name, value);
       } else {
         element.removeAttribute('data-' + name);
@@ -7202,7 +7206,7 @@ CustomTime.prototype.destroy = function () {
  */
 CustomTime.prototype.redraw = function () {
   var parent = this.body.dom.backgroundVertical;
-  if (this.bar.parentNode != parent) {
+  if (this.bar.parentNode !== parent) {
     // attach to the dom
     if (this.bar.parentNode) {
       this.bar.parentNode.removeChild(this.bar);
@@ -7466,7 +7470,7 @@ var Node = function () {
     key: 'detachEdge',
     value: function detachEdge(edge) {
       var index = this.edges.indexOf(edge);
-      if (index != -1) {
+      if (index !== -1) {
         this.edges.splice(index, 1);
       }
     }
@@ -7978,13 +7982,13 @@ var Node = function () {
         throw new Error("updateGroupOptions: group values in options don't match.");
       }
 
-      var hasGroup = typeof group === 'number' || typeof group === 'string' && group != '';
+      var hasGroup = typeof group === 'number' || typeof group === 'string' && group !== '';
       if (!hasGroup) return; // current node has no group, no need to merge
 
       var groupObj = groupList.get(group);
 
       // Skip merging of group font options into parent; these are required to be distinct for labels
-      // TODO: It might not be a good idea either to merge the rest of the options, investigate this. 
+      // TODO: It might not be a good idea either to merge the rest of the options, investigate this.
       util.selectiveNotDeepExtend(['font'], parentOptions, groupObj);
 
       // the color object needs to be completely defined.
@@ -8101,7 +8105,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
  * Definitions for param's in jsdoc.
  * These are more or less global within Network. Putting them here until I can figure out
  * where to really put them
- * 
+ *
  * @typedef {string|number} Id
  * @typedef {Id} NodeId
  * @typedef {Id} EdgeId
@@ -8151,7 +8155,7 @@ var ComponentUtil = function () {
      *
      * @param {string}  subOption  option within object 'chosen' to consider; either 'node', 'edge' or 'label'
      * @param {Object}  pile       array of options objects to consider
-     * 
+     *
      * @return {boolean|function}  value for passed subOption of 'chosen' to use
      */
     value: function choosify(subOption, pile) {
@@ -8201,7 +8205,7 @@ var ComponentUtil = function () {
         };
 
         if (rotationPoint.angle !== 0) {
-          // In order to get the coordinates the same, you need to 
+          // In order to get the coordinates the same, you need to
           // rotate in the reverse direction
           var angle = -rotationPoint.angle;
 
@@ -8464,7 +8468,7 @@ var wksExt = __webpack_require__(61);
 var defineProperty = __webpack_require__(20).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
-  if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
+  if (name.charAt(0) !== '_' && !(name in $Symbol)) defineProperty($Symbol, name, {value: wksExt.f(name)});
 };
 
 
@@ -8613,7 +8617,7 @@ Range.prototype.setOptions = function (options) {
  * @param {string} direction    'horizontal' or 'vertical'
  */
 function validateDirection(direction) {
-  if (direction != 'horizontal' && direction != 'vertical') {
+  if (direction !== 'horizontal' && direction !== 'vertical') {
     throw new TypeError('Unknown direction "' + direction + '". ' + 'Choose "horizontal" or "vertical".');
   }
 }
@@ -8680,7 +8684,7 @@ Range.prototype.stopRolling = function () {
  *                                    function is 'easeInOutQuad'.
  *                              {boolean} [byUser=false]
  *                              {Event}  event  Mouse event
- * @param {Function} callback     a callback function to be executed at the end of this function  
+ * @param {Function} callback     a callback function to be executed at the end of this function
  * @param {Function} frameCallback    a callback function executed each frame of the range animation.
  *                                    The callback will be passed three parameters:
  *                                    {number} easeCoefficient    an easing coefficent
@@ -8696,8 +8700,8 @@ Range.prototype.setRange = function (start, end, options, callback, frameCallbac
     options.byUser = false;
   }
   var me = this;
-  var finalStart = start != undefined ? util.convert(start, 'Date').valueOf() : null;
-  var finalEnd = end != undefined ? util.convert(end, 'Date').valueOf() : null;
+  var finalStart = start !== undefined ? util.convert(start, 'Date').valueOf() : null;
+  var finalEnd = end !== undefined ? util.convert(end, 'Date').valueOf() : null;
   this._cancelAnimation();
   this.millisecondsPerPixelCache = undefined;
 
@@ -8815,10 +8819,10 @@ Range.prototype._cancelAnimation = function () {
  * @private
  */
 Range.prototype._applyRange = function (start, end) {
-  var newStart = start != null ? util.convert(start, 'Date').valueOf() : this.start,
-      newEnd = end != null ? util.convert(end, 'Date').valueOf() : this.end,
-      max = this.options.max != null ? util.convert(this.options.max, 'Date').valueOf() : null,
-      min = this.options.min != null ? util.convert(this.options.min, 'Date').valueOf() : null,
+  var newStart = start !== null ? util.convert(start, 'Date').valueOf() : this.start,
+    newEnd = end !== null ? util.convert(end, 'Date').valueOf() : this.end,
+    max = this.options.max !== null ? util.convert(this.options.max, 'Date').valueOf() : null,
+    min = this.options.min !== null ? util.convert(this.options.min, 'Date').valueOf() : null,
       diff;
 
   // check for valid number
@@ -8842,7 +8846,7 @@ Range.prototype._applyRange = function (start, end) {
       newEnd += diff;
 
       // prevent end > max
-      if (max != null) {
+      if (max !== null) {
         if (newEnd > max) {
           newEnd = max;
         }
@@ -8858,7 +8862,7 @@ Range.prototype._applyRange = function (start, end) {
       newEnd -= diff;
 
       // prevent start < min
-      if (min != null) {
+      if (min !== null) {
         if (newStart < min) {
           newStart = min;
         }
@@ -8909,7 +8913,7 @@ Range.prototype._applyRange = function (start, end) {
     }
   }
 
-  var changed = this.start != newStart || this.end != newEnd;
+  var changed = this.start !== newStart || this.end !== newEnd;
 
   // if the new range does NOT overlap with the old range, emit checkRangedItems to avoid not showing ranged items (ranged meaning has end time, not necessarily of type Range)
   if (!(newStart >= this.start && newStart <= this.end || newEnd >= this.start && newEnd <= this.end) && !(this.start >= newStart && this.start <= newEnd || this.end >= newStart && this.end <= newEnd)) {
@@ -8956,7 +8960,7 @@ Range.conversion = function (start, end, width, totalHidden) {
   if (totalHidden === undefined) {
     totalHidden = 0;
   }
-  if (width != 0 && end - start != 0) {
+  if (width !== 0 && end - start !== 0) {
     return {
       offset: start,
       scale: width / (end - start - totalHidden)
@@ -9041,7 +9045,7 @@ Range.prototype._onDrag = function (event) {
   // snapping times away from hidden zones
   var safeStart = DateUtil.snapAwayFromHidden(this.body.hiddenDates, newStart, this.previousDelta - delta, true);
   var safeEnd = DateUtil.snapAwayFromHidden(this.body.hiddenDates, newEnd, this.previousDelta - delta, true);
-  if (safeStart != newStart || safeEnd != newEnd) {
+  if (safeStart !== newStart || safeEnd !== newEnd) {
     this.deltaDifference += delta;
     this.props.touch.start = safeStart;
     this.props.touch.end = safeEnd;
@@ -9212,7 +9216,7 @@ Range.prototype._onPinch = function (event) {
 
   var safeStart = DateUtil.snapAwayFromHidden(this.body.hiddenDates, newStart, 1 - scale, true);
   var safeEnd = DateUtil.snapAwayFromHidden(this.body.hiddenDates, newEnd, scale - 1, true);
-  if (safeStart != newStart || safeEnd != newEnd) {
+  if (safeStart !== newStart || safeEnd !== newEnd) {
     this.props.touch.start = safeStart;
     this.props.touch.end = safeEnd;
     this.scaleOffset = 1 - event.scale;
@@ -9326,7 +9330,7 @@ Range.prototype.zoom = function (scale, center, delta, event) {
   this.endToFront = -delta > 0 ? false : true; // used to do the right autocorrection with periodic hidden times
   var safeStart = DateUtil.snapAwayFromHidden(this.body.hiddenDates, newStart, delta, true);
   var safeEnd = DateUtil.snapAwayFromHidden(this.body.hiddenDates, newEnd, -delta, true);
-  if (safeStart != newStart || safeEnd != newEnd) {
+  if (safeStart !== newStart || safeEnd !== newEnd) {
     newStart = safeStart;
     newEnd = safeEnd;
   }
@@ -10354,7 +10358,7 @@ Core.prototype._redraw = function () {
   var offset = this._updateScrollTop();
 
   // reposition the scrollable contents
-  if (options.orientation.item != 'top') {
+  if (options.orientation.item !== 'top') {
     offset += Math.max(props.centerContainer.height - props.center.height - props.border.top - props.border.bottom, 0);
   }
   dom.center.style.top = offset + 'px';
@@ -10574,7 +10578,7 @@ Core.prototype._startAutoResize = function () {
   this._stopAutoResize();
 
   this._onResize = function () {
-    if (me.options.autoResize != true) {
+    if (me.options.autoResize !== true) {
       // stop watching when the option autoResize is changed to false
       me._stopAutoResize();
       return;
@@ -10585,7 +10589,7 @@ Core.prototype._startAutoResize = function () {
       // Note: we compare offsetWidth here, not clientWidth. For some reason,
       // IE does not restore the clientWidth from 0 to the actual width after
       // changing the timeline's container display style from none to visible
-      if (me.dom.root.offsetWidth != me.props.lastWidth || me.dom.root.offsetHeight != me.props.lastHeight) {
+      if (me.dom.root.offsetWidth !== me.props.lastWidth || me.dom.root.offsetHeight !== me.props.lastHeight) {
         me.props.lastWidth = me.dom.root.offsetWidth;
         me.props.lastHeight = me.dom.root.offsetHeight;
         me.props.scrollbarWidth = util.getScrollBarWidth();
@@ -10666,7 +10670,7 @@ Core.prototype._onDrag = function (event) {
     this.dom.right.parentNode.scrollTop = -this.props.scrollTop;
   }
 
-  if (newScrollTop != oldScrollTop) {
+  if (newScrollTop !== oldScrollTop) {
     this.emit("verticalDrag");
   }
 };
@@ -10691,10 +10695,10 @@ Core.prototype._setScrollTop = function (scrollTop) {
 Core.prototype._updateScrollTop = function () {
   // recalculate the scrollTopMin
   var scrollTopMin = Math.min(this.props.centerContainer.height - this.props.center.height, 0); // is negative or zero
-  if (scrollTopMin != this.props.scrollTopMin) {
+  if (scrollTopMin !== this.props.scrollTopMin) {
     // in case of bottom orientation, change the scrollTop such that the contents
     // do not move relative to the time axis at the bottom
-    if (this.options.orientation.item != 'top') {
+    if (this.options.orientation.item !== 'top') {
       this.props.scrollTop += scrollTopMin - this.props.scrollTopMin;
     }
     this.props.scrollTopMin = scrollTopMin;
@@ -10792,7 +10796,7 @@ function TimeStep(start, end, minimumStep, hiddenDates, options) {
   this.switchedYear = false;
   if (Array.isArray(hiddenDates)) {
     this.hiddenDates = hiddenDates;
-  } else if (hiddenDates != undefined) {
+  } else if (hiddenDates !== undefined) {
     this.hiddenDates = [hiddenDates];
   } else {
     this.hiddenDates = [];
@@ -10868,8 +10872,8 @@ TimeStep.prototype.setRange = function (start, end, minimumStep) {
     throw "No legal start or end date in method setRange";
   }
 
-  this._start = start != undefined ? this.moment(start.valueOf()) : new Date();
-  this._end = end != undefined ? this.moment(end.valueOf()) : new Date();
+  this._start = start !== undefined ? this.moment(start.valueOf()) : new Date();
+  this._end = end !== undefined ? this.moment(end.valueOf()) : new Date();
 
   if (this.autoScale) {
     this.setMinimumStep(minimumStep);
@@ -10915,7 +10919,7 @@ TimeStep.prototype.roundToMinor = function () {
     //case 'millisecond': // nothing to do for milliseconds
   }
 
-  if (this.step != 1) {
+  if (this.step !== 1) {
     // round down to the first minor value that is a multiple of the current step size
     switch (this.scale) {
       case 'millisecond':
@@ -11007,7 +11011,7 @@ TimeStep.prototype.next = function () {
       break;
   }
 
-  if (this.step != 1) {
+  if (this.step !== 1) {
     // round down to the correct major value
     switch (this.scale) {
       case 'millisecond':
@@ -11631,7 +11635,7 @@ CurrentTime.prototype.setOptions = function (options) {
 CurrentTime.prototype.redraw = function () {
   if (this.options.showCurrentTime) {
     var parent = this.body.dom.backgroundVertical;
-    if (this.bar.parentNode != parent) {
+    if (this.bar.parentNode !== parent) {
       // attach to the dom
       if (this.bar.parentNode) {
         this.bar.parentNode.removeChild(this.bar);
@@ -11897,7 +11901,7 @@ Group.prototype.setData = function (data) {
   }
 
   if (data && data.nestedGroups) {
-    if (!this.nestedGroups || this.nestedGroups != data.nestedGroups) {
+    if (!this.nestedGroups || this.nestedGroups !== data.nestedGroups) {
       this.nestedGroups = data.nestedGroups;
     }
 
@@ -11937,7 +11941,7 @@ Group.prototype.setData = function (data) {
 
   // update className
   var className = data && data.className || null;
-  if (className != this.className) {
+  if (className !== this.className) {
     if (this.className) {
       util.removeClassName(this.dom.label, this.className);
       util.removeClassName(this.dom.foreground, this.className);
@@ -11972,7 +11976,7 @@ Group.prototype.getLabelWidth = function () {
 
 Group.prototype._didMarkerHeightChange = function () {
   var markerHeight = this.dom.marker.clientHeight;
-  if (markerHeight != this.lastMarkerHeight) {
+  if (markerHeight !== this.lastMarkerHeight) {
     this.lastMarkerHeight = markerHeight;
     var redrawQueue = {};
     var redrawQueueLength = 0;
@@ -12114,7 +12118,7 @@ Group.prototype._updateItemsVerticalPosition = function (margin) {
   for (var i = 0, ii = this.visibleItems.length; i < ii; i++) {
     var item = this.visibleItems[i];
     item.repositionY(margin);
-    if (!this.isVisible && this.groupId != "__background__") {
+    if (!this.isVisible && this.groupId !== "__background__") {
       if (item.displayed) item.hide();
     }
   }
@@ -12333,7 +12337,7 @@ Group.prototype.add = function (item) {
 
 Group.prototype._addToSubgroup = function (item, subgroupId) {
   subgroupId = subgroupId || item.data.subgroup;
-  if (subgroupId != undefined && this.subgroups[subgroupId] === undefined) {
+  if (subgroupId !== undefined && this.subgroups[subgroupId] === undefined) {
     this.subgroups[subgroupId] = {
       height: 0,
       top: 0,
@@ -12430,7 +12434,7 @@ Group.prototype.remove = function (item) {
 
   // remove from visible items
   var index = this.visibleItems.indexOf(item);
-  if (index != -1) this.visibleItems.splice(index, 1);
+  if (index !== -1) this.visibleItems.splice(index, 1);
 
   if (item.data.subgroup !== undefined) {
     this._removeFromSubgroup(item);
@@ -12440,7 +12444,7 @@ Group.prototype.remove = function (item) {
 
 Group.prototype._removeFromSubgroup = function (item, subgroupId) {
   subgroupId = subgroupId || item.data.subgroup;
-  if (subgroupId != undefined) {
+  if (subgroupId !== undefined) {
     var subgroup = this.subgroups[subgroupId];
     if (subgroup) {
       var itemIndex = subgroup.items.indexOf(item);
@@ -12578,7 +12582,7 @@ Group.prototype._updateItemsInRange = function (orderedItems, oldVisibleItems, r
 };
 
 Group.prototype._traceVisible = function (initialPos, items, visibleItems, visibleItemsLookup, breakCondition) {
-  if (initialPos != -1) {
+  if (initialPos !== -1) {
     var i, item;
     for (i = initialPos; i >= 0; i--) {
       item = items[i];
@@ -12895,7 +12899,7 @@ RangeItem.prototype.redraw = function (returnQueue) {
   // append DOM to parent DOM
   this._appendDomElement.bind(this),
 
-  // update dirty DOM 
+  // update dirty DOM
   this._updateDirtyDomComponents.bind(this), function () {
     if (this.dirty) {
       sizes = this._getDomComponentsSizes.bind(this)();
@@ -14162,7 +14166,7 @@ var CircleImageBase = function (_NodeBase) {
      * Set the images for this node.
      *
      * The images can be updated after the initial setting of options;
-     * therefore, this method needs to be reentrant. 
+     * therefore, this method needs to be reentrant.
      *
      * For correct working in error cases, it is necessary to properly set
      * field 'nodes.brokenImage' in the options.
@@ -14269,7 +14273,7 @@ var CircleImageBase = function (_NodeBase) {
   }, {
     key: '_drawImageAtPosition',
     value: function _drawImageAtPosition(ctx, values) {
-      if (this.imageObj.width != 0) {
+      if (this.imageObj.width !== 0) {
         // draw the image
         ctx.globalAlpha = 1.0;
 
@@ -14824,13 +14828,13 @@ var Edge = function () {
           this.labelModule.getTextSize(ctx, this.selected, this.hover);
         }
 
-        if (node1.id != node2.id) {
+        if (node1.id !== node2.id) {
           this.labelModule.pointToSelf = false;
           var point = this.edgeType.getPoint(0.5, viaNode);
           ctx.save();
 
           var rotationPoint = this._getRotation(ctx);
-          if (rotationPoint.angle != 0) {
+          if (rotationPoint.angle !== 0) {
             ctx.translate(rotationPoint.x, rotationPoint.y);
             ctx.rotate(rotationPoint.angle);
           }
@@ -14924,7 +14928,7 @@ var Edge = function () {
       }
     }
 
-    /** 
+    /**
      * Determine the rotation point, if any.
      *
      * @param {CanvasRenderingContext2D} [ctx] if passed, do a recalculation of the label size
@@ -15087,9 +15091,9 @@ var Edge = function () {
       if (newOptions.arrows !== undefined && newOptions.arrows !== null) {
         if (typeof newOptions.arrows === 'string') {
           var arrows = newOptions.arrows.toLowerCase();
-          parentOptions.arrows.to.enabled = arrows.indexOf("to") != -1;
-          parentOptions.arrows.middle.enabled = arrows.indexOf("middle") != -1;
-          parentOptions.arrows.from.enabled = arrows.indexOf("from") != -1;
+          parentOptions.arrows.to.enabled = arrows.indexOf("to") !== -1;
+          parentOptions.arrows.middle.enabled = arrows.indexOf("middle") !== -1;
+          parentOptions.arrows.from.enabled = arrows.indexOf("from") !== -1;
         } else if ((0, _typeof3['default'])(newOptions.arrows) === 'object') {
           util.mergeOptions(parentOptions.arrows, newOptions.arrows, 'to', globalOptions.arrows);
           util.mergeOptions(parentOptions.arrows, newOptions.arrows, 'middle', globalOptions.arrows);
@@ -15668,7 +15672,11 @@ module.exports = function (fn, that, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(21) && !__webpack_require__(28)(function () {
-  return Object.defineProperty(__webpack_require__(82)('div'), 'a', { get: function () { return 7; } }).a != 7;
+  return Object.defineProperty(__webpack_require__(82)('div'), 'a', {
+    get: function () {
+      return 7;
+    }
+  }).a !== 7;
 });
 
 
@@ -15706,7 +15714,7 @@ module.exports = function (object, names) {
   var i = 0;
   var result = [];
   var key;
-  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
+  for (key in O) if (key !== IE_PROTO) has(O, key) && result.push(key);
   // Don't enum bug & hidden keys
   while (names.length > i) if (has(O, key = names[i++])) {
     ~arrayIndexOf(result, key) || result.push(key);
@@ -15862,7 +15870,7 @@ function Slider(container, options) {
     throw new Error('No container element defined');
   }
   this.container = container;
-  this.visible = options && options.visible != undefined ? options.visible : true;
+  this.visible = options && options.visible !== undefined ? options.visible : true;
 
   if (this.visible) {
     this.frame = document.createElement('DIV');
@@ -16436,7 +16444,7 @@ var OPTIONKEYS = ['width', 'height', 'filterLabel', 'legendLabel', 'xLabel', 'yL
 /**
  * Field names in the options hash which are of relevance to the user.
  *
- * Same as OPTIONKEYS, but internally these fields are stored with 
+ * Same as OPTIONKEYS, but internally these fields are stored with
  * prefix 'default' in the name.
  */
 var PREFIXEDOPTIONKEYS = ['xBarWidth', 'yBarWidth', 'valueMin', 'valueMax', 'xMin', 'xMax', 'xStep', 'yMin', 'yMax', 'yStep', 'zMin', 'zMax', 'zStep'];
@@ -16469,7 +16477,7 @@ function isEmpty(obj) {
  * @returns {string}
  */
 function capitalize(str) {
-  if (str === undefined || str === "" || typeof str != "string") {
+  if (str === undefined || str === "" || typeof str !== "string") {
     return str;
   }
 
@@ -16495,11 +16503,11 @@ function prefixFieldName(prefix, fieldName) {
  * Forcibly copy fields from src to dst in a controlled manner.
  *
  * A given field in dst will always be overwitten. If this field
- * is undefined or not present in src, the field in dst will 
+ * is undefined or not present in src, the field in dst will
  * be explicitly set to undefined.
- * 
+ *
  * The intention here is to be able to reset all option fields.
- * 
+ *
  * Only the fields mentioned in array 'fields' will be handled.
  *
  * @param {object} src
@@ -16547,8 +16555,8 @@ function safeCopy(src, dst, fields, prefix) {
 /**
  * Initialize dst with the values in src.
  *
- * src is the hash with the default values. 
- * A reference DEFAULTS to this hash is stored locally for 
+ * src is the hash with the default values.
+ * A reference DEFAULTS to this hash is stored locally for
  * further handling.
  *
  * For now, dst is assumed to be a Graph3d instance.
@@ -16629,7 +16637,7 @@ function setSpecialSettings(src, dst) {
   if (src.tooltip !== undefined) {
     dst.showTooltip = src.tooltip;
   }
-  if (src.onclick != undefined) {
+  if (src.onclick !== undefined) {
     dst.onclick_callback = src.onclick;
   }
 
@@ -17016,7 +17024,7 @@ var DataView = __webpack_require__(12);
 /**
  * @class Filter
  *
- * @param {DataGroup} dataGroup the data group 
+ * @param {DataGroup} dataGroup the data group
  * @param {number}  column             The index of the column to be filtered
  * @param {Graph3d} graph              The graph
  */
@@ -17604,7 +17612,7 @@ function ItemSet(body, options) {
         var groupsData = me.groupsData.getDataSet();
         groupsData.get().forEach(function (groupData) {
           if (groupData.nestedGroups) {
-            if (groupData.showNested != false) {
+            if (groupData.showNested !== false) {
               groupData.showNested = true;
             }
             var updatedGroups = [];
@@ -17741,7 +17749,7 @@ ItemSet.prototype._create = function () {
   this.body.dom.centerContainer.addEventListener('mouseover', this._onMouseOver.bind(this));
   this.body.dom.centerContainer.addEventListener('mouseout', this._onMouseOut.bind(this));
   this.body.dom.centerContainer.addEventListener('mousemove', this._onMouseMove.bind(this));
-  // right-click on timeline 
+  // right-click on timeline
   this.body.dom.centerContainer.addEventListener('contextmenu', this._onDragEnd.bind(this));
 
   this.body.dom.centerContainer.addEventListener('mousewheel', this._onMouseWheel.bind(this));
@@ -18102,10 +18110,10 @@ ItemSet.prototype.redraw = function () {
   // check whether zoomed (in that case we need to re-stack everything)
   // TODO: would be nicer to get this as a trigger from Range
   var visibleInterval = range.end - range.start;
-  var zoomed = visibleInterval != this.lastVisibleInterval || this.props.width != this.props.lastWidth;
-  var scrolled = range.start != this.lastRangeStart;
-  var changedStackOption = options.stack != this.lastStack;
-  var changedStackSubgroupsOption = options.stackSubgroups != this.lastStackSubgroups;
+  var zoomed = visibleInterval !== this.lastVisibleInterval || this.props.width !== this.props.lastWidth;
+  var scrolled = range.start !== this.lastRangeStart;
+  var changedStackOption = options.stack !== this.lastStack;
+  var changedStackSubgroupsOption = options.stackSubgroups !== this.lastStackSubgroups;
   var forceRestack = zoomed || scrolled || changedStackOption || changedStackSubgroupsOption;
   this.lastVisibleInterval = visibleInterval;
   this.lastRangeStart = range.start;
@@ -18445,7 +18453,7 @@ ItemSet.prototype._onUpdate = function (ids) {
     var selected;
 
     if (item) {
-      // update item   	
+      // update item
       if (!constructor || !(item instanceof constructor)) {
         // item type has changed, delete the item and recreate it
         selected = item.selected; // preserve selection of this item
@@ -18721,7 +18729,7 @@ ItemSet.prototype._removeItem = function (item) {
 
   // remove from selection
   var index = this.selection.indexOf(item.id);
-  if (index != -1) this.selection.splice(index, 1);
+  if (index !== -1) this.selection.splice(index, 1);
 
   // remove from group
   item.parent && item.parent.remove(item);
@@ -18795,7 +18803,7 @@ ItemSet.prototype._onDragStart = function (event) {
     }
 
     // override options.editable
-    if (item.editable != null && !item.editable.updateTime && !item.editable.updateGroup && !this.options.editable.overrideItems) {
+    if (item.editable !== null && !item.editable.updateTime && !item.editable.updateGroup && !this.options.editable.overrideItems) {
       return;
     }
 
@@ -18939,10 +18947,10 @@ ItemSet.prototype._onDrag = function (event) {
 
     //only calculate the new group for the item that's actually dragged
     var selectedItem = this.touchParams.selectedItem;
-    var updateGroupAllowed = (this.options.editable.overrideItems || selectedItem.editable == null) && this.options.editable.updateGroup || !this.options.editable.overrideItems && selectedItem.editable != null && selectedItem.editable.updateGroup;
+    var updateGroupAllowed = (this.options.editable.overrideItems || selectedItem.editable == null) && this.options.editable.updateGroup || !this.options.editable.overrideItems && selectedItem.editable !== null && selectedItem.editable.updateGroup;
     var newGroupBase = null;
     if (updateGroupAllowed && selectedItem) {
-      if (selectedItem.data.group != undefined) {
+      if (selectedItem.data.group !== undefined) {
         // drag from one group to another
         var group = me.groupFromTarget(event);
         if (group) {
@@ -18970,23 +18978,23 @@ ItemSet.prototype._onDrag = function (event) {
       }
 
       var itemData = this._cloneItemData(props.item.data); // clone the data
-      if (props.item.editable != null && !props.item.editable.updateTime && !props.item.editable.updateGroup && !me.options.editable.overrideItems) {
+      if (props.item.editable !== null && !props.item.editable.updateTime && !props.item.editable.updateGroup && !me.options.editable.overrideItems) {
         return;
       }
 
-      var updateTimeAllowed = (this.options.editable.overrideItems || selectedItem.editable == null) && this.options.editable.updateTime || !this.options.editable.overrideItems && selectedItem.editable != null && selectedItem.editable.updateTime;
+      var updateTimeAllowed = (this.options.editable.overrideItems || selectedItem.editable == null) && this.options.editable.updateTime || !this.options.editable.overrideItems && selectedItem.editable !== null && selectedItem.editable.updateTime;
       if (updateTimeAllowed) {
         if (props.dragLeft) {
           // drag left side of a range item
           if (this.options.rtl) {
-            if (itemData.end != undefined) {
+            if (itemData.end !== undefined) {
               initialEnd = util.convert(props.data.end, 'Date');
               end = new Date(initialEnd.valueOf() + offset);
               // TODO: pass a Moment instead of a Date to snap(). (Breaking change)
               itemData.end = snap ? snap(end, scale, step) : end;
             }
           } else {
-            if (itemData.start != undefined) {
+            if (itemData.start !== undefined) {
               initialStart = util.convert(props.data.start, 'Date');
               start = new Date(initialStart.valueOf() + offset);
               // TODO: pass a Moment instead of a Date to snap(). (Breaking change)
@@ -18996,14 +19004,14 @@ ItemSet.prototype._onDrag = function (event) {
         } else if (props.dragRight) {
           // drag right side of a range item
           if (this.options.rtl) {
-            if (itemData.start != undefined) {
+            if (itemData.start !== undefined) {
               initialStart = util.convert(props.data.start, 'Date');
               start = new Date(initialStart.valueOf() + offset);
               // TODO: pass a Moment instead of a Date to snap(). (Breaking change)
               itemData.start = snap ? snap(start, scale, step) : start;
             }
           } else {
-            if (itemData.end != undefined) {
+            if (itemData.end !== undefined) {
               initialEnd = util.convert(props.data.end, 'Date');
               end = new Date(initialEnd.valueOf() + offset);
               // TODO: pass a Moment instead of a Date to snap(). (Breaking change)
@@ -19012,12 +19020,12 @@ ItemSet.prototype._onDrag = function (event) {
           }
         } else {
           // drag both start and end
-          if (itemData.start != undefined) {
+          if (itemData.start !== undefined) {
 
             initialStart = util.convert(props.data.start, 'Date').valueOf();
             start = new Date(initialStart + offset);
 
-            if (itemData.end != undefined) {
+            if (itemData.end !== undefined) {
               initialEnd = util.convert(props.data.end, 'Date');
               var duration = initialEnd.valueOf() - initialStart.valueOf();
 
@@ -19032,8 +19040,8 @@ ItemSet.prototype._onDrag = function (event) {
         }
       }
 
-      if (updateGroupAllowed && !props.dragLeft && !props.dragRight && newGroupBase != null) {
-        if (itemData.group != undefined) {
+      if (updateGroupAllowed && !props.dragLeft && !props.dragRight && newGroupBase !== null) {
+        if (itemData.group !== undefined) {
           var newOffset = newGroupBase - props.groupOffset;
 
           //make sure we stay in bounds
@@ -19064,7 +19072,7 @@ ItemSet.prototype._onDrag = function (event) {
  */
 ItemSet.prototype._moveToGroup = function (item, groupId) {
   var group = this.groups[groupId];
-  if (group && group.groupId != item.data.group) {
+  if (group && group.groupId !== item.data.group) {
     var oldGroup = item.parent;
     oldGroup.remove(item);
     oldGroup.order();
@@ -19093,7 +19101,7 @@ ItemSet.prototype._onDragEnd = function (event) {
 
     itemProps.forEach(function (props) {
       var id = props.item.id;
-      var exists = me.itemsData.get(id, me.itemOptions) != null;
+      var exists = me.itemsData.get(id, me.itemOptions) !== null;
 
       if (!exists) {
         // add a new item
@@ -19182,7 +19190,7 @@ ItemSet.prototype._onGroupDrag = function (event) {
     var group = this.groupFromTarget(event);
 
     // try to avoid toggling when groups differ in height
-    if (group && group.height != this.groupTouchParams.group.height) {
+    if (group && group.height !== this.groupTouchParams.group.height) {
       var movingUp = group.top < this.groupTouchParams.group.top;
       var clientY = event.center ? event.center.y : event.clientY;
       var targetGroupTop = util.getAbsoluteTop(group.dom.foreground);
@@ -19201,7 +19209,7 @@ ItemSet.prototype._onGroupDrag = function (event) {
       }
     }
 
-    if (group && group != this.groupTouchParams.group) {
+    if (group && group !== this.groupTouchParams.group) {
       var targetGroup = groupsData.get(group.groupId);
       var draggedGroup = groupsData.get(this.groupTouchParams.group.groupId);
 
@@ -19245,7 +19253,7 @@ ItemSet.prototype._onGroupDrag = function (event) {
           else if (origOrder[curPos + orgOffset] == draggedId) {
               orgOffset = 1;
             }
-            // found a group (apart from dragged group) that has the wrong position -> switch with the 
+            // found a group (apart from dragged group) that has the wrong position -> switch with the
             // group at the position where other one should be, fix index arrays and continue
             else {
                 var slippedPosition = newOrder.indexOf(origOrder[curPos + orgOffset]);
@@ -19389,7 +19397,7 @@ ItemSet.prototype._onMouseOver = function (event) {
   } else {
     // Hovering over item without a title, hide popup
     // Needed instead of _just_ in _onMouseOut due to #2572
-    if (this.popup != null) {
+    if (this.popup !== null) {
       this.popup.hide();
     }
   }
@@ -19410,7 +19418,7 @@ ItemSet.prototype._onMouseOut = function (event) {
     return;
   }
 
-  if (this.popup != null) {
+  if (this.popup !== null) {
     this.popup.hide();
   }
 
@@ -19470,7 +19478,7 @@ ItemSet.prototype._onUpdateItem = function (item) {
 /**
  * Handle drop event of data on item
  * Only called when `objectData.target === 'item'.
- * @param {Event} event The event 
+ * @param {Event} event The event
  * @private
  */
 ItemSet.prototype._onDropObjectOnItem = function (event) {
@@ -19638,7 +19646,7 @@ ItemSet._getItemRange = function (itemsData) {
       min = data.start;
     }
 
-    if (data.end != undefined) {
+    if (data.end !== undefined) {
       if (max == null || data.end > max) {
         max = data.end;
       }
@@ -19767,10 +19775,10 @@ ItemSet.prototype._cloneItemData = function (itemData, type) {
     type = this.itemsData.getDataSet()._options.type;
   }
 
-  if (clone.start != undefined) {
+  if (clone.start !== undefined) {
     clone.start = util.convert(clone.start, type && type.start || 'Date');
   }
-  if (clone.end != undefined) {
+  if (clone.end !== undefined) {
     clone.end = util.convert(clone.end, type && type.end || 'Date');
   }
 
@@ -19852,7 +19860,7 @@ exports.stack = function (items, margin, force) {
           }
         }
 
-        if (collidingItem != null) {
+        if (collidingItem !== null) {
           // There is a collision. Reposition the items above the colliding element
           item.top = collidingItem.top + collidingItem.height + margin.item.vertical;
         }
@@ -19862,14 +19870,14 @@ exports.stack = function (items, margin, force) {
 };
 
 /**
- * Adjust vertical positions of the items within a single subgroup such that they 
+ * Adjust vertical positions of the items within a single subgroup such that they
  * don't overlap each other.
  * @param {Item[]} items
  *            All items withina subgroup
  * @param {{item: {horizontal: number, vertical: number}, axis: number}} margin
  *            Margins between items and between items and the axis.
  * @param {subgroup} subgroup
- *            The subgroup that is being stacked 
+ *            The subgroup that is being stacked
  */
 exports.substack = function (items, margin, subgroup) {
   for (var i = 0; i < items.length; i++) {
@@ -19899,7 +19907,7 @@ exports.substack = function (items, margin, subgroup) {
           }
         }
 
-        if (collidingItem != null) {
+        if (collidingItem !== null) {
           // There is a collision. Reposition the items above the colliding element
           item.top = collidingItem.top + collidingItem.height + margin.item.vertical; // + item.baseTop;
         }
@@ -19971,7 +19979,7 @@ exports.stackSubgroups = function (items, margin, subgroups) {
           }
         }
 
-        if (collidingItem != null) {
+        if (collidingItem !== null) {
           // There is a collision. Reposition the subgroups above the colliding element
           subgroups[subgroup].top = collidingItem.top + collidingItem.height;
         }
@@ -19993,7 +20001,7 @@ exports.stackSubgroups = function (items, margin, subgroups) {
  * @param {{item: {horizontal: number, vertical: number}, axis: number}} margin
  *            Margins between items and between items and the axis.
  * @param {subgroups[]} subgroups
- *            All subgroups 
+ *            All subgroups
  */
 exports.stackSubgroupsWithInnerStack = function (subgroupItems, margin, subgroups) {
   var doSubStack = false;
@@ -21832,7 +21840,7 @@ LineGraph.prototype._updateGroup = function (group, groupId) {
  * @private
  */
 LineGraph.prototype._updateAllGroupData = function (ids, groupIds) {
-  if (this.itemsData != null) {
+  if (this.itemsData !== null) {
     var groupsContent = {};
     var items = this.itemsData.get();
     var fieldId = this.itemsData._fieldId;
@@ -21918,7 +21926,7 @@ LineGraph.prototype._updateAllGroupData = function (ids, groupIds) {
           }
         } else {
           var group = undefined;
-          if (this.groupsData != undefined) {
+          if (this.groupsData !== undefined) {
             group = this.groupsData.get(groupId);
           }
           if (group == undefined) {
@@ -21950,7 +21958,7 @@ LineGraph.prototype.redraw = function () {
 
   // check whether zoomed (in that case we need to re-stack everything)
   var visibleInterval = this.body.range.end - this.body.range.start;
-  var zoomed = visibleInterval != this.lastVisibleInterval;
+  var zoomed = visibleInterval !== this.lastVisibleInterval;
   this.lastVisibleInterval = visibleInterval;
 
   // the svg element is three times as big as the width, this allows for fully dragging left and right
@@ -21960,14 +21968,14 @@ LineGraph.prototype.redraw = function () {
     this.svg.style.left = util.option.asSize(-this.props.width);
 
     // if the height of the graph is set as proportional, change the height of the svg
-    if ((this.options.height + '').indexOf("%") != -1 || this.updateSVGheightOnResize == true) {
+    if ((this.options.height + '').indexOf("%") !== -1 || this.updateSVGheightOnResize == true) {
       this.updateSVGheight = true;
     }
   }
 
   // update the height of the graph on each redraw of the graph.
   if (this.updateSVGheight == true) {
-    if (this.options.graphHeight != this.props.height + 'px') {
+    if (this.options.graphHeight !== this.props.height + 'px') {
       this.options.graphHeight = this.props.height + 'px';
       this.svg.style.height = this.props.height + 'px';
     }
@@ -21982,10 +21990,10 @@ LineGraph.prototype.redraw = function () {
     this.forceGraphUpdate = false;
   } else {
     // move the whole svg while dragging
-    if (this.lastStart != 0) {
+    if (this.lastStart !== 0) {
       var offset = this.body.range.start - this.lastStart;
       var range = this.body.range.end - this.body.range.start;
-      if (this.props.width != 0) {
+      if (this.props.width !== 0) {
         var rangePerPixelInv = this.props.width / range;
         var xOffset = offset * rangePerPixelInv;
         this.svg.style.left = -this.props.width - xOffset + 'px';
@@ -22031,7 +22039,7 @@ LineGraph.prototype._getSortedGroupIds = function () {
 LineGraph.prototype._updateGraph = function () {
   // reset the svg elements
   DOMutil.prepareElements(this.svgElements);
-  if (this.props.width != 0 && this.itemsData != null) {
+  if (this.props.width !== 0 && this.itemsData !== null) {
     var group, i;
     var groupRanges = {};
     var changeCalled = false;
@@ -22076,7 +22084,7 @@ LineGraph.prototype._updateGraph = function () {
         group = this.groups[groupIds[i]];
         if (this.options.stack === true && this.options.style === 'line') {
           if (group.options.excludeFromStacking == undefined || !group.options.excludeFromStacking) {
-            if (below != undefined) {
+            if (below !== undefined) {
               this._stack(groupsData[group.id], groupsData[below.id]);
               if (group.options.shaded.enabled == true && group.options.shaded.orientation !== "group") {
                 if (group.options.shaded.orientation == "top" && below.options.shaded.orientation !== "group") {
@@ -22338,7 +22346,7 @@ LineGraph.prototype._updateYAxis = function (groupIds, groupRanges) {
     // this is here to make sure that if there are no items in the axis but there are groups, that there is no infinite draw/redraw loop.
     for (var i = 0; i < groupIds.length; i++) {
       var group = this.groups[groupIds[i]];
-      if (group && group.options.yAxisOrientation != 'right') {
+      if (group && group.options.yAxisOrientation !== 'right') {
         yAxisLeftUsed = true;
         minLeft = 1e9;
         maxLeft = -1e9;
@@ -22356,7 +22364,7 @@ LineGraph.prototype._updateYAxis = function (groupIds, groupRanges) {
           minVal = groupRanges[groupIds[i]].min;
           maxVal = groupRanges[groupIds[i]].max;
 
-          if (groupRanges[groupIds[i]].yAxisOrientation != 'right') {
+          if (groupRanges[groupIds[i]].yAxisOrientation !== 'right') {
             yAxisLeftUsed = true;
             minLeft = minLeft > minVal ? minVal : minLeft;
             maxLeft = maxLeft < maxVal ? maxVal : maxLeft;
@@ -22405,7 +22413,7 @@ LineGraph.prototype._updateYAxis = function (groupIds, groupRanges) {
   // clean the accumulated lists
   var tempGroups = ['__barStackLeft', '__barStackRight', '__lineStackLeft', '__lineStackRight'];
   for (i = 0; i < tempGroups.length; i++) {
-    if (groupIds.indexOf(tempGroups[i]) != -1) {
+    if (groupIds.indexOf(tempGroups[i]) !== -1) {
       groupIds.splice(groupIds.indexOf(tempGroups[i]), 1);
     }
   }
@@ -22450,7 +22458,7 @@ LineGraph.prototype._convertXcoordinates = function (datapoints) {
   for (var i = 0; i < datapoints.length; i++) {
     datapoints[i].screen_x = toScreen(datapoints[i].x) + this.props.width;
     datapoints[i].screen_y = datapoints[i].y; //starting point for range calculations
-    if (datapoints[i].end != undefined) {
+    if (datapoints[i].end !== undefined) {
       datapoints[i].screen_end = toScreen(datapoints[i].end) + this.props.width;
     } else {
       datapoints[i].screen_end = undefined;
@@ -22612,7 +22620,7 @@ DataAxis.prototype.removeGroup = function (label) {
 DataAxis.prototype.setOptions = function (options) {
   if (options) {
     var redraw = false;
-    if (this.options.orientation != options.orientation && options.orientation !== undefined) {
+    if (this.options.orientation !== options.orientation && options.orientation !== undefined) {
       redraw = true;
     }
     var fields = ['orientation', 'showMinorLabels', 'showMajorLabels', 'icons', 'majorLinesOffset', 'minorLinesOffset', 'labelOffsetX', 'labelOffsetY', 'iconWidth', 'width', 'visible', 'left', 'right', 'alignZeros'];
@@ -22828,23 +22836,23 @@ DataAxis.prototype._redrawLabels = function () {
   DOMutil.prepareElements(this.DOMelements.lines);
   DOMutil.prepareElements(this.DOMelements.labels);
   var orientation = this.options['orientation'];
-  var customRange = this.options[orientation].range != undefined ? this.options[orientation].range : {};
+  var customRange = this.options[orientation].range !== undefined ? this.options[orientation].range : {};
 
   //Override range with manual options:
   var autoScaleEnd = true;
-  if (customRange.max != undefined) {
+  if (customRange.max !== undefined) {
     this.range.end = customRange.max;
     autoScaleEnd = false;
   }
   var autoScaleStart = true;
-  if (customRange.min != undefined) {
+  if (customRange.min !== undefined) {
     this.range.start = customRange.min;
     autoScaleStart = false;
   }
 
   this.scale = new DataScale(this.range.start, this.range.end, autoScaleStart, autoScaleEnd, this.dom.frame.offsetHeight, this.props.majorCharHeight, this.options.alignZeros, this.options[orientation].format);
 
-  if (this.master === false && this.masterAxis != undefined) {
+  if (this.master === false && this.masterAxis !== undefined) {
     this.scale.followScale(this.masterAxis.scale);
   }
 
@@ -23190,7 +23198,7 @@ DataScale.prototype.getLines = function () {
   var step = this.getStep();
   var bottomOffset = (step - this._start % step) % step;
   for (var i = this._start + bottomOffset; this._end - i > 0.00001; i += step) {
-    if (i != this._start) {
+    if (i !== this._start) {
       //Skip the bottom line
       lines.push({ major: this.is_major(i), y: this.convertValue(i), val: this.formatValue(i) });
     }
@@ -23350,7 +23358,7 @@ function GraphGroup(group, groupId, options, groupsUsingDefaultStyles) {
  * @param {array} items
  */
 GraphGroup.prototype.setItems = function (items) {
-  if (items != null) {
+  if (items !== null) {
     this.itemsData = items;
     if (this.options.sort == true) {
       util.insertSort(this.itemsData, function (a, b) {
@@ -23580,7 +23588,7 @@ Bargraph.draw = function (groupIds, processedGroupData, framework) {
   // plot barchart
   for (i = 0; i < combinedData.length; i++) {
     group = framework.groups[combinedData[i].groupId];
-    var minWidth = group.options.barChart.minWidth != undefined ? group.options.barChart.minWidth : 0.1 * group.options.barChart.width;
+    var minWidth = group.options.barChart.minWidth !== undefined ? group.options.barChart.minWidth : 0.1 * group.options.barChart.width;
 
     key = combinedData[i].screen_x;
     var heightOffset = 0;
@@ -23615,7 +23623,7 @@ Bargraph.draw = function (groupIds, processedGroupData, framework) {
     var start = combinedData[i].screen_x;
 
     // are we drawing explicit boxes? (we supplied an end value)
-    if (combinedData[i].screen_end != undefined) {
+    if (combinedData[i].screen_end !== undefined) {
       dataWidth = combinedData[i].screen_end - combinedData[i].screen_x;
       start += dataWidth * 0.5;
     } else {
@@ -23773,7 +23781,7 @@ function Line(groupId, options) {// eslint-disable-line no-unused-vars
 }
 
 Line.calcPath = function (dataset, group) {
-    if (dataset != null) {
+  if (dataset !== null) {
         if (dataset.length > 0) {
             var d = [];
 
@@ -23848,7 +23856,7 @@ Line.drawShading = function (pathArray, group, subPathArray, framework) {
         } else {
             zero = Math.min(Math.max(0, group.zeroPosition), svgHeight);
         }
-        if (group.options.shaded.orientation == 'group' && subPathArray != null && subPathArray != undefined) {
+      if (group.options.shaded.orientation == 'group' && subPathArray !== null && subPathArray !== undefined) {
             dFill = 'M' + pathArray[0][0] + "," + pathArray[0][1] + " " + this.serializePath(pathArray, type, false) + ' L' + subPathArray[subPathArray.length - 1][0] + "," + subPathArray[subPathArray.length - 1][1] + " " + this.serializePath(subPathArray, type, true) + subPathArray[0][0] + "," + subPathArray[0][1] + " Z";
         } else {
             dFill = 'M' + pathArray[0][0] + "," + pathArray[0][1] + " " + this.serializePath(pathArray, type, false) + ' V' + zero + ' H' + pathArray[0][0] + " Z";
@@ -23870,7 +23878,7 @@ Line.drawShading = function (pathArray, group, subPathArray, framework) {
  * @param {{svg: Object, svgElements: Array.<Object>, options: Object, groups: Array.<vis.Group>}} framework
  */
 Line.draw = function (pathArray, group, framework) {
-    if (pathArray != null && pathArray != undefined) {
+  if (pathArray !== null && pathArray !== undefined) {
         var path = DOMutil.getSVGElement('path', framework.svgElements, framework.svg);
         path.setAttributeNS(null, "class", group.className);
         if (group.style !== undefined) {
@@ -24121,7 +24129,7 @@ Legend.prototype.clear = function () {
 Legend.prototype.addGroup = function (label, graphOptions) {
 
   // Include a group only if the group option 'excludeFromLegend: false' is not set.
-  if (graphOptions.options.excludeFromLegend != true) {
+  if (graphOptions.options.excludeFromLegend !== true) {
     if (!this.groups.hasOwnProperty(label)) {
       this.groups[label] = graphOptions;
     }
@@ -24602,8 +24610,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
  * ====
  *
  * For label handling, this is an incomplete implementation. From docs (quote #3015):
- * 
- * > the escape sequences "\n", "\l" and "\r" divide the label into lines, centered, 
+ *
+ * > the escape sequences "\n", "\l" and "\r" divide the label into lines, centered,
  * > left-justified, and right-justified, respectively.
  *
  * Source: http://www.graphviz.org/content/attrs#kescString
@@ -24880,7 +24888,7 @@ function getToken() {
       }
       if (dot.charAt(i) === '\n' || dot.charAt(i) === '') {
         // the # is at the start of a line, this is indeed a line comment
-        while (c != '' && c != '\n') {
+        while (c !== '' && c !== '\n') {
           next();
         }
         isComment = true;
@@ -24888,14 +24896,14 @@ function getToken() {
     }
     if (c === '/' && nextPreview() === '/') {
       // skip line comment
-      while (c != '' && c != '\n') {
+      while (c !== '' && c !== '\n') {
         next();
       }
       isComment = true;
     }
     if (c === '/' && nextPreview() === '*') {
       // skip block comment
-      while (c != '') {
+      while (c !== '') {
         if (c === '*' && nextPreview() === '/') {
           // end of block comment found. skip these last two characters
           next();
@@ -24964,7 +24972,7 @@ function getToken() {
   // check for a string enclosed by double quotes
   if (c === '"') {
     next();
-    while (c != '' && (c != '"' || c === '"' && nextPreview() === '"')) {
+    while (c !== '' && (c !== '"' || c === '"' && nextPreview() === '"')) {
       if (c === '"') {
         // skip the escape character
         token += c;
@@ -24978,7 +24986,7 @@ function getToken() {
       }
       next();
     }
-    if (c != '"') {
+    if (c !== '"') {
       throw newSyntaxError('End of string " expected');
     }
     next();
@@ -24988,7 +24996,7 @@ function getToken() {
 
   // something unknown is found, wrong characters, a syntax error
   tokenType = TOKENTYPE.UNKNOWN;
-  while (c != '') {
+  while (c !== '') {
     token += c;
     next();
   }
@@ -25024,7 +25032,7 @@ function parseGraph() {
   }
 
   // open angle bracket
-  if (token != '{') {
+  if (token !== '{') {
     throw newSyntaxError('Angle bracket { expected');
   }
   getToken();
@@ -25033,7 +25041,7 @@ function parseGraph() {
   parseStatements(graph);
 
   // close angle bracket
-  if (token != '}') {
+  if (token !== '}') {
     throw newSyntaxError('Angle bracket } expected');
   }
   getToken();
@@ -25057,7 +25065,7 @@ function parseGraph() {
  * @param {Object} graph
  */
 function parseStatements(graph) {
-  while (token !== '' && token != '}') {
+  while (token !== '' && token !== '}') {
     parseStatement(graph);
     if (token === ';') {
       getToken();
@@ -25088,7 +25096,7 @@ function parseStatement(graph) {
   }
 
   // parse node
-  if (tokenType != TOKENTYPE.IDENTIFIER) {
+  if (tokenType !== TOKENTYPE.IDENTIFIER) {
     throw newSyntaxError('Identifier expected');
   }
   var id = token; // id can be a string or a number
@@ -25097,7 +25105,7 @@ function parseStatement(graph) {
   if (token === '=') {
     // id statement
     getToken();
-    if (tokenType != TOKENTYPE.IDENTIFIER) {
+    if (tokenType !== TOKENTYPE.IDENTIFIER) {
       throw newSyntaxError('Identifier expected');
     }
     graph[id] = token;
@@ -25145,7 +25153,7 @@ function parseSubgraph(graph) {
     parseStatements(subgraph);
 
     // close angle bracket
-    if (token != '}') {
+    if (token !== '}') {
       throw newSyntaxError('Angle bracket } expected');
     }
     getToken();
@@ -25235,7 +25243,7 @@ function parseEdge(graph, from) {
     if (subgraph) {
       to = subgraph;
     } else {
-      if (tokenType != TOKENTYPE.IDENTIFIER) {
+      if (tokenType !== TOKENTYPE.IDENTIFIER) {
         throw newSyntaxError('Identifier or subgraph expected');
       }
       to = token;
@@ -25274,19 +25282,19 @@ function parseAttributeList() {
   while (token === '[') {
     getToken();
     attr = {};
-    while (token !== '' && token != ']') {
-      if (tokenType != TOKENTYPE.IDENTIFIER) {
+    while (token !== '' && token !== ']') {
+      if (tokenType !== TOKENTYPE.IDENTIFIER) {
         throw newSyntaxError('Attribute name expected');
       }
       var name = token;
 
       getToken();
-      if (token != '=') {
+      if (token !== '=') {
         throw newSyntaxError('Equal sign = expected');
       }
       getToken();
 
-      if (tokenType != TOKENTYPE.IDENTIFIER) {
+      if (tokenType !== TOKENTYPE.IDENTIFIER) {
         throw newSyntaxError('Attribute value expected');
       }
       var value = token;
@@ -25304,7 +25312,7 @@ function parseAttributeList() {
       }
     }
 
-    if (token != ']') {
+    if (token !== ']') {
       throw newSyntaxError('Bracket ] expected');
     }
     getToken();
@@ -25702,7 +25710,7 @@ var Images = function () {
         value: function load(url, brokenUrl) {
             var _this = this;
 
-            //Try and get the image from the cache, if successful then return the cached image   
+            //Try and get the image from the cache, if successful then return the cached image
             var cachedImage = this.images[url];
             if (cachedImage) return cachedImage;
 
@@ -25713,7 +25721,7 @@ var Images = function () {
             // Also, there will be multiple loads of the same image.
             this.images[url] = img;
 
-            //Subscribe to the event that is raised if the image loads successfully 
+            //Subscribe to the event that is raised if the image loads successfully
             img.image.onload = function () {
                 // Properly init the cached item and then request a redraw
                 _this._fixImageCoordinates(img.image);
@@ -25856,7 +25864,7 @@ var Label = function () {
   (0, _createClass3['default'])(Label, [{
     key: 'setOptions',
     value: function setOptions(options) {
-      this.elementOptions = options; // Reference to the options of the parent Node-instance 
+      this.elementOptions = options; // Reference to the options of the parent Node-instance
 
       this.initFontOptions(options.font);
 
@@ -26032,7 +26040,7 @@ var Label = function () {
     /**
      * Add the font members of the passed list of option objects to the pile.
      *
-     * @param {Pile} dstPile  pile of option objects add to 
+     * @param {Pile} dstPile  pile of option objects add to
      * @param {Pile} srcPile  pile of option objects to take font options from
      * @private
      */
@@ -26088,7 +26096,7 @@ var Label = function () {
         }
 
         util.forEach(fontOptions, function (opt, name) {
-          if (opt === undefined) return; // multi-font option need not be present 
+          if (opt === undefined) return; // multi-font option need not be present
           if (ret.hasOwnProperty(name)) return; // Keep first value we encounter
 
           if (multiFontStyle.indexOf(name) !== -1) {
@@ -26293,7 +26301,7 @@ var Label = function () {
      * @param {number} x
      * @param {number} y
      * @param {string} [baseline='middle']
-     * @param {number} viewFontSize 
+     * @param {number} viewFontSize
      * @private
      */
 
@@ -26529,7 +26537,7 @@ var Label = function () {
         }
 
         if (fontOptions[mod][option] !== undefined) {
-          // Grumbl leaving out test on undefined equals false for "" 
+          // Grumbl leaving out test on undefined equals false for ""
           return fontOptions[mod][option];
         } else {
           // Take from parent font option
@@ -26805,7 +26813,7 @@ var EdgeBase = function () {
   }, {
     key: "_drawLine",
     value: function _drawLine(ctx, values, viaNode, fromPoint, toPoint) {
-      if (this.from != this.to) {
+      if (this.from !== this.to) {
         // draw line
         this._line(ctx, values, viaNode, fromPoint, toPoint);
       } else {
@@ -26848,7 +26856,7 @@ var EdgeBase = function () {
         ctx.lineDashOffset = 0;
 
         // draw the line
-        if (this.from != this.to) {
+        if (this.from !== this.to) {
           // draw line
           this._line(ctx, values, viaNode);
         } else {
@@ -26867,7 +26875,7 @@ var EdgeBase = function () {
         ctx.restore();
       } else {
         // unsupporting smooth lines
-        if (this.from != this.to) {
+        if (this.from !== this.to) {
           // draw line
           ctx.dashedLine(this.from.x, this.from.y, this.to.x, this.to.y, pattern);
         } else {
@@ -26900,7 +26908,7 @@ var EdgeBase = function () {
   }, {
     key: "findBorderPosition",
     value: function findBorderPosition(nearNode, ctx, options) {
-      if (this.from != this.to) {
+      if (this.from !== this.to) {
         return this._findBorderPosition(nearNode, ctx, options);
       } else {
         return this._findBorderPositionCircle(nearNode, ctx, options);
@@ -26918,7 +26926,7 @@ var EdgeBase = function () {
     value: function findBorderPositions(ctx) {
       var from = {};
       var to = {};
-      if (this.from != this.to) {
+      if (this.from !== this.to) {
         from = this._findBorderPosition(this.from, ctx);
         to = this._findBorderPosition(this.to, ctx);
       } else {
@@ -27164,7 +27172,7 @@ var EdgeBase = function () {
     value: function getDistanceToEdge(x1, y1, x2, y2, x3, y3, via, values) {
       // eslint-disable-line no-unused-vars
       var returnValue = 0;
-      if (this.from != this.to) {
+      if (this.from !== this.to) {
         returnValue = this._getDistanceToEdge(x1, y1, x2, y2, x3, y3, via);
       } else {
         var _getCircleData8 = this._getCircleData(undefined),
@@ -27264,7 +27272,7 @@ var EdgeBase = function () {
       }
 
       // if not connected to itself
-      if (node1 != node2) {
+      if (node1 !== node2) {
         if (position !== 'middle') {
           // draw arrow head
           if (this.options.smooth.enabled === true) {
@@ -27452,7 +27460,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 /**
  * @typedef {{x:number, y:number}} Point
- * 
+ *
  * A point in view-coordinates.
  */
 
@@ -27619,7 +27627,7 @@ var Bar = function () {
             {x:0, y:0.5},
             {x:0, y:-0.5}
           ];
-      
+
           EndPoint.transform(points, arrowData);
           ctx.beginPath();
           ctx.moveTo(points[0].x, points[0].y);
@@ -27834,7 +27842,7 @@ var BarnesHutSolver = function () {
             this._getForceContributions(parentBranch, node);
           } else {
             // parentBranch must have only one node, if it was empty we wouldnt be here
-            if (parentBranch.children.data.id != node.id) {
+            if (parentBranch.children.data.id !== node.id) {
               // if it is not self
               this._calculateForces(distance, dx, dy, node, parentBranch);
             }
@@ -28003,7 +28011,7 @@ var BarnesHutSolver = function () {
   }, {
     key: "_placeInTree",
     value: function _placeInTree(parentBranch, node, skipMassUpdate) {
-      if (skipMassUpdate != true || skipMassUpdate === undefined) {
+      if (skipMassUpdate !== true || skipMassUpdate === undefined) {
         // update the mass of the branch.
         this._updateBranchMass(parentBranch, node);
       }
@@ -28095,7 +28103,7 @@ var BarnesHutSolver = function () {
       this._insertRegion(parentBranch, "SW");
       this._insertRegion(parentBranch, "SE");
 
-      if (containedNode != null) {
+      if (containedNode !== null) {
         this._placeInTree(parentBranch, containedNode);
       }
     }
@@ -29051,7 +29059,7 @@ module.exports = function (done, value) {
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+  if (typeof it !== 'function') throw TypeError(it + ' is not a function!');
   return it;
 };
 
@@ -29112,10 +29120,10 @@ module.exports = function (IS_INCLUDES) {
     var value;
     // Array#includes uses SameValueZero equality algorithm
     // eslint-disable-next-line no-self-compare
-    if (IS_INCLUDES && el != el) while (length > index) {
+    if (IS_INCLUDES && el !== el) while (length > index) {
       value = O[index++];
       // eslint-disable-next-line no-self-compare
-      if (value != value) return true;
+      if (value !== value) return true;
     // Array#indexOf ignores holes, Array#includes - not
     } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
       if (O[index] === el) return IS_INCLUDES || index || 0;
@@ -29188,7 +29196,7 @@ var anObject = __webpack_require__(27);
 var get = __webpack_require__(137);
 module.exports = __webpack_require__(7).getIterator = function (it) {
   var iterFn = get(it);
-  if (typeof iterFn != 'function') throw TypeError(it + ' is not iterable!');
+  if (typeof iterFn !== 'function') throw TypeError(it + ' is not iterable!');
   return anObject(iterFn.call(it));
 };
 
@@ -29201,7 +29209,7 @@ var classof = __webpack_require__(86);
 var ITERATOR = __webpack_require__(13)('iterator');
 var Iterators = __webpack_require__(31);
 module.exports = __webpack_require__(7).getIteratorMethod = function (it) {
-  if (it != undefined) return it[ITERATOR]
+  if (it !== undefined) return it[ITERATOR]
     || it['@@iterator']
     || Iterators[classof(it)];
 };
@@ -29336,7 +29344,7 @@ var setter = !QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild;
 var setSymbolDesc = DESCRIPTORS && $fails(function () {
   return _create(dP({}, 'a', {
     get: function () { return dP(this, 'a', { value: 7 }).a; }
-  })).a != 7;
+  })).a !== 7;
 }) ? function (it, key, D) {
   var protoDesc = gOPD(ObjectProto, key);
   if (protoDesc) delete ObjectProto[key];
@@ -29402,7 +29410,7 @@ var $getOwnPropertyNames = function getOwnPropertyNames(it) {
   var i = 0;
   var key;
   while (names.length > i) {
-    if (!has(AllSymbols, key = names[i++]) && key != HIDDEN && key != META) result.push(key);
+    if (!has(AllSymbols, key = names[i++]) && key !== HIDDEN && key !== META) result.push(key);
   } return result;
 };
 var $getOwnPropertySymbols = function getOwnPropertySymbols(it) {
@@ -29494,7 +29502,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
   // MS Edge converts symbol values to JSON as {}
   // WebKit converts symbol values to JSON as null
   // V8 throws on boxed symbols
-  return _stringify([S]) != '[null]' || _stringify({ a: S }) != '{}' || _stringify(Object(S)) != '{}';
+  return _stringify([S]) !== '[null]' || _stringify({a: S}) !== '{}' || _stringify(Object(S)) !== '{}';
 })), 'JSON', {
   stringify: function stringify(it) {
     if (it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
@@ -29693,8 +29701,8 @@ function isArray(input) {
 
 function isObject(input) {
     // IE8 will treat undefined and null as object if it wasn't for
-    // input != null
-    return input != null && Object.prototype.toString.call(input) === '[object Object]';
+  // input !== null
+  return input !== null && Object.prototype.toString.call(input) === '[object Object]';
 }
 
 function isObjectEmpty(obj) {
@@ -29806,7 +29814,7 @@ function isValid(m) {
     if (m._isValid == null) {
         var flags = getParsingFlags(m);
         var parsedParts = some.call(flags.parsedDateParts, function (i) {
-            return i != null;
+          return i !== null;
         });
         var isNowValid = !isNaN(m._d.getTime()) &&
             flags.overflow < 0 &&
@@ -29838,7 +29846,7 @@ function isValid(m) {
 
 function createInvalid (flags) {
     var m = createUTC(NaN);
-    if (flags != null) {
+  if (flags !== null) {
         extend(getParsingFlags(m), flags);
     }
     else {
@@ -34587,8 +34595,8 @@ Graph3d.DEFAULTS = {
   verticalRatio: 0.5, // 0.1 to 1.0, where 1.0 results in a 'cube'
 
   dotSizeRatio: 0.02, // size of the dots as a fraction of the graph width
-  dotSizeMinFraction: 0.5, // size of min-value dot as a fraction of dotSizeRatio	
-  dotSizeMaxFraction: 2.5, // size of max-value dot as a fraction of dotSizeRatio	
+  dotSizeMinFraction: 0.5, // size of min-value dot as a fraction of dotSizeRatio
+  dotSizeMaxFraction: 2.5, // size of max-value dot as a fraction of dotSizeRatio
 
   showAnimationControls: autoByDefault,
   animationInterval: 1000, // milliseconds
@@ -37223,7 +37231,7 @@ DataGroup.prototype.initializeData = function (graph3d, rawData, style) {
 /**
  * Collect the range settings for the given data column.
  *
- * This internal method is intended to make the range 
+ * This internal method is intended to make the range
  * initalization more generic.
  *
  * TODO: if/when combined settings per axis defined, get rid of this.
@@ -41068,7 +41076,7 @@ Timeline.prototype.focus = function (id, options) {
       // Double check we ended at the proper scroll position
       setFinalVerticalPosition();
 
-      // Let the redraw settle and finalize the position.      
+      // Let the redraw settle and finalize the position.
       setTimeout(setFinalVerticalPosition, 100);
     };
 
@@ -44496,7 +44504,7 @@ var LabelSplitter = function () {
   /**
    * @param {CanvasRenderingContext2D} ctx Canvas rendering context
    * @param {Label} parent reference to the Label instance using current instance
-   * @param {boolean} selected 
+   * @param {boolean} selected
    * @param {boolean} hover
    */
   function LabelSplitter(ctx, parent, selected, hover) {
@@ -44547,7 +44555,7 @@ var LabelSplitter = function () {
    *
    * This might not be the best way to do it, but this is as it has been working till now.
    * In order not to break existing functionality, for the time being this behaviour will
-   * be retained in any code changes. 
+   * be retained in any code changes.
    *
    * @param {string} text  text to split
    * @returns {Array<line>}
@@ -44940,9 +44948,9 @@ var LabelSplitter = function () {
     }
 
     /**
-     * Determine the longest part of the sentence which still fits in the 
+     * Determine the longest part of the sentence which still fits in the
      * current max width.
-     * 
+     *
      * @param {Array} words  Array of strings signifying a text lines
      * @return {number}      index of first item in string making string go over max
      * @private
@@ -44969,7 +44977,7 @@ var LabelSplitter = function () {
     /**
      * Determine the longest part of the string which still fits in the
      * current max width.
-     * 
+     *
      * @param {Array} words Array of strings signifying a text lines
      * @return {number} index of first item in string making string go over max
      */
@@ -44989,13 +44997,13 @@ var LabelSplitter = function () {
 
     /**
      * Split the passed text into lines, according to width constraint (if any).
-     * 
+     *
      * The method assumes that the input string is a single line, i.e. without lines break.
      *
      * This method retains spaces, if still present (case `font.multi: false`).
      * A space which falls on an internal line break, will be replaced by a newline.
      * There is no special handling of tabs; these go along with the flow.
-     * 
+     *
      * @param {string} str
      * @param {string} [mod='normal']
      * @param {boolean} [appendLast=false]
@@ -45207,7 +45215,7 @@ var LabelAccumulator = function () {
      * Determine and set the heights of all the lines currently contained in this instance
      *
      * Note that width has already been set.
-     * 
+     *
      * @private
      */
 
@@ -45237,7 +45245,7 @@ var LabelAccumulator = function () {
 
     /**
      * Determine the full size of the label text, as determined by current lines and blocks
-     * 
+     *
      * @private
      */
 
@@ -45261,7 +45269,7 @@ var LabelAccumulator = function () {
 
     /**
      * Remove all empty blocks and empty lines we don't need
-     * 
+     *
      * This must be done after the width/height determination,
      * so that these are set properly for processing here.
      *
@@ -50465,7 +50473,7 @@ Member `network.clustering` contains the following items:
 Due to nesting of clusters, these members can contain cluster nodes and edges as well.
 
 The important thing to note here, is that the clustered nodes and edges also
-appear in the members of the cluster nodes. For data update, it is therefore 
+appear in the members of the cluster nodes. For data update, it is therefore
 important to scan these lists as well as the cluster nodes.
 
 
@@ -50476,7 +50484,7 @@ A cluster node has the following extra fields:
 - `isCluster : true` - indication that this is a cluster node
 - `containedNodes`   - hash of nodes contained in this cluster
 - `containedEdges`   - same for edges
-- `edges`            - array of cluster edges for this node 
+- `edges`            - array of cluster edges for this node
 
 
 **NOTE:**
@@ -51232,7 +51240,7 @@ var ClusterEngine = function () {
         return;
       }
 
-      // main body 
+      // main body
       var containedNodes = clusterNode.containedNodes;
       var containedEdges = clusterNode.containedEdges;
 
@@ -51820,7 +51828,7 @@ var ClusterEngine = function () {
         }
       });
 
-      // Cluster nodes can also contain edges which are not clustered, 
+      // Cluster nodes can also contain edges which are not clustered,
       // i.e. nodes 1-2 within cluster with an edge in between.
       // So the cluster nodes also need to be scanned for invalid edges
       eachClusterNode(function (clusterNode) {
@@ -51922,7 +51930,7 @@ var ClusterEngine = function () {
         } else {
           // This should not be happening, the state should
           // be properly updated at this point.
-          // 
+          //
           // If it *is* reached during normal operation, then we have to implement
           // undo clustering for this edge here.
           throw new Error('remove edge from clustering not implemented!');
@@ -55852,7 +55860,7 @@ var HierarchicalStatus = function () {
     this.levels = {}; // hierarchy level per node id
     this.distributionIndex = {}; // The position of the node in the level sorting order, per node id.
 
-    this.isTree = false; // True if current network is a formal tree 
+    this.isTree = false; // True if current network is a formal tree
     this.treeIndex = -1; // Highest tree id in current network.
   }
 
@@ -57843,7 +57851,7 @@ var DirectionInterface = function () {
     }
 
     /**
-     * Add an offset to the unfixed coordinate of the given node. 
+     * Add an offset to the unfixed coordinate of the given node.
      *
      * @param {NodeId} nodeId Id of the node to adjust
      * @param {number} diff Offset to add to the unfixed coordinate

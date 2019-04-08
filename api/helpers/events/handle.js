@@ -63,16 +63,17 @@ module.exports = {
     // All done.
   }
 };
-
+/*
 function incService(name, amount) {
-  console.log("IncService", name, amount);
+  console.log('IncService', name, amount);
 }
 function decService(name, amount) {
-  console.log("DecService", name, amount);
+  console.log('DecService', name, amount);
 }
 function killService(name, signal, message) {
-  console.log("KillService", name, signal, message);
+  console.log('KillService', name, signal, message);
 }
 function killApp(name,signal, message) {
-  console.log("KillApp", name, signal, message);
+  console.log('KillApp', name, signal, message);
 }
+ */

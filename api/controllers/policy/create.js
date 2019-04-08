@@ -52,7 +52,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let options = {name: inputs.name, state: 'enabled'};
@@ -60,7 +60,7 @@ module.exports = {
       if (inputs.cloud) {
         let cloud = await Cloud.findOne({name: inputs.cloud});
         if (!cloud) {
-          console.error("Could not find Cloud:", inputs.cloud);
+          console.error('Could not find Cloud:', inputs.cloud);
           return exits.notFound('/notFound');
         }
         options.cloud = cloud.id;
@@ -68,7 +68,7 @@ module.exports = {
       if (inputs.env) {
         let environ = await Environment.findOne({name: inputs.env});
         if (!environ) {
-          console.error("Could not find Environment:", inputs.env);
+          console.error('Could not find Environment:', inputs.env);
           return exits.notFound('/notFound');
         }
         options.env = environ.id;
@@ -76,7 +76,7 @@ module.exports = {
       if (inputs.stack) {
         let stack = await ServiceStack.findOne({name: inputs.stack});
         if (!stack) {
-          console.error("Could not find ServiceStack:", inputs.stack);
+          console.error('Could not find ServiceStack:', inputs.stack);
           return exits.notFound('/notFound');
         }
         options.stack = stack.id;
@@ -84,12 +84,12 @@ module.exports = {
       if (inputs.app) {
         let app = await Application.findOne({name: inputs.app});
         if (!app) {
-          console.error("Could not find Application:", inputs.app);
+          console.error('Could not find Application:', inputs.app);
           return exits.notFound('/notFound');
         }
         options.app = app.id;
       }
-      console.log("Options:", options);
+      console.log('Options:', options);
       let policy = await Policy.findOrCreate({name: inputs.name}, options);
 
 
@@ -99,7 +99,7 @@ module.exports = {
       for (let id in data.triggers) {
         let name = inputs.name + i;
         let tdata = data.triggers[id];
-        let trigger = await sails.helpers.trigger.create.with({
+        await sails.helpers.trigger.create.with({
           name: name,
           event: tdata.events,
           condition: tdata.condition,
@@ -121,7 +121,7 @@ module.exports = {
       }
     }
     catch (e) {
-      console.error("Error:", e);
+      console.error('Error:', e);
       return exits.error(e);
     }
   }

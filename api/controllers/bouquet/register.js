@@ -23,10 +23,10 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     sails.sockets.join(this.req, 'c3');
-    console.log("Registered:", inputs.name);
-    return exits.json({msg:"Connected on C3"});
+    console.log('Registered:', inputs.name);
+    return exits.json({msg: 'Connected on C3'});
   }
 };
 

@@ -30,14 +30,7 @@ pipeline {
                 label 'node'
             }
             steps {
-                sh 'npm run-script deploy-test'
-                sh 'npm run-script test'
-                sh 'npm run-script teardown-test'
-            }
-            post {
-                always {
-                  junit "report.xml"
-                }
+                sh 'npm run-script lint'
             }
         }
         stage('Test Integration') {

@@ -32,12 +32,13 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let appI = await ApplicationInstance.findOne(inputs.id);
       if (!appI) {return exits.notFound('/home');}
-      let instances = await sails.helpers.app.kill.with({instance:appI});
+      // let instances = await sails.helpers.app.kill.with({instance:appI});
+      await sails.helpers.app.kill.with({instance: appI});
 
       // Display the results
       if(inputs.mode === 'json') {

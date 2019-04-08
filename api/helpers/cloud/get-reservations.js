@@ -49,7 +49,6 @@ module.exports = {
     }
     // Iterate over the reservations. And find out what hardware is available.
     for (let i in inputs.requests) {
-      let hardware = [];
       let request = await Request.findOne({id: inputs.requests[i].id}).populateAll();
       let eid = request.env.id;
       for (let j in request.requirements) {
@@ -84,7 +83,7 @@ module.exports = {
             reservation = await getReservationFromHardware(envMap[eid], inputs.cloud, request, requirement);
           }
           if (!reservation) {
-            console.error("Could not reserve: ", request, requirement);
+            console.error('Could not reserve: ', request, requirement);
             return exits.notFound(request);
           }
           reservations.push(reservation);
@@ -142,11 +141,10 @@ async function getReservationFromHardware(env, cloud, request, requirement) {
 
   let clouds = env.clouds;
   let hardware = [];
-  let reservations = [];
 
   let tempHardware = await Hardware.find({cloud: cloud.id, type: requirement.type, disabled: false});
   if (tempHardware.length === 0) {
-    console.error("No Hardware Found:", requirement.type, clouds[j].name);
+    console.error('No Hardware Found:', requirement.type, clouds[j].name);
   }
   for (let k in tempHardware) {
     hardware.push(tempHardware[k]);

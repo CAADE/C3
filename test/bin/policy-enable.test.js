@@ -1,29 +1,29 @@
 const exec = require('child_process').exec;
 const taction = require('../../api/controllers/policy/enable');
 
-describe('policy enable Script Test Cases', function () {
-  describe('Primary policy enable Test Case', function () {
-    it('Primary policy enable Good Path', function (done) {
+describe('policy enable Script Test Cases', () => {
+  describe('Primary policy enable Test Case', () => {
+    it('Primary policy enable Good Path', (done) => {
       // var command = exec('bash -c ls -latr', {shell: 'C:\\Users\\dwpulsip\\tools\\Git\\bash.exe'}, function (err, stdout, stderr) {
-      let command = "bash -c bin/c3-policy-enable ";
+      let command = 'bash -c bin/c3-policy-enable ';
       let params = [];
       for(let key in taction.inputs) {
-        if(key != "mode") {
-          params.push("--" + key + " " + taction.inputs[key].type);
+        if (key !== 'mode') {
+          params.push('--' + key + ' ' + taction.inputs[key].type);
         }
       }
- command += params.join(" ");
-      let results = exec(command, function (err, stdout, stderr) {
+      command += params.join(' ');
+      let results = exec(command, (err, stdout, stderr) => {
         console.log(stderr);
         if (err) {
-          done(err);
+          return done(err);
         }
         else {
           console.log(stdout);
         }
       });
-      results.on('exit', function (code) {
-        done(code);
+      results.on('exit', (code) => {
+        return done(code);
       });
     });
   });

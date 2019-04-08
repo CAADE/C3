@@ -29,7 +29,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     try {
       let dstack = this.req.body.service;
       let stack = await ServiceStack.findOrCreate({name: dstack.name, version: dstack.version}, {
@@ -67,7 +67,6 @@ module.exports = {
           options.resources = dstacklet.resources;
         }
         let stacklet = await Stacklet.findOrCreate({env: environment.id, stack: stack.id}, options);
-        let servicelets = [];
         for (let sname in dstacklet.services) {
           let dservice = dstacklet.services[sname];
           ///////////////////////////

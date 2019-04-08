@@ -12,7 +12,7 @@ bin -> sailsjs : stack/select(name,env,config)
 Dev -> AM : Check Application Health
 AA -> AM : Check Application Health
 AM -> bin: app-check(name,env)
-bin -> sailsjs: app/check(name, env)
+bin -> sailsjs: app/check(name)
 
 AA -> AM : Rebalance Application Instance
 AM -> bin: app-rebalance(appInstance)

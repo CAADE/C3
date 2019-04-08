@@ -46,7 +46,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     if (this.req.isSocket) {
       sails.sockets.join(this.req, 'c3');
     }

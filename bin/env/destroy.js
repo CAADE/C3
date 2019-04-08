@@ -14,7 +14,7 @@ for (key in action.inputs) {
     program.option('-' + key[0] + ', --' + key + ' <' + action.inputs[key].type + '>', action.inputs[key].description);
   }
 }
-;
+
 
 program.parse(process.argv);
 
@@ -28,13 +28,13 @@ for (key in action.inputs) {
 }
 // END: Dynamic Mapping based on Controller Action
 
-client.get(url, function (data, response) {
+client.get(url, (data, response) => {
   // parsed response body as js object
   if (data.error) {
-    console.error('Error:' + data.error);
+    console.error('Error:' + data.error, response);
   }
   else {
     // Process the data returned.
-    console.log("Environment Destroyed: ", data.name);
+    console.log('Environment Destroyed: ', data.name);
   }
 });

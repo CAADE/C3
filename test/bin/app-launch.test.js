@@ -1,5 +1,5 @@
 const exec = require('child_process').execSync;
-const taction = require('../../api/controllers/app/launch');
+// const taction = require('../../api/controllers/app/launch');
 
 describe('app launch Script Test Cases', () => {
   describe('Primary app launch Test Case', () => {

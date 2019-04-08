@@ -82,7 +82,7 @@ function getRgba(string) {
    for (var i = 0; i < rgb.length; i++) {
       rgb[i] = scale(rgb[i], 0, 255);
    }
-   if (!a && a != 0) {
+  if (!a && a !== 0) {
       a = 1;
    }
    else {
@@ -1058,7 +1058,7 @@ function hwb2rgb(hwb) {
   i = Math.floor(6 * h);
   v = 1 - bl;
   f = 6 * h - i;
-  if ((i & 0x01) != 0) {
+  if ((i & 0x01) !== 0) {
     f = 1 - f;
   }
   n = wh + f * (v - wh);  // linear interpolation
@@ -1444,11 +1444,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -1476,12 +1476,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -9931,7 +9931,7 @@ var helpers = {
 					return false;
 				}
 			} else if (v0 !== v1) {
-				// NOTE: two different object instances will never be equal: {x:20} != {x:20}
+        // NOTE: two different object instances will never be equal: {x:20} !== {x:20}
 				return false;
 			}
 		}

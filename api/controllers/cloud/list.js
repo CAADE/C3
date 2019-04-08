@@ -25,7 +25,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     // Register for socket events from the client
     if (this.req.isSocket) {
       sails.sockets.join(this.req, 'c3');

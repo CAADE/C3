@@ -23,10 +23,10 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     try {
       if(inputs.id) {
-        console.log("Update:", inputs);
+        console.log('Update:', inputs);
         let instances = await ServiceInstance.update({id:inputs.id}, this.req.body).fetch();
         sails.sockets.broadcast('c3', 'sinstance', instances);
         return exits.json({instances: instances});

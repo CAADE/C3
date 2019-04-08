@@ -41,7 +41,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     try {
       if(inputs.ids) {
         let ids = inputs.ids.split(/,/);
@@ -60,6 +60,7 @@ module.exports = {
           let services = [];
           for (let j in instance.services) {
             let service = instance.services[j];
+            services.push(service);
           }
           instance.services = services;
           return exits.json({instance: instance});

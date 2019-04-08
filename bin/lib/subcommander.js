@@ -131,6 +131,8 @@ function exists(file) {
       return true;
     }
   } catch (e) {
-    return false;
+    if (e) {
+      return false;
+    }
   }
 }

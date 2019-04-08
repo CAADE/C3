@@ -12,14 +12,14 @@ describe('stack list Script Test Cases', () => {
       let results = exec(command, (err, stdout, stderr) => {
         console.log(stderr);
         if (err) {
-          done(err);
+          return done(err);
         }
         else {
           console.log(stdout);
         }
       });
       results.on('exit', (code) => {
-        done(code);
+        return done(code);
       });
     });
   });

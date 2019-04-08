@@ -1,5 +1,5 @@
 const exec = require('child_process').exec;
-const taction = require('../../api/controllers/events/set');
+// const taction = require('../../api/controllers/events/set');
 
 describe('events set Script Test Cases', () => {
   describe('Primary events set Test Case', () => {

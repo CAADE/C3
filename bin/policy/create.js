@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var YAML = require('yamljs');
+
 
 const program = require('commander');
 const Client = require('node-rest-client').Client;
 const config = require('../config');
 /* Replace this with your own config file. */
-const _ = require('lodash');
+
 
 let client = new Client();
 
@@ -21,7 +20,7 @@ for (key in action.inputs) {
     program.option('-' + key[0] + ', --' + key + ' <' + action.inputs[key].type + '>', action.inputs[key].description);
   }
 }
-;
+
 
 program.parse(process.argv);
 
@@ -51,7 +50,7 @@ console.log(url);
 client.post(url, args, (data, response) => {
   // parsed response body as js object
   if (data.error) {
-    console.error(data.error);
+    console.error(data.error, response);
   }
   else {
     console.log('Policy loaded into the datacenter: ', data.name);

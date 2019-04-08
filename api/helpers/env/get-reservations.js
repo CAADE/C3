@@ -44,7 +44,6 @@ module.exports = {
     }
     // Iterate over the reservations. And find out what hardware is available.
     for (let i in inputs.requests) {
-      let hardware = [];
       let tres = [];
       let request = await Request.findOne({id: inputs.requests[i].id}).populateAll();
       let eid = request.env.id;

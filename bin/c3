@@ -3,7 +3,7 @@ const program =  require('commander');
 require('./lib/subcommander');
 
 program
-  .version("0.0.1")
+  .version('0.0.1')
   .command('app <cmd> [options]', 'Manage applications')
   .command('cloud [cmd]', 'Manage Clouds')
   .command('dc [cmd]', 'Manage Data Centers')

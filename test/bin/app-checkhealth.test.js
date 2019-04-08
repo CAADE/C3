@@ -12,18 +12,17 @@ describe('app checkhealth Script Test Cases', () => {
         }
       }
       command += params.join(' ');
-      let results = exec("bash -c " + command,  (err, stdout, stderr) => {
+      let results = exec('bash -c ' + command, (err, stdout, stderr) => {
         console.log(stderr);
         if (err) {
-          done(err);
-          return;
+          return done(err);
         }
         else {
           console.log(stdout);
         }
       });
       results.on('exit', (code) => {
-        done(code);
+        return done(code);
       });
     });
   });

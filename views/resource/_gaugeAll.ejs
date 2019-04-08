@@ -51,7 +51,7 @@
       let colors = [];
       labels = [];
       for (let state in states[type]) {
-        if (state != 'total') {
+        if (state !== 'total') {
           labels.push('"' + state + '"');
           data.push(states[type][state]);
           colors.push('"' + backgroundColors[type][state] + '"');

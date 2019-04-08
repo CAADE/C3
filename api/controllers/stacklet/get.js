@@ -36,7 +36,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let stacklet = await Stacklet.findOne({id: inputs.id}).populateAll();

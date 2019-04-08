@@ -39,7 +39,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     try {
       let events = await Events.findOne({name: inputs.name});
       if (!events) {

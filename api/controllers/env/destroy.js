@@ -39,7 +39,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     try {
       let environment = await Environment.findOne({name: inputs.name});
       if(!environment) { return exits.notFound('/notFound'); }

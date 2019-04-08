@@ -15,7 +15,7 @@ before(function (done) {
     log: {level: 'warn'},
 
   }, (err) => {
-    console.error("error");
+    console.error('error');
     if (err) {
       return done(err);
     }

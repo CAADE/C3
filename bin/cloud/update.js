@@ -33,7 +33,7 @@ try {
   client.get(url, (data, response) => {
     // parsed response body as js object
     if (data.error) {
-      console.error('Error:' + data.error);
+      console.error('Error:' + data.error, response);
     }
     else {
       // Process the data returned.

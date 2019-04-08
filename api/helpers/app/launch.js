@@ -64,7 +64,7 @@ module.exports = {
         env: environ.id
       }).fetch();
       sails.sockets.broadcast('c3', 'instance', [appInstance]);
-      await sails.helpers.events.inc.with({events:"ApplicationInstance", value:1});
+      await sails.helpers.events.inc.with({events: 'ApplicationInstance', value: 1});
 
       // Recursively build the services from the servicelets.
       if (appStacklet.image) {
@@ -94,7 +94,7 @@ module.exports = {
         await Service.addToCollection(service.id, 'apps', appInstance.id);
         await ApplicationInstance.addToCollection(appInstance.id, 'services', service.id);
 
-        let resources = await sails.helpers.service.set.with({service: service, replicas: servicelet.replicas})
+        await sails.helpers.service.set.with({service: service, replicas: servicelet.replicas})
           .intercept('stackletNotFound', () => {
             console.error('Inside StackletNotFound!');
             return new Error('Stacklet Not Found');
@@ -106,7 +106,7 @@ module.exports = {
       return exits.success(appInstances);
     }
     catch (e) {
-      console.error("Error for Launch:", e);
+      console.error('Error for Launch:', e);
       await sails.helpers.app.kill.with({instance: appInstance, signal: 9, reason: 'Error during launch'});
       let appInstances = await ApplicationInstance.update({id: appInstance.id}, {
         state: 'Error',

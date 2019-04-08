@@ -1,4 +1,4 @@
-var Promise = require('bluebird');
+
 
 describe('Use Case Manage-Applications', () => {
   describe('Check-Application-Health Scenario', () => {

@@ -16,12 +16,12 @@ module.exports = {
       description: 'Description of Attribute',
       type: 'string',
       required: true
-},
-type: {
+    },
+    type: {
       description: 'Description of Attribute',
       type: 'string',
       required: true
-},
+    },
 
     mode: {
       description: 'results format: json or html',
@@ -44,7 +44,7 @@ type: {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let user = await User.findOne(inputs.userId);

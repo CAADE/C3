@@ -1,4 +1,4 @@
-const Client = require('node-rest-client').Client
+const Client = require('node-rest-client').Client;
 const taction = require('../../api/controllers/stack/get');
 let client = new Client();
 

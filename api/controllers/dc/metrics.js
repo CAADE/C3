@@ -26,7 +26,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let retval =  {hardware:{},resources:{},services:{}, apps:{}, instances:{}};
@@ -41,7 +41,7 @@ module.exports = {
         retval.hardware[hw.type].available += hw.available;
         retval.hardware[hw.type].capacity += hw.capacity;
       }
-      let util = Math.round(100 - 100*(retval.hardware.compute.available/retval.hardware.compute.capacity));
+      // let util = Math.round(100 - 100*(retval.hardware.compute.available/retval.hardware.compute.capacity));
       // await sails.helpers.setEvents('util', util);
 
       let resources = await Resource.find();

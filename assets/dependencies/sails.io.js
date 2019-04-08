@@ -695,7 +695,7 @@ return new(b[["Active"].concat("Object").join("X")])("Microsoft.XMLHTTP")}catch(
           },
           set: function(value) {
             // Don't allow value to be changed while socket is connected
-            if (self.isConnected() && io.sails.strict !== false && value != _opts[option]) {
+            if (self.isConnected() && io.sails.strict !== false && value !== _opts[option]) {
               throw new Error('Cannot change value of `' + option + '` while socket is connected.');
             }
             // If socket is attempting to reconnect, stop it.

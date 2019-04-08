@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var YAML = require('yamljs');
+
 
 const program = require('commander');
 const Client = require('node-rest-client').Client;
 const config = require('../config');
 /* Replace this with your own config file. */
-const _ = require('lodash');
+
 
 let client = new Client();
 
@@ -41,7 +40,7 @@ console.log(args.data);
 client.post(url, args, (data, response) => {
   // parsed response body as js object
   if (data.error) {
-    console.error('Error:' + data.error);
+    console.error('Error:' + data.error, response);
   }
   else if (data.problems) {
     console.error('Error:', data.problems);

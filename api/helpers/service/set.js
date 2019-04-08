@@ -95,7 +95,7 @@ module.exports = {
           service: parent.id,
           env: stacklet.env.id
         }).fetch();
-        await sails.helpers.events.inc.with({events:"ServiceInstance", value:1});
+        await sails.helpers.events.inc.with({events: 'ServiceInstance', value: 1});
         requests.push(await Request.create({
           state: 'Initializing',
           instance: instance.id,
@@ -140,10 +140,10 @@ module.exports = {
     // These policies should be attached to the request.
 
     // Save some time by sending the replicas together as one request to the cloud broker.
-    let resources = await sails.helpers.broker.getResources.with({requests: requests});
+    await sails.helpers.broker.getResources.with({requests: requests});
 
     // Ok now provision the software from the requests that the resources are tied.
-    let myRequests = await sails.helpers.engine.provision.with({requests:requests});
+    await sails.helpers.engine.provision.with({requests: requests});
     await Service.update({id:parent.id}, {state:'Running'});
     service = await Service.find({id:parent.id}).populateAll();
     service = service[0];

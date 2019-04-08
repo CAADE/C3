@@ -31,7 +31,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let user = await User.findOne(inputs.userId);

@@ -26,7 +26,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
     try {
       let reservations = await Reservation.find().populateAll();
       for(let i in reservations) {

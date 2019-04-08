@@ -22,7 +22,7 @@ module.exports = {
       if (typeof serv === 'string') {
         serv = await Service.findOne({name: serv}).populateAll();
         if (!serv) {
-          console.error("Service increment not found:", inputs.service);
+          console.error('Service increment not found:', inputs.service);
           return exits.serviceNotFound(serv);
         }
       }

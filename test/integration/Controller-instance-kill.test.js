@@ -1,4 +1,4 @@
-const Client = require('node-rest-client').Client
+const Client = require('node-rest-client').Client;
 const taction = require('../../api/controllers/instance/kill');
 let client = new Client();
 

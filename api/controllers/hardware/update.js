@@ -45,7 +45,7 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs, exits, env) {
+  fn: async function (inputs, exits) {
 
     try {
       let item = await Hardware.findOrCreate({name:inputs.name}, {name:inputs.name});

@@ -1,5 +1,5 @@
 const exec = require('child_process').exec;
-const taction = require('../../api/controllers/policy/create');
+// const taction = require('../../api/controllers/policy/create');
 
 describe('policy create Script Test Cases', () => {
   describe('Primary policy create Test Case', () => {
