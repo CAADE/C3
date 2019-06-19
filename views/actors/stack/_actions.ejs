@@ -1,0 +1,17 @@
+<li class="action-bar-list"><a onclick=toggleMenu('stack-sub-list'); href="#">Stack Developer</a></li>
+<div class="sub-action-bar-div" id="stack-sub-list">
+  <ul class="sub-action-bar">
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/env/show", name: "Environment", tip: "Manage Environments: (List, Create, Deploy, Remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/repo/show", name: "Repository", tip: "Manage Repository: (List, Create, Deploy, Remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/service/list", name: "Services", tip: "Manage Services: (List, Create, Deploy, Remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/stack/list", name: "Stacks", tip: "Manage Stacks: (List, Create, Deploy, Remove)" }) %>
+    </li>
+  </ul>
+</div>

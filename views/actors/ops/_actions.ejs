@@ -1,0 +1,32 @@
+<li class="action-bar-list"><a onclick=toggleMenu('ops-sub-list'); href="#">Operations Manager</a></li>
+<div class="sub-action-bar-div" id="ops-sub-list">
+  <ul class="sub-action-bar">
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/cloud/list", name: "Cloud", tip: "Manage Clouds: (List, Create, Deploy, Remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/dc/show", name: "Data Center", tip: "View the Data Center" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/env/list", name: "Environment", tip: "Manage Environments (create, edit, remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/hardware/list", name: "Hardware", tip: "Manage Hardware (list, create, edit, remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/policy/list", name: "Policy", tip: "Manage Policies (list, create, edit, remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/resource/list", name: "Resource", tip: "Manage Resources (list, create, edit, remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/reservation/list", name: "Reservation", tip: "Manage Reservations (list, remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/events/list", name: "Telemetry", tip: "See Telemety of the ecosystem" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/user/list", name: "Users", tip: "Manage Users (list, create, edit, remove)" }) %>
+    </li>
+  </ul>
+</div>

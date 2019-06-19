@@ -1,0 +1,14 @@
+<li class="action-bar-list"><a onclick=toggleMenu('app-sub-list'); href="#">Application Developer</a></li>
+<div class="sub-action-bar-div" id="app-sub-list">
+  <ul class="sub-action-bar">
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/app/list", name: "Applications", tip: "Manage Applications: (List, Create, Deploy, Remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/instance/list", name: "Application Instances", tip: "Manage Applications Instances: (List, Create, Deploy, Remove)" }) %>
+    </li>
+    <li class="sub-action-bar-list">
+      <%- partial("../../pages/_tooltip", { url: "/stack/list", name: "Repository", tip: "Repository Management (Look for stacks, images, and services)" }) %>
+    </li>
+  </ul>
+</div>

@@ -26,6 +26,9 @@ module.exports.routes = {
 
   '/': {view: 'pages/home'},
   '/homepage': {view: 'pages/homepage'},
+  '/stack/home': {view: 'actors/stack/home'},
+  '/dev/home': {view: 'actors/dev/home'},
+  '/ops/home': {view: 'actors/ops/home'},
   '/dc/show': {view: 'dc/show'},
 
   '/image/get': {action: 'image/get'},
